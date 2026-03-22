@@ -85,19 +85,26 @@ Project scheduling and financial pipeline tracking. Monthly scheduling grids, de
 
 ---
 
-### Luca & Claire (planned)
-**Repo:** TBD
-**Stack:** TBD
+### Luca & Claire (luca.uplandexhibits.com)
+**Repo:** `flinthillsdesign/upland-luca-claire`
+**Stack:** TypeScript, Netlify Functions, Turso
+**Port:** 3003 (local)
 
-The graphic designer of the family. Will replace the current static Previews app (`flinthillsdesign/upland-previews`).
+AI-assisted exhibit panel design tool. Replaces the static Previews app (`flinthillsdesign/upland-previews`) with an interactive environment where curators and designers create exhibit panels, get AI help with content and visual design, and share previews with clients.
 
-**Luca** — Layout Utility Curatorial Assistant. Helps curators create exhibit layouts by placing content thoughtfully throughout a design and drafting copy when needed. The curatorial intelligence side.
+**Luca** — Layout Utility Curatorial Assistant. The content specialist. Helps with narrative flow across the exhibit, drafts body text and captions from source material, advises on content hierarchy and curatorial voice.
 
-**Claire** — Creative Layout AI Rendering Engine. The visual designer. Handles the graphic design and rendering side of exhibit panel creation.
+**Claire** — Creative Layout AI Rendering Engine. The design specialist. Handles typography, color palettes, layout composition, visual refinement, and preparing panels for client review.
 
-Together, Luca and Claire take exhibit design from content brief to visual output — Luca handles the what and where, Claire handles the how it looks.
+Together they're two AI team members — each powered by Claude with exhibit design expertise — who overlap naturally but bring distinct specialties. Luca handles the what and where, Claire handles the how it looks.
 
-**Key role in ecosystem:** Turns curatorial content into designed exhibit panels. Where the current Previews app just displays static panel images, Luca & Claire will actively help create them.
+**Key role in ecosystem:** Turns curatorial content into designed exhibit panels. Projects contain panels defined by physical dimensions and panel type. Content is structured (title, body, caption, images) and rendered as HTML/CSS. Clients view galleries via shareable token links.
+
+**Integrations:**
+- Claude API (Luca and Claire AI assistance)
+- Postmark (password reset, gallery share notifications)
+
+**Auth:** Shared Turso auth DB + JWT
 
 ---
 
@@ -185,8 +192,8 @@ Toggl ─────────────┤
          │  (e-commerce)   │
          └─────────────────┘
 
-         ┌─────────────────┐
-         │  Luca & Claire  │ <── planned, will replace Previews
-         │ (exhibit design)│
-         └─────────────────┘
+         ┌─────────────────┐     ┌───────────────────┐
+         │  Luca & Claire  │────>│   Claude API       │
+         │ (exhibit design)│     │  (Luca + Claire)   │
+         └─────────────────┘     └───────────────────┘
 ```

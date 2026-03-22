@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upland Workshop — Luca & Claire People Exploration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        font-family: "Instrument Sans", system-ui, sans-serif;
+        background: #0c0b0e;
+        color: #c8c5cc;
+        min-height: 100vh;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        opacity: 0.02;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 100;
+      }
+      .page { max-width: 1400px; margin: 0 auto; padding: 3rem 2rem 6rem; }
+      .suite-header { margin-bottom: 3.5rem; }
+      .suite-header::after {
+        content: ""; display: block; width: 48px; height: 2px;
+        background: #a5bc39; margin-top: 1.5rem;
+      }
+      .suite-name {
+        font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em;
+        text-transform: uppercase; color: #a5bc39; margin-bottom: 0.6rem;
+      }
+      .suite-title { font-size: 1.8rem; font-weight: 400; color: #eae8ed; }
+      .suite-sub { font-size: 0.85rem; color: #605c66; margin-top: 0.5rem; line-height: 1.5; }
+      .section { margin-bottom: 4.5rem; }
+      .section-label {
+        font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em;
+        text-transform: uppercase; color: #605c66; margin-bottom: 0.6rem;
+      }
+      .section-note {
+        font-size: 0.7rem; color: #4a4650; margin-bottom: 2rem; line-height: 1.5;
+      }
+      .icon-row {
+        display: flex;
+        gap: 2.5rem;
+        flex-wrap: wrap;
+      }
+      .icon-cell {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.7rem;
+      }
+      .icon-cell svg {
+        filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.6));
+        transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .icon-cell:hover svg { transform: translateY(-3px) scale(1.05); }
+      .variant-name { font-size: 0.72rem; font-weight: 600; color: #d8d5dc; }
+      .variant-desc {
+        font-size: 0.58rem; color: #555059; max-width: 140px;
+        text-align: center; line-height: 1.4;
+      }
+      .divider {
+        border: none; border-top: 1px solid rgba(255, 255, 255, 0.04);
+        margin: 1rem 0 4rem;
+      }
+      /* Dock */
+      .dock-wrap { display: flex; justify-content: center; margin-top: 1.5rem; }
+      .dock-group { display: flex; flex-direction: column; align-items: center; }
+      .dock {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 22px; padding: 14px 28px;
+        display: inline-flex; gap: 14px; align-items: center;
+      }
+      .dock svg {
+        filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.5));
+        transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        cursor: default;
+      }
+      .dock svg:hover { transform: translateY(-6px) scale(1.15); }
+      .dock-labels {
+        display: flex; gap: 14px; padding: 0 28px; margin-top: 0.6rem;
+      }
+      .dock-labels span {
+        width: 52px; text-align: center; font-size: 0.45rem;
+        color: #3e3b42; letter-spacing: 0.02em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="suite-header">
+        <div class="suite-name">Upland Workshop</div>
+        <h1 class="suite-title">Luca & Claire — People Exploration</h1>
+        <p class="suite-sub">All people, all the time. Exploring how two characters live in a 256px rounded square.</p>
+      </div>
+
+      <!-- ═══ ROW 1: Filled silhouettes ═══ -->
+      <div class="section">
+        <div class="section-label">Filled Silhouettes</div>
+        <div class="section-note">Solid shapes. Playing with overlap, offset, scale, and which character leads.</div>
+        <div class="icon-row">
+
+          <!-- 1: Classic overlap, Luca forward -->
+          <div class="icon-cell">
+            <svg width="128" height="128" viewBox="0 0 256 256">
+              <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+              <rect width="256" height="256" rx="44" fill="url(#bg)"/>
+              <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <!-- Claire behind -->
+              <circle cx="152" cy="82" r="26" fill="#A5BC39" opacity="0.7"/>
+              <path d="M126 116 Q126 140 152 140 Q178 140 178 116 L178 188 Q178 196 152 196 Q126 196 126 188 Z" fill="#A5BC39" opacity="0.5"/>
+              <!-- Luca front -->
+              <circle cx="108" cy="88" r="26" fill="#fff" opacity="0.92"/>
+              <path d="M82 122 Q82 146 108 146 Q134 146 134 122 L134 194 Q134 202 108 202 Q82 202 82 194 Z" fill="#fff" opacity="0.7"/>
+            </svg>
+            <span class="variant-name">1</span>
+            <span class="variant-desc">Classic overlap, Luca leads</span>
+          </div>
+
+          <!-- 2: Claire forward -->
+          <div class="icon-cell">
+            <svg width="128" height="128" viewBox="0 0 256 256">
+              <defs><linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+              <rect width="256" height="256" rx="44" fill="url(#bg2)"/>
+              <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <!-- Luca behind -->
+              <circle cx="104" cy="84" r="26" fill="#fff" opacity="0.5"/>
+              <path d="M78 118 Q78 142 104 142 Q130 142 130 118 L130 190 Q130 198 104 198 Q78 198 78 190 Z" fill="#fff" opacity="0.35"/>
+              <!-- Claire front -->
+              <circle cx="148" cy="88" r="26" fill="#A5BC39" opacity="0.92"/>
+              <path d="M122 122 Q122 146 148 146 Q174 146 174 122 L174 194 Q174 202 148 202 Q122 202 122 194 Z" fill="#A5BC39" opacity="0.7"/>
+            </svg>
+            <span class="variant-name">2</span>
+            <span class="variant-desc">Claire leads, Luca recedes</span>
+          </div>
+
+          <!-- 3: Equal, no overlap, slight size diff -->
+          <div class="icon-cell">
+            <svg width="128" height="128" viewBox="0 0 256 256">
+              <defs><linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+              <rect width="256" height="256" rx="44" fill="url(#bg3)"/>
+              <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <!-- Luca left -->
+              <circle cx="90" cy="82" r="24" fill="#fff" opacity="0.85"/>
+              <path d="M66 114 Q66 136 90 136 Q114 136 114 114 L114 192 Q114 200 90 200 Q66 200 66 192 Z" fill="#fff" opacity="0.6"/>
+              <!-- Claire right -->
+              <circle cx="166" cy="82" r="24" fill="#A5BC39" opacity="0.85"/>
+              <path d="M142 114 Q142 136 166 136 Q190 136 190 114 L190 192 Q190 200 166 200 Q142 200 142 192 Z" fill="#A5BC39" opacity="0.6"/>
+            </svg>
+            <span class="variant-name">3</span>
+            <span class="variant-desc">Side by side, equal weight</span>
+          </div>
+
+          <!-- 4: Tight overlap, shoulder-to-shoulder -->
+          <div class="icon-cell">
+            <svg width="128" height="128" viewBox="0 0 256 256">
+              <defs><linearGradient id="bg4" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+              <rect width="256" height="256" rx="44" fill="url(#bg4)"/>
+              <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <!-- Combined body mass -->
+              <path d="M56 140 Q56 120 80 112 L80 112 Q96 106 112 112 L128 118 L144 112 Q160 106 176 112 L176 112 Q200 120 200 140 L200 200 L56 200 Z" fill="rgba(255,255,255,0.08)"/>
+              <!-- Luca -->
+              <circle cx="104" cy="80" r="28" fill="#fff" opacity="0.88"/>
+              <path d="M76 116 Q76 136 104 136 Q120 136 128 128 L128 200 L56 200 L56 140 Q56 120 76 116 Z" fill="#fff" opacity="0.55"/>
+              <!-- Claire -->
+              <circle cx="152" cy="76" r="28" fill="#A5BC39" opacity="0.88"/>
+              <path d="M180 112 Q200 120 200 140 L200 200 L128 200 L128 128 Q136 136 152 136 Q180 136 180 112 Z" fill="#A5BC39" opacity="0.55"/>
+            </svg>
+            <span class="variant-name">4</span>
+            <span class="variant-desc">Shoulder to shoulder, united</span>
+          </div>
+
+          <!-- 5: Staggered height, one taller -->
+          <div class="icon-cell">
+            <svg width="128" height="128" viewBox="0 0 256 256">
+              <defs><linearGradient id="bg5" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+              <rect width="256" height="256" rx="44" fill="url(#bg5)"/>
+              <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <!-- Luca: taller, slightly behind -->
+              <circle cx="112" cy="64" r="24" fill="#fff" opacity="0.8"/>
+              <rect x="92" y="96" width="40" height="10" rx="5" fill="#fff" opacity="0.65"/>
+              <rect x="88" y="112" width="48" height="84" rx="8" fill="#fff" opacity="0.5"/>
+              <!-- Claire: shorter, front -->
+              <circle cx="152" cy="86" r="22" fill="#A5BC39" opacity="0.9"/>
+              <rect x="134" y="114" width="36" height="8" rx="4" fill="#A5BC39" opacity="0.7"/>
+              <rect x="130" y="128" width="44" height="68" rx="8" fill="#A5BC39" opacity="0.55"/>
+            </svg>
+            <span class="variant-name">5</span>
+            <span class="variant-desc">Height contrast, depth</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ═══ ROW 2: Outlined / stroke ═══ -->
+      <div class="section">
+        <div class="section-label">Outlined</div>
+        <div class="section-note">Line art. Matches the stroke-based aesthetic of Inquiry Hub and Orders icons.</div>
+        <div class="icon-row">
+
+          <!-- 6: Clean outlines, overlapping -->
+          <div class="icon-cell">
+            <svg width="128" height="128" viewBox="0 0 256 256">
+              <defs><linearGradient id="bg6" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+              <rect width="256" height="256" rx="44" fill="url(#bg6)"/>
+              <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <!-- Luca outline -->
+              <circle cx="100" cy="84" r="26" fill="none" stroke="#fff" stroke-width="7" opacity="0.85"/>
+              <path d="M66 148 C66 126 80 118 100 118 C120 118 134 126 134 148 L134 200 L66 200 Z" fill="none" stroke="#fff" stroke-width="7" opacity="0.6" stroke-linejoin="round"/>
+              <!-- Claire outline -->
+              <circle cx="160" cy="80" r="26" fill="none" stroke="#A5BC39" stroke-width="7" opacity="0.85"/>
+              <path d="M126 144 C126 122 140 114 160 114 C180 114 194 122 194 144 L194 200 L126 200 Z" fill="none" stroke="#A5BC39" stroke-width="7" opacity="0.6" stroke-linejoin="round"/>
+            </svg>
+            <span class="variant-name">6</span>
+            <span class="variant-desc">Clean outlines, overlapping</span>
+          </div>
+
+          <!-- 7: Outlines with fills peaking through -->
+          <div class="icon-cell">
+            <svg width="128" height="128" viewBox="0 0 256 256">
+              <defs><linearGradient id="bg7" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+              <rect width="256" height="256" rx="44" fill="url(#bg7)"/>
+              <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <!-- Luca: outline with subtle fill -->
+              <circle cx="100" cy="84" r="26" fill="rgba(255,255,255,0.06)" stroke="#fff" stroke-width="5" opacity="0.85"/>
+              <path d="M66 148 C66 126 80 118 100 118 C120 118 134 126 134 148 L134 204 L66 204 Z" fill="rgba(255,255,255,0.04)" stroke="#fff" stroke-width="5" opacity="0.6" stroke-linejoin="round"/>
+              <!-- Claire: outline with subtle green fill -->
+              <circle cx="156" cy="80" r="26" fill="rgba(165,188,57,0.08)" stroke="#A5BC39" stroke-width="5" opacity="0.85"/>
+              <path d="M122 144 C122 122 136 114 156 114 C176 114 190 122 190 144 L190 204 L122 204 Z" fill="rgba(165,188,57,0.06)" stroke="#A5BC39" stroke-width="5" opacity="0.6" stroke-linejoin="round"/>
+            </svg>
+            <span class="variant-name">7</span>
+            <span class="variant-desc">Outline + subtle fill</span>
+          </div>
+
+          <!-- 8: Thin elegant lines, heads only -->
+          <div class="icon-cell">
+            <svg width="128" height="128" viewBox="0 0 256 256">
+              <defs><linearGradient id="bg8" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+              <rect width="256" height="256" rx="44" fill="url(#bg8)"/>
+              <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <!-- Luca: thin circle + shoulders -->
+              <circle cx="104" cy="88" r="30" fill="none" stroke="#fff" stroke-width="4" opacity="0.8"/>
+              <path d="M56 190 C56 156 76 142 104 142 C132 142 152 156 152 190" fill="none" stroke="#fff" stroke-width="4" opacity="0.5"/>
+              <!-- Claire: thin circle + shoulders -->
+              <circle cx="156" cy="82" r="30" fill="none" stroke="#A5BC39" stroke-width="4" opacity="0.8"/>
+              <path d="M108 184 C108 150 128 136 156 136 C184 136 204 150 204 184" fill="none" stroke="#A5BC39" stroke-width="4" opacity="0.5"/>
+            </svg>
+            <span class="variant-name">8</span>
+            <span class="variant-desc">Thin, elegant, airy</span>
+          </div>
+
+          <!-- 9: One outline, one filled -->
+          <div class="icon-cell">
+            <svg width="128" height="128" viewBox="0 0 256 256">
+              <defs><linearGradient id="bg9" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+              <rect width="256" height="256" rx="44" fill="url(#bg9)"/>
+              <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <!-- Luca: filled white -->
+              <circle cx="104" cy="84" r="26" fill="#fff" opacity="0.85"/>
+              <path d="M78 118 Q78 140 104 140 Q130 140 130 118 L130 196 Q130 204 104 204 Q78 204 78 196 Z" fill="#fff" opacity="0.6"/>
+              <!-- Claire: outlined green -->
+              <circle cx="156" cy="80" r="26" fill="none" stroke="#A5BC39" stroke-width="6" opacity="0.85"/>
+              <path d="M122 144 C122 122 136 114 156 114 C176 114 190 122 190 144 L190 204 L122 204 Z" fill="none" stroke="#A5BC39" stroke-width="6" opacity="0.6" stroke-linejoin="round"/>
+            </svg>
+            <span class="variant-name">9</span>
+            <span class="variant-desc">Mixed: solid + outline</span>
+          </div>
+
+          <!-- 10: Outlined, facing each other -->
+          <div class="icon-cell">
+            <svg width="128" height="128" viewBox="0 0 256 256">
+              <defs><linearGradient id="bg10" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+              <rect width="256" height="256" rx="44" fill="url(#bg10)"/>
+              <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <!-- Luca left, leaning right -->
+              <circle cx="92" cy="82" r="24" fill="none" stroke="#fff" stroke-width="6" opacity="0.85"/>
+              <path d="M60 146 C60 126 72 116 92 116 C112 116 124 126 124 146 L124 200 L60 200 Z" fill="none" stroke="#fff" stroke-width="6" opacity="0.5" stroke-linejoin="round"/>
+              <!-- Claire right, leaning left -->
+              <circle cx="164" cy="82" r="24" fill="none" stroke="#A5BC39" stroke-width="6" opacity="0.85"/>
+              <path d="M132 146 C132 126 144 116 164 116 C184 116 196 126 196 146 L196 200 L132 200 Z" fill="none" stroke="#A5BC39" stroke-width="6" opacity="0.5" stroke-linejoin="round"/>
+              <!-- Spark in middle -->
+              <circle cx="128" cy="108" r="3" fill="#A5BC39" opacity="0.5"/>
+            </svg>
+            <span class="variant-name">10</span>
+            <span class="variant-desc">Facing, with spark</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ═══ ROW 3: Geometric / abstract ═══ -->
+      <div class="section">
+        <div class="section-label">Geometric Characters</div>
+        <div class="section-note">Shape-based personalities. Luca is angular/structured, Claire is round/organic.</div>
+        <div class="icon-row">
+
+          <!-- 11: Square head + round head -->
+          <div class="icon-cell">
+            <svg width="128" height="128" viewBox="0 0 256 256">
+              <defs><linearGradient id="bg11" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+              <rect width="256" height="256" rx="44" fill="url(#bg11)"/>
+              <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <!-- Luca: rounded square head -->
+              <rect x="62" y="56" width="48" height="48" rx="10" fill="#fff" opacity="0.88"/>
+              <rect x="66" y="116" width="40" height="72" rx="6" fill="#fff" opacity="0.55"/>
+              <!-- Claire: circle head -->
+              <circle cx="168" cy="80" r="26" fill="#A5BC39" opacity="0.88"/>
+              <rect x="146" y="116" width="44" height="72" rx="6" fill="#A5BC39" opacity="0.55"/>
+            </svg>
+            <span class="variant-name">11</span>
+            <span class="variant-desc">Square meets circle</span>
+          </div>
+
+          <!-- 12: Pill shapes, modern -->
+          <div class="icon-cell">
+            <svg width="128" height="128" viewBox="0 0 256 256">
+              <defs><linearGradient id="bg12" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+              <rect width="256" height="256" rx="44" fill="url(#bg12)"/>
+              <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <!-- Luca: tall pill -->
+              <rect x="56" y="48" width="56" height="160" rx="28" fill="#fff" opacity="0.75"/>
+              <!-- Claire: shorter pill, offset -->
+              <rect x="136" y="72" width="56" height="136" rx="28" fill="#A5BC39" opacity="0.75"/>
+            </svg>
+            <span class="variant-name">12</span>
+            <span class="variant-desc">Pill shapes, height contrast</span>
+          </div>
+
+          <!-- 13: Minimal dots + line bodies -->
+          <div class="icon-cell">
+            <svg width="128" height="128" viewBox="0 0 256 256">
+              <defs><linearGradient id="bg13" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+              <rect width="256" height="256" rx="44" fill="url(#bg13)"/>
+              <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <!-- Luca: dot head + straight line body -->
+              <circle cx="96" cy="68" r="18" fill="#fff" opacity="0.9"/>
+              <line x1="96" y1="90" x2="96" y2="168" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+              <line x1="96" y1="120" x2="72" y2="148" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+              <line x1="96" y1="120" x2="118" y2="144" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+              <line x1="96" y1="168" x2="78" y2="200" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+              <line x1="96" y1="168" x2="114" y2="200" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+              <!-- Claire: dot head + flowing body -->
+              <circle cx="168" cy="64" r="18" fill="#A5BC39" opacity="0.9"/>
+              <path d="M168 86 C168 120, 150 130, 168 160 C178 176, 168 200, 168 200" fill="none" stroke="#A5BC39" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+              <path d="M168 116 C148 128, 142 140, 146 152" fill="none" stroke="#A5BC39" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+              <path d="M168 116 C188 128, 196 140, 192 148" fill="none" stroke="#A5BC39" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+              <path d="M168 168 C154 184, 148 196, 150 204" fill="none" stroke="#A5BC39" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+              <path d="M168 168 C182 184, 188 196, 186 204" fill="none" stroke="#A5BC39" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+            </svg>
+            <span class="variant-name">13</span>
+            <span class="variant-desc">Stick figures: rigid + fluid</span>
+          </div>
+
+          <!-- 14: Abstract torsos, no heads -->
+          <div class="icon-cell">
+            <svg width="128" height="128" viewBox="0 0 256 256">
+              <defs><linearGradient id="bg14" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+              <rect width="256" height="256" rx="44" fill="url(#bg14)"/>
+              <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <!-- Luca: angular figure -->
+              <polygon points="86,50 118,50 118,120 102,142 86,120" fill="#fff" opacity="0.8"/>
+              <rect x="82" y="148" width="40" height="52" rx="4" fill="#fff" opacity="0.5"/>
+              <!-- Claire: curved figure -->
+              <ellipse cx="170" cy="84" rx="24" ry="36" fill="#A5BC39" opacity="0.8"/>
+              <path d="M146 126 Q146 180 170 200 Q194 180 194 126" fill="#A5BC39" opacity="0.5"/>
+            </svg>
+            <span class="variant-name">14</span>
+            <span class="variant-desc">Abstract: angular + organic</span>
+          </div>
+
+          <!-- 15: Chess-piece inspired -->
+          <div class="icon-cell">
+            <svg width="128" height="128" viewBox="0 0 256 256">
+              <defs><linearGradient id="bg15" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+              <rect width="256" height="256" rx="44" fill="url(#bg15)"/>
+              <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <!-- Luca: king/rook inspired -->
+              <circle cx="96" cy="62" r="18" fill="#fff" opacity="0.9"/>
+              <rect x="86" y="84" width="20" height="8" rx="2" fill="#fff" opacity="0.7"/>
+              <path d="M80 96 L80 170 Q80 180 96 180 Q112 180 112 170 L112 96 Z" fill="#fff" opacity="0.55"/>
+              <rect x="72" y="182" width="48" height="12" rx="4" fill="#fff" opacity="0.65"/>
+              <!-- Claire: queen/bishop inspired -->
+              <circle cx="168" cy="58" r="18" fill="#A5BC39" opacity="0.9"/>
+              <path d="M168 42 L172 34 L164 34 Z" fill="#A5BC39" opacity="0.7"/>
+              <rect x="158" y="80" width="20" height="8" rx="2" fill="#A5BC39" opacity="0.7"/>
+              <path d="M152 92 Q148 140 156 172 Q168 180 180 172 Q188 140 184 92 Z" fill="#A5BC39" opacity="0.55"/>
+              <rect x="142" y="182" width="52" height="12" rx="4" fill="#A5BC39" opacity="0.65"/>
+            </svg>
+            <span class="variant-name">15</span>
+            <span class="variant-desc">Chess pieces: king + queen</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ═══ ROW 4: Profile / silhouette ═══ -->
+      <div class="section">
+        <div class="section-label">Side Profiles</div>
+        <div class="section-note">Cameo-style. Facing each other or facing the same direction. Suggests conversation.</div>
+        <div class="icon-row">
+
+          <!-- 16: Facing each other, solid -->
+          <div class="icon-cell">
+            <svg width="128" height="128" viewBox="0 0 256 256">
+              <defs><linearGradient id="bg16" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+              <rect width="256" height="256" rx="44" fill="url(#bg16)"/>
+              <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <!-- Luca profile facing right -->
+              <path d="M44 200 L44 120 C44 70 68 48 92 48 C108 48 118 58 120 72 L122 80 C128 84 130 92 128 100 L124 108 C120 116 114 120 108 120 L108 140 C108 150 100 160 88 164 L68 170 L68 200 Z" fill="#fff" opacity="0.8"/>
+              <!-- Claire profile facing left -->
+              <path d="M212 200 L212 120 C212 70 188 48 164 48 C148 48 138 58 136 72 L134 80 C128 84 126 92 128 100 L132 108 C136 116 142 120 148 120 L148 140 C148 150 156 160 168 164 L188 170 L188 200 Z" fill="#A5BC39" opacity="0.8"/>
+            </svg>
+            <span class="variant-name">16</span>
+            <span class="variant-desc">Cameos facing, conversation</span>
+          </div>
+
+          <!-- 17: Profile busts, simpler -->
+          <div class="icon-cell">
+            <svg width="128" height="128" viewBox="0 0 256 256">
+              <defs><linearGradient id="bg17" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+              <rect width="256" height="256" rx="44" fill="url(#bg17)"/>
+              <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <!-- Luca: simple profile left, facing right -->
+              <path d="M48 196 L48 160 C48 140 60 134 72 130 L82 128 C82 128 78 120 78 108 C78 90 62 78 62 60 C62 44 76 36 92 36 C108 36 118 48 118 64 C118 78 110 86 108 96 C106 106 108 114 112 120 L116 128 C116 128 124 130 124 148 L124 196 Z" fill="#fff" opacity="0.75"/>
+              <!-- Claire: simple profile right, facing left -->
+              <path d="M208 196 L208 160 C208 140 196 134 184 130 L174 128 C174 128 178 120 178 108 C178 90 194 78 194 60 C194 44 180 36 164 36 C148 36 138 48 138 64 C138 78 146 86 148 96 C150 106 148 114 144 120 L140 128 C140 128 132 130 132 148 L132 196 Z" fill="#A5BC39" opacity="0.75"/>
+            </svg>
+            <span class="variant-name">17</span>
+            <span class="variant-desc">Full profile busts</span>
+          </div>
+
+          <!-- 18: Minimal profile outlines -->
+          <div class="icon-cell">
+            <svg width="128" height="128" viewBox="0 0 256 256">
+              <defs><linearGradient id="bg18" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+              <rect width="256" height="256" rx="44" fill="url(#bg18)"/>
+              <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <!-- Luca profile outline facing right -->
+              <path d="M60 200 L60 164 C60 148 70 140 84 136 C84 130 80 118 80 104 C80 76 92 56 108 56 C120 56 126 68 126 84 C126 96 120 108 116 116 L120 120 C120 128 118 136 112 140 L108 140 L108 200" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.75"/>
+              <!-- Claire profile outline facing left -->
+              <path d="M196 200 L196 164 C196 148 186 140 172 136 C172 130 176 118 176 104 C176 76 164 56 148 56 C136 56 130 68 130 84 C130 96 136 108 140 116 L136 120 C136 128 138 136 144 140 L148 140 L148 200" fill="none" stroke="#A5BC39" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.75"/>
+            </svg>
+            <span class="variant-name">18</span>
+            <span class="variant-desc">Profile outlines, facing</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ═══ ROW 5: Playful / character ═══ -->
+      <div class="section">
+        <div class="section-label">Playful Characters</div>
+        <div class="section-note">More personality, less corporate. They have expressions, posture, attitude.</div>
+        <div class="icon-row">
+
+          <!-- 19: Round heads with expressions -->
+          <div class="icon-cell">
+            <svg width="128" height="128" viewBox="0 0 256 256">
+              <defs><linearGradient id="bg19" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+              <rect width="256" height="256" rx="44" fill="url(#bg19)"/>
+              <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <!-- Luca: thoughtful, looking at Claire -->
+              <circle cx="96" cy="84" r="30" fill="#fff" opacity="0.88"/>
+              <circle cx="108" cy="78" r="4" fill="#161A22" opacity="0.5"/>
+              <line x1="86" y1="96" x2="102" y2="94" stroke="#161A22" stroke-width="3" stroke-linecap="round" opacity="0.3"/>
+              <rect x="76" y="122" width="40" height="68" rx="8" fill="#fff" opacity="0.5"/>
+              <!-- Claire: confident, looking forward -->
+              <circle cx="164" cy="78" r="30" fill="#A5BC39" opacity="0.88"/>
+              <circle cx="158" cy="72" r="4" fill="#161A22" opacity="0.5"/>
+              <path d="M152 90 Q162 96 172 90" fill="none" stroke="#161A22" stroke-width="3" stroke-linecap="round" opacity="0.3"/>
+              <rect x="144" y="116" width="40" height="74" rx="8" fill="#A5BC39" opacity="0.5"/>
+              <!-- Claire's creative sparks -->
+              <circle cx="200" cy="60" r="4" fill="#A5BC39" opacity="0.35"/>
+              <circle cx="206" cy="76" r="3" fill="#A5BC39" opacity="0.25"/>
+              <circle cx="202" cy="92" r="2" fill="#A5BC39" opacity="0.15"/>
+            </svg>
+            <span class="variant-name">19</span>
+            <span class="variant-desc">Expressive, Claire sparkles</span>
+          </div>
+
+          <!-- 20: Leaning in together -->
+          <div class="icon-cell">
+            <svg width="128" height="128" viewBox="0 0 256 256">
+              <defs><linearGradient id="bg20" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+              <rect width="256" height="256" rx="44" fill="url(#bg20)"/>
+              <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <!-- Luca leaning right -->
+              <circle cx="104" cy="72" r="26" fill="#fff" opacity="0.88"/>
+              <path d="M78 106 L78 196 Q78 204 96 204 L118 204 Q126 204 126 196 L126 106 Q126 94 104 94 Q82 94 78 106 Z" fill="#fff" opacity="0.55" transform="rotate(5, 104, 150)"/>
+              <!-- Claire leaning left -->
+              <circle cx="156" cy="68" r="26" fill="#A5BC39" opacity="0.88"/>
+              <path d="M130 102 L130 192 Q130 200 148 200 L170 200 Q178 200 178 192 L178 102 Q178 90 156 90 Q134 90 130 102 Z" fill="#A5BC39" opacity="0.55" transform="rotate(-5, 156, 146)"/>
+            </svg>
+            <span class="variant-name">20</span>
+            <span class="variant-desc">Leaning in, collaborating</span>
+          </div>
+
+          <!-- 21: One waving, friendly -->
+          <div class="icon-cell">
+            <svg width="128" height="128" viewBox="0 0 256 256">
+              <defs><linearGradient id="bg21" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+              <rect width="256" height="256" rx="44" fill="url(#bg21)"/>
+              <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <!-- Luca: solid, grounded -->
+              <circle cx="92" cy="84" r="24" fill="#fff" opacity="0.85"/>
+              <rect x="74" y="116" width="36" height="64" rx="6" fill="#fff" opacity="0.55"/>
+              <!-- Luca's arm pointing/presenting -->
+              <path d="M110 130 L136 108" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
+              <!-- Claire: vibrant -->
+              <circle cx="168" cy="76" r="26" fill="#A5BC39" opacity="0.9"/>
+              <rect x="148" y="110" width="40" height="70" rx="6" fill="#A5BC39" opacity="0.6"/>
+              <!-- Claire waving -->
+              <path d="M188 110 C196 96 204 88 208 78" stroke="#A5BC39" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+              <!-- Wave lines -->
+              <path d="M214 72 C216 68 220 68 222 72" stroke="#A5BC39" stroke-width="3" stroke-linecap="round" opacity="0.3"/>
+              <path d="M218 64 C220 60 224 60 226 64" stroke="#A5BC39" stroke-width="2" stroke-linecap="round" opacity="0.2"/>
+            </svg>
+            <span class="variant-name">21</span>
+            <span class="variant-desc">Luca presents, Claire waves</span>
+          </div>
+
+          <!-- 22: Big + small, mentor/partner -->
+          <div class="icon-cell">
+            <svg width="128" height="128" viewBox="0 0 256 256">
+              <defs><linearGradient id="bg22" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+              <rect width="256" height="256" rx="44" fill="url(#bg22)"/>
+              <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <!-- Luca: larger presence -->
+              <circle cx="100" cy="72" r="30" fill="#fff" opacity="0.85"/>
+              <rect x="76" y="110" width="48" height="80" rx="8" fill="#fff" opacity="0.55"/>
+              <!-- Claire: smaller but bold, in front -->
+              <circle cx="162" cy="96" r="22" fill="#A5BC39" opacity="0.92"/>
+              <rect x="146" y="124" width="32" height="66" rx="6" fill="#A5BC39" opacity="0.65"/>
+            </svg>
+            <span class="variant-name">22</span>
+            <span class="variant-desc">Scale contrast, partners</span>
+          </div>
+
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- ═══ DOCK COMPARISON ═══ -->
+      <div class="section">
+        <div class="section-label">Dock Comparison — Favorites at 52px</div>
+        <div class="section-note">How they hold up small, sitting with the family.</div>
+
+        <!-- Dock with #4 shoulder to shoulder -->
+        <div style="margin-bottom: 2rem;">
+          <div style="font-size: 0.5rem; color: #4a4650; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.6rem; text-align: center;">4 — Shoulder to Shoulder</div>
+          <div class="dock-wrap"><div class="dock-group"><div class="dock">
+            <svg width="52" height="52" viewBox="0 0 256 256"><defs><linearGradient id="dk" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><g transform="translate(45.5, 53) scale(0.75)"><path fill="#FFFFFF" d="M25.5,18.3c3.2,8.3,4.7,30.9,4.7,68l-0.5,35.2l3.8,0.9c7.2,1.7,14.6,2.6,22.1,2.7c0.8,0,1.6,0,2.4,0 c-0.6-11.7-0.8-26.3-0.8-44c0-26.7,0.9-44.1,2.6-52.2c1.8-8.1,4.3-13.8,7.7-17c3.4-3.2,8.7-5.2,15.8-5.9c3.2-0.3,4.8-1.4,4.8-3.2 C88.1,0.9,86,0,81.7,0H6.3C2.1,0,0,1,0,3.1c0,1.7,1.7,2.5,5.1,2.5C15.5,5.8,22.3,10,25.5,18.3z"/><path fill="#FFFFFF" d="M151.7,6.2c9.2,0,16.2,3.5,20.9,10.6c4.7,7.1,7.1,22,7.1,44.7c0,23.2-0.4,42.2-1.1,56.8c3,1.2,6,2.6,9,4 c1-13.6,1.4-29.1,1.5-46.6c0-18.8,0.6-33.1,1.7-42.9c1.1-9.7,3.4-16.4,7-20.2c3.6-3.7,9.1-6.1,16.8-7.2c2.2-0.3,3.3-1.2,3.3-2.6 c0-2-1.4-3-4.1-3h-60.2c-4.9,0-7.4,1-7.4,3C146.2,5.1,148,6.2,151.7,6.2z"/><path fill="#A5BC39" d="M135.8,126c-28.6,0-47.6,15.8-80.2,15.8c-8.7,0-17.3-1.1-25.7-3.1c0.7,13,2.8,23.1,6.3,30.3 c4.4,9.2,12.7,16.6,25,22.1c12.3,5.6,27.1,8.4,44.6,8.4c17,0,31.4-2.5,43.1-7.4c11.7-5,20.4-11.5,26.2-19.6 c5.3-7.3,8.9-18,10.8-32.2C165.3,129.6,149.5,126,135.8,126z"/></g></svg>
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M140 72 L150 114 L192 124 L150 134 L140 176 L130 134 L88 124 L130 114 Z" fill="#A5BC39"/><path d="M76 56 L82 78 L104 84 L82 90 L76 112 L70 90 L48 84 L70 78 Z" fill="#fff" opacity="0.85"/><path d="M88 152 L93 170 L111 175 L93 180 L88 198 L83 180 L65 175 L83 170 Z" fill="#fff" opacity="0.6"/><path d="M188 60 L191 70 L201 73 L191 76 L188 86 L185 76 L175 73 L185 70 Z" fill="#fff" opacity="0.45"/></svg>
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M68 80 h120 a12 12 0 0 1 12 12 v64 a12 12 0 0 1-12 12 h-52 l-22 26 -22-26 H68 a12 12 0 0 1-12-12 V92 a12 12 0 0 1 12-12z" fill="rgba(255,255,255,0.15)" stroke="#fff" stroke-width="10" stroke-linejoin="round"/><circle cx="100" cy="124" r="8" fill="#A5BC39"/><circle cx="128" cy="124" r="8" fill="#fff"/><circle cx="156" cy="124" r="8" fill="#fff"/></svg>
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><rect x="56" y="62" width="144" height="16" rx="3" fill="#6BA0CC" opacity="0.95"/><rect x="56" y="84" width="108" height="16" rx="3" fill="#6BA0CC" opacity="0.75"/><rect x="82" y="106" width="118" height="16" rx="3" fill="#6BA0CC" opacity="0.6"/><rect x="56" y="128" width="72" height="16" rx="3" fill="#8BBAD6" opacity="0.55"/><rect x="96" y="150" width="80" height="16" rx="3" fill="#8BBAD6" opacity="0.4"/><rect x="56" y="178" width="26" height="14" rx="2" fill="#A5BC39"/><rect x="86" y="178" width="26" height="14" rx="2" fill="#A5BC39" opacity="0.85"/><rect x="116" y="178" width="26" height="14" rx="2" fill="#D4C23A" opacity="0.8"/><rect x="146" y="178" width="26" height="14" rx="2" fill="#D9A634" opacity="0.7"/><rect x="176" y="178" width="24" height="14" rx="2" fill="#C96832" opacity="0.6"/><line x1="130" y1="50" x2="130" y2="172" stroke="#A5BC39" stroke-width="3.5" opacity="0.9"/><circle cx="130" cy="48" r="5" fill="#A5BC39"/></svg>
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><rect x="64" y="60" width="128" height="148" rx="12" fill="none" stroke="#fff" stroke-width="10" opacity="0.9"/><rect x="98" y="48" width="60" height="28" rx="8" fill="#fff"/><polyline points="88,118 100,130 124,104" fill="none" stroke="#A5BC39" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><line x1="140" y1="117" x2="178" y2="117" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity="0.5"/><polyline points="88,158 100,170 124,144" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/><line x1="140" y1="157" x2="178" y2="157" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity="0.35"/></svg>
+            <!-- #4 -->
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M56 140 Q56 120 80 112 L80 112 Q96 106 112 112 L128 118 L144 112 Q160 106 176 112 L176 112 Q200 120 200 140 L200 200 L56 200 Z" fill="rgba(255,255,255,0.08)"/><circle cx="104" cy="80" r="28" fill="#fff" opacity="0.88"/><path d="M76 116 Q76 136 104 136 Q120 136 128 128 L128 200 L56 200 L56 140 Q56 120 76 116 Z" fill="#fff" opacity="0.55"/><circle cx="152" cy="76" r="28" fill="#A5BC39" opacity="0.88"/><path d="M180 112 Q200 120 200 140 L200 200 L128 200 L128 128 Q136 136 152 136 Q180 136 180 112 Z" fill="#A5BC39" opacity="0.55"/></svg>
+          </div><div class="dock-labels"><span>Website</span><span>ODIN</span><span>Inquiries</span><span>Scheduler</span><span>Orders</span><span>L & C</span></div></div></div>
+        </div>
+
+        <!-- Dock with #7 outline + fill -->
+        <div style="margin-bottom: 2rem;">
+          <div style="font-size: 0.5rem; color: #4a4650; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.6rem; text-align: center;">7 — Outline + Subtle Fill</div>
+          <div class="dock-wrap"><div class="dock-group"><div class="dock">
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><g transform="translate(45.5, 53) scale(0.75)"><path fill="#FFFFFF" d="M25.5,18.3c3.2,8.3,4.7,30.9,4.7,68l-0.5,35.2l3.8,0.9c7.2,1.7,14.6,2.6,22.1,2.7c0.8,0,1.6,0,2.4,0 c-0.6-11.7-0.8-26.3-0.8-44c0-26.7,0.9-44.1,2.6-52.2c1.8-8.1,4.3-13.8,7.7-17c3.4-3.2,8.7-5.2,15.8-5.9c3.2-0.3,4.8-1.4,4.8-3.2 C88.1,0.9,86,0,81.7,0H6.3C2.1,0,0,1,0,3.1c0,1.7,1.7,2.5,5.1,2.5C15.5,5.8,22.3,10,25.5,18.3z"/><path fill="#FFFFFF" d="M151.7,6.2c9.2,0,16.2,3.5,20.9,10.6c4.7,7.1,7.1,22,7.1,44.7c0,23.2-0.4,42.2-1.1,56.8c3,1.2,6,2.6,9,4 c1-13.6,1.4-29.1,1.5-46.6c0-18.8,0.6-33.1,1.7-42.9c1.1-9.7,3.4-16.4,7-20.2c3.6-3.7,9.1-6.1,16.8-7.2c2.2-0.3,3.3-1.2,3.3-2.6 c0-2-1.4-3-4.1-3h-60.2c-4.9,0-7.4,1-7.4,3C146.2,5.1,148,6.2,151.7,6.2z"/><path fill="#A5BC39" d="M135.8,126c-28.6,0-47.6,15.8-80.2,15.8c-8.7,0-17.3-1.1-25.7-3.1c0.7,13,2.8,23.1,6.3,30.3 c4.4,9.2,12.7,16.6,25,22.1c12.3,5.6,27.1,8.4,44.6,8.4c17,0,31.4-2.5,43.1-7.4c11.7-5,20.4-11.5,26.2-19.6 c5.3-7.3,8.9-18,10.8-32.2C165.3,129.6,149.5,126,135.8,126z"/></g></svg>
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M140 72 L150 114 L192 124 L150 134 L140 176 L130 134 L88 124 L130 114 Z" fill="#A5BC39"/><path d="M76 56 L82 78 L104 84 L82 90 L76 112 L70 90 L48 84 L70 78 Z" fill="#fff" opacity="0.85"/><path d="M88 152 L93 170 L111 175 L93 180 L88 198 L83 180 L65 175 L83 170 Z" fill="#fff" opacity="0.6"/><path d="M188 60 L191 70 L201 73 L191 76 L188 86 L185 76 L175 73 L185 70 Z" fill="#fff" opacity="0.45"/></svg>
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M68 80 h120 a12 12 0 0 1 12 12 v64 a12 12 0 0 1-12 12 h-52 l-22 26 -22-26 H68 a12 12 0 0 1-12-12 V92 a12 12 0 0 1 12-12z" fill="rgba(255,255,255,0.15)" stroke="#fff" stroke-width="10" stroke-linejoin="round"/><circle cx="100" cy="124" r="8" fill="#A5BC39"/><circle cx="128" cy="124" r="8" fill="#fff"/><circle cx="156" cy="124" r="8" fill="#fff"/></svg>
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><rect x="56" y="62" width="144" height="16" rx="3" fill="#6BA0CC" opacity="0.95"/><rect x="56" y="84" width="108" height="16" rx="3" fill="#6BA0CC" opacity="0.75"/><rect x="82" y="106" width="118" height="16" rx="3" fill="#6BA0CC" opacity="0.6"/><rect x="56" y="128" width="72" height="16" rx="3" fill="#8BBAD6" opacity="0.55"/><rect x="96" y="150" width="80" height="16" rx="3" fill="#8BBAD6" opacity="0.4"/><rect x="56" y="178" width="26" height="14" rx="2" fill="#A5BC39"/><rect x="86" y="178" width="26" height="14" rx="2" fill="#A5BC39" opacity="0.85"/><rect x="116" y="178" width="26" height="14" rx="2" fill="#D4C23A" opacity="0.8"/><rect x="146" y="178" width="26" height="14" rx="2" fill="#D9A634" opacity="0.7"/><rect x="176" y="178" width="24" height="14" rx="2" fill="#C96832" opacity="0.6"/><line x1="130" y1="50" x2="130" y2="172" stroke="#A5BC39" stroke-width="3.5" opacity="0.9"/><circle cx="130" cy="48" r="5" fill="#A5BC39"/></svg>
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><rect x="64" y="60" width="128" height="148" rx="12" fill="none" stroke="#fff" stroke-width="10" opacity="0.9"/><rect x="98" y="48" width="60" height="28" rx="8" fill="#fff"/><polyline points="88,118 100,130 124,104" fill="none" stroke="#A5BC39" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><line x1="140" y1="117" x2="178" y2="117" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity="0.5"/><polyline points="88,158 100,170 124,144" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/><line x1="140" y1="157" x2="178" y2="157" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity="0.35"/></svg>
+            <!-- #7 -->
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><circle cx="100" cy="84" r="26" fill="rgba(255,255,255,0.06)" stroke="#fff" stroke-width="5" opacity="0.85"/><path d="M66 148 C66 126 80 118 100 118 C120 118 134 126 134 148 L134 204 L66 204 Z" fill="rgba(255,255,255,0.04)" stroke="#fff" stroke-width="5" opacity="0.6" stroke-linejoin="round"/><circle cx="156" cy="80" r="26" fill="rgba(165,188,57,0.08)" stroke="#A5BC39" stroke-width="5" opacity="0.85"/><path d="M122 144 C122 122 136 114 156 114 C176 114 190 122 190 144 L190 204 L122 204 Z" fill="rgba(165,188,57,0.06)" stroke="#A5BC39" stroke-width="5" opacity="0.6" stroke-linejoin="round"/></svg>
+          </div><div class="dock-labels"><span>Website</span><span>ODIN</span><span>Inquiries</span><span>Scheduler</span><span>Orders</span><span>L & C</span></div></div></div>
+        </div>
+
+        <!-- Dock with #20 leaning -->
+        <div style="margin-bottom: 2rem;">
+          <div style="font-size: 0.5rem; color: #4a4650; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.6rem; text-align: center;">20 — Leaning In</div>
+          <div class="dock-wrap"><div class="dock-group"><div class="dock">
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><g transform="translate(45.5, 53) scale(0.75)"><path fill="#FFFFFF" d="M25.5,18.3c3.2,8.3,4.7,30.9,4.7,68l-0.5,35.2l3.8,0.9c7.2,1.7,14.6,2.6,22.1,2.7c0.8,0,1.6,0,2.4,0 c-0.6-11.7-0.8-26.3-0.8-44c0-26.7,0.9-44.1,2.6-52.2c1.8-8.1,4.3-13.8,7.7-17c3.4-3.2,8.7-5.2,15.8-5.9c3.2-0.3,4.8-1.4,4.8-3.2 C88.1,0.9,86,0,81.7,0H6.3C2.1,0,0,1,0,3.1c0,1.7,1.7,2.5,5.1,2.5C15.5,5.8,22.3,10,25.5,18.3z"/><path fill="#FFFFFF" d="M151.7,6.2c9.2,0,16.2,3.5,20.9,10.6c4.7,7.1,7.1,22,7.1,44.7c0,23.2-0.4,42.2-1.1,56.8c3,1.2,6,2.6,9,4 c1-13.6,1.4-29.1,1.5-46.6c0-18.8,0.6-33.1,1.7-42.9c1.1-9.7,3.4-16.4,7-20.2c3.6-3.7,9.1-6.1,16.8-7.2c2.2-0.3,3.3-1.2,3.3-2.6 c0-2-1.4-3-4.1-3h-60.2c-4.9,0-7.4,1-7.4,3C146.2,5.1,148,6.2,151.7,6.2z"/><path fill="#A5BC39" d="M135.8,126c-28.6,0-47.6,15.8-80.2,15.8c-8.7,0-17.3-1.1-25.7-3.1c0.7,13,2.8,23.1,6.3,30.3 c4.4,9.2,12.7,16.6,25,22.1c12.3,5.6,27.1,8.4,44.6,8.4c17,0,31.4-2.5,43.1-7.4c11.7-5,20.4-11.5,26.2-19.6 c5.3-7.3,8.9-18,10.8-32.2C165.3,129.6,149.5,126,135.8,126z"/></g></svg>
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M140 72 L150 114 L192 124 L150 134 L140 176 L130 134 L88 124 L130 114 Z" fill="#A5BC39"/><path d="M76 56 L82 78 L104 84 L82 90 L76 112 L70 90 L48 84 L70 78 Z" fill="#fff" opacity="0.85"/><path d="M88 152 L93 170 L111 175 L93 180 L88 198 L83 180 L65 175 L83 170 Z" fill="#fff" opacity="0.6"/><path d="M188 60 L191 70 L201 73 L191 76 L188 86 L185 76 L175 73 L185 70 Z" fill="#fff" opacity="0.45"/></svg>
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M68 80 h120 a12 12 0 0 1 12 12 v64 a12 12 0 0 1-12 12 h-52 l-22 26 -22-26 H68 a12 12 0 0 1-12-12 V92 a12 12 0 0 1 12-12z" fill="rgba(255,255,255,0.15)" stroke="#fff" stroke-width="10" stroke-linejoin="round"/><circle cx="100" cy="124" r="8" fill="#A5BC39"/><circle cx="128" cy="124" r="8" fill="#fff"/><circle cx="156" cy="124" r="8" fill="#fff"/></svg>
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><rect x="56" y="62" width="144" height="16" rx="3" fill="#6BA0CC" opacity="0.95"/><rect x="56" y="84" width="108" height="16" rx="3" fill="#6BA0CC" opacity="0.75"/><rect x="82" y="106" width="118" height="16" rx="3" fill="#6BA0CC" opacity="0.6"/><rect x="56" y="128" width="72" height="16" rx="3" fill="#8BBAD6" opacity="0.55"/><rect x="96" y="150" width="80" height="16" rx="3" fill="#8BBAD6" opacity="0.4"/><rect x="56" y="178" width="26" height="14" rx="2" fill="#A5BC39"/><rect x="86" y="178" width="26" height="14" rx="2" fill="#A5BC39" opacity="0.85"/><rect x="116" y="178" width="26" height="14" rx="2" fill="#D4C23A" opacity="0.8"/><rect x="146" y="178" width="26" height="14" rx="2" fill="#D9A634" opacity="0.7"/><rect x="176" y="178" width="24" height="14" rx="2" fill="#C96832" opacity="0.6"/><line x1="130" y1="50" x2="130" y2="172" stroke="#A5BC39" stroke-width="3.5" opacity="0.9"/><circle cx="130" cy="48" r="5" fill="#A5BC39"/></svg>
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><rect x="64" y="60" width="128" height="148" rx="12" fill="none" stroke="#fff" stroke-width="10" opacity="0.9"/><rect x="98" y="48" width="60" height="28" rx="8" fill="#fff"/><polyline points="88,118 100,130 124,104" fill="none" stroke="#A5BC39" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><line x1="140" y1="117" x2="178" y2="117" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity="0.5"/><polyline points="88,158 100,170 124,144" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/><line x1="140" y1="157" x2="178" y2="157" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity="0.35"/></svg>
+            <!-- #20 -->
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><circle cx="104" cy="72" r="26" fill="#fff" opacity="0.88"/><path d="M78 106 L78 196 Q78 204 96 204 L118 204 Q126 204 126 196 L126 106 Q126 94 104 94 Q82 94 78 106 Z" fill="#fff" opacity="0.55" transform="rotate(5, 104, 150)"/><circle cx="156" cy="68" r="26" fill="#A5BC39" opacity="0.88"/><path d="M130 102 L130 192 Q130 200 148 200 L170 200 Q178 200 178 192 L178 102 Q178 90 156 90 Q134 90 130 102 Z" fill="#A5BC39" opacity="0.55" transform="rotate(-5, 156, 146)"/></svg>
+          </div><div class="dock-labels"><span>Website</span><span>ODIN</span><span>Inquiries</span><span>Scheduler</span><span>Orders</span><span>L & C</span></div></div></div>
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>

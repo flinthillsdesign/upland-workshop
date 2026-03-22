@@ -12,7 +12,7 @@ This repo doesn't have a backend or UI — it's a working space. Patterns get de
 | **ODIN** | odin.uplandexhibits.com | TypeScript, Netlify, Turso | `flinthillsdesign/upland-odin` |
 | **Inquiry Hub** | inquiries.uplandexhibits.com | TypeScript, Netlify, Turso | `flinthillsdesign/upland-inquiries` |
 | **Scheduler** | schedules.uplandexhibits.com | TypeScript, Netlify, Turso | `flinthillsdesign/upland-scheduler` |
-| **Luca & Claire** | TBD | TBD | TBD |
+| **Luca & Claire** | luca.uplandexhibits.com | TypeScript, Netlify, Turso | `flinthillsdesign/upland-luca-claire` |
 
 ### Upland Website
 The primary marketing website, e-commerce storefront, and order management system. Python/Plain on Heroku with PostgreSQL. Has its own auth system. Standalone — not on the shared auth or Netlify stack, and that's intentional.
@@ -20,10 +20,11 @@ The primary marketing website, e-commerce storefront, and order management syste
 ### Satellite Apps (Netlify + Turso)
 ODIN, Inquiry Hub, and Scheduler share a Turso auth database and JWT secret. They follow the same conventions: vanilla TypeScript, esbuild, single Netlify function with hand-rolled router, dual Turso databases (shared auth + app-specific), ensureSchema() migrations, Postmark email, Claude AI.
 
-### Luca & Claire (planned)
-The graphic designer of the family. Replaces the current static Previews app.
-- **Luca** (Layout Utility Curatorial Assistant) — helps curators create exhibit layouts by placing content thoughtfully and drafting copy when needed
-- **Claire** (Creative Layout AI Rendering Engine) — the visual designer, handles rendering and graphic design
+### Luca & Claire
+The graphic designer of the family. Replaces the static Previews app with an AI-assisted exhibit panel design tool. Same satellite stack (Netlify + Turso + shared auth). Port 3003.
+- **Luca** (Layout Utility Curatorial Assistant) — content specialist: narrative flow, copy drafting, curatorial guidance
+- **Claire** (Creative Layout AI Rendering Engine) — design specialist: typography, color, layout composition, visual refinement
+- See `luca-claire/spec.md` for the full app specification
 
 ## Key Files
 

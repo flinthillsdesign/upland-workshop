@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upland Workshop — Luca & Claire Character Icons</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        font-family: "Instrument Sans", system-ui, sans-serif;
+        background: #0c0b0e; color: #c8c5cc; min-height: 100vh;
+      }
+      body::before {
+        content: ""; position: fixed; inset: 0; opacity: 0.02;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        pointer-events: none; z-index: 100;
+      }
+      .page { max-width: 1400px; margin: 0 auto; padding: 3rem 2rem 6rem; }
+      .suite-header { margin-bottom: 3.5rem; }
+      .suite-header::after { content: ""; display: block; width: 48px; height: 2px; background: #a5bc39; margin-top: 1.5rem; }
+      .suite-name { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #a5bc39; margin-bottom: 0.6rem; }
+      .suite-title { font-size: 1.8rem; font-weight: 400; color: #eae8ed; }
+      .suite-sub { font-size: 0.85rem; color: #605c66; margin-top: 0.5rem; line-height: 1.5; }
+      .section { margin-bottom: 4.5rem; }
+      .section-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: #605c66; margin-bottom: 0.6rem; }
+      .section-note { font-size: 0.7rem; color: #4a4650; margin-bottom: 2rem; line-height: 1.5; }
+      .icon-row { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+      .icon-cell { display: flex; flex-direction: column; align-items: center; gap: 0.7rem; }
+      .icon-cell svg { filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.6)); transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1); }
+      .icon-cell:hover svg { transform: translateY(-3px) scale(1.05); }
+      .variant-name { font-size: 0.72rem; font-weight: 600; color: #d8d5dc; }
+      .variant-desc { font-size: 0.58rem; color: #555059; max-width: 150px; text-align: center; line-height: 1.4; }
+      .ref-row { display: flex; gap: 2.5rem; flex-wrap: wrap; margin-bottom: 3rem; align-items: flex-end; }
+      .ref-cell { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+      .ref-cell svg { filter: drop-shadow(0 2px 12px rgba(0,0,0,0.4)); }
+      .ref-label { font-size: 0.55rem; color: #4a4650; max-width: 120px; text-align: center; }
+      .divider { border: none; border-top: 1px solid rgba(255, 255, 255, 0.04); margin: 1rem 0 4rem; }
+      .dock-wrap { display: flex; justify-content: center; margin-top: 1.5rem; }
+      .dock-group { display: flex; flex-direction: column; align-items: center; }
+      .dock { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 22px; padding: 14px 28px; display: inline-flex; gap: 14px; align-items: center; }
+      .dock svg { filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.5)); transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: default; }
+      .dock svg:hover { transform: translateY(-6px) scale(1.15); }
+      .dock-labels { display: flex; gap: 14px; padding: 0 28px; margin-top: 0.6rem; }
+      .dock-labels span { width: 52px; text-align: center; font-size: 0.45rem; color: #3e3b42; letter-spacing: 0.02em; }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="suite-header">
+        <div class="suite-name">Upland Workshop</div>
+        <h1 class="suite-title">Luca & Claire — Character Icons</h1>
+        <p class="suite-sub">Inspired by Noun Project references. Two distinct characters, connected by shared work.</p>
+      </div>
+
+      <!-- Reference icons -->
+      <div class="section">
+        <div class="section-label">References</div>
+        <div class="ref-row">
+          <div class="ref-cell">
+            <svg width="80" height="80" viewBox="0 0 1200 1200" fill="#605c66">
+              <path d="m1042.4 673.79h157.56v46.453h-157.56z"/><path d="m119.45 719.17v-45.379h-119.45v46.449h119.46v-1.0703z"/><path d="m890.89 673.79h3.2891v46.453h-3.2891z"/><path d="m577.44 673.79c-7.9336 7.0508-17.801 11.504-28.562 12.691-1.1719 0.12891-12.223 1.3203-28.109 1.3359-13.836-0.066406-34.816-0.76953-57.789-6.2617-7.3594-1.8516-15.578-4.2734-24.051-7.7695h-19.648v46.453h323.34v-46.453z"/><path d="m709.48 263.46c1.2578-5.5117 2.9258-11.227 5.3281-17.258 2.0703-4.9648 4.6445-9.4648 7.4805-13.699h-313.39c2.8594 9.8789 4.543 20.254 4.8828 30.957z"/><path d="m403.55 267.59c0-64.133-51.996-116.13-116.13-116.13-64.125 0-116.12 51.996-116.12 116.13 0 35.613 16.043 67.465 41.281 88.766h149.69c25.238-21.297 41.277-53.148 41.277-88.766z"/><path d="m194.3 895.04c-12.098 0-23.496-2.9453-33.617-8.0664v277.78c0 11.402 9.2422 20.645 20.645 20.645h277.14c11.402 0 20.645-9.2422 20.645-20.645v-269.71z"/><path d="m119.45 565.36c-10.125-7.8359-14.406-14.59-16.543-19.93-0.003906-0.011719-0.011718-0.015625-0.011718-0.027344-1.0781-2.8164-1.5742-5.6016-1.7969-8.5898-0.0625-0.80469-0.20703-1.5469-0.21094-2.4062-0.050781-7.1367 2.3672-16.605 7.8711-26.977 4.9688-9.5938 12.543-19.586 21.008-28.461v341.22h0.003907c0 35.633 28.883 64.516 64.516 64.516h317.52v224.52c0 35.625 28.883 64.516 64.516 64.516s64.516-28.895 64.516-64.516v-289.04c0-16.984-6.875-33.605-18.891-45.625-12.016-12-28.641-18.891-45.625-18.891l-167.38 0.007813v-113.6c17.449 17.398 38.156 24.832 56.422 29.426 20.793 4.9688 40.34 5.9141 55.379 5.9648 15.355-0.011718 25.91-1.1523 26.992-1.2695 22.684-2.4922 39.035-22.887 36.543-45.543-2.5-22.672-22.906-39.035-45.574-36.531-0.92969 0.09375-8.1875 0.76562-17.961 0.76562-10.859 0.03125-24.98-0.94922-36.027-3.668-11.352-2.5078-17.781-7.2266-17.801-7.8516-7.2773-8.8711-12.801-22.719-15.918-40.719-4.8789-26.969-3.6289-60.23-4.9102-90.383-0.94922-15.344-1.6914-29.941-8.5352-47.168-3.5508-8.4922-9.4141-18.379-19.727-26.332-10.195-8.0664-24.188-12.129-35.887-11.918-2.0078 0-3.9648 0.19141-5.8906 0.46484-2.2656-0.40234-4.5977-0.64453-6.9922-0.64453l-199.39-0.003906c-3.1211 0-6.1484 0.39062-9.0742 1.0781-15.887 2.1797-28.672 8.2266-41.875 15.496-23.488 13.633-46.602 33.57-65.746 58.699-18.793 25.059-34.375 55.898-34.645 92.461-0.003906 2.0391 0.15625 4.1094 0.26953 6.168 0.57422 10.977 2.7266 22.23 6.8164 33.176 0.17969 0.53125 0.32422 1.0742 0.52734 1.6016v-0.011718c10.332 26.801 31.473 49.891 60.316 67.266 10.027 6.0742 21.109 11.57 33.199 16.609v-93.852z"/><path d="m1049.4 386.77c0.91797-2.3672 1.3125-4.5742 1.3359-7.3398 0.027344-5.9766-2.4102-14.039-6.7344-22.18-0.46875-0.91797-0.98438-1.8516-1.5234-2.793v42.316c4.7891-4.8516 6.2617-8.3516 6.8945-9.9297 0.015625-0.023437 0.019531-0.046875 0.027344-0.074218z"/><path d="m992.23 201.43c3.5547 0 7.2344 0.41797 10.945 1.2266 7.9141 1.125 15.102 3.1016 22.117 5.75h98.895v56.773h-20.051c4.5273 5.0312 8.9102 10.219 13.031 15.645 24.453 32.594 36.465 64.84 36.711 98.621 0.035156 14.957-2.6484 29.477-7.8047 43.176-0.17969 0.50391-0.30859 1.0117-0.50391 1.5117-0.11328 0.30469-0.27734 0.59375-0.39844 0.90234-0.41406 1.0078-0.84766 2.0117-1.3203 2.9883-11.484 26.879-33.062 50.527-62.875 68.496-4.8359 2.9219-9.9609 5.6836-15.219 8.3672-1.6211 12.133-11.18 21.633-23.336 23.176v119.06h115.31v-482.58h-195.01c-3.6953 13.297-9.4805 25.73-17.039 36.883l46.547-0.003906z"/><path d="m779.95 201.62c1.8164 0 3.6953 0.10938 5.7148 0.35156 2.457-0.37109 4.8203-0.54297 7.1797-0.54297h140.17c15.062-19.586 24.031-44.094 24.031-70.703 0-64.133-51.996-116.13-116.12-116.13-64.133 0-116.13 51.996-116.13 116.13 0 29.121 10.746 55.715 28.453 76.098 8.1758-3.3281 17.105-5.2148 25.797-5.2148z"/><path d="m1032.1 604.64v-96.289c16.211-6.0742 30.703-12.902 43.516-20.656 28.84-17.379 49.98-40.465 60.316-67.266v0.011719c0.21094-0.54297 0.35938-1.1055 0.55078-1.6523 4.8477-12.992 7.0898-26.43 7.0703-39.293-0.27344-36.562-15.855-67.402-34.648-92.461-19.145-25.129-42.262-45.07-65.746-58.699-13.207-7.2656-25.988-13.316-41.875-15.5-2.9219-0.67969-5.9453-1.0742-9.0742-1.0742h-199.4c-2.3984 0-4.7266 0.24219-6.9922 0.64453-1.9258-0.27344-3.8828-0.46484-5.8906-0.46484-11.707-0.21094-25.699 3.8516-35.887 11.918-10.312 7.9531-16.18 17.844-19.727 26.332-6.8438 17.227-7.5938 31.824-8.5352 47.168-1.2812 30.152-0.03125 63.418-4.9102 90.383-3.1172 17.992-8.6406 31.844-15.918 40.719-0.019531 0.625-6.4531 5.3359-17.801 7.8516-11.051 2.7188-25.172 3.6992-36.027 3.668-9.7812 0-17.039-0.67969-17.965-0.76953-22.668-2.5-43.074 13.863-45.574 36.527-2.4922 22.668 13.863 43.062 36.543 45.547 1.0898 0.11719 11.645 1.2578 27 1.2695 15.039-0.050781 34.586-0.99609 55.379-5.9727 18.266-4.5938 38.973-12.02 56.422-29.418v623.28c0 35.25 28.578 63.809 63.82 63.809 35.23 0 63.809-28.559 63.809-63.809v-465.91h23.922v465.91c0 35.25 28.574 63.809 63.812 63.809 35.23 0 63.809-28.559 63.809-63.809l0.007812-505.8zm21.004-252.12c5.5 10.375 7.918 19.84 7.8711 26.977-0.019531 4.0312-0.63672 7.4102-2.0078 10.992 0 0.011719-0.003907 0.015625-0.011719 0.027343-2.7188 6.8008-8.7812 15.887-26.203 26.602-0.21094 0.12891-0.44531 0.25781-0.66016 0.38672v-93.441c8.4727 8.8672 16.043 18.859 21.012 28.457z"/>
+            </svg>
+            <span class="ref-label">Two people on computer</span>
+          </div>
+          <div class="ref-cell">
+            <svg width="80" height="80" viewBox="0 0 1200 1200" fill="#605c66" fill-rule="evenodd">
+              <path d="m791.72 659.58c-19.547 1.5469-34.922 16.922-34.922 36.703s15.375 36.188 34.922 37.781h116.16l36.984-43.219v99.75c0 10.688-8.8594 19.266-19.266 19.266h-81.281c-6.2344 0-11.438 1.5469-16.406 4.9688-57.562 40.359-56.766 155.26-69.797 225.56-4.6875 20.578-6 34.359 4.6875 48.188s28.125 20.578 45.328 17.203 30.75-16.172 35.438-33.094l32.812-145.08c2.3438-10.922 12-18.516 23.203-18.516h112.27c23.203-3.1406 44.016-15.375 57.844-34.125 14.062-18.75 20.062-42.188 16.406-65.109v-193.55c0-25.781-21.094-46.875-46.875-46.875h-47.672c-25.781 0-47.391 26.062-54.703 40.125l-43.219 50.016zm54.938-311.48c35.953-29.672 58.875-75 58.875-125.29 0-89.859-72.656-162.79-162.52-162.79-57.047 0-107.06 29.156-136.22 73.453 39.844 36.703 64.594 89.062 64.594 147.14 0 28.125-5.7188 54.938-16.172 79.172 25.266 16.172 55.5 25.547 87.797 25.547h134.39l-30.75-37.266zm-154.74-143.02h135.19c9.6562 0 17.719 7.8281 17.719 17.719 0 9.6562-8.0625 17.438-17.719 17.438h-126.05c-2.0625-12-5.2031-23.719-9.0938-35.156zm12.516 69.797h122.68c9.6562 0 17.719 7.8281 17.719 17.438 0 9.8906-8.0625 17.719-17.719 17.719h-124.5c1.3125-9.6562 1.8281-19.266 1.8281-29.438zm-50.25-138.79c1.3125-0.51562 2.8594-0.79688 4.4062-0.79688h168.52c9.6562 0 17.719 8.0625 17.719 17.719s-8.0625 17.719-17.719 17.719h-150.28c-6.5156-12.234-14.062-23.953-22.641-34.641zm-289.13 273.19c-36.984-30.469-60.422-76.828-60.422-128.68 0-91.922 74.766-166.69 166.97-166.69 91.922 0 166.69 74.766 166.69 166.69 0 92.203-74.766 166.97-166.69 166.97h-138.05zm174-110.95c-9.6562 0-17.719-7.8281-17.719-17.719 0-9.6562 8.0625-17.438 17.719-17.438h0.51562c9.6562 0 17.438 7.8281 17.438 17.438 0 9.8906-7.8281 17.719-17.438 17.719zm-135.47 0c-9.8906 0-17.719-7.8281-17.719-17.719 0-9.6562 7.8281-17.438 17.719-17.438h0.28125c9.8906 0 17.719 7.8281 17.719 17.438 0 9.8906-7.8281 17.719-17.719 17.719zm67.734 0c-9.8906 0-17.719-7.8281-17.719-17.719 0-9.6562 7.8281-17.438 17.719-17.438h0.28125c9.8906 0 17.719 7.8281 17.719 17.438 0 9.8906-7.8281 17.719-17.719 17.719zm612.61 663.14 39.094 156.79c2.0625 9.375-3.6562 18.75-13.031 21.094s-19.031-3.375-21.375-12.75l-38.297-153.94c-5.2031 1.0312-10.688 1.3125-16.406 1.3125h-78.938c-5.2031 0-9.8906 1.8281-13.781 4.6875-3.6562 2.8594-6.5156 6.75-7.8281 12l-36.469 136.22c-2.625 9.375-12.234 15.094-21.609 12.516-9.375-2.625-15.094-12.234-12.516-21.609l36.469-136.22c3.375-12.75 10.922-23.438 20.578-30.984 9.8906-7.5469 22.125-11.719 35.156-11.719h78.938c19.547 0 37.266-8.0625 50.016-20.859 12.75-12.75 20.859-30.469 20.859-50.016v-191.21c0-9.6562 7.8281-17.719 17.438-17.719 9.8906 0 17.719 8.0625 17.719 17.719v191.21c0 29.156-12 55.734-30.984 75-7.5469 7.3125-15.891 13.547-24.984 18.516zm-899.39-597.24c41.156 0 74.766 33.609 74.766 74.766 0 41.391-33.609 74.766-74.766 74.766s-74.766-33.328-74.766-74.766c0-41.156 33.609-74.766 74.766-74.766zm-34.875 608.44-38.531 153.94c-2.0625 9.375-11.719 15.094-21.094 12.75-9.6562-2.3438-15.375-11.719-13.031-21.094l39.094-156.79c-9.0938-4.9688-17.719-11.203-24.984-18.516-19.266-19.266-30.984-45.844-30.984-75v-191.21c0-9.6562 7.8281-17.719 17.438-17.719 9.8906 0 17.719 8.0625 17.719 17.719v191.21c0 19.547 8.0625 37.266 20.859 50.016 12.75 12.75 30.469 20.859 50.016 20.859h78.938c13.031 0 25.266 4.1719 35.156 11.719 9.6562 7.5469 16.922 18.234 20.297 30.984l36.703 136.22c2.3438 9.375-3.1406 19.031-12.516 21.609-9.375 2.625-19.031-3.1406-21.609-12.516l-36.469-136.22c-1.3125-5.2031-4.1719-9.0938-7.8281-12-3.8906-2.8594-8.5781-4.6875-13.781-4.6875h-78.938c-5.7188 0-11.203-0.28125-16.406-1.3125zm258.37-313.08c19.781 1.5469 35.156 16.922 35.156 36.703s-15.375 36.188-35.156 37.781h-115.92l-36.984-43.219v99.75c0 10.688 8.5781 19.266 19.266 19.266h81.281c6.2344 0 11.438 1.5469 16.406 4.9688 57.562 40.359 56.531 155.26 69.797 225.56 4.6875 20.578 6 34.359-4.6875 48.188-10.688 13.828-28.125 20.578-45.328 17.203s-30.984-16.172-35.438-33.094l-32.812-145.08c-2.3438-10.922-12-18.516-23.203-18.516h-112.27c-23.203-3.1406-44.016-15.375-58.078-34.125-13.781-18.75-19.781-42.188-16.172-65.109v-193.55c0-25.781 21.094-46.875 46.641-46.875h47.672c25.781 0 47.672 26.062 54.703 40.125l43.5 50.016zm108.33 480.32c-9.8906 0-17.719-7.8281-17.719-17.438 0-9.8906 7.8281-17.719 17.719-17.719h67.734v-294.05h35.156v294.05h67.734c9.8906 0 17.719 7.8281 17.719 17.719 0 9.6562-7.8281 17.438-17.719 17.438zm-40.078-443.58h247.45c0 36.984 28.641 67.734 65.391 70.594l1.3125 0.28125h2.3438c-7.0312 6.5156-16.688 10.406-27.094 10.406h-331.31c-10.406 0-20.062-3.8906-27.328-10.406h2.3438l1.3125-0.28125c36.984-2.8594 65.625-33.609 65.625-70.594zm539.16-332.11c-41.391 0-74.766 33.609-74.766 74.766 0 41.391 33.328 74.766 74.766 74.766 41.156 0 74.766-33.328 74.766-74.766 0-41.156-33.609-74.766-74.766-74.766z"/>
+            </svg>
+            <span class="ref-label">Negotiation</span>
+          </div>
+          <div class="ref-cell">
+            <svg width="80" height="80" viewBox="0 0 1200 1200" fill="#605c66" fill-rule="evenodd">
+              <path d="m254.73 109.39c30.539-30.516 72.695-49.391 119.26-49.391 46.559 0 88.715 18.875 119.24 49.391s49.391 72.684 49.391 119.24c0 46.559-18.875 88.738-49.391 119.24-30.516 30.527-72.684 49.391-119.24 49.391-46.559 0-88.715-18.887-119.26-49.391-30.504-30.516-49.402-72.684-49.402-119.24 0-46.559 18.898-88.727 49.402-119.24zm578.43 628.11h-154.04v355.32c0 25.957 21.215 47.184 47.172 47.184h37.812c26.004 0 47.207-21.215 47.207-47.219v-183.42c0-9.1211 7.3906-16.523 16.523-16.523 9.1328 0 16.535 7.4023 16.535 16.523v183.42c0 26.016 21.203 47.219 47.207 47.219h37.812c25.957 0 47.16-21.227 47.16-47.184v-373.84c0-9.1094 7.4141-16.523 16.535-16.523 9.1211 0 16.523 7.4023 16.523 16.523v62.258c0 18.203 14.867 33.059 33.059 33.059h44.605c49.043 0 48.48-45.637 48.48-80.652 0-96.348-32.566-174.24-87.781-228.35-57.156-55.992-138.93-86.953-234.3-86.953h-427.33c-12.973 0-24.77 5.293-33.324 13.848-8.543 8.5547-13.848 20.352-13.848 33.336v33.238c0 12.684 5.1719 24.203 13.535 32.555 8.3516 8.3633 19.871 13.535 32.543 13.535h446.82c22.094 0 42.168 9.0117 56.688 23.543 14.543 14.531 23.543 34.586 23.543 56.688v33.238c0 21.816-8.8789 41.594-23.23 55.934-14.316 14.328-34.105 23.23-55.922 23.23zm-295.73-33.059c-9.1211 0-16.535 7.3906-16.535 16.523v370.55c0 26.676-21.781 48.48-48.48 48.48h-34.68c-26.004 0-47.207-21.215-47.207-47.219v-183.43c0-9.1211-7.4141-16.523-16.535-16.523s-16.523 7.4023-16.523 16.523v183.43c0 26.004-21.215 47.219-47.219 47.219h-38.316c-26.676 0-48.492-21.805-48.492-48.48v-372.54c0-9.1094-7.3789-16.523-16.512-16.523-9.1328 0-16.535 7.4023-16.535 16.523v62.258c0 18.203-14.855 33.059-33.035 33.059h-44.617c-49.859 0-48.48-45.996-48.48-80.652 0-96.348 32.578-174.24 87.793-228.35 42.898-42.023 99.66-69.961 165.66-81.266-7.3672 12.109-11.605 26.316-11.605 41.508v33.238c0 21.793 8.8672 41.578 23.219 55.922 14.328 14.34 34.117 23.219 55.922 23.219h446.82c12.973 0 24.77 5.3047 33.324 13.859 8.5547 8.5547 13.859 20.34 13.859 33.324v33.238c0 12.684-5.1719 24.203-13.535 32.555-8.3516 8.3516-19.871 13.547-32.543 13.547h-295.73zm171.16-595.05c30.527-30.516 72.672-49.391 119.24-49.391 46.57 0 88.738 18.875 119.24 49.391 30.539 30.516 49.402 72.684 49.402 119.24s-18.863 88.738-49.402 119.24c-30.504 30.527-72.66 49.391-119.24 49.391-46.586 0-88.715-18.887-119.24-49.391-30.504-30.516-49.402-72.684-49.402-119.24s18.887-88.727 49.402-119.24z"/>
+            </svg>
+            <span class="ref-label">Relationship</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ Detailed character icons ═══ -->
+      <div class="section">
+        <div class="section-label">Full-Body Characters — Connected</div>
+        <div class="section-note">Two distinct people with a shared element between them. Head + shoulders + body, linked by work.</div>
+        <div class="icon-row">
+
+          <!-- A: Two people, shared panel/surface between them -->
+          <div class="icon-cell">
+            <svg width="128" height="128" viewBox="0 0 256 256">
+              <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+              <rect width="256" height="256" rx="44" fill="url(#bg)"/>
+              <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <!-- Shared surface/panel between them -->
+              <rect x="92" y="120" width="72" height="56" rx="4" fill="rgba(165,188,57,0.15)" stroke="#A5BC39" stroke-width="2" opacity="0.6"/>
+              <!-- Luca - left, leaning toward panel -->
+              <circle cx="72" cy="68" r="22" fill="#fff" opacity="0.88"/>
+              <rect x="62" y="94" width="20" height="6" rx="3" fill="#fff" opacity="0.6"/>
+              <rect x="54" y="104" width="36" height="70" rx="6" fill="#fff" opacity="0.5"/>
+              <!-- Luca's arm reaching to panel -->
+              <path d="M82 130 L96 130" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.45"/>
+              <!-- Claire - right, working on panel -->
+              <circle cx="184" cy="64" r="22" fill="#A5BC39" opacity="0.88"/>
+              <rect x="174" y="90" width="20" height="6" rx="3" fill="#A5BC39" opacity="0.6"/>
+              <rect x="166" y="100" width="36" height="74" rx="6" fill="#A5BC39" opacity="0.5"/>
+              <!-- Claire's arm reaching to panel -->
+              <path d="M174 126 L160 126" stroke="#A5BC39" stroke-width="5" stroke-linecap="round" opacity="0.45"/>
+              <!-- Legs -->
+              <rect x="56" y="178" width="14" height="24" rx="4" fill="#fff" opacity="0.3"/>
+              <rect x="74" y="178" width="14" height="24" rx="4" fill="#fff" opacity="0.3"/>
+              <rect x="168" y="178" width="14" height="24" rx="4" fill="#A5BC39" opacity="0.3"/>
+              <rect x="186" y="178" width="14" height="24" rx="4" fill="#A5BC39" opacity="0.3"/>
+            </svg>
+            <span class="variant-name">A</span>
+            <span class="variant-desc">Working on a shared panel</span>
+          </div>
+
+          <!-- B: Facing each other, arm/hand connection -->
+          <div class="icon-cell">
+            <svg width="128" height="128" viewBox="0 0 256 256">
+              <defs><linearGradient id="bgB" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+              <rect width="256" height="256" rx="44" fill="url(#bgB)"/>
+              <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <!-- Luca -->
+              <circle cx="80" cy="62" r="24" fill="#fff" opacity="0.88"/>
+              <rect x="68" y="90" width="24" height="8" rx="4" fill="#fff" opacity="0.6"/>
+              <path d="M58 102 L58 178 Q58 186 72 186 L88 186 Q102 186 102 178 L102 102 Q102 94 80 94 Q58 94 58 102 Z" fill="#fff" opacity="0.5"/>
+              <!-- Luca's arm extended right -->
+              <path d="M98 122 L124 110" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
+              <!-- Claire -->
+              <circle cx="180" cy="58" r="24" fill="#A5BC39" opacity="0.88"/>
+              <rect x="168" y="86" width="24" height="8" rx="4" fill="#A5BC39" opacity="0.6"/>
+              <path d="M158 98 L158 174 Q158 182 172 182 L188 182 Q202 182 202 174 L202 98 Q202 90 180 90 Q158 90 158 98 Z" fill="#A5BC39" opacity="0.5"/>
+              <!-- Claire's arm extended left -->
+              <path d="M162 118 L136 108" stroke="#A5BC39" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
+              <!-- Shared element: spark/connection at hands -->
+              <circle cx="130" cy="109" r="6" fill="#A5BC39" opacity="0.4"/>
+              <circle cx="130" cy="109" r="3" fill="#fff" opacity="0.6"/>
+              <!-- Legs -->
+              <rect x="62" y="188" width="12" height="16" rx="3" fill="#fff" opacity="0.3"/>
+              <rect x="86" y="188" width="12" height="16" rx="3" fill="#fff" opacity="0.3"/>
+              <rect x="162" y="184" width="12" height="16" rx="3" fill="#A5BC39" opacity="0.3"/>
+              <rect x="186" y="184" width="12" height="16" rx="3" fill="#A5BC39" opacity="0.3"/>
+            </svg>
+            <span class="variant-name">B</span>
+            <span class="variant-desc">Hands meeting, spark between</span>
+          </div>
+
+          <!-- C: Side by side looking at shared screen/board -->
+          <div class="icon-cell">
+            <svg width="128" height="128" viewBox="0 0 256 256">
+              <defs><linearGradient id="bgC" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+              <rect width="256" height="256" rx="44" fill="url(#bgC)"/>
+              <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <!-- Shared board/screen behind them -->
+              <rect x="40" y="44" width="176" height="110" rx="8" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+              <!-- Content on board -->
+              <rect x="52" y="56" width="50" height="6" rx="2" fill="#fff" opacity="0.15"/>
+              <rect x="52" y="68" width="36" height="4" rx="2" fill="#fff" opacity="0.1"/>
+              <rect x="52" y="78" width="42" height="4" rx="2" fill="#fff" opacity="0.1"/>
+              <rect x="52" y="92" width="50" height="30" rx="3" fill="#fff" opacity="0.06"/>
+              <rect x="154" y="56" width="50" height="6" rx="2" fill="#A5BC39" opacity="0.25"/>
+              <rect x="154" y="68" width="36" height="4" rx="2" fill="#A5BC39" opacity="0.15"/>
+              <rect x="154" y="78" width="42" height="4" rx="2" fill="#A5BC39" opacity="0.15"/>
+              <rect x="154" y="92" width="50" height="30" rx="3" fill="#A5BC39" opacity="0.1"/>
+              <!-- Luca in front of board, left -->
+              <circle cx="88" cy="132" r="20" fill="#fff" opacity="0.9"/>
+              <rect x="76" y="156" width="24" height="6" rx="3" fill="#fff" opacity="0.65"/>
+              <rect x="70" y="166" width="36" height="48" rx="6" fill="#fff" opacity="0.5"/>
+              <!-- Claire in front of board, right -->
+              <circle cx="168" cy="128" r="20" fill="#A5BC39" opacity="0.9"/>
+              <rect x="156" y="152" width="24" height="6" rx="3" fill="#A5BC39" opacity="0.65"/>
+              <rect x="150" y="162" width="36" height="52" rx="6" fill="#A5BC39" opacity="0.5"/>
+            </svg>
+            <span class="variant-name">C</span>
+            <span class="variant-desc">In front of shared board</span>
+          </div>
+
+          <!-- D: Standing together, one slightly forward, relationship style -->
+          <div class="icon-cell">
+            <svg width="128" height="128" viewBox="0 0 256 256">
+              <defs><linearGradient id="bgD" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+              <rect width="256" height="256" rx="44" fill="url(#bgD)"/>
+              <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <!-- Luca - full body, standing -->
+              <circle cx="92" cy="54" r="22" fill="#fff" opacity="0.9"/>
+              <rect x="80" y="80" width="24" height="8" rx="4" fill="#fff" opacity="0.65"/>
+              <rect x="72" y="92" width="40" height="64" rx="7" fill="#fff" opacity="0.5"/>
+              <!-- Luca arms -->
+              <path d="M72 106 L56 128" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.4"/>
+              <path d="M112 106 L128 100" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.4"/>
+              <!-- Luca legs -->
+              <rect x="76" y="160" width="14" height="38" rx="5" fill="#fff" opacity="0.35"/>
+              <rect x="96" y="160" width="14" height="38" rx="5" fill="#fff" opacity="0.35"/>
+              <!-- Claire - full body, slightly forward -->
+              <circle cx="168" cy="48" r="22" fill="#A5BC39" opacity="0.9"/>
+              <rect x="156" y="74" width="24" height="8" rx="4" fill="#A5BC39" opacity="0.65"/>
+              <rect x="148" y="86" width="40" height="68" rx="7" fill="#A5BC39" opacity="0.5"/>
+              <!-- Claire arms -->
+              <path d="M148 100 L132 98" stroke="#A5BC39" stroke-width="6" stroke-linecap="round" opacity="0.4"/>
+              <path d="M188 100 L204 120" stroke="#A5BC39" stroke-width="6" stroke-linecap="round" opacity="0.4"/>
+              <!-- Claire legs -->
+              <rect x="152" y="158" width="14" height="40" rx="5" fill="#A5BC39" opacity="0.35"/>
+              <rect x="172" y="158" width="14" height="40" rx="5" fill="#A5BC39" opacity="0.35"/>
+              <!-- Connection between their hands -->
+              <circle cx="130" cy="99" r="4" fill="rgba(165,188,57,0.5)"/>
+            </svg>
+            <span class="variant-name">D</span>
+            <span class="variant-desc">Standing together, hands linked</span>
+          </div>
+
+          <!-- E: Bust-style, more detail, like the relationship icon -->
+          <div class="icon-cell">
+            <svg width="128" height="128" viewBox="0 0 256 256">
+              <defs><linearGradient id="bgE" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+              <rect width="256" height="256" rx="44" fill="url(#bgE)"/>
+              <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <!-- Luca bust -->
+              <circle cx="88" cy="72" r="28" fill="#fff" opacity="0.88"/>
+              <path d="M48 152 C48 124 64 112 88 112 C112 112 128 124 128 152 L128 208 L48 208 Z" fill="#fff" opacity="0.5"/>
+              <!-- Luca arm reaching right -->
+              <path d="M120 140 L140 130" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity="0.4"/>
+              <!-- Claire bust -->
+              <circle cx="172" cy="66" r="28" fill="#A5BC39" opacity="0.88"/>
+              <path d="M132 146 C132 118 148 106 172 106 C196 106 212 118 212 146 L212 208 L132 208 Z" fill="#A5BC39" opacity="0.5"/>
+              <!-- Claire arm reaching left -->
+              <path d="M140 134 L120 138" stroke="#A5BC39" stroke-width="7" stroke-linecap="round" opacity="0.4"/>
+              <!-- Shared element at overlap -->
+              <rect x="120" y="152" width="16" height="56" rx="2" fill="rgba(165,188,57,0.3)"/>
+            </svg>
+            <span class="variant-name">E</span>
+            <span class="variant-desc">Bust overlap, shared spine</span>
+          </div>
+
+          <!-- F: Cleaner, more icon-like, inspired by relationship icon's simplicity -->
+          <div class="icon-cell">
+            <svg width="128" height="128" viewBox="0 0 256 256">
+              <defs><linearGradient id="bgF" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+              <rect width="256" height="256" rx="44" fill="url(#bgF)"/>
+              <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <!-- Luca: head + body + arm -->
+              <circle cx="84" cy="62" r="24" fill="#fff" opacity="0.88"/>
+              <path d="M52 118 C52 96 64 86 84 86 C104 86 116 96 116 118 L116 200 L52 200 Z" fill="#fff" opacity="0.48"/>
+              <path d="M116 130 L142 118" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity="0.45"/>
+              <!-- Claire: head + body + arm -->
+              <circle cx="176" cy="56" r="24" fill="#A5BC39" opacity="0.88"/>
+              <path d="M144 112 C144 90 156 80 176 80 C196 80 208 90 208 112 L208 200 L144 200 Z" fill="#A5BC39" opacity="0.48"/>
+              <path d="M144 124 L118 118" stroke="#A5BC39" stroke-width="8" stroke-linecap="round" opacity="0.45"/>
+              <!-- Connected hands -->
+              <circle cx="130" cy="118" r="8" fill="rgba(165,188,57,0.35)"/>
+              <circle cx="130" cy="118" r="4" fill="#fff" opacity="0.5"/>
+            </svg>
+            <span class="variant-name">F</span>
+            <span class="variant-desc">Clean duo, hands meet in light</span>
+          </div>
+
+          <!-- G: Upper body only, like the negotiation icon, across a panel -->
+          <div class="icon-cell">
+            <svg width="128" height="128" viewBox="0 0 256 256">
+              <defs><linearGradient id="bgG" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+              <rect width="256" height="256" rx="44" fill="url(#bgG)"/>
+              <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <!-- Panel/table between them -->
+              <rect x="56" y="136" width="144" height="8" rx="4" fill="rgba(255,255,255,0.1)"/>
+              <rect x="96" y="144" width="64" height="60" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+              <!-- Luca upper body, behind table -->
+              <circle cx="80" cy="72" r="26" fill="#fff" opacity="0.88"/>
+              <path d="M46 132 C46 110 60 100 80 100 C100 100 114 110 114 132 L114 144 L46 144 Z" fill="#fff" opacity="0.5"/>
+              <!-- Luca arm on table -->
+              <path d="M106 128 L120 134" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.4"/>
+              <!-- Claire upper body, behind table -->
+              <circle cx="180" cy="66" r="26" fill="#A5BC39" opacity="0.88"/>
+              <path d="M146 126 C146 104 160 94 180 94 C200 94 214 104 214 126 L214 144 L146 144 Z" fill="#A5BC39" opacity="0.5"/>
+              <!-- Claire arm on table -->
+              <path d="M154 122 L140 132" stroke="#A5BC39" stroke-width="6" stroke-linecap="round" opacity="0.4"/>
+              <!-- Content on table surface -->
+              <rect x="104" y="152" width="20" height="3" rx="1" fill="#fff" opacity="0.15"/>
+              <rect x="104" y="160" width="14" height="3" rx="1" fill="#fff" opacity="0.1"/>
+              <rect x="134" y="152" width="20" height="3" rx="1" fill="#A5BC39" opacity="0.2"/>
+              <rect x="134" y="160" width="14" height="3" rx="1" fill="#A5BC39" opacity="0.15"/>
+            </svg>
+            <span class="variant-name">G</span>
+            <span class="variant-desc">Across a shared table</span>
+          </div>
+
+          <!-- H: Simplified, bold, iconic -->
+          <div class="icon-cell">
+            <svg width="128" height="128" viewBox="0 0 256 256">
+              <defs><linearGradient id="bgH" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+              <rect width="256" height="256" rx="44" fill="url(#bgH)"/>
+              <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+              <!-- Luca: bold simple -->
+              <circle cx="86" cy="60" r="26" fill="#fff" opacity="0.9"/>
+              <path d="M50 130 C50 104 66 92 86 92 C106 92 122 104 122 130 L122 204 L50 204 Z" fill="#fff" opacity="0.55"/>
+              <!-- Claire: bold simple -->
+              <circle cx="174" cy="56" r="26" fill="#A5BC39" opacity="0.9"/>
+              <path d="M138 126 C138 100 154 88 174 88 C194 88 210 100 210 126 L210 204 L138 204 Z" fill="#A5BC39" opacity="0.55"/>
+              <!-- Bridge between at shoulder level -->
+              <rect x="116" y="112" width="28" height="8" rx="4" fill="rgba(165,188,57,0.4)"/>
+            </svg>
+            <span class="variant-name">H</span>
+            <span class="variant-desc">Bold, simple, bridge between</span>
+          </div>
+
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- ═══ DOCK ═══ -->
+      <div class="section">
+        <div class="section-label">In the Dock</div>
+
+        <div style="margin-bottom: 2rem;">
+          <div style="font-size: 0.5rem; color: #4a4650; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.6rem; text-align: center;">F — Clean Duo</div>
+          <div class="dock-wrap"><div class="dock-group"><div class="dock">
+            <svg width="52" height="52" viewBox="0 0 256 256"><defs><linearGradient id="dk" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><g transform="translate(45.5, 53) scale(0.75)"><path fill="#FFFFFF" d="M25.5,18.3c3.2,8.3,4.7,30.9,4.7,68l-0.5,35.2l3.8,0.9c7.2,1.7,14.6,2.6,22.1,2.7c0.8,0,1.6,0,2.4,0 c-0.6-11.7-0.8-26.3-0.8-44c0-26.7,0.9-44.1,2.6-52.2c1.8-8.1,4.3-13.8,7.7-17c3.4-3.2,8.7-5.2,15.8-5.9c3.2-0.3,4.8-1.4,4.8-3.2 C88.1,0.9,86,0,81.7,0H6.3C2.1,0,0,1,0,3.1c0,1.7,1.7,2.5,5.1,2.5C15.5,5.8,22.3,10,25.5,18.3z"/><path fill="#FFFFFF" d="M151.7,6.2c9.2,0,16.2,3.5,20.9,10.6c4.7,7.1,7.1,22,7.1,44.7c0,23.2-0.4,42.2-1.1,56.8c3,1.2,6,2.6,9,4 c1-13.6,1.4-29.1,1.5-46.6c0-18.8,0.6-33.1,1.7-42.9c1.1-9.7,3.4-16.4,7-20.2c3.6-3.7,9.1-6.1,16.8-7.2c2.2-0.3,3.3-1.2,3.3-2.6 c0-2-1.4-3-4.1-3h-60.2c-4.9,0-7.4,1-7.4,3C146.2,5.1,148,6.2,151.7,6.2z"/><path fill="#A5BC39" d="M135.8,126c-28.6,0-47.6,15.8-80.2,15.8c-8.7,0-17.3-1.1-25.7-3.1c0.7,13,2.8,23.1,6.3,30.3 c4.4,9.2,12.7,16.6,25,22.1c12.3,5.6,27.1,8.4,44.6,8.4c17,0,31.4-2.5,43.1-7.4c11.7-5,20.4-11.5,26.2-19.6 c5.3-7.3,8.9-18,10.8-32.2C165.3,129.6,149.5,126,135.8,126z"/></g></svg>
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M140 72 L150 114 L192 124 L150 134 L140 176 L130 134 L88 124 L130 114 Z" fill="#A5BC39"/><path d="M76 56 L82 78 L104 84 L82 90 L76 112 L70 90 L48 84 L70 78 Z" fill="#fff" opacity="0.85"/><path d="M88 152 L93 170 L111 175 L93 180 L88 198 L83 180 L65 175 L83 170 Z" fill="#fff" opacity="0.6"/><path d="M188 60 L191 70 L201 73 L191 76 L188 86 L185 76 L175 73 L185 70 Z" fill="#fff" opacity="0.45"/></svg>
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M68 80 h120 a12 12 0 0 1 12 12 v64 a12 12 0 0 1-12 12 h-52 l-22 26 -22-26 H68 a12 12 0 0 1-12-12 V92 a12 12 0 0 1 12-12z" fill="rgba(255,255,255,0.15)" stroke="#fff" stroke-width="10" stroke-linejoin="round"/><circle cx="100" cy="124" r="8" fill="#A5BC39"/><circle cx="128" cy="124" r="8" fill="#fff"/><circle cx="156" cy="124" r="8" fill="#fff"/></svg>
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><rect x="56" y="62" width="144" height="16" rx="3" fill="#6BA0CC" opacity="0.95"/><rect x="56" y="84" width="108" height="16" rx="3" fill="#6BA0CC" opacity="0.75"/><rect x="82" y="106" width="118" height="16" rx="3" fill="#6BA0CC" opacity="0.6"/><rect x="56" y="128" width="72" height="16" rx="3" fill="#8BBAD6" opacity="0.55"/><rect x="96" y="150" width="80" height="16" rx="3" fill="#8BBAD6" opacity="0.4"/><rect x="56" y="178" width="26" height="14" rx="2" fill="#A5BC39"/><rect x="86" y="178" width="26" height="14" rx="2" fill="#A5BC39" opacity="0.85"/><rect x="116" y="178" width="26" height="14" rx="2" fill="#D4C23A" opacity="0.8"/><rect x="146" y="178" width="26" height="14" rx="2" fill="#D9A634" opacity="0.7"/><rect x="176" y="178" width="24" height="14" rx="2" fill="#C96832" opacity="0.6"/><line x1="130" y1="50" x2="130" y2="172" stroke="#A5BC39" stroke-width="3.5" opacity="0.9"/><circle cx="130" cy="48" r="5" fill="#A5BC39"/></svg>
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><rect x="64" y="60" width="128" height="148" rx="12" fill="none" stroke="#fff" stroke-width="10" opacity="0.9"/><rect x="98" y="48" width="60" height="28" rx="8" fill="#fff"/><polyline points="88,118 100,130 124,104" fill="none" stroke="#A5BC39" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><line x1="140" y1="117" x2="178" y2="117" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity="0.5"/><polyline points="88,158 100,170 124,144" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/><line x1="140" y1="157" x2="178" y2="157" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity="0.35"/></svg>
+            <!-- F -->
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><circle cx="84" cy="62" r="24" fill="#fff" opacity="0.88"/><path d="M52 118 C52 96 64 86 84 86 C104 86 116 96 116 118 L116 200 L52 200 Z" fill="#fff" opacity="0.48"/><path d="M116 130 L142 118" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity="0.45"/><circle cx="176" cy="56" r="24" fill="#A5BC39" opacity="0.88"/><path d="M144 112 C144 90 156 80 176 80 C196 80 208 90 208 112 L208 200 L144 200 Z" fill="#A5BC39" opacity="0.48"/><path d="M144 124 L118 118" stroke="#A5BC39" stroke-width="8" stroke-linecap="round" opacity="0.45"/><circle cx="130" cy="118" r="8" fill="rgba(165,188,57,0.35)"/><circle cx="130" cy="118" r="4" fill="#fff" opacity="0.5"/></svg>
+          </div><div class="dock-labels"><span>Website</span><span>ODIN</span><span>Inquiries</span><span>Scheduler</span><span>Orders</span><span>L & C</span></div></div></div>
+        </div>
+
+        <div style="margin-bottom: 2rem;">
+          <div style="font-size: 0.5rem; color: #4a4650; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.6rem; text-align: center;">H — Bold Simple</div>
+          <div class="dock-wrap"><div class="dock-group"><div class="dock">
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><g transform="translate(45.5, 53) scale(0.75)"><path fill="#FFFFFF" d="M25.5,18.3c3.2,8.3,4.7,30.9,4.7,68l-0.5,35.2l3.8,0.9c7.2,1.7,14.6,2.6,22.1,2.7c0.8,0,1.6,0,2.4,0 c-0.6-11.7-0.8-26.3-0.8-44c0-26.7,0.9-44.1,2.6-52.2c1.8-8.1,4.3-13.8,7.7-17c3.4-3.2,8.7-5.2,15.8-5.9c3.2-0.3,4.8-1.4,4.8-3.2 C88.1,0.9,86,0,81.7,0H6.3C2.1,0,0,1,0,3.1c0,1.7,1.7,2.5,5.1,2.5C15.5,5.8,22.3,10,25.5,18.3z"/><path fill="#FFFFFF" d="M151.7,6.2c9.2,0,16.2,3.5,20.9,10.6c4.7,7.1,7.1,22,7.1,44.7c0,23.2-0.4,42.2-1.1,56.8c3,1.2,6,2.6,9,4 c1-13.6,1.4-29.1,1.5-46.6c0-18.8,0.6-33.1,1.7-42.9c1.1-9.7,3.4-16.4,7-20.2c3.6-3.7,9.1-6.1,16.8-7.2c2.2-0.3,3.3-1.2,3.3-2.6 c0-2-1.4-3-4.1-3h-60.2c-4.9,0-7.4,1-7.4,3C146.2,5.1,148,6.2,151.7,6.2z"/><path fill="#A5BC39" d="M135.8,126c-28.6,0-47.6,15.8-80.2,15.8c-8.7,0-17.3-1.1-25.7-3.1c0.7,13,2.8,23.1,6.3,30.3 c4.4,9.2,12.7,16.6,25,22.1c12.3,5.6,27.1,8.4,44.6,8.4c17,0,31.4-2.5,43.1-7.4c11.7-5,20.4-11.5,26.2-19.6 c5.3-7.3,8.9-18,10.8-32.2C165.3,129.6,149.5,126,135.8,126z"/></g></svg>
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M140 72 L150 114 L192 124 L150 134 L140 176 L130 134 L88 124 L130 114 Z" fill="#A5BC39"/><path d="M76 56 L82 78 L104 84 L82 90 L76 112 L70 90 L48 84 L70 78 Z" fill="#fff" opacity="0.85"/><path d="M88 152 L93 170 L111 175 L93 180 L88 198 L83 180 L65 175 L83 170 Z" fill="#fff" opacity="0.6"/><path d="M188 60 L191 70 L201 73 L191 76 L188 86 L185 76 L175 73 L185 70 Z" fill="#fff" opacity="0.45"/></svg>
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M68 80 h120 a12 12 0 0 1 12 12 v64 a12 12 0 0 1-12 12 h-52 l-22 26 -22-26 H68 a12 12 0 0 1-12-12 V92 a12 12 0 0 1 12-12z" fill="rgba(255,255,255,0.15)" stroke="#fff" stroke-width="10" stroke-linejoin="round"/><circle cx="100" cy="124" r="8" fill="#A5BC39"/><circle cx="128" cy="124" r="8" fill="#fff"/><circle cx="156" cy="124" r="8" fill="#fff"/></svg>
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><rect x="56" y="62" width="144" height="16" rx="3" fill="#6BA0CC" opacity="0.95"/><rect x="56" y="84" width="108" height="16" rx="3" fill="#6BA0CC" opacity="0.75"/><rect x="82" y="106" width="118" height="16" rx="3" fill="#6BA0CC" opacity="0.6"/><rect x="56" y="128" width="72" height="16" rx="3" fill="#8BBAD6" opacity="0.55"/><rect x="96" y="150" width="80" height="16" rx="3" fill="#8BBAD6" opacity="0.4"/><rect x="56" y="178" width="26" height="14" rx="2" fill="#A5BC39"/><rect x="86" y="178" width="26" height="14" rx="2" fill="#A5BC39" opacity="0.85"/><rect x="116" y="178" width="26" height="14" rx="2" fill="#D4C23A" opacity="0.8"/><rect x="146" y="178" width="26" height="14" rx="2" fill="#D9A634" opacity="0.7"/><rect x="176" y="178" width="24" height="14" rx="2" fill="#C96832" opacity="0.6"/><line x1="130" y1="50" x2="130" y2="172" stroke="#A5BC39" stroke-width="3.5" opacity="0.9"/><circle cx="130" cy="48" r="5" fill="#A5BC39"/></svg>
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><rect x="64" y="60" width="128" height="148" rx="12" fill="none" stroke="#fff" stroke-width="10" opacity="0.9"/><rect x="98" y="48" width="60" height="28" rx="8" fill="#fff"/><polyline points="88,118 100,130 124,104" fill="none" stroke="#A5BC39" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><line x1="140" y1="117" x2="178" y2="117" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity="0.5"/><polyline points="88,158 100,170 124,144" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/><line x1="140" y1="157" x2="178" y2="157" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity="0.35"/></svg>
+            <!-- H -->
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><circle cx="86" cy="60" r="26" fill="#fff" opacity="0.9"/><path d="M50 130 C50 104 66 92 86 92 C106 92 122 104 122 130 L122 204 L50 204 Z" fill="#fff" opacity="0.55"/><circle cx="174" cy="56" r="26" fill="#A5BC39" opacity="0.9"/><path d="M138 126 C138 100 154 88 174 88 C194 88 210 100 210 126 L210 204 L138 204 Z" fill="#A5BC39" opacity="0.55"/><rect x="116" y="112" width="28" height="8" rx="4" fill="rgba(165,188,57,0.4)"/></svg>
+          </div><div class="dock-labels"><span>Website</span><span>ODIN</span><span>Inquiries</span><span>Scheduler</span><span>Orders</span><span>L & C</span></div></div></div>
+        </div>
+
+        <div style="margin-bottom: 2rem;">
+          <div style="font-size: 0.5rem; color: #4a4650; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.6rem; text-align: center;">G — Across a Table</div>
+          <div class="dock-wrap"><div class="dock-group"><div class="dock">
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><g transform="translate(45.5, 53) scale(0.75)"><path fill="#FFFFFF" d="M25.5,18.3c3.2,8.3,4.7,30.9,4.7,68l-0.5,35.2l3.8,0.9c7.2,1.7,14.6,2.6,22.1,2.7c0.8,0,1.6,0,2.4,0 c-0.6-11.7-0.8-26.3-0.8-44c0-26.7,0.9-44.1,2.6-52.2c1.8-8.1,4.3-13.8,7.7-17c3.4-3.2,8.7-5.2,15.8-5.9c3.2-0.3,4.8-1.4,4.8-3.2 C88.1,0.9,86,0,81.7,0H6.3C2.1,0,0,1,0,3.1c0,1.7,1.7,2.5,5.1,2.5C15.5,5.8,22.3,10,25.5,18.3z"/><path fill="#FFFFFF" d="M151.7,6.2c9.2,0,16.2,3.5,20.9,10.6c4.7,7.1,7.1,22,7.1,44.7c0,23.2-0.4,42.2-1.1,56.8c3,1.2,6,2.6,9,4 c1-13.6,1.4-29.1,1.5-46.6c0-18.8,0.6-33.1,1.7-42.9c1.1-9.7,3.4-16.4,7-20.2c3.6-3.7,9.1-6.1,16.8-7.2c2.2-0.3,3.3-1.2,3.3-2.6 c0-2-1.4-3-4.1-3h-60.2c-4.9,0-7.4,1-7.4,3C146.2,5.1,148,6.2,151.7,6.2z"/><path fill="#A5BC39" d="M135.8,126c-28.6,0-47.6,15.8-80.2,15.8c-8.7,0-17.3-1.1-25.7-3.1c0.7,13,2.8,23.1,6.3,30.3 c4.4,9.2,12.7,16.6,25,22.1c12.3,5.6,27.1,8.4,44.6,8.4c17,0,31.4-2.5,43.1-7.4c11.7-5,20.4-11.5,26.2-19.6 c5.3-7.3,8.9-18,10.8-32.2C165.3,129.6,149.5,126,135.8,126z"/></g></svg>
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M140 72 L150 114 L192 124 L150 134 L140 176 L130 134 L88 124 L130 114 Z" fill="#A5BC39"/><path d="M76 56 L82 78 L104 84 L82 90 L76 112 L70 90 L48 84 L70 78 Z" fill="#fff" opacity="0.85"/><path d="M88 152 L93 170 L111 175 L93 180 L88 198 L83 180 L65 175 L83 170 Z" fill="#fff" opacity="0.6"/><path d="M188 60 L191 70 L201 73 L191 76 L188 86 L185 76 L175 73 L185 70 Z" fill="#fff" opacity="0.45"/></svg>
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M68 80 h120 a12 12 0 0 1 12 12 v64 a12 12 0 0 1-12 12 h-52 l-22 26 -22-26 H68 a12 12 0 0 1-12-12 V92 a12 12 0 0 1 12-12z" fill="rgba(255,255,255,0.15)" stroke="#fff" stroke-width="10" stroke-linejoin="round"/><circle cx="100" cy="124" r="8" fill="#A5BC39"/><circle cx="128" cy="124" r="8" fill="#fff"/><circle cx="156" cy="124" r="8" fill="#fff"/></svg>
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><rect x="56" y="62" width="144" height="16" rx="3" fill="#6BA0CC" opacity="0.95"/><rect x="56" y="84" width="108" height="16" rx="3" fill="#6BA0CC" opacity="0.75"/><rect x="82" y="106" width="118" height="16" rx="3" fill="#6BA0CC" opacity="0.6"/><rect x="56" y="128" width="72" height="16" rx="3" fill="#8BBAD6" opacity="0.55"/><rect x="96" y="150" width="80" height="16" rx="3" fill="#8BBAD6" opacity="0.4"/><rect x="56" y="178" width="26" height="14" rx="2" fill="#A5BC39"/><rect x="86" y="178" width="26" height="14" rx="2" fill="#A5BC39" opacity="0.85"/><rect x="116" y="178" width="26" height="14" rx="2" fill="#D4C23A" opacity="0.8"/><rect x="146" y="178" width="26" height="14" rx="2" fill="#D9A634" opacity="0.7"/><rect x="176" y="178" width="24" height="14" rx="2" fill="#C96832" opacity="0.6"/><line x1="130" y1="50" x2="130" y2="172" stroke="#A5BC39" stroke-width="3.5" opacity="0.9"/><circle cx="130" cy="48" r="5" fill="#A5BC39"/></svg>
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><rect x="64" y="60" width="128" height="148" rx="12" fill="none" stroke="#fff" stroke-width="10" opacity="0.9"/><rect x="98" y="48" width="60" height="28" rx="8" fill="#fff"/><polyline points="88,118 100,130 124,104" fill="none" stroke="#A5BC39" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><line x1="140" y1="117" x2="178" y2="117" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity="0.5"/><polyline points="88,158 100,170 124,144" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/><line x1="140" y1="157" x2="178" y2="157" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity="0.35"/></svg>
+            <!-- G -->
+            <svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dk)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><rect x="56" y="136" width="144" height="8" rx="4" fill="rgba(255,255,255,0.1)"/><rect x="96" y="144" width="64" height="60" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/><circle cx="80" cy="72" r="26" fill="#fff" opacity="0.88"/><path d="M46 132 C46 110 60 100 80 100 C100 100 114 110 114 132 L114 144 L46 144 Z" fill="#fff" opacity="0.5"/><path d="M106 128 L120 134" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.4"/><circle cx="180" cy="66" r="26" fill="#A5BC39" opacity="0.88"/><path d="M146 126 C146 104 160 94 180 94 C200 94 214 104 214 126 L214 144 L146 144 Z" fill="#A5BC39" opacity="0.5"/><path d="M154 122 L140 132" stroke="#A5BC39" stroke-width="6" stroke-linecap="round" opacity="0.4"/></svg>
+          </div><div class="dock-labels"><span>Website</span><span>ODIN</span><span>Inquiries</span><span>Scheduler</span><span>Orders</span><span>L & C</span></div></div></div>
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>
