@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upland Workshop — Ecosystem Diagram</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        font-family: "Instrument Sans", system-ui, sans-serif;
+        background: #0c0b0e;
+        color: #c8c5cc;
+        min-height: 100vh;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        opacity: 0.02;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 100;
+      }
+
+      .page { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem 6rem; }
+
+      .suite-header { margin-bottom: 3rem; }
+      .suite-header::after {
+        content: ""; display: block; width: 48px; height: 2px;
+        background: #a5bc39; margin-top: 1.5rem;
+      }
+      .suite-name {
+        font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em;
+        text-transform: uppercase; color: #a5bc39; margin-bottom: 0.6rem;
+      }
+      .suite-title { font-size: 1.8rem; font-weight: 400; color: #eae8ed; }
+      .suite-sub { font-size: 0.85rem; color: #605c66; margin-top: 0.5rem; line-height: 1.5; }
+
+      /* Diagram container */
+      .diagram {
+        position: relative;
+        width: 100%;
+        min-height: 700px;
+        margin: 2rem 0;
+      }
+
+      /* SVG connections layer */
+      .connections {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      /* App nodes */
+      .node {
+        position: absolute;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.6rem;
+        cursor: default;
+        transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .node:hover { transform: translateY(-4px) scale(1.03); }
+      .node:hover .node-card { border-color: rgba(165, 188, 57, 0.3); }
+
+      .node-icon {
+        filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.6));
+      }
+
+      .node-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 12px;
+        padding: 1rem 1.2rem;
+        width: 200px;
+        text-align: center;
+        transition: border-color 0.2s;
+      }
+      .node-name {
+        font-size: 0.9rem; font-weight: 600; color: #eae8ed;
+        margin-bottom: 0.25rem;
+      }
+      .node-url {
+        font-size: 0.55rem; letter-spacing: 0.04em;
+        color: #a5bc39; opacity: 0.6; margin-bottom: 0.5rem;
+      }
+      .node-desc {
+        font-size: 0.65rem; color: #777; line-height: 1.45;
+      }
+      .node-stack {
+        display: flex; gap: 0.3rem; justify-content: center;
+        margin-top: 0.5rem; flex-wrap: wrap;
+      }
+      .tag {
+        font-size: 0.5rem; font-weight: 600; letter-spacing: 0.04em;
+        padding: 0.15rem 0.4rem; border-radius: 3px;
+        background: rgba(255, 255, 255, 0.05); color: #555;
+      }
+      .tag.netlify { color: #4aa88a; background: rgba(74, 168, 138, 0.1); }
+      .tag.turso { color: #6ba0cc; background: rgba(107, 160, 204, 0.1); }
+      .tag.heroku { color: #b48ed2; background: rgba(180, 142, 210, 0.1); }
+      .tag.postgres { color: #6ba0cc; background: rgba(107, 160, 204, 0.1); }
+      .tag.static { color: #888; background: rgba(136, 136, 136, 0.1); }
+      .tag.ai { color: #d4a34a; background: rgba(212, 163, 74, 0.1); }
+      .tag.python { color: #b48ed2; background: rgba(180, 142, 210, 0.1); }
+
+      /* Shared auth layer */
+      .auth-layer {
+        position: absolute;
+        z-index: 0;
+        border: 1px dashed rgba(165, 188, 57, 0.2);
+        border-radius: 20px;
+        background: rgba(165, 188, 57, 0.02);
+      }
+      .auth-label {
+        position: absolute;
+        font-size: 0.55rem; font-weight: 600; letter-spacing: 0.12em;
+        text-transform: uppercase; color: #a5bc39; opacity: 0.4;
+      }
+
+      /* External services */
+      .external {
+        position: absolute;
+        z-index: 2;
+        text-align: center;
+      }
+      .ext-name {
+        font-size: 0.6rem; font-weight: 600; color: #4a4650;
+        letter-spacing: 0.06em;
+      }
+      .ext-dot {
+        width: 8px; height: 8px; border-radius: 50%;
+        background: #3e3b42; margin: 0 auto 0.3rem;
+      }
+
+      /* Legend */
+      .legend {
+        margin-top: 3rem;
+        padding: 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.02);
+      }
+      .legend-title {
+        font-size: 0.6rem; font-weight: 600; letter-spacing: 0.12em;
+        text-transform: uppercase; color: #605c66; margin-bottom: 1rem;
+      }
+      .legend-items { display: flex; gap: 2rem; flex-wrap: wrap; }
+      .legend-item { display: flex; align-items: center; gap: 0.5rem; }
+      .legend-line {
+        width: 32px; height: 2px;
+      }
+      .legend-label { font-size: 0.65rem; color: #777; }
+
+      /* Info cards */
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 1.5rem;
+        margin-top: 3rem;
+      }
+      .info-card {
+        padding: 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.02);
+      }
+      .info-card-title {
+        font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em;
+        text-transform: uppercase; color: #a5bc39; opacity: 0.7;
+        margin-bottom: 0.8rem;
+      }
+      .info-card p {
+        font-size: 0.75rem; color: #888; line-height: 1.6;
+      }
+      .info-card code {
+        font-size: 0.7rem; color: #6ba0cc;
+        background: rgba(107, 160, 204, 0.08);
+        padding: 0.1rem 0.3rem; border-radius: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="suite-header">
+        <div class="suite-name">Upland Workshop</div>
+        <h1 class="suite-title">Ecosystem Architecture</h1>
+        <p class="suite-sub">How the apps connect — data flows, shared auth, and external integrations</p>
+      </div>
+
+      <div class="diagram" id="diagram">
+        <!-- Shared Auth boundary -->
+        <div class="auth-layer" style="left: 80px; top: 50px; width: 640px; height: 620px;">
+        </div>
+        <div class="auth-label" style="left: 100px; top: 60px;">Shared Turso Auth DB + JWT</div>
+
+        <!-- SVG Connections -->
+        <svg class="connections" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <!-- Data flow (reads from) -->
+            <marker id="arrow-data" viewBox="0 0 10 7" refX="10" refY="3.5"
+              markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+              <polygon points="0 0, 10 3.5, 0 7" fill="#a5bc39" opacity="0.5" />
+            </marker>
+            <!-- Service call -->
+            <marker id="arrow-svc" viewBox="0 0 10 7" refX="10" refY="3.5"
+              markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+              <polygon points="0 0, 10 3.5, 0 7" fill="#6ba0cc" opacity="0.5" />
+            </marker>
+          </defs>
+
+          <!-- ODIN reads from Scheduler -->
+          <path d="M 340 230 C 340 310, 260 310, 260 370"
+            stroke="#a5bc39" stroke-width="1.5" fill="none" opacity="0.3"
+            stroke-dasharray="4 3" marker-end="url(#arrow-data)" />
+
+          <!-- ODIN reads from Inquiry Hub -->
+          <path d="M 420 230 C 420 280, 500 280, 500 370"
+            stroke="#a5bc39" stroke-width="1.5" fill="none" opacity="0.3"
+            stroke-dasharray="4 3" marker-end="url(#arrow-data)" />
+
+          <!-- ODIN reads from Storefront orders -->
+          <path d="M 470 180 C 600 180, 820 300, 860 370"
+            stroke="#a5bc39" stroke-width="1.5" fill="none" opacity="0.3"
+            stroke-dasharray="4 3" marker-end="url(#arrow-data)" />
+
+          <!-- Inquiry Hub enriches from Scheduler -->
+          <path d="M 440 430 C 380 430, 320 430, 300 430"
+            stroke="#6ba0cc" stroke-width="1" fill="none" opacity="0.25"
+            marker-end="url(#arrow-svc)" />
+
+          <!-- Inquiry Hub enriches from ODIN -->
+          <path d="M 500 370 C 500 310, 440 250, 400 230"
+            stroke="#6ba0cc" stroke-width="1" fill="none" opacity="0.25"
+            marker-end="url(#arrow-svc)" />
+
+          <!-- Scheduler reads from Storefront orders -->
+          <path d="M 300 510 C 450 560, 700 560, 860 510"
+            stroke="#a5bc39" stroke-width="1.5" fill="none" opacity="0.3"
+            stroke-dasharray="4 3" marker-end="url(#arrow-data)" />
+
+          <!-- ODIN reads from Basecamp -->
+          <path d="M 340 120 C 280 80, 180 70, 120 80"
+            stroke="#a5bc39" stroke-width="1" fill="none" opacity="0.2"
+            stroke-dasharray="4 3" marker-end="url(#arrow-data)" />
+
+          <!-- ODIN reads from Toggl -->
+          <path d="M 440 120 C 480 60, 560 50, 620 60"
+            stroke="#a5bc39" stroke-width="1" fill="none" opacity="0.2"
+            stroke-dasharray="4 3" marker-end="url(#arrow-data)" />
+
+          <!-- Scheduler notifies Basecamp -->
+          <path d="M 200 380 C 160 300, 130 200, 120 120"
+            stroke="#6ba0cc" stroke-width="1" fill="none" opacity="0.15"
+            marker-end="url(#arrow-svc)" />
+
+          <!-- Inquiry Hub sends via Postmark -->
+          <path d="M 580 380 C 640 340, 680 300, 700 250"
+            stroke="#6ba0cc" stroke-width="1" fill="none" opacity="0.15"
+            marker-end="url(#arrow-svc)" />
+        </svg>
+
+        <!-- External Services -->
+        <div class="external" style="left: 80px; top: 60px;">
+          <div class="ext-dot" style="background: #6ba0cc;"></div>
+          <div class="ext-name">Basecamp</div>
+        </div>
+        <div class="external" style="left: 600px; top: 35px;">
+          <div class="ext-dot" style="background: #c96832;"></div>
+          <div class="ext-name">Toggl</div>
+        </div>
+        <div class="external" style="left: 690px; top: 220px;">
+          <div class="ext-dot" style="background: #d4a34a;"></div>
+          <div class="ext-name">Postmark</div>
+        </div>
+
+        <!-- ODIN — top center (the brain) -->
+        <div class="node" style="left: 280px; top: 85px;">
+          <svg class="node-icon" width="56" height="56" viewBox="0 0 256 256">
+            <defs><linearGradient id="bg-o" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+            <rect width="256" height="256" rx="44" fill="url(#bg-o)"/>
+            <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+            <path d="M140 72 L150 114 L192 124 L150 134 L140 176 L130 134 L88 124 L130 114 Z" fill="#A5BC39"/>
+            <path d="M76 56 L82 78 L104 84 L82 90 L76 112 L70 90 L48 84 L70 78 Z" fill="#fff" opacity="0.85"/>
+            <path d="M88 152 L93 170 L111 175 L93 180 L88 198 L83 180 L65 175 L83 170 Z" fill="#fff" opacity="0.6"/>
+            <path d="M188 60 L191 70 L201 73 L191 76 L188 86 L185 76 L175 73 L185 70 Z" fill="#fff" opacity="0.45"/>
+          </svg>
+          <div class="node-card">
+            <div class="node-name">ODIN</div>
+            <div class="node-url">odin.uplandexhibits.com</div>
+            <div class="node-desc">Operations intelligence. Reads from everything. AI-generated agendas, briefings, and conversational Q&A.</div>
+            <div class="node-stack">
+              <span class="tag netlify">Netlify</span>
+              <span class="tag turso">Turso</span>
+              <span class="tag ai">Claude AI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scheduler — left middle -->
+        <div class="node" style="left: 100px; top: 330px;">
+          <svg class="node-icon" width="56" height="56" viewBox="0 0 256 256">
+            <defs><linearGradient id="bg-s" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+            <rect width="256" height="256" rx="44" fill="url(#bg-s)"/>
+            <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+            <rect x="56" y="62" width="144" height="16" rx="3" fill="#6BA0CC" opacity="0.95"/>
+            <rect x="56" y="84" width="108" height="16" rx="3" fill="#6BA0CC" opacity="0.75"/>
+            <rect x="82" y="106" width="118" height="16" rx="3" fill="#6BA0CC" opacity="0.6"/>
+            <rect x="56" y="128" width="72" height="16" rx="3" fill="#8BBAD6" opacity="0.55"/>
+            <rect x="96" y="150" width="80" height="16" rx="3" fill="#8BBAD6" opacity="0.4"/>
+            <rect x="56" y="178" width="26" height="14" rx="2" fill="#A5BC39"/>
+            <rect x="86" y="178" width="26" height="14" rx="2" fill="#A5BC39" opacity="0.85"/>
+            <rect x="116" y="178" width="26" height="14" rx="2" fill="#D4C23A" opacity="0.8"/>
+            <rect x="146" y="178" width="26" height="14" rx="2" fill="#D9A634" opacity="0.7"/>
+            <rect x="176" y="178" width="24" height="14" rx="2" fill="#C96832" opacity="0.6"/>
+            <line x1="130" y1="50" x2="130" y2="172" stroke="#A5BC39" stroke-width="3" opacity="0.9"/>
+            <circle cx="130" cy="48" r="4" fill="#A5BC39"/>
+          </svg>
+          <div class="node-card">
+            <div class="node-name">Scheduler</div>
+            <div class="node-url">schedules.uplandexhibits.com</div>
+            <div class="node-desc">Project timelines, FTE capacity, 18-month financial pipeline. Client-sharable views. The reference implementation.</div>
+            <div class="node-stack">
+              <span class="tag netlify">Netlify</span>
+              <span class="tag turso">Turso</span>
+              <span class="tag ai">Claude AI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inquiry Hub — center middle -->
+        <div class="node" style="left: 400px; top: 330px;">
+          <svg class="node-icon" width="56" height="56" viewBox="0 0 256 256">
+            <defs><linearGradient id="bg-i" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+            <rect width="256" height="256" rx="44" fill="url(#bg-i)"/>
+            <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+            <path d="M68 80 h120 a12 12 0 0 1 12 12 v64 a12 12 0 0 1-12 12 h-52 l-22 26 -22-26 H68 a12 12 0 0 1-12-12 V92 a12 12 0 0 1 12-12z" fill="rgba(255,255,255,0.15)" stroke="#fff" stroke-width="8" stroke-linejoin="round"/>
+            <circle cx="100" cy="124" r="7" fill="#A5BC39"/>
+            <circle cx="128" cy="124" r="7" fill="#fff"/>
+            <circle cx="156" cy="124" r="7" fill="#fff"/>
+          </svg>
+          <div class="node-card">
+            <div class="node-name">Inquiry Hub</div>
+            <div class="node-url">inquiries.uplandexhibits.com</div>
+            <div class="node-desc">AI-powered inquiry triage. Classifies, drafts responses, enriches with cross-tool context.</div>
+            <div class="node-stack">
+              <span class="tag netlify">Netlify</span>
+              <span class="tag turso">Turso</span>
+              <span class="tag ai">Claude AI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Storefront — right -->
+        <div class="node" style="left: 780px; top: 310px;">
+          <svg class="node-icon" width="56" height="56" viewBox="0 0 256 256">
+            <defs><linearGradient id="bg-w" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+            <rect width="256" height="256" rx="44" fill="url(#bg-w)"/>
+            <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+            <g transform="translate(45.5, 53) scale(0.75)">
+              <path fill="#FFFFFF" d="M25.5,18.3c3.2,8.3,4.7,30.9,4.7,68l-0.5,35.2l3.8,0.9c7.2,1.7,14.6,2.6,22.1,2.7c0.8,0,1.6,0,2.4,0 c-0.6-11.7-0.8-26.3-0.8-44c0-26.7,0.9-44.1,2.6-52.2c1.8-8.1,4.3-13.8,7.7-17c3.4-3.2,8.7-5.2,15.8-5.9c3.2-0.3,4.8-1.4,4.8-3.2 C88.1,0.9,86,0,81.7,0H6.3C2.1,0,0,1,0,3.1c0,1.7,1.7,2.5,5.1,2.5C15.5,5.8,22.3,10,25.5,18.3z"/>
+              <path fill="#FFFFFF" d="M151.7,6.2c9.2,0,16.2,3.5,20.9,10.6c4.7,7.1,7.1,22,7.1,44.7c0,23.2-0.4,42.2-1.1,56.8c3,1.2,6,2.6,9,4 c1-13.6,1.4-29.1,1.5-46.6c0-18.8,0.6-33.1,1.7-42.9c1.1-9.7,3.4-16.4,7-20.2c3.6-3.7,9.1-6.1,16.8-7.2c2.2-0.3,3.3-1.2,3.3-2.6 c0-2-1.4-3-4.1-3h-60.2c-4.9,0-7.4,1-7.4,3C146.2,5.1,148,6.2,151.7,6.2z"/>
+              <path fill="#A5BC39" d="M135.8,126c-28.6,0-47.6,15.8-80.2,15.8c-8.7,0-17.3-1.1-25.7-3.1c0.7,13,2.8,23.1,6.3,30.3 c4.4,9.2,12.7,16.6,25,22.1c12.3,5.6,27.1,8.4,44.6,8.4c17,0,31.4-2.5,43.1-7.4c11.7-5,20.4-11.5,26.2-19.6 c5.3-7.3,8.9-18,10.8-32.2C165.3,129.6,149.5,126,135.8,126z"/>
+            </g>
+          </svg>
+          <div class="node-card">
+            <div class="node-name">Upland Website</div>
+            <div class="node-url">uplandexhibits.com</div>
+            <div class="node-desc">Marketing site, e-commerce, product configurators, 3D exhibit builder, Stripe checkout, FedEx shipping, order management. Own auth — intentionally standalone.</div>
+            <div class="node-stack">
+              <span class="tag heroku">Heroku</span>
+              <span class="tag postgres">PostgreSQL</span>
+              <span class="tag python">Python</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Luca & Claire — bottom right (planned) -->
+        <div class="node" style="left: 820px; top: 560px; opacity: 0.6;">
+          <svg class="node-icon" width="56" height="56" viewBox="0 0 256 256">
+            <defs><linearGradient id="bg-p" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+            <rect width="256" height="256" rx="44" fill="url(#bg-p)"/>
+            <rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+            <!-- Pen + frame: design tool -->
+            <rect x="52" y="64" width="152" height="128" rx="6" fill="none" stroke="#fff" stroke-width="8" opacity="0.9"/>
+            <rect x="72" y="82" width="112" height="92" rx="2" fill="none" stroke="#fff" stroke-width="3" opacity="0.3"/>
+            <polygon points="82,158 112,110 142,158" fill="#fff" opacity="0.4"/>
+            <polygon points="118,158 148,100 178,158" fill="#A5BC39" opacity="0.85"/>
+            <circle cx="156" cy="102" r="10" fill="#fff" opacity="0.6"/>
+          </svg>
+          <div class="node-card" style="border-style: dashed;">
+            <div class="node-name">Luca & Claire</div>
+            <div class="node-url">planned — replaces Previews</div>
+            <div class="node-desc">Exhibit design AI. Luca helps curators place content and draft copy. Claire renders the graphic design. Together: content brief to visual panel.</div>
+            <div class="node-stack">
+              <span class="tag" style="color: #a5bc39; background: rgba(165,188,57,0.1);">Planned</span>
+              <span class="tag ai">Claude AI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Orders badge on Storefront -->
+        <div style="position: absolute; left: 990px; top: 430px; z-index: 3;">
+          <div style="font-size: 0.5rem; font-weight: 600; letter-spacing: 0.08em; color: #a5bc39; opacity: 0.5; text-align: center;">
+            /order/queue/<br/>?format=json
+          </div>
+        </div>
+      </div>
+
+      <!-- Legend -->
+      <div class="legend">
+        <div class="legend-title">Legend</div>
+        <div class="legend-items">
+          <div class="legend-item">
+            <svg width="32" height="10"><line x1="0" y1="5" x2="32" y2="5" stroke="#a5bc39" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.5"/></svg>
+            <span class="legend-label">Reads data from</span>
+          </div>
+          <div class="legend-item">
+            <svg width="32" height="10"><line x1="0" y1="5" x2="32" y2="5" stroke="#6ba0cc" stroke-width="1" opacity="0.4"/></svg>
+            <span class="legend-label">API call / webhook</span>
+          </div>
+          <div class="legend-item">
+            <svg width="40" height="16"><rect x="0" y="2" width="40" height="12" rx="4" fill="none" stroke="#a5bc39" stroke-dasharray="3 2" opacity="0.3"/></svg>
+            <span class="legend-label">Shared auth boundary</span>
+          </div>
+          <div class="legend-item">
+            <div style="width: 8px; height: 8px; border-radius: 50%; background: #3e3b42;"></div>
+            <span class="legend-label">External service</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Info cards -->
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-card-title">Shared Auth Pattern</div>
+          <p>Scheduler, ODIN, and Inquiry Hub share a single Turso database (<code>upland-auth</code>) with one <code>users</code> table. All three use the same <code>JWT_SECRET</code> — a token minted by one app is valid in all three. The Upland Website has its own PostgreSQL auth and stays intentionally separate.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-title">Dual Database Pattern</div>
+          <p>Each Netlify app connects to two Turso databases: the shared auth DB (<code>TURSO_AUTH_URL</code>) and its own app DB (<code>TURSO_URL</code>). Local dev uses SQLite files; production uses Turso HTTP. The client import auto-switches based on URL prefix.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-title">ODIN as Intelligence Layer</div>
+          <p>ODIN is read-only — it never writes to another app's data. It pulls from Scheduler, Inquiry Hub, Storefront orders, Basecamp, and Toggl, then uses Claude AI to synthesize agendas, briefings, and answers. It also provides an enrichment API that Inquiry Hub calls for context.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-title">Standalone Severability</div>
+          <p>Every app can survive independently. If ODIN goes down, inquiries still work. If the Scheduler goes offline, ODIN degrades gracefully. The Upland Website is on its own stack entirely (Python, PostgreSQL, Heroku) and doesn't depend on any satellite app.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-title">Convention Over Shared Code</div>
+          <p>No shared npm package or component library. Instead, all Netlify apps follow the same patterns: esbuild + vanilla TypeScript, hand-rolled router in a single function, <code>ensureSchema()</code> migrations, Postmark email, oxlint/oxfmt. Copy the pattern, not the dependency.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-title">Visual Identity</div>
+          <p>All apps share: dark gradient background (<code>#161A22</code> to <code>#0A0D12</code>), lime accent (<code>#A5BC39</code>), Instrument Sans font, rounded-rect app icons on the same dark base. Each icon's content differentiates: sparkles for ODIN, chat bubble for Inquiries, Gantt bars for Scheduler, etc.</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

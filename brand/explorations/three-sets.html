@@ -1,0 +1,1005 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upland Workshop — Three Sets</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Instrument Sans", system-ui, sans-serif;
+        background: #0c0b0e;
+        color: #c8c5cc;
+        min-height: 100vh;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        opacity: 0.025;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 100;
+      }
+      .page {
+        max-width: 1060px;
+        margin: 0 auto;
+        padding: 4rem 2rem 6rem;
+      }
+      .suite-header {
+        margin-bottom: 4rem;
+      }
+      .suite-header::after {
+        content: "";
+        display: block;
+        width: 48px;
+        height: 2px;
+        background: #a5bc39;
+        margin-top: 1.5rem;
+      }
+      .suite-name {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #a5bc39;
+        margin-bottom: 0.6rem;
+      }
+      .suite-title {
+        font-size: 1.8rem;
+        font-weight: 400;
+        color: #eae8ed;
+      }
+      .section {
+        margin-bottom: 4.5rem;
+      }
+      .section-label {
+        font-size: 0.65rem;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #605c66;
+        margin-bottom: 1.8rem;
+      }
+      .dock-wrapper {
+        display: flex;
+        justify-content: center;
+      }
+      .dock-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .dock {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 22px;
+        padding: 14px 24px;
+        display: inline-flex;
+        gap: 14px;
+        align-items: center;
+      }
+      .dock svg {
+        filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+        transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        cursor: default;
+      }
+      .dock svg:hover {
+        transform: translateY(-6px) scale(1.15);
+      }
+      .dock-label {
+        text-align: center;
+        margin-top: 0.8rem;
+        font-size: 0.6rem;
+        color: #4a4650;
+      }
+      .icon-labels {
+        display: flex;
+        gap: 14px;
+        padding: 0 24px;
+        margin-top: 0.6rem;
+      }
+      .icon-labels span {
+        width: 52px;
+        text-align: center;
+        font-size: 0.55rem;
+        color: #4a4650;
+        letter-spacing: 0.02em;
+      }
+      .divider {
+        border: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        margin: 1rem 0 3.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="suite-header">
+        <div class="suite-name">Upland Workshop</div>
+        <h1 class="suite-title">Three Sets</h1>
+      </div>
+
+      <!-- ═══ SET 1: PROPOSED (brighter, fixes applied) ═══ -->
+      <div class="section">
+        <div class="section-label">Proposed — brighter gradients, fixed colors</div>
+        <div class="dock-wrapper">
+          <div class="dock-group">
+            <div class="dock">
+              <!-- Website: Storm blue-grey -->
+              <svg width="52" height="52" viewBox="0 0 256 256">
+                <defs>
+                  <linearGradient id="p1" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#2E3744" />
+                    <stop offset="100%" stop-color="#141920" />
+                  </linearGradient>
+                </defs>
+                <rect width="256" height="256" rx="44" fill="url(#p1)" />
+                <g transform="translate(45.5, 53) scale(0.75)">
+                  <path
+                    fill="#FFFFFF"
+                    d="M25.5,18.3c3.2,8.3,4.7,30.9,4.7,68l-0.5,35.2l3.8,0.9c7.2,1.7,14.6,2.6,22.1,2.7c0.8,0,1.6,0,2.4,0 c-0.6-11.7-0.8-26.3-0.8-44c0-26.7,0.9-44.1,2.6-52.2c1.8-8.1,4.3-13.8,7.7-17c3.4-3.2,8.7-5.2,15.8-5.9c3.2-0.3,4.8-1.4,4.8-3.2 C88.1,0.9,86,0,81.7,0H6.3C2.1,0,0,1,0,3.1c0,1.7,1.7,2.5,5.1,2.5C15.5,5.8,22.3,10,25.5,18.3z"
+                  />
+                  <path
+                    fill="#FFFFFF"
+                    d="M151.7,6.2c9.2,0,16.2,3.5,20.9,10.6c4.7,7.1,7.1,22,7.1,44.7c0,23.2-0.4,42.2-1.1,56.8c3,1.2,6,2.6,9,4 c1-13.6,1.4-29.1,1.5-46.6c0-18.8,0.6-33.1,1.7-42.9c1.1-9.7,3.4-16.4,7-20.2c3.6-3.7,9.1-6.1,16.8-7.2c2.2-0.3,3.3-1.2,3.3-2.6 c0-2-1.4-3-4.1-3h-60.2c-4.9,0-7.4,1-7.4,3C146.2,5.1,148,6.2,151.7,6.2z"
+                  />
+                  <path
+                    fill="#A5BC39"
+                    d="M135.8,126c-28.6,0-47.6,15.8-80.2,15.8c-8.7,0-17.3-1.1-25.7-3.1c0.7,13,2.8,23.1,6.3,30.3 c4.4,9.2,12.7,16.6,25,22.1c12.3,5.6,27.1,8.4,44.6,8.4c17,0,31.4-2.5,43.1-7.4c11.7-5,20.4-11.5,26.2-19.6 c5.3-7.3,8.9-18,10.8-32.2C165.3,129.6,149.5,126,135.8,126z"
+                  />
+                </g>
+              </svg>
+              <!-- ODIN: shifted more indigo/purple to separate from website grey -->
+              <svg width="52" height="52" viewBox="0 0 256 256">
+                <defs>
+                  <linearGradient id="p2" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#2E2558" />
+                    <stop offset="100%" stop-color="#110C24" />
+                  </linearGradient>
+                </defs>
+                <rect width="256" height="256" rx="44" fill="url(#p2)" />
+                <path
+                  d="M140 72 L150 114 L192 124 L150 134 L140 176 L130 134 L88 124 L130 114 Z"
+                  fill="#A5BC39"
+                />
+                <path
+                  d="M76 56 L82 78 L104 84 L82 90 L76 112 L70 90 L48 84 L70 78 Z"
+                  fill="#fff"
+                  opacity="0.75"
+                />
+                <path
+                  d="M88 152 L93 170 L111 175 L93 180 L88 198 L83 180 L65 175 L83 170 Z"
+                  fill="#fff"
+                  opacity="0.5"
+                />
+                <path
+                  d="M188 60 L191 70 L201 73 L191 76 L188 86 L185 76 L175 73 L185 70 Z"
+                  fill="#fff"
+                  opacity="0.35"
+                />
+              </svg>
+              <!-- Inquiries: brighter green -->
+              <svg width="52" height="52" viewBox="0 0 256 256">
+                <defs>
+                  <linearGradient id="p3" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#3D6B20" />
+                    <stop offset="100%" stop-color="#1A2E0D" />
+                  </linearGradient>
+                </defs>
+                <rect width="256" height="256" rx="44" fill="url(#p3)" />
+                <path
+                  d="M68 80 h120 a12 12 0 0 1 12 12 v64 a12 12 0 0 1-12 12 h-52 l-22 26 -22-26 H68 a12 12 0 0 1-12-12 V92 a12 12 0 0 1 12-12z"
+                  fill="rgba(255,255,255,0.12)"
+                  stroke="#fff"
+                  stroke-width="10"
+                  stroke-linejoin="round"
+                />
+                <circle cx="100" cy="124" r="8" fill="#A5BC39" />
+                <circle cx="128" cy="124" r="8" fill="#fff" />
+                <circle cx="156" cy="124" r="8" fill="#fff" />
+              </svg>
+              <!-- Scheduler: brighter blue -->
+              <svg width="52" height="52" viewBox="0 0 256 256">
+                <defs>
+                  <linearGradient id="p4" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#265580" />
+                    <stop offset="100%" stop-color="#0D1F33" />
+                  </linearGradient>
+                </defs>
+                <rect width="256" height="256" rx="44" fill="url(#p4)" />
+                <rect x="56" y="62" width="144" height="16" rx="3" fill="#6BA0CC" opacity="0.9" />
+                <rect x="56" y="84" width="108" height="16" rx="3" fill="#6BA0CC" opacity="0.7" />
+                <rect x="82" y="106" width="118" height="16" rx="3" fill="#6BA0CC" opacity="0.55" />
+                <rect x="56" y="128" width="72" height="16" rx="3" fill="#8BBAD6" opacity="0.5" />
+                <rect x="96" y="150" width="80" height="16" rx="3" fill="#8BBAD6" opacity="0.35" />
+                <rect x="56" y="178" width="26" height="14" rx="2" fill="#A5BC39" />
+                <rect x="86" y="178" width="26" height="14" rx="2" fill="#A5BC39" opacity="0.8" />
+                <rect x="116" y="178" width="26" height="14" rx="2" fill="#D4C23A" opacity="0.75" />
+                <rect x="146" y="178" width="26" height="14" rx="2" fill="#D9A634" opacity="0.65" />
+                <rect x="176" y="178" width="24" height="14" rx="2" fill="#C96832" opacity="0.55" />
+                <line
+                  x1="130"
+                  y1="50"
+                  x2="130"
+                  y2="172"
+                  stroke="#A5BC39"
+                  stroke-width="3.5"
+                  opacity="0.85"
+                />
+                <circle cx="130" cy="48" r="5" fill="#A5BC39" />
+              </svg>
+              <!-- Orders: shifted to deep red/maroon instead of brown -->
+              <svg width="52" height="52" viewBox="0 0 256 256">
+                <defs>
+                  <linearGradient id="p5" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#6B2828" />
+                    <stop offset="100%" stop-color="#2A1010" />
+                  </linearGradient>
+                </defs>
+                <rect width="256" height="256" rx="44" fill="url(#p5)" />
+                <rect
+                  x="64"
+                  y="60"
+                  width="128"
+                  height="148"
+                  rx="12"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="10"
+                />
+                <rect x="98" y="48" width="60" height="28" rx="8" fill="#fff" />
+                <polyline
+                  points="88,118 100,130 124,104"
+                  fill="none"
+                  stroke="#A5BC39"
+                  stroke-width="10"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <line
+                  x1="140"
+                  y1="117"
+                  x2="178"
+                  y2="117"
+                  stroke="#fff"
+                  stroke-width="8"
+                  stroke-linecap="round"
+                  opacity="0.45"
+                />
+                <polyline
+                  points="88,158 100,170 124,144"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="10"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  opacity="0.45"
+                />
+                <line
+                  x1="140"
+                  y1="157"
+                  x2="178"
+                  y2="157"
+                  stroke="#fff"
+                  stroke-width="8"
+                  stroke-linecap="round"
+                  opacity="0.3"
+                />
+              </svg>
+              <!-- Previews: brighter teal -->
+              <svg width="52" height="52" viewBox="0 0 256 256">
+                <defs>
+                  <linearGradient id="p6" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#266A7C" />
+                    <stop offset="100%" stop-color="#0D2933" />
+                  </linearGradient>
+                </defs>
+                <rect width="256" height="256" rx="44" fill="url(#p6)" />
+                <rect
+                  x="52"
+                  y="64"
+                  width="152"
+                  height="128"
+                  rx="6"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="10"
+                />
+                <rect
+                  x="72"
+                  y="82"
+                  width="112"
+                  height="92"
+                  rx="2"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="4"
+                  opacity="0.28"
+                />
+                <polygon points="82,158 112,110 142,158" fill="#fff" opacity="0.35" />
+                <polygon points="118,158 148,100 178,158" fill="#A5BC39" opacity="0.75" />
+                <circle cx="156" cy="102" r="11" fill="#fff" opacity="0.55" />
+              </svg>
+            </div>
+            <div class="icon-labels">
+              <span>Website</span>
+              <span>ODIN</span>
+              <span>Inquiries</span>
+              <span>Scheduler</span>
+              <span>Orders</span>
+              <span>Previews</span>
+            </div>
+            <div class="dock-label">Proposed — ODIN more indigo, Orders deep red (no brown)</div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- ═══ SET 2: DARKER (richer darks, more subtle color) ═══ -->
+      <div class="section">
+        <div class="section-label">Darker — richer darks, subtle color</div>
+        <div class="dock-wrapper">
+          <div class="dock-group">
+            <div class="dock">
+              <!-- Website: darker storm -->
+              <svg width="52" height="52" viewBox="0 0 256 256">
+                <defs>
+                  <linearGradient id="d1" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#222830" />
+                    <stop offset="100%" stop-color="#0E1116" />
+                  </linearGradient>
+                </defs>
+                <rect width="256" height="256" rx="44" fill="url(#d1)" />
+                <g transform="translate(45.5, 53) scale(0.75)">
+                  <path
+                    fill="#FFFFFF"
+                    d="M25.5,18.3c3.2,8.3,4.7,30.9,4.7,68l-0.5,35.2l3.8,0.9c7.2,1.7,14.6,2.6,22.1,2.7c0.8,0,1.6,0,2.4,0 c-0.6-11.7-0.8-26.3-0.8-44c0-26.7,0.9-44.1,2.6-52.2c1.8-8.1,4.3-13.8,7.7-17c3.4-3.2,8.7-5.2,15.8-5.9c3.2-0.3,4.8-1.4,4.8-3.2 C88.1,0.9,86,0,81.7,0H6.3C2.1,0,0,1,0,3.1c0,1.7,1.7,2.5,5.1,2.5C15.5,5.8,22.3,10,25.5,18.3z"
+                  />
+                  <path
+                    fill="#FFFFFF"
+                    d="M151.7,6.2c9.2,0,16.2,3.5,20.9,10.6c4.7,7.1,7.1,22,7.1,44.7c0,23.2-0.4,42.2-1.1,56.8c3,1.2,6,2.6,9,4 c1-13.6,1.4-29.1,1.5-46.6c0-18.8,0.6-33.1,1.7-42.9c1.1-9.7,3.4-16.4,7-20.2c3.6-3.7,9.1-6.1,16.8-7.2c2.2-0.3,3.3-1.2,3.3-2.6 c0-2-1.4-3-4.1-3h-60.2c-4.9,0-7.4,1-7.4,3C146.2,5.1,148,6.2,151.7,6.2z"
+                  />
+                  <path
+                    fill="#A5BC39"
+                    d="M135.8,126c-28.6,0-47.6,15.8-80.2,15.8c-8.7,0-17.3-1.1-25.7-3.1c0.7,13,2.8,23.1,6.3,30.3 c4.4,9.2,12.7,16.6,25,22.1c12.3,5.6,27.1,8.4,44.6,8.4c17,0,31.4-2.5,43.1-7.4c11.7-5,20.4-11.5,26.2-19.6 c5.3-7.3,8.9-18,10.8-32.2C165.3,129.6,149.5,126,135.8,126z"
+                  />
+                </g>
+              </svg>
+              <!-- ODIN: deep indigo -->
+              <svg width="52" height="52" viewBox="0 0 256 256">
+                <defs>
+                  <linearGradient id="d2" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#221C46" />
+                    <stop offset="100%" stop-color="#0C0A1C" />
+                  </linearGradient>
+                </defs>
+                <rect width="256" height="256" rx="44" fill="url(#d2)" />
+                <path
+                  d="M140 72 L150 114 L192 124 L150 134 L140 176 L130 134 L88 124 L130 114 Z"
+                  fill="#A5BC39"
+                />
+                <path
+                  d="M76 56 L82 78 L104 84 L82 90 L76 112 L70 90 L48 84 L70 78 Z"
+                  fill="#fff"
+                  opacity="0.7"
+                />
+                <path
+                  d="M88 152 L93 170 L111 175 L93 180 L88 198 L83 180 L65 175 L83 170 Z"
+                  fill="#fff"
+                  opacity="0.45"
+                />
+                <path
+                  d="M188 60 L191 70 L201 73 L191 76 L188 86 L185 76 L175 73 L185 70 Z"
+                  fill="#fff"
+                  opacity="0.3"
+                />
+              </svg>
+              <!-- Inquiries: dark green -->
+              <svg width="52" height="52" viewBox="0 0 256 256">
+                <defs>
+                  <linearGradient id="d3" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#2D5016" />
+                    <stop offset="100%" stop-color="#141F0A" />
+                  </linearGradient>
+                </defs>
+                <rect width="256" height="256" rx="44" fill="url(#d3)" />
+                <path
+                  d="M68 80 h120 a12 12 0 0 1 12 12 v64 a12 12 0 0 1-12 12 h-52 l-22 26 -22-26 H68 a12 12 0 0 1-12-12 V92 a12 12 0 0 1 12-12z"
+                  fill="rgba(255,255,255,0.12)"
+                  stroke="#fff"
+                  stroke-width="10"
+                  stroke-linejoin="round"
+                />
+                <circle cx="100" cy="124" r="8" fill="#A5BC39" />
+                <circle cx="128" cy="124" r="8" fill="#fff" />
+                <circle cx="156" cy="124" r="8" fill="#fff" />
+              </svg>
+              <!-- Scheduler: dark blue -->
+              <svg width="52" height="52" viewBox="0 0 256 256">
+                <defs>
+                  <linearGradient id="d4" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#1C3A5C" />
+                    <stop offset="100%" stop-color="#0A1520" />
+                  </linearGradient>
+                </defs>
+                <rect width="256" height="256" rx="44" fill="url(#d4)" />
+                <rect x="56" y="62" width="144" height="16" rx="3" fill="#5B8DB8" opacity="0.9" />
+                <rect x="56" y="84" width="108" height="16" rx="3" fill="#5B8DB8" opacity="0.7" />
+                <rect x="82" y="106" width="118" height="16" rx="3" fill="#5B8DB8" opacity="0.55" />
+                <rect x="56" y="128" width="72" height="16" rx="3" fill="#7EACC9" opacity="0.5" />
+                <rect x="96" y="150" width="80" height="16" rx="3" fill="#7EACC9" opacity="0.35" />
+                <rect x="56" y="178" width="26" height="14" rx="2" fill="#A5BC39" />
+                <rect x="86" y="178" width="26" height="14" rx="2" fill="#A5BC39" opacity="0.8" />
+                <rect x="116" y="178" width="26" height="14" rx="2" fill="#D4C23A" opacity="0.7" />
+                <rect x="146" y="178" width="26" height="14" rx="2" fill="#D9A634" opacity="0.6" />
+                <rect x="176" y="178" width="24" height="14" rx="2" fill="#C96832" opacity="0.5" />
+                <line
+                  x1="130"
+                  y1="50"
+                  x2="130"
+                  y2="172"
+                  stroke="#A5BC39"
+                  stroke-width="3"
+                  opacity="0.8"
+                />
+                <circle cx="130" cy="48" r="4" fill="#A5BC39" />
+              </svg>
+              <!-- Orders: deep crimson (not brown) -->
+              <svg width="52" height="52" viewBox="0 0 256 256">
+                <defs>
+                  <linearGradient id="d5" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#4E1E1E" />
+                    <stop offset="100%" stop-color="#1E0C0C" />
+                  </linearGradient>
+                </defs>
+                <rect width="256" height="256" rx="44" fill="url(#d5)" />
+                <rect
+                  x="64"
+                  y="60"
+                  width="128"
+                  height="148"
+                  rx="12"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="10"
+                />
+                <rect x="98" y="48" width="60" height="28" rx="8" fill="#fff" />
+                <polyline
+                  points="88,118 100,130 124,104"
+                  fill="none"
+                  stroke="#A5BC39"
+                  stroke-width="10"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <line
+                  x1="140"
+                  y1="117"
+                  x2="178"
+                  y2="117"
+                  stroke="#fff"
+                  stroke-width="8"
+                  stroke-linecap="round"
+                  opacity="0.4"
+                />
+                <polyline
+                  points="88,158 100,170 124,144"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="10"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  opacity="0.4"
+                />
+                <line
+                  x1="140"
+                  y1="157"
+                  x2="178"
+                  y2="157"
+                  stroke="#fff"
+                  stroke-width="8"
+                  stroke-linecap="round"
+                  opacity="0.25"
+                />
+              </svg>
+              <!-- Previews: dark teal -->
+              <svg width="52" height="52" viewBox="0 0 256 256">
+                <defs>
+                  <linearGradient id="d6" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#1C4D5C" />
+                    <stop offset="100%" stop-color="#0A1E24" />
+                  </linearGradient>
+                </defs>
+                <rect width="256" height="256" rx="44" fill="url(#d6)" />
+                <rect
+                  x="52"
+                  y="64"
+                  width="152"
+                  height="128"
+                  rx="6"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="10"
+                />
+                <rect
+                  x="72"
+                  y="82"
+                  width="112"
+                  height="92"
+                  rx="2"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="4"
+                  opacity="0.25"
+                />
+                <polygon points="82,158 112,110 142,158" fill="#fff" opacity="0.3" />
+                <polygon points="118,158 148,100 178,158" fill="#A5BC39" opacity="0.7" />
+                <circle cx="156" cy="102" r="10" fill="#fff" opacity="0.5" />
+              </svg>
+            </div>
+            <div class="icon-labels">
+              <span>Website</span>
+              <span>ODIN</span>
+              <span>Inquiries</span>
+              <span>Scheduler</span>
+              <span>Orders</span>
+              <span>Previews</span>
+            </div>
+            <div class="dock-label">
+              Darker — deeper backgrounds, more contrast with icon elements
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- ═══ SET 3: CURRENT (what's deployed now) ═══ -->
+      <div class="section">
+        <div class="section-label">Current — deployed now</div>
+        <div class="dock-wrapper">
+          <div class="dock-group">
+            <div class="dock">
+              <!-- Website: current navy U -->
+              <svg width="52" height="52" viewBox="0 0 256 256">
+                <defs>
+                  <linearGradient id="c1" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#1B3A5C" />
+                    <stop offset="100%" stop-color="#0E2240" />
+                  </linearGradient>
+                </defs>
+                <rect width="256" height="256" rx="44" fill="url(#c1)" />
+                <g transform="translate(45.5, 53) scale(0.75)">
+                  <path
+                    fill="#FFFFFF"
+                    d="M25.5,18.3c3.2,8.3,4.7,30.9,4.7,68l-0.5,35.2l3.8,0.9c7.2,1.7,14.6,2.6,22.1,2.7c0.8,0,1.6,0,2.4,0 c-0.6-11.7-0.8-26.3-0.8-44c0-26.7,0.9-44.1,2.6-52.2c1.8-8.1,4.3-13.8,7.7-17c3.4-3.2,8.7-5.2,15.8-5.9c3.2-0.3,4.8-1.4,4.8-3.2 C88.1,0.9,86,0,81.7,0H6.3C2.1,0,0,1,0,3.1c0,1.7,1.7,2.5,5.1,2.5C15.5,5.8,22.3,10,25.5,18.3z"
+                  />
+                  <path
+                    fill="#FFFFFF"
+                    d="M151.7,6.2c9.2,0,16.2,3.5,20.9,10.6c4.7,7.1,7.1,22,7.1,44.7c0,23.2-0.4,42.2-1.1,56.8c3,1.2,6,2.6,9,4 c1-13.6,1.4-29.1,1.5-46.6c0-18.8,0.6-33.1,1.7-42.9c1.1-9.7,3.4-16.4,7-20.2c3.6-3.7,9.1-6.1,16.8-7.2c2.2-0.3,3.3-1.2,3.3-2.6 c0-2-1.4-3-4.1-3h-60.2c-4.9,0-7.4,1-7.4,3C146.2,5.1,148,6.2,151.7,6.2z"
+                  />
+                  <path
+                    fill="#A5BC39"
+                    d="M135.8,126c-28.6,0-47.6,15.8-80.2,15.8c-8.7,0-17.3-1.1-25.7-3.1c0.7,13,2.8,23.1,6.3,30.3 c4.4,9.2,12.7,16.6,25,22.1c12.3,5.6,27.1,8.4,44.6,8.4c17,0,31.4-2.5,43.1-7.4c11.7-5,20.4-11.5,26.2-19.6 c5.3-7.3,8.9-18,10.8-32.2C165.3,129.6,149.5,126,135.8,126z"
+                  />
+                </g>
+              </svg>
+              <!-- ODIN: current -->
+              <svg width="52" height="52" viewBox="0 0 256 256">
+                <defs>
+                  <linearGradient id="c2" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#2A2D52" />
+                    <stop offset="100%" stop-color="#0C0E1E" />
+                  </linearGradient>
+                </defs>
+                <rect width="256" height="256" rx="44" fill="url(#c2)" />
+                <path
+                  d="M140 72 L150 114 L192 124 L150 134 L140 176 L130 134 L88 124 L130 114 Z"
+                  fill="#A5BC39"
+                />
+                <path
+                  d="M76 56 L82 78 L104 84 L82 90 L76 112 L70 90 L48 84 L70 78 Z"
+                  fill="#fff"
+                  opacity="0.75"
+                />
+                <path
+                  d="M88 152 L93 170 L111 175 L93 180 L88 198 L83 180 L65 175 L83 170 Z"
+                  fill="#fff"
+                  opacity="0.5"
+                />
+                <path
+                  d="M188 60 L191 70 L201 73 L191 76 L188 86 L185 76 L175 73 L185 70 Z"
+                  fill="#fff"
+                  opacity="0.35"
+                />
+              </svg>
+              <!-- Inquiries: current -->
+              <svg width="52" height="52" viewBox="0 0 256 256">
+                <defs>
+                  <linearGradient id="c3" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#3D6B20" />
+                    <stop offset="100%" stop-color="#1A2E0D" />
+                  </linearGradient>
+                </defs>
+                <rect width="256" height="256" rx="44" fill="url(#c3)" />
+                <path
+                  d="M68 80 h120 a12 12 0 0 1 12 12 v64 a12 12 0 0 1-12 12 h-52 l-22 26 -22-26 H68 a12 12 0 0 1-12-12 V92 a12 12 0 0 1 12-12z"
+                  fill="rgba(255,255,255,0.12)"
+                  stroke="#fff"
+                  stroke-width="10"
+                  stroke-linejoin="round"
+                />
+                <circle cx="100" cy="124" r="8" fill="#A5BC39" />
+                <circle cx="128" cy="124" r="8" fill="#fff" />
+                <circle cx="156" cy="124" r="8" fill="#fff" />
+              </svg>
+              <!-- Scheduler: current -->
+              <svg width="52" height="52" viewBox="0 0 256 256">
+                <defs>
+                  <linearGradient id="c4" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#265580" />
+                    <stop offset="100%" stop-color="#0D1F33" />
+                  </linearGradient>
+                </defs>
+                <rect width="256" height="256" rx="44" fill="url(#c4)" />
+                <rect x="56" y="62" width="144" height="16" rx="3" fill="#6BA0CC" opacity="0.9" />
+                <rect x="56" y="84" width="108" height="16" rx="3" fill="#6BA0CC" opacity="0.7" />
+                <rect x="82" y="106" width="118" height="16" rx="3" fill="#6BA0CC" opacity="0.55" />
+                <rect x="56" y="128" width="72" height="16" rx="3" fill="#8BBAD6" opacity="0.5" />
+                <rect x="96" y="150" width="80" height="16" rx="3" fill="#8BBAD6" opacity="0.35" />
+                <rect x="56" y="178" width="26" height="14" rx="2" fill="#A5BC39" />
+                <rect x="86" y="178" width="26" height="14" rx="2" fill="#A5BC39" opacity="0.8" />
+                <rect x="116" y="178" width="26" height="14" rx="2" fill="#D4C23A" opacity="0.75" />
+                <rect x="146" y="178" width="26" height="14" rx="2" fill="#D9A634" opacity="0.65" />
+                <rect x="176" y="178" width="24" height="14" rx="2" fill="#C96832" opacity="0.55" />
+                <line
+                  x1="130"
+                  y1="50"
+                  x2="130"
+                  y2="172"
+                  stroke="#A5BC39"
+                  stroke-width="3.5"
+                  opacity="0.85"
+                />
+                <circle cx="130" cy="48" r="5" fill="#A5BC39" />
+              </svg>
+              <!-- Orders: current amber/brown -->
+              <svg width="52" height="52" viewBox="0 0 256 256">
+                <defs>
+                  <linearGradient id="c5" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#7A4E26" />
+                    <stop offset="100%" stop-color="#331F0D" />
+                  </linearGradient>
+                </defs>
+                <rect width="256" height="256" rx="44" fill="url(#c5)" />
+                <rect
+                  x="64"
+                  y="60"
+                  width="128"
+                  height="148"
+                  rx="12"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="10"
+                />
+                <rect x="98" y="48" width="60" height="28" rx="8" fill="#fff" />
+                <polyline
+                  points="88,118 100,130 124,104"
+                  fill="none"
+                  stroke="#A5BC39"
+                  stroke-width="10"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <line
+                  x1="140"
+                  y1="117"
+                  x2="178"
+                  y2="117"
+                  stroke="#fff"
+                  stroke-width="8"
+                  stroke-linecap="round"
+                  opacity="0.45"
+                />
+                <polyline
+                  points="88,158 100,170 124,144"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="10"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  opacity="0.45"
+                />
+                <line
+                  x1="140"
+                  y1="157"
+                  x2="178"
+                  y2="157"
+                  stroke="#fff"
+                  stroke-width="8"
+                  stroke-linecap="round"
+                  opacity="0.3"
+                />
+              </svg>
+              <!-- Previews: current -->
+              <svg width="52" height="52" viewBox="0 0 256 256">
+                <defs>
+                  <linearGradient id="c6" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#266A7C" />
+                    <stop offset="100%" stop-color="#0D2933" />
+                  </linearGradient>
+                </defs>
+                <rect width="256" height="256" rx="44" fill="url(#c6)" />
+                <rect
+                  x="52"
+                  y="64"
+                  width="152"
+                  height="128"
+                  rx="6"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="10"
+                />
+                <rect
+                  x="72"
+                  y="82"
+                  width="112"
+                  height="92"
+                  rx="2"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="4"
+                  opacity="0.28"
+                />
+                <polygon points="82,158 112,110 142,158" fill="#fff" opacity="0.35" />
+                <polygon points="118,158 148,100 178,158" fill="#A5BC39" opacity="0.75" />
+                <circle cx="156" cy="102" r="11" fill="#fff" opacity="0.55" />
+              </svg>
+            </div>
+            <div class="icon-labels">
+              <span>Website</span>
+              <span>ODIN</span>
+              <span>Inquiries</span>
+              <span>Scheduler</span>
+              <span>Orders</span>
+              <span>Previews</span>
+            </div>
+            <div class="dock-label">Current — what's deployed</div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- ═══ SET 4: UNIFIED DARK — near-black bg, brighter icon elements ═══ -->
+      <div class="section">
+        <div class="section-label">Unified Dark — near-black backgrounds, bolder elements</div>
+        <div class="dock-wrapper">
+          <div class="dock-group">
+            <div class="dock">
+              <!-- Website: near-black, warm hint -->
+              <svg width="52" height="52" viewBox="0 0 256 256">
+                <defs>
+                  <linearGradient id="u1" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#1C1E24" />
+                    <stop offset="100%" stop-color="#101114" />
+                  </linearGradient>
+                </defs>
+                <rect width="256" height="256" rx="44" fill="url(#u1)" />
+                <g transform="translate(45.5, 53) scale(0.75)">
+                  <path
+                    fill="#FFFFFF"
+                    d="M25.5,18.3c3.2,8.3,4.7,30.9,4.7,68l-0.5,35.2l3.8,0.9c7.2,1.7,14.6,2.6,22.1,2.7c0.8,0,1.6,0,2.4,0 c-0.6-11.7-0.8-26.3-0.8-44c0-26.7,0.9-44.1,2.6-52.2c1.8-8.1,4.3-13.8,7.7-17c3.4-3.2,8.7-5.2,15.8-5.9c3.2-0.3,4.8-1.4,4.8-3.2 C88.1,0.9,86,0,81.7,0H6.3C2.1,0,0,1,0,3.1c0,1.7,1.7,2.5,5.1,2.5C15.5,5.8,22.3,10,25.5,18.3z"
+                  />
+                  <path
+                    fill="#FFFFFF"
+                    d="M151.7,6.2c9.2,0,16.2,3.5,20.9,10.6c4.7,7.1,7.1,22,7.1,44.7c0,23.2-0.4,42.2-1.1,56.8c3,1.2,6,2.6,9,4 c1-13.6,1.4-29.1,1.5-46.6c0-18.8,0.6-33.1,1.7-42.9c1.1-9.7,3.4-16.4,7-20.2c3.6-3.7,9.1-6.1,16.8-7.2c2.2-0.3,3.3-1.2,3.3-2.6 c0-2-1.4-3-4.1-3h-60.2c-4.9,0-7.4,1-7.4,3C146.2,5.1,148,6.2,151.7,6.2z"
+                  />
+                  <path
+                    fill="#A5BC39"
+                    d="M135.8,126c-28.6,0-47.6,15.8-80.2,15.8c-8.7,0-17.3-1.1-25.7-3.1c0.7,13,2.8,23.1,6.3,30.3 c4.4,9.2,12.7,16.6,25,22.1c12.3,5.6,27.1,8.4,44.6,8.4c17,0,31.4-2.5,43.1-7.4c11.7-5,20.4-11.5,26.2-19.6 c5.3-7.3,8.9-18,10.8-32.2C165.3,129.6,149.5,126,135.8,126z"
+                  />
+                </g>
+              </svg>
+              <!-- ODIN: near-black, brighter sparkles -->
+              <svg width="52" height="52" viewBox="0 0 256 256">
+                <defs>
+                  <linearGradient id="u2" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#181A22" />
+                    <stop offset="100%" stop-color="#0C0D12" />
+                  </linearGradient>
+                </defs>
+                <rect width="256" height="256" rx="44" fill="url(#u2)" />
+                <path
+                  d="M140 72 L150 114 L192 124 L150 134 L140 176 L130 134 L88 124 L130 114 Z"
+                  fill="#A5BC39"
+                />
+                <path
+                  d="M76 56 L82 78 L104 84 L82 90 L76 112 L70 90 L48 84 L70 78 Z"
+                  fill="#fff"
+                  opacity="0.85"
+                />
+                <path
+                  d="M88 152 L93 170 L111 175 L93 180 L88 198 L83 180 L65 175 L83 170 Z"
+                  fill="#fff"
+                  opacity="0.6"
+                />
+                <path
+                  d="M188 60 L191 70 L201 73 L191 76 L188 86 L185 76 L175 73 L185 70 Z"
+                  fill="#fff"
+                  opacity="0.45"
+                />
+              </svg>
+              <!-- Inquiries: near-black, bolder bubble -->
+              <svg width="52" height="52" viewBox="0 0 256 256">
+                <defs>
+                  <linearGradient id="u3" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#181C18" />
+                    <stop offset="100%" stop-color="#0C0E0C" />
+                  </linearGradient>
+                </defs>
+                <rect width="256" height="256" rx="44" fill="url(#u3)" />
+                <path
+                  d="M68 80 h120 a12 12 0 0 1 12 12 v64 a12 12 0 0 1-12 12 h-52 l-22 26 -22-26 H68 a12 12 0 0 1-12-12 V92 a12 12 0 0 1 12-12z"
+                  fill="rgba(255,255,255,0.15)"
+                  stroke="#fff"
+                  stroke-width="10"
+                  stroke-linejoin="round"
+                />
+                <circle cx="100" cy="124" r="8" fill="#A5BC39" />
+                <circle cx="128" cy="124" r="8" fill="#fff" />
+                <circle cx="156" cy="124" r="8" fill="#fff" />
+              </svg>
+              <!-- Scheduler: near-black, brighter bars -->
+              <svg width="52" height="52" viewBox="0 0 256 256">
+                <defs>
+                  <linearGradient id="u4" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#161A22" />
+                    <stop offset="100%" stop-color="#0A0D12" />
+                  </linearGradient>
+                </defs>
+                <rect width="256" height="256" rx="44" fill="url(#u4)" />
+                <rect x="56" y="62" width="144" height="16" rx="3" fill="#6BA0CC" opacity="0.95" />
+                <rect x="56" y="84" width="108" height="16" rx="3" fill="#6BA0CC" opacity="0.75" />
+                <rect x="82" y="106" width="118" height="16" rx="3" fill="#6BA0CC" opacity="0.6" />
+                <rect x="56" y="128" width="72" height="16" rx="3" fill="#8BBAD6" opacity="0.55" />
+                <rect x="96" y="150" width="80" height="16" rx="3" fill="#8BBAD6" opacity="0.4" />
+                <rect x="56" y="178" width="26" height="14" rx="2" fill="#A5BC39" />
+                <rect x="86" y="178" width="26" height="14" rx="2" fill="#A5BC39" opacity="0.85" />
+                <rect x="116" y="178" width="26" height="14" rx="2" fill="#D4C23A" opacity="0.8" />
+                <rect x="146" y="178" width="26" height="14" rx="2" fill="#D9A634" opacity="0.7" />
+                <rect x="176" y="178" width="24" height="14" rx="2" fill="#C96832" opacity="0.6" />
+                <line
+                  x1="130"
+                  y1="50"
+                  x2="130"
+                  y2="172"
+                  stroke="#A5BC39"
+                  stroke-width="3.5"
+                  opacity="0.9"
+                />
+                <circle cx="130" cy="48" r="5" fill="#A5BC39" />
+              </svg>
+              <!-- Orders: near-black, bolder clipboard -->
+              <svg width="52" height="52" viewBox="0 0 256 256">
+                <defs>
+                  <linearGradient id="u5" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#1E1818" />
+                    <stop offset="100%" stop-color="#120E0E" />
+                  </linearGradient>
+                </defs>
+                <rect width="256" height="256" rx="44" fill="url(#u5)" />
+                <rect
+                  x="64"
+                  y="60"
+                  width="128"
+                  height="148"
+                  rx="12"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="10"
+                  opacity="0.9"
+                />
+                <rect x="98" y="48" width="60" height="28" rx="8" fill="#fff" />
+                <polyline
+                  points="88,118 100,130 124,104"
+                  fill="none"
+                  stroke="#A5BC39"
+                  stroke-width="10"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <line
+                  x1="140"
+                  y1="117"
+                  x2="178"
+                  y2="117"
+                  stroke="#fff"
+                  stroke-width="8"
+                  stroke-linecap="round"
+                  opacity="0.5"
+                />
+                <polyline
+                  points="88,158 100,170 124,144"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="10"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  opacity="0.5"
+                />
+                <line
+                  x1="140"
+                  y1="157"
+                  x2="178"
+                  y2="157"
+                  stroke="#fff"
+                  stroke-width="8"
+                  stroke-linecap="round"
+                  opacity="0.35"
+                />
+              </svg>
+              <!-- Previews: near-black, bolder frame -->
+              <svg width="52" height="52" viewBox="0 0 256 256">
+                <defs>
+                  <linearGradient id="u6" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#161C1E" />
+                    <stop offset="100%" stop-color="#0A0E10" />
+                  </linearGradient>
+                </defs>
+                <rect width="256" height="256" rx="44" fill="url(#u6)" />
+                <rect
+                  x="52"
+                  y="64"
+                  width="152"
+                  height="128"
+                  rx="6"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="10"
+                  opacity="0.9"
+                />
+                <rect
+                  x="72"
+                  y="82"
+                  width="112"
+                  height="92"
+                  rx="2"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="4"
+                  opacity="0.3"
+                />
+                <polygon points="82,158 112,110 142,158" fill="#fff" opacity="0.4" />
+                <polygon points="118,158 148,100 178,158" fill="#A5BC39" opacity="0.85" />
+                <circle cx="156" cy="102" r="11" fill="#fff" opacity="0.6" />
+              </svg>
+            </div>
+            <div class="icon-labels">
+              <span>Website</span>
+              <span>ODIN</span>
+              <span>Inquiries</span>
+              <span>Scheduler</span>
+              <span>Orders</span>
+              <span>Previews</span>
+            </div>
+            <div class="dock-label">
+              Unified Dark — same dark tile feel, brighter glowing elements
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

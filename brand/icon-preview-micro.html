@@ -1,0 +1,839 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upland Workshop — Micro Icons</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "DM Sans", system-ui, sans-serif;
+        background: #0c0b0e;
+        color: #c8c5cc;
+      }
+      .page {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 3rem 2rem 6rem;
+      }
+      .suite-header {
+        margin-bottom: 3rem;
+      }
+      .suite-header::after {
+        content: "";
+        display: block;
+        width: 48px;
+        height: 2px;
+        background: #a5bc39;
+        margin-top: 1.5rem;
+      }
+      .suite-name {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #a5bc39;
+        margin-bottom: 0.6rem;
+      }
+      .suite-title {
+        font-size: 1.8rem;
+        font-weight: 400;
+        color: #eae8ed;
+      }
+      .section {
+        margin-bottom: 3.5rem;
+      }
+      .section-label {
+        font-size: 0.65rem;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #605c66;
+        margin-bottom: 1.5rem;
+      }
+      .divider {
+        border: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.04);
+        margin: 1rem 0 3rem;
+      }
+
+      .icon-row {
+        display: flex;
+        gap: 2.5rem;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .icon-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .icon-group .label {
+        font-size: 0.6rem;
+        color: #555;
+      }
+
+      /* Context cards — simulating the ODIN dashboard */
+      .context-panel {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+      .context-card {
+        border-radius: 10px;
+        padding: 1rem 1.2rem;
+        font-size: 0.8rem;
+      }
+      .context-card.light {
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        color: #111827;
+      }
+      .context-card.dark {
+        background: #161a22;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        color: #c8c5cc;
+      }
+      .card-header {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+        font-size: 0.65rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .light .card-header {
+        color: #6b7280;
+      }
+      .dark .card-header {
+        color: #605c66;
+      }
+      .card-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.35rem 0;
+        font-size: 0.78rem;
+      }
+      .light .card-row {
+        border-bottom: 1px solid #f3f4f6;
+      }
+      .dark .card-row {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      }
+      .card-row:last-child {
+        border-bottom: none;
+      }
+      .card-link {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.65rem;
+        margin-top: 0.5rem;
+        justify-content: flex-end;
+      }
+      .light .card-link {
+        color: #9ca3af;
+      }
+      .dark .card-link {
+        color: #4a4650;
+      }
+
+      @media (max-width: 600px) {
+        .context-panel {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="suite-header">
+        <div class="suite-name">Upland Workshop</div>
+        <h1 class="suite-title">Micro Icons</h1>
+      </div>
+
+      <!-- ═══ ALL ICONS AT MULTIPLE SIZES ═══ -->
+      <div class="section">
+        <div class="section-label">Dark marks — for light backgrounds</div>
+        <div
+          style="
+            background: #f8f8f7;
+            border-radius: 12px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+          "
+        >
+          <!-- 20px row -->
+          <div>
+            <div
+              style="
+                font-size: 0.6rem;
+                color: #999;
+                margin-bottom: 0.6rem;
+                font-weight: 600;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+              "
+            >
+              20px
+            </div>
+            <div class="icon-row">
+              <div class="icon-group">
+                <!-- Website micro: just the U mark -->
+                <svg width="20" height="20" viewBox="0 0 256 256" fill="none">
+                  <g transform="translate(25, 28) scale(0.82)">
+                    <path
+                      fill="#374151"
+                      d="M25.5,18.3c3.2,8.3,4.7,30.9,4.7,68l-0.5,35.2l3.8,0.9c7.2,1.7,14.6,2.6,22.1,2.7c0.8,0,1.6,0,2.4,0 c-0.6-11.7-0.8-26.3-0.8-44c0-26.7,0.9-44.1,2.6-52.2c1.8-8.1,4.3-13.8,7.7-17c3.4-3.2,8.7-5.2,15.8-5.9c3.2-0.3,4.8-1.4,4.8-3.2 C88.1,0.9,86,0,81.7,0H6.3C2.1,0,0,1,0,3.1c0,1.7,1.7,2.5,5.1,2.5C15.5,5.8,22.3,10,25.5,18.3z"
+                    />
+                    <path
+                      fill="#374151"
+                      d="M151.7,6.2c9.2,0,16.2,3.5,20.9,10.6c4.7,7.1,7.1,22,7.1,44.7c0,23.2-0.4,42.2-1.1,56.8c3,1.2,6,2.6,9,4 c1-13.6,1.4-29.1,1.5-46.6c0-18.8,0.6-33.1,1.7-42.9c1.1-9.7,3.4-16.4,7-20.2c3.6-3.7,9.1-6.1,16.8-7.2c2.2-0.3,3.3-1.2,3.3-2.6 c0-2-1.4-3-4.1-3h-60.2c-4.9,0-7.4,1-7.4,3C146.2,5.1,148,6.2,151.7,6.2z"
+                    />
+                    <path
+                      fill="#A5BC39"
+                      d="M135.8,126c-28.6,0-47.6,15.8-80.2,15.8c-8.7,0-17.3-1.1-25.7-3.1c0.7,13,2.8,23.1,6.3,30.3 c4.4,9.2,12.7,16.6,25,22.1c12.3,5.6,27.1,8.4,44.6,8.4c17,0,31.4-2.5,43.1-7.4c11.7-5,20.4-11.5,26.2-19.6 c5.3-7.3,8.9-18,10.8-32.2C165.3,129.6,149.5,126,135.8,126z"
+                    />
+                  </g>
+                </svg>
+                <span class="label" style="color: #999">Website</span>
+              </div>
+              <div class="icon-group">
+                <!-- ODIN micro: simplified sparkle cluster -->
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path
+                    d="M11.5 1.5 L13 6.8 L18.3 8.3 L13 9.8 L11.5 15.1 L10 9.8 L4.7 8.3 L10 6.8 Z"
+                    fill="#A5BC39"
+                  />
+                  <path
+                    d="M4.5 2 L5.4 4.6 L8 5.5 L5.4 6.4 L4.5 9 L3.6 6.4 L1 5.5 L3.6 4.6 Z"
+                    fill="#7A9A28"
+                    opacity="0.7"
+                  />
+                  <path
+                    d="M5.5 12 L6.1 14 L8.1 14.6 L6.1 15.2 L5.5 17.2 L4.9 15.2 L2.9 14.6 L4.9 14 Z"
+                    fill="#7A9A28"
+                    opacity="0.55"
+                  />
+                  <path
+                    d="M16 3 L16.4 4.2 L17.6 4.6 L16.4 5 L16 6.2 L15.6 5 L14.4 4.6 L15.6 4.2 Z"
+                    fill="#7A9A28"
+                    opacity="0.45"
+                  />
+                </svg>
+                <span class="label" style="color: #999">ODIN</span>
+              </div>
+              <div class="icon-group">
+                <!-- Inquiries micro: speech bubble -->
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path
+                    d="M4 5 h12 a1.5 1.5 0 0 1 1.5 1.5 v7 a1.5 1.5 0 0 1-1.5 1.5 h-5 l-2.5 2.5 -2.5-2.5 H4 a1.5 1.5 0 0 1-1.5-1.5 v-7 A1.5 1.5 0 0 1 4 5z"
+                    fill="#374151"
+                    opacity="0.12"
+                    stroke="#4A7A20"
+                    stroke-width="1.5"
+                    stroke-linejoin="round"
+                  />
+                  <circle cx="7.5" cy="10" r="1" fill="#A5BC39" />
+                  <circle cx="10" cy="10" r="1" fill="#6B9A28" />
+                  <circle cx="12.5" cy="10" r="1" fill="#6B9A28" />
+                </svg>
+                <span class="label" style="color: #999">Inquiries</span>
+              </div>
+              <div class="icon-group">
+                <!-- Scheduler micro: gantt bars -->
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <rect x="3" y="4" width="14" height="2.2" rx="1" fill="#2C6B8A" opacity="0.8" />
+                  <rect x="3" y="7.5" width="10" height="2.2" rx="1" fill="#2C6B8A" opacity="0.6" />
+                  <rect x="5" y="11" width="12" height="2.2" rx="1" fill="#2C6B8A" opacity="0.45" />
+                  <rect x="3" y="15" width="3.5" height="1.8" rx="0.6" fill="#A5BC39" />
+                  <rect
+                    x="7"
+                    y="15"
+                    width="3.5"
+                    height="1.8"
+                    rx="0.6"
+                    fill="#A5BC39"
+                    opacity="0.6"
+                  />
+                  <rect
+                    x="11"
+                    y="15"
+                    width="3.5"
+                    height="1.8"
+                    rx="0.6"
+                    fill="#D9A634"
+                    opacity="0.5"
+                  />
+                </svg>
+                <span class="label" style="color: #999">Scheduler</span>
+              </div>
+              <div class="icon-group">
+                <!-- Orders micro: clipboard refined -->
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <rect
+                    x="4.5"
+                    y="4"
+                    width="11"
+                    height="13"
+                    rx="1.8"
+                    stroke="#6B5040"
+                    stroke-width="1.3"
+                    fill="none"
+                  />
+                  <rect x="7.2" y="2.8" width="5.6" height="2.4" rx="1.2" fill="#6B5040" />
+                  <polyline
+                    points="7,9.5 8.5,11.2 11.5,7.5"
+                    stroke="#A5BC39"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    fill="none"
+                  />
+                  <line
+                    x1="7"
+                    y1="14"
+                    x2="13"
+                    y2="14"
+                    stroke="#6B5040"
+                    stroke-width="1"
+                    stroke-linecap="round"
+                    opacity="0.35"
+                  />
+                </svg>
+                <span class="label" style="color: #999">Orders</span>
+              </div>
+              <div class="icon-group">
+                <!-- Previews micro: frame -->
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <rect
+                    x="2.5"
+                    y="4"
+                    width="15"
+                    height="12"
+                    rx="1"
+                    stroke="#1B4D5C"
+                    stroke-width="1.4"
+                    fill="none"
+                  />
+                  <polygon points="6,14 9,8.5 12,14" fill="#1B4D5C" opacity="0.3" />
+                  <polygon points="9.5,14 12.5,7 15.5,14" fill="#A5BC39" opacity="0.6" />
+                  <circle cx="13.5" cy="7.5" r="1.5" fill="#1B4D5C" opacity="0.35" />
+                </svg>
+                <span class="label" style="color: #999">Previews</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 16px row -->
+          <div>
+            <div
+              style="
+                font-size: 0.6rem;
+                color: #999;
+                margin-bottom: 0.6rem;
+                font-weight: 600;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+              "
+            >
+              16px
+            </div>
+            <div class="icon-row">
+              <div class="icon-group">
+                <svg width="16" height="16" viewBox="0 0 256 256" fill="none">
+                  <g transform="translate(25, 28) scale(0.82)">
+                    <path
+                      fill="#374151"
+                      d="M25.5,18.3c3.2,8.3,4.7,30.9,4.7,68l-0.5,35.2l3.8,0.9c7.2,1.7,14.6,2.6,22.1,2.7c0.8,0,1.6,0,2.4,0 c-0.6-11.7-0.8-26.3-0.8-44c0-26.7,0.9-44.1,2.6-52.2c1.8-8.1,4.3-13.8,7.7-17c3.4-3.2,8.7-5.2,15.8-5.9c3.2-0.3,4.8-1.4,4.8-3.2 C88.1,0.9,86,0,81.7,0H6.3C2.1,0,0,1,0,3.1c0,1.7,1.7,2.5,5.1,2.5C15.5,5.8,22.3,10,25.5,18.3z"
+                    />
+                    <path
+                      fill="#374151"
+                      d="M151.7,6.2c9.2,0,16.2,3.5,20.9,10.6c4.7,7.1,7.1,22,7.1,44.7c0,23.2-0.4,42.2-1.1,56.8c3,1.2,6,2.6,9,4 c1-13.6,1.4-29.1,1.5-46.6c0-18.8,0.6-33.1,1.7-42.9c1.1-9.7,3.4-16.4,7-20.2c3.6-3.7,9.1-6.1,16.8-7.2c2.2-0.3,3.3-1.2,3.3-2.6 c0-2-1.4-3-4.1-3h-60.2c-4.9,0-7.4,1-7.4,3C146.2,5.1,148,6.2,151.7,6.2z"
+                    />
+                    <path
+                      fill="#A5BC39"
+                      d="M135.8,126c-28.6,0-47.6,15.8-80.2,15.8c-8.7,0-17.3-1.1-25.7-3.1c0.7,13,2.8,23.1,6.3,30.3 c4.4,9.2,12.7,16.6,25,22.1c12.3,5.6,27.1,8.4,44.6,8.4c17,0,31.4-2.5,43.1-7.4c11.7-5,20.4-11.5,26.2-19.6 c5.3-7.3,8.9-18,10.8-32.2C165.3,129.6,149.5,126,135.8,126z"
+                    />
+                  </g>
+                </svg>
+                <span class="label" style="color: #999">Website</span>
+              </div>
+              <div class="icon-group">
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                  <path
+                    d="M11.5 1.5 L13 6.8 L18.3 8.3 L13 9.8 L11.5 15.1 L10 9.8 L4.7 8.3 L10 6.8 Z"
+                    fill="#A5BC39"
+                  />
+                  <path
+                    d="M4.5 2 L5.4 4.6 L8 5.5 L5.4 6.4 L4.5 9 L3.6 6.4 L1 5.5 L3.6 4.6 Z"
+                    fill="#7A9A28"
+                    opacity="0.7"
+                  />
+                  <path
+                    d="M5.5 12 L6.1 14 L8.1 14.6 L6.1 15.2 L5.5 17.2 L4.9 15.2 L2.9 14.6 L4.9 14 Z"
+                    fill="#7A9A28"
+                    opacity="0.55"
+                  />
+                </svg>
+                <span class="label" style="color: #999">ODIN</span>
+              </div>
+              <div class="icon-group">
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                  <path
+                    d="M4 5 h12 a1.5 1.5 0 0 1 1.5 1.5 v7 a1.5 1.5 0 0 1-1.5 1.5 h-5 l-2.5 2.5 -2.5-2.5 H4 a1.5 1.5 0 0 1-1.5-1.5 v-7 A1.5 1.5 0 0 1 4 5z"
+                    fill="#374151"
+                    opacity="0.12"
+                    stroke="#4A7A20"
+                    stroke-width="1.7"
+                    stroke-linejoin="round"
+                  />
+                  <circle cx="7.5" cy="10" r="1.1" fill="#A5BC39" />
+                  <circle cx="10" cy="10" r="1.1" fill="#6B9A28" />
+                  <circle cx="12.5" cy="10" r="1.1" fill="#6B9A28" />
+                </svg>
+                <span class="label" style="color: #999">Inquiries</span>
+              </div>
+              <div class="icon-group">
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                  <rect x="3" y="4" width="14" height="2.4" rx="1" fill="#2C6B8A" opacity="0.8" />
+                  <rect x="3" y="7.8" width="10" height="2.4" rx="1" fill="#2C6B8A" opacity="0.6" />
+                  <rect
+                    x="5"
+                    y="11.6"
+                    width="12"
+                    height="2.4"
+                    rx="1"
+                    fill="#2C6B8A"
+                    opacity="0.45"
+                  />
+                  <rect x="3" y="15.5" width="4.5" height="2" rx="0.7" fill="#A5BC39" />
+                  <rect
+                    x="8.5"
+                    y="15.5"
+                    width="4.5"
+                    height="2"
+                    rx="0.7"
+                    fill="#D9A634"
+                    opacity="0.5"
+                  />
+                </svg>
+                <span class="label" style="color: #999">Scheduler</span>
+              </div>
+              <div class="icon-group">
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                  <rect
+                    x="4.5"
+                    y="4"
+                    width="11"
+                    height="13"
+                    rx="1.8"
+                    stroke="#6B5040"
+                    stroke-width="1.5"
+                    fill="none"
+                  />
+                  <rect x="7.2" y="2.8" width="5.6" height="2.4" rx="1.2" fill="#6B5040" />
+                  <polyline
+                    points="7,9.5 8.5,11.2 11.5,7.5"
+                    stroke="#A5BC39"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    fill="none"
+                  />
+                  <line
+                    x1="7"
+                    y1="14"
+                    x2="13"
+                    y2="14"
+                    stroke="#6B5040"
+                    stroke-width="1.2"
+                    stroke-linecap="round"
+                    opacity="0.35"
+                  />
+                </svg>
+                <span class="label" style="color: #999">Orders</span>
+              </div>
+              <div class="icon-group">
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                  <rect
+                    x="2.5"
+                    y="4"
+                    width="15"
+                    height="12"
+                    rx="1"
+                    stroke="#1B4D5C"
+                    stroke-width="1.5"
+                    fill="none"
+                  />
+                  <polygon points="6,14 9,8.5 12,14" fill="#1B4D5C" opacity="0.3" />
+                  <polygon points="9.5,14 12.5,7 15.5,14" fill="#A5BC39" opacity="0.6" />
+                  <circle cx="13.5" cy="7.5" r="1.5" fill="#1B4D5C" opacity="0.35" />
+                </svg>
+                <span class="label" style="color: #999">Previews</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ LIGHT MARKS ON DARK ═══ -->
+      <div class="section">
+        <div class="section-label">Light marks — for dark backgrounds</div>
+        <div
+          style="
+            background: #161a22;
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+          "
+        >
+          <div>
+            <div
+              style="
+                font-size: 0.6rem;
+                color: #4a4650;
+                margin-bottom: 0.6rem;
+                font-weight: 600;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+              "
+            >
+              20px
+            </div>
+            <div class="icon-row">
+              <div class="icon-group">
+                <svg width="20" height="20" viewBox="0 0 256 256" fill="none">
+                  <g transform="translate(25, 28) scale(0.82)">
+                    <path
+                      fill="#c8c5cc"
+                      d="M25.5,18.3c3.2,8.3,4.7,30.9,4.7,68l-0.5,35.2l3.8,0.9c7.2,1.7,14.6,2.6,22.1,2.7c0.8,0,1.6,0,2.4,0 c-0.6-11.7-0.8-26.3-0.8-44c0-26.7,0.9-44.1,2.6-52.2c1.8-8.1,4.3-13.8,7.7-17c3.4-3.2,8.7-5.2,15.8-5.9c3.2-0.3,4.8-1.4,4.8-3.2 C88.1,0.9,86,0,81.7,0H6.3C2.1,0,0,1,0,3.1c0,1.7,1.7,2.5,5.1,2.5C15.5,5.8,22.3,10,25.5,18.3z"
+                    />
+                    <path
+                      fill="#c8c5cc"
+                      d="M151.7,6.2c9.2,0,16.2,3.5,20.9,10.6c4.7,7.1,7.1,22,7.1,44.7c0,23.2-0.4,42.2-1.1,56.8c3,1.2,6,2.6,9,4 c1-13.6,1.4-29.1,1.5-46.6c0-18.8,0.6-33.1,1.7-42.9c1.1-9.7,3.4-16.4,7-20.2c3.6-3.7,9.1-6.1,16.8-7.2c2.2-0.3,3.3-1.2,3.3-2.6 c0-2-1.4-3-4.1-3h-60.2c-4.9,0-7.4,1-7.4,3C146.2,5.1,148,6.2,151.7,6.2z"
+                    />
+                    <path
+                      fill="#A5BC39"
+                      d="M135.8,126c-28.6,0-47.6,15.8-80.2,15.8c-8.7,0-17.3-1.1-25.7-3.1c0.7,13,2.8,23.1,6.3,30.3 c4.4,9.2,12.7,16.6,25,22.1c12.3,5.6,27.1,8.4,44.6,8.4c17,0,31.4-2.5,43.1-7.4c11.7-5,20.4-11.5,26.2-19.6 c5.3-7.3,8.9-18,10.8-32.2C165.3,129.6,149.5,126,135.8,126z"
+                    />
+                  </g>
+                </svg>
+                <span class="label" style="color: #4a4650">Website</span>
+              </div>
+              <div class="icon-group">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path
+                    d="M11.5 1.5 L13 6.8 L18.3 8.3 L13 9.8 L11.5 15.1 L10 9.8 L4.7 8.3 L10 6.8 Z"
+                    fill="#A5BC39"
+                  />
+                  <path
+                    d="M4.5 2 L5.4 4.6 L8 5.5 L5.4 6.4 L4.5 9 L3.6 6.4 L1 5.5 L3.6 4.6 Z"
+                    fill="#c8c5cc"
+                    opacity="0.6"
+                  />
+                  <path
+                    d="M5.5 12 L6.1 14 L8.1 14.6 L6.1 15.2 L5.5 17.2 L4.9 15.2 L2.9 14.6 L4.9 14 Z"
+                    fill="#c8c5cc"
+                    opacity="0.4"
+                  />
+                  <path
+                    d="M16 3 L16.4 4.2 L17.6 4.6 L16.4 5 L16 6.2 L15.6 5 L14.4 4.6 L15.6 4.2 Z"
+                    fill="#c8c5cc"
+                    opacity="0.3"
+                  />
+                </svg>
+                <span class="label" style="color: #4a4650">ODIN</span>
+              </div>
+              <div class="icon-group">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path
+                    d="M4 5 h12 a1.5 1.5 0 0 1 1.5 1.5 v7 a1.5 1.5 0 0 1-1.5 1.5 h-5 l-2.5 2.5 -2.5-2.5 H4 a1.5 1.5 0 0 1-1.5-1.5 v-7 A1.5 1.5 0 0 1 4 5z"
+                    fill="rgba(165,188,57,0.08)"
+                    stroke="#7AA832"
+                    stroke-width="1.4"
+                    stroke-linejoin="round"
+                  />
+                  <circle cx="7.5" cy="10" r="1" fill="#A5BC39" />
+                  <circle cx="10" cy="10" r="1" fill="#7AA832" />
+                  <circle cx="12.5" cy="10" r="1" fill="#7AA832" />
+                </svg>
+                <span class="label" style="color: #4a4650">Inquiries</span>
+              </div>
+              <div class="icon-group">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <rect x="3" y="4" width="14" height="2.2" rx="1" fill="#6BA0CC" opacity="0.8" />
+                  <rect
+                    x="3"
+                    y="7.5"
+                    width="10"
+                    height="2.2"
+                    rx="1"
+                    fill="#6BA0CC"
+                    opacity="0.55"
+                  />
+                  <rect x="5" y="11" width="12" height="2.2" rx="1" fill="#8BBAD6" opacity="0.4" />
+                  <rect x="3" y="15" width="3.5" height="1.8" rx="0.6" fill="#A5BC39" />
+                  <rect
+                    x="7"
+                    y="15"
+                    width="3.5"
+                    height="1.8"
+                    rx="0.6"
+                    fill="#A5BC39"
+                    opacity="0.6"
+                  />
+                  <rect
+                    x="11"
+                    y="15"
+                    width="3.5"
+                    height="1.8"
+                    rx="0.6"
+                    fill="#D9A634"
+                    opacity="0.5"
+                  />
+                </svg>
+                <span class="label" style="color: #4a4650">Scheduler</span>
+              </div>
+              <div class="icon-group">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <rect
+                    x="4"
+                    y="3.5"
+                    width="12"
+                    height="14"
+                    rx="2"
+                    stroke="#c8c5cc"
+                    stroke-width="1.4"
+                    fill="none"
+                    opacity="0.7"
+                  />
+                  <rect x="7" y="2.5" width="6" height="2.5" rx="1" fill="#c8c5cc" />
+                  <polyline
+                    points="6.5,10 8,11.5 11,8"
+                    stroke="#A5BC39"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    fill="none"
+                  />
+                  <line
+                    x1="12.5"
+                    y1="10"
+                    x2="15"
+                    y2="10"
+                    stroke="#c8c5cc"
+                    stroke-width="1.2"
+                    stroke-linecap="round"
+                    opacity="0.35"
+                  />
+                  <polyline
+                    points="6.5,14 8,15.5 11,12"
+                    stroke="#c8c5cc"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    fill="none"
+                    opacity="0.3"
+                  />
+                  <line
+                    x1="12.5"
+                    y1="14"
+                    x2="15"
+                    y2="14"
+                    stroke="#c8c5cc"
+                    stroke-width="1.2"
+                    stroke-linecap="round"
+                    opacity="0.2"
+                  />
+                </svg>
+                <span class="label" style="color: #4a4650">Orders</span>
+              </div>
+              <div class="icon-group">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <rect
+                    x="2.5"
+                    y="4"
+                    width="15"
+                    height="12"
+                    rx="1"
+                    stroke="#c8c5cc"
+                    stroke-width="1.4"
+                    fill="none"
+                    opacity="0.7"
+                  />
+                  <polygon points="6,14 9,8.5 12,14" fill="#c8c5cc" opacity="0.25" />
+                  <polygon points="9.5,14 12.5,7 15.5,14" fill="#A5BC39" opacity="0.7" />
+                  <circle cx="13.5" cy="7.5" r="1.5" fill="#c8c5cc" opacity="0.4" />
+                </svg>
+                <span class="label" style="color: #4a4650">Previews</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- ═══ IN CONTEXT ═══ -->
+      <div class="section">
+        <div class="section-label">In context — dashboard cards</div>
+        <div class="context-panel">
+          <div class="context-card light">
+            <div class="card-header">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                <rect x="3" y="4" width="14" height="2.2" rx="1" fill="#2C6B8A" opacity="0.8" />
+                <rect x="3" y="7.5" width="10" height="2.2" rx="1" fill="#2C6B8A" opacity="0.6" />
+                <rect x="5" y="11" width="12" height="2.2" rx="1" fill="#2C6B8A" opacity="0.45" />
+                <rect x="3" y="15" width="3.5" height="1.8" rx="0.6" fill="#A5BC39" />
+                <rect x="7" y="15" width="3.5" height="1.8" rx="0.6" fill="#A5BC39" opacity="0.6" />
+                <rect
+                  x="11"
+                  y="15"
+                  width="3.5"
+                  height="1.8"
+                  rx="0.6"
+                  fill="#D9A634"
+                  opacity="0.5"
+                />
+              </svg>
+              Schedule Overview
+            </div>
+            <div class="card-row"><span>Active projects</span><strong>21</strong></div>
+            <div class="card-row"><span>Total projects</span><strong>21</strong></div>
+            <div class="card-link">
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
+                <rect x="3" y="4" width="14" height="2.2" rx="1" fill="#5B8DB8" opacity="0.6" />
+                <rect x="3" y="7.5" width="10" height="2.2" rx="1" fill="#5B8DB8" opacity="0.4" />
+                <rect x="5" y="11" width="12" height="2.2" rx="1" fill="#5B8DB8" opacity="0.3" />
+              </svg>
+              Open Scheduler
+            </div>
+          </div>
+
+          <div class="context-card light">
+            <div class="card-header">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                <path
+                  d="M4 5 h12 a1.5 1.5 0 0 1 1.5 1.5 v7 a1.5 1.5 0 0 1-1.5 1.5 h-5 l-2.5 2.5 -2.5-2.5 H4 a1.5 1.5 0 0 1-1.5-1.5 v-7 A1.5 1.5 0 0 1 4 5z"
+                  fill="#374151"
+                  opacity="0.12"
+                  stroke="#4A7A20"
+                  stroke-width="1.5"
+                  stroke-linejoin="round"
+                />
+                <circle cx="7.5" cy="10" r="1" fill="#A5BC39" />
+                <circle cx="10" cy="10" r="1" fill="#374151" />
+                <circle cx="12.5" cy="10" r="1" fill="#374151" />
+              </svg>
+              Recent Inquiries
+            </div>
+            <div class="card-row"><span>Rachel Luni — new</span></div>
+            <div class="card-row"><span>Michelle Schulte — new</span></div>
+            <div class="card-link">
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
+                <path
+                  d="M4 5 h12 a1.5 1.5 0 0 1 1.5 1.5 v7 a1.5 1.5 0 0 1-1.5 1.5 h-5 l-2.5 2.5 -2.5-2.5 H4 a1.5 1.5 0 0 1-1.5-1.5 v-7 A1.5 1.5 0 0 1 4 5z"
+                  fill="#9ca3af"
+                  opacity="0.15"
+                  stroke="#9ca3af"
+                  stroke-width="1.4"
+                  stroke-linejoin="round"
+                />
+                <circle cx="7.5" cy="10" r="1" fill="#9ca3af" />
+                <circle cx="10" cy="10" r="1" fill="#9ca3af" opacity="0.5" />
+                <circle cx="12.5" cy="10" r="1" fill="#9ca3af" opacity="0.5" />
+              </svg>
+              Open Inquiry Hub
+            </div>
+          </div>
+
+          <div class="context-card dark">
+            <div class="card-header">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                <rect x="3" y="4" width="14" height="2.2" rx="1" fill="#6BA0CC" opacity="0.8" />
+                <rect x="3" y="7.5" width="10" height="2.2" rx="1" fill="#6BA0CC" opacity="0.55" />
+                <rect x="5" y="11" width="12" height="2.2" rx="1" fill="#8BBAD6" opacity="0.4" />
+                <rect x="3" y="15" width="3.5" height="1.8" rx="0.6" fill="#A5BC39" />
+                <rect x="7" y="15" width="3.5" height="1.8" rx="0.6" fill="#A5BC39" opacity="0.6" />
+                <rect
+                  x="11"
+                  y="15"
+                  width="3.5"
+                  height="1.8"
+                  rx="0.6"
+                  fill="#D9A634"
+                  opacity="0.5"
+                />
+              </svg>
+              Schedule Overview
+            </div>
+            <div class="card-row">
+              <span>Active projects</span><strong style="color: #eae8ed">21</strong>
+            </div>
+            <div class="card-row">
+              <span>Total projects</span><strong style="color: #eae8ed">21</strong>
+            </div>
+            <div class="card-link">
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
+                <rect x="3" y="4" width="14" height="2.2" rx="1" fill="#6BA0CC" opacity="0.5" />
+                <rect x="3" y="7.5" width="10" height="2.2" rx="1" fill="#6BA0CC" opacity="0.35" />
+                <rect x="5" y="11" width="12" height="2.2" rx="1" fill="#8BBAD6" opacity="0.25" />
+              </svg>
+              Open Scheduler
+            </div>
+          </div>
+
+          <div class="context-card dark">
+            <div class="card-header">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                <path
+                  d="M4 5 h12 a1.5 1.5 0 0 1 1.5 1.5 v7 a1.5 1.5 0 0 1-1.5 1.5 h-5 l-2.5 2.5 -2.5-2.5 H4 a1.5 1.5 0 0 1-1.5-1.5 v-7 A1.5 1.5 0 0 1 4 5z"
+                  fill="rgba(165,188,57,0.08)"
+                  stroke="#7AA832"
+                  stroke-width="1.4"
+                  stroke-linejoin="round"
+                />
+                <circle cx="7.5" cy="10" r="1" fill="#A5BC39" />
+                <circle cx="10" cy="10" r="1" fill="#7AA832" />
+                <circle cx="12.5" cy="10" r="1" fill="#7AA832" />
+              </svg>
+              Recent Inquiries
+            </div>
+            <div class="card-row"><span>Rachel Luni — new</span></div>
+            <div class="card-row"><span>Michelle Schulte — new</span></div>
+            <div class="card-link">
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
+                <path
+                  d="M4 5 h12 a1.5 1.5 0 0 1 1.5 1.5 v7 a1.5 1.5 0 0 1-1.5 1.5 h-5 l-2.5 2.5 -2.5-2.5 H4 a1.5 1.5 0 0 1-1.5-1.5 v-7 A1.5 1.5 0 0 1 4 5z"
+                  fill="rgba(255,255,255,0.05)"
+                  stroke="#4a4650"
+                  stroke-width="1.4"
+                  stroke-linejoin="round"
+                />
+                <circle cx="7.5" cy="10" r="1" fill="#4a4650" />
+                <circle cx="10" cy="10" r="1" fill="#4a4650" opacity="0.5" />
+                <circle cx="12.5" cy="10" r="1" fill="#4a4650" opacity="0.5" />
+              </svg>
+              Open Inquiry Hub
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
