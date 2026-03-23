@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upland Workshop — Terminal Color Strategy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font-family: "Instrument Sans", system-ui, sans-serif; background: #0c0b0e; color: #c8c5cc; min-height: 100vh; }
+      .page { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem 6rem; }
+      .suite-header { margin-bottom: 3rem; }
+      .suite-header::after { content: ""; display: block; width: 48px; height: 2px; background: #a5bc39; margin-top: 1.5rem; }
+      .suite-name { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #a5bc39; margin-bottom: 0.6rem; }
+      .suite-title { font-size: 1.8rem; font-weight: 400; color: #eae8ed; }
+      .suite-sub { font-size: 0.85rem; color: #605c66; margin-top: 0.5rem; line-height: 1.5; }
+      .section { margin-bottom: 4rem; }
+      .section-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: #605c66; margin-bottom: 0.6rem; }
+      .section-note { font-size: 0.7rem; color: #4a4650; margin-bottom: 2rem; line-height: 1.5; }
+      .divider { border: none; border-top: 1px solid rgba(255, 255, 255, 0.04); margin: 1rem 0 3rem; }
+
+      .terminal-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 1.5rem;
+      }
+      .terminal {
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.06);
+        box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+      }
+      .terminal-bar {
+        display: flex;
+        align-items: center;
+        padding: 8px 14px;
+        gap: 7px;
+        background: rgba(0,0,0,0.3);
+      }
+      .terminal-dot {
+        width: 10px; height: 10px; border-radius: 50%;
+      }
+      .terminal-dot.r { background: #ff5f57; }
+      .terminal-dot.y { background: #ffbd2e; }
+      .terminal-dot.g { background: #28c840; }
+      .terminal-title {
+        flex: 1; text-align: center;
+        font-size: 0.6rem; font-weight: 500; color: rgba(255,255,255,0.35);
+        font-family: "JetBrains Mono", monospace;
+      }
+      .terminal-body {
+        padding: 16px 18px;
+        min-height: 140px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.65rem;
+        line-height: 1.6;
+      }
+      .terminal-body .prompt { color: rgba(255,255,255,0.35); }
+      .terminal-body .cmd { color: rgba(255,255,255,0.7); }
+      .terminal-body .output { color: rgba(255,255,255,0.3); }
+      .terminal-body .green { color: #A5BC39; }
+      .terminal-body .blue { color: #6BA0CC; }
+      .terminal-body .dim { color: rgba(255,255,255,0.15); }
+
+      .color-label {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        margin-top: 0.6rem;
+        padding: 0 4px;
+      }
+      .color-swatch {
+        width: 16px; height: 16px; border-radius: 4px;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      .color-name { font-size: 0.65rem; font-weight: 600; color: #aaa; }
+      .color-hex { font-size: 0.6rem; color: #555; font-family: "JetBrains Mono", monospace; }
+      .color-hue { font-size: 0.55rem; color: #444; }
+
+      /* Side by side comparison */
+      .compare-row {
+        display: flex;
+        gap: 2px;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 1.5rem;
+        border: 1px solid rgba(255,255,255,0.06);
+      }
+      .compare-cell {
+        flex: 1;
+        padding: 20px 12px;
+        text-align: center;
+        min-height: 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+      }
+      .compare-cell .label {
+        font-size: 0.55rem;
+        font-weight: 600;
+        color: rgba(255,255,255,0.5);
+        letter-spacing: 0.04em;
+      }
+      .compare-cell .hex {
+        font-size: 0.5rem;
+        font-family: "JetBrains Mono", monospace;
+        color: rgba(255,255,255,0.3);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="suite-header">
+        <div class="suite-name">Upland Workshop</div>
+        <h1 class="suite-title">Terminal Color Strategy</h1>
+        <p class="suite-sub">Each app gets a distinct background hue so you can tell at a glance which project you're in.</p>
+      </div>
+
+      <!-- Current colors -->
+      <div class="section">
+        <div class="section-label">Current Colors — Hard to Distinguish</div>
+        <div class="compare-row">
+          <div class="compare-cell" style="background: #282c34;"><span class="label">Scheduler</span><span class="hex">#282c34</span></div>
+          <div class="compare-cell" style="background: #1a2418;"><span class="label">Inquiries</span><span class="hex">#1a2418</span></div>
+          <div class="compare-cell" style="background: #1a1828;"><span class="label">ODIN</span><span class="hex">#1a1828</span></div>
+          <div class="compare-cell" style="background: #162a1a;"><span class="label">Previews</span><span class="hex">#162a1a</span></div>
+          <div class="compare-cell" style="background: #181828;"><span class="label">Website</span><span class="hex">#181828</span></div>
+        </div>
+      </div>
+
+      <!-- Proposed Option A: Subtle but distinct -->
+      <div class="section">
+        <div class="section-label">Option A — Subtle Tints, Spread Across the Wheel</div>
+        <div class="section-note">Dark enough to read code on, saturated enough to actually tell apart.</div>
+        <div class="compare-row">
+          <div class="compare-cell" style="background: #281418;"><span class="label">Website</span><span class="hex">#281418</span></div>
+          <div class="compare-cell" style="background: #141e2a;"><span class="label">Scheduler</span><span class="hex">#141e2a</span></div>
+          <div class="compare-cell" style="background: #2a2414;"><span class="label">Inquiries</span><span class="hex">#2a2414</span></div>
+          <div class="compare-cell" style="background: #1e142a;"><span class="label">ODIN</span><span class="hex">#1e142a</span></div>
+          <div class="compare-cell" style="background: #142826;"><span class="label">L & C</span><span class="hex">#142826</span></div>
+          <div class="compare-cell" style="background: #1a2418;"><span class="label">Workshop</span><span class="hex">#1a2418</span></div>
+        </div>
+
+        <div class="terminal-grid">
+          <div>
+            <div class="terminal">
+              <div class="terminal-bar" style="background: rgba(0,0,0,0.3);">
+                <div class="terminal-dot r"></div><div class="terminal-dot y"></div><div class="terminal-dot g"></div>
+                <span class="terminal-title">upland</span>
+              </div>
+              <div class="terminal-body" style="background: #281418;">
+                <div><span class="prompt">~/Development/upland $</span> <span class="cmd">plain dev</span></div>
+                <div><span class="output">Starting development server...</span></div>
+                <div><span class="output">Watching for changes in app/</span></div>
+                <div><span class="green">✓</span> <span class="output">Server running at https://upland.localhost:8443</span></div>
+                <div><span class="prompt">~/Development/upland $</span> <span class="dim">█</span></div>
+              </div>
+            </div>
+            <div class="color-label">
+              <div class="color-swatch" style="background: #281418;"></div>
+              <span class="color-name">Upland Website</span>
+              <span class="color-hex">#281418</span>
+              <span class="color-hue">warm red</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="terminal">
+              <div class="terminal-bar">
+                <div class="terminal-dot r"></div><div class="terminal-dot y"></div><div class="terminal-dot g"></div>
+                <span class="terminal-title">upland-scheduler</span>
+              </div>
+              <div class="terminal-body" style="background: #141e2a;">
+                <div><span class="prompt">~/Development/upland-scheduler $</span> <span class="cmd">npm run dev</span></div>
+                <div><span class="output">Express server listening on port 3000</span></div>
+                <div><span class="blue">→</span> <span class="output">http://localhost:3000</span></div>
+                <div><span class="prompt">~/Development/upland-scheduler $</span> <span class="dim">█</span></div>
+              </div>
+            </div>
+            <div class="color-label">
+              <div class="color-swatch" style="background: #141e2a;"></div>
+              <span class="color-name">Scheduler</span>
+              <span class="color-hex">#141e2a</span>
+              <span class="color-hue">blue</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="terminal">
+              <div class="terminal-bar">
+                <div class="terminal-dot r"></div><div class="terminal-dot y"></div><div class="terminal-dot g"></div>
+                <span class="terminal-title">upland-inquiries</span>
+              </div>
+              <div class="terminal-body" style="background: #2a2414;">
+                <div><span class="prompt">~/Development/upland-inquiries $</span> <span class="cmd">npm run dev</span></div>
+                <div><span class="output">Express server listening on port 3001</span></div>
+                <div><span class="green">→</span> <span class="output">http://localhost:3001</span></div>
+                <div><span class="prompt">~/Development/upland-inquiries $</span> <span class="dim">█</span></div>
+              </div>
+            </div>
+            <div class="color-label">
+              <div class="color-swatch" style="background: #2a2414;"></div>
+              <span class="color-name">Inquiry Hub</span>
+              <span class="color-hex">#2a2414</span>
+              <span class="color-hue">amber</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="terminal">
+              <div class="terminal-bar">
+                <div class="terminal-dot r"></div><div class="terminal-dot y"></div><div class="terminal-dot g"></div>
+                <span class="terminal-title">upland-odin</span>
+              </div>
+              <div class="terminal-body" style="background: #1e142a;">
+                <div><span class="prompt">~/Development/upland-odin $</span> <span class="cmd">npm run dev</span></div>
+                <div><span class="output">Express server listening on port 3002</span></div>
+                <div><span class="green">→</span> <span class="output">http://localhost:3002</span></div>
+                <div><span class="prompt">~/Development/upland-odin $</span> <span class="dim">█</span></div>
+              </div>
+            </div>
+            <div class="color-label">
+              <div class="color-swatch" style="background: #1e142a;"></div>
+              <span class="color-name">ODIN</span>
+              <span class="color-hex">#1e142a</span>
+              <span class="color-hue">purple</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="terminal">
+              <div class="terminal-bar">
+                <div class="terminal-dot r"></div><div class="terminal-dot y"></div><div class="terminal-dot g"></div>
+                <span class="terminal-title">upland-luca-claire</span>
+              </div>
+              <div class="terminal-body" style="background: #142826;">
+                <div><span class="prompt">~/Development/upland-luca-claire $</span> <span class="cmd">npm run dev</span></div>
+                <div><span class="output">Express server listening on port 3003</span></div>
+                <div><span class="green">→</span> <span class="output">http://localhost:3003</span></div>
+                <div><span class="prompt">~/Development/upland-luca-claire $</span> <span class="dim">█</span></div>
+              </div>
+            </div>
+            <div class="color-label">
+              <div class="color-swatch" style="background: #142826;"></div>
+              <span class="color-name">Luca & Claire</span>
+              <span class="color-hex">#142826</span>
+              <span class="color-hue">teal</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="terminal">
+              <div class="terminal-bar">
+                <div class="terminal-dot r"></div><div class="terminal-dot y"></div><div class="terminal-dot g"></div>
+                <span class="terminal-title">upland-workshop</span>
+              </div>
+              <div class="terminal-body" style="background: #1a2418;">
+                <div><span class="prompt">~/Development/upland-workshop $</span> <span class="cmd">git status</span></div>
+                <div><span class="output">On branch main</span></div>
+                <div><span class="output">nothing to commit, working tree clean</span></div>
+                <div><span class="prompt">~/Development/upland-workshop $</span> <span class="dim">█</span></div>
+              </div>
+            </div>
+            <div class="color-label">
+              <div class="color-swatch" style="background: #1a2418;"></div>
+              <span class="color-name">Workshop</span>
+              <span class="color-hex">#1a2418</span>
+              <span class="color-hue">green</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- Option B: Bolder -->
+      <div class="section">
+        <div class="section-label">Option B — Bolder Tints, More Obvious</div>
+        <div class="section-note">Pushed a bit further. More immediately recognizable but still dark enough for reading code.</div>
+        <div class="compare-row">
+          <div class="compare-cell" style="background: #2e1218;"><span class="label">Website</span><span class="hex">#2e1218</span></div>
+          <div class="compare-cell" style="background: #122030;"><span class="label">Scheduler</span><span class="hex">#122030</span></div>
+          <div class="compare-cell" style="background: #302818;"><span class="label">Inquiries</span><span class="hex">#302818</span></div>
+          <div class="compare-cell" style="background: #22142e;"><span class="label">ODIN</span><span class="hex">#22142e</span></div>
+          <div class="compare-cell" style="background: #122e2a;"><span class="label">L & C</span><span class="hex">#122e2a</span></div>
+          <div class="compare-cell" style="background: #1c2c18;"><span class="label">Workshop</span><span class="hex">#1c2c18</span></div>
+        </div>
+
+        <div class="terminal-grid">
+          <div>
+            <div class="terminal">
+              <div class="terminal-bar">
+                <div class="terminal-dot r"></div><div class="terminal-dot y"></div><div class="terminal-dot g"></div>
+                <span class="terminal-title">upland</span>
+              </div>
+              <div class="terminal-body" style="background: #2e1218;">
+                <div><span class="prompt">~/Development/upland $</span> <span class="cmd">plain dev</span></div>
+                <div><span class="output">Starting development server...</span></div>
+                <div><span class="green">✓</span> <span class="output">Server running at https://upland.localhost:8443</span></div>
+                <div><span class="prompt">~/Development/upland $</span> <span class="dim">█</span></div>
+              </div>
+            </div>
+            <div class="color-label">
+              <div class="color-swatch" style="background: #2e1218;"></div>
+              <span class="color-name">Upland Website</span>
+              <span class="color-hex">#2e1218</span>
+              <span class="color-hue">warm red</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="terminal">
+              <div class="terminal-bar">
+                <div class="terminal-dot r"></div><div class="terminal-dot y"></div><div class="terminal-dot g"></div>
+                <span class="terminal-title">upland-scheduler</span>
+              </div>
+              <div class="terminal-body" style="background: #122030;">
+                <div><span class="prompt">~/Development/upland-scheduler $</span> <span class="cmd">npm run dev</span></div>
+                <div><span class="output">Express server listening on port 3000</span></div>
+                <div><span class="blue">→</span> <span class="output">http://localhost:3000</span></div>
+                <div><span class="prompt">~/Development/upland-scheduler $</span> <span class="dim">█</span></div>
+              </div>
+            </div>
+            <div class="color-label">
+              <div class="color-swatch" style="background: #122030;"></div>
+              <span class="color-name">Scheduler</span>
+              <span class="color-hex">#122030</span>
+              <span class="color-hue">blue</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="terminal">
+              <div class="terminal-bar">
+                <div class="terminal-dot r"></div><div class="terminal-dot y"></div><div class="terminal-dot g"></div>
+                <span class="terminal-title">upland-inquiries</span>
+              </div>
+              <div class="terminal-body" style="background: #302818;">
+                <div><span class="prompt">~/Development/upland-inquiries $</span> <span class="cmd">npm run dev</span></div>
+                <div><span class="output">Express server listening on port 3001</span></div>
+                <div><span class="green">→</span> <span class="output">http://localhost:3001</span></div>
+                <div><span class="prompt">~/Development/upland-inquiries $</span> <span class="dim">█</span></div>
+              </div>
+            </div>
+            <div class="color-label">
+              <div class="color-swatch" style="background: #302818;"></div>
+              <span class="color-name">Inquiry Hub</span>
+              <span class="color-hex">#302818</span>
+              <span class="color-hue">amber</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="terminal">
+              <div class="terminal-bar">
+                <div class="terminal-dot r"></div><div class="terminal-dot y"></div><div class="terminal-dot g"></div>
+                <span class="terminal-title">upland-odin</span>
+              </div>
+              <div class="terminal-body" style="background: #22142e;">
+                <div><span class="prompt">~/Development/upland-odin $</span> <span class="cmd">npm run dev</span></div>
+                <div><span class="output">Express server listening on port 3002</span></div>
+                <div><span class="green">→</span> <span class="output">http://localhost:3002</span></div>
+                <div><span class="prompt">~/Development/upland-odin $</span> <span class="dim">█</span></div>
+              </div>
+            </div>
+            <div class="color-label">
+              <div class="color-swatch" style="background: #22142e;"></div>
+              <span class="color-name">ODIN</span>
+              <span class="color-hex">#22142e</span>
+              <span class="color-hue">purple</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="terminal">
+              <div class="terminal-bar">
+                <div class="terminal-dot r"></div><div class="terminal-dot y"></div><div class="terminal-dot g"></div>
+                <span class="terminal-title">upland-luca-claire</span>
+              </div>
+              <div class="terminal-body" style="background: #122e2a;">
+                <div><span class="prompt">~/Development/upland-luca-claire $</span> <span class="cmd">npm run dev</span></div>
+                <div><span class="output">Express server listening on port 3003</span></div>
+                <div><span class="green">→</span> <span class="output">http://localhost:3003</span></div>
+                <div><span class="prompt">~/Development/upland-luca-claire $</span> <span class="dim">█</span></div>
+              </div>
+            </div>
+            <div class="color-label">
+              <div class="color-swatch" style="background: #122e2a;"></div>
+              <span class="color-name">Luca & Claire</span>
+              <span class="color-hex">#122e2a</span>
+              <span class="color-hue">teal</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="terminal">
+              <div class="terminal-bar">
+                <div class="terminal-dot r"></div><div class="terminal-dot y"></div><div class="terminal-dot g"></div>
+                <span class="terminal-title">upland-workshop</span>
+              </div>
+              <div class="terminal-body" style="background: #1c2c18;">
+                <div><span class="prompt">~/Development/upland-workshop $</span> <span class="cmd">git status</span></div>
+                <div><span class="output">On branch main</span></div>
+                <div><span class="output">nothing to commit, working tree clean</span></div>
+                <div><span class="prompt">~/Development/upland-workshop $</span> <span class="dim">█</span></div>
+              </div>
+            </div>
+            <div class="color-label">
+              <div class="color-swatch" style="background: #1c2c18;"></div>
+              <span class="color-name">Workshop</span>
+              <span class="color-hex">#1c2c18</span>
+              <span class="color-hue">green</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- Option C: Even bolder -->
+      <div class="section">
+        <div class="section-label">Option C — Even More Distinct</div>
+        <div class="section-note">Pushed further still. You'll know instantly which app you're in.</div>
+        <div class="compare-row">
+          <div class="compare-cell" style="background: #351019;"><span class="label">Website</span><span class="hex">#351019</span></div>
+          <div class="compare-cell" style="background: #0e2238;"><span class="label">Scheduler</span><span class="hex">#0e2238</span></div>
+          <div class="compare-cell" style="background: #382c12;"><span class="label">Inquiries</span><span class="hex">#382c12</span></div>
+          <div class="compare-cell" style="background: #281238;"><span class="label">ODIN</span><span class="hex">#281238</span></div>
+          <div class="compare-cell" style="background: #0e3530;"><span class="label">L & C</span><span class="hex">#0e3530</span></div>
+          <div class="compare-cell" style="background: #1a3214;"><span class="label">Workshop</span><span class="hex">#1a3214</span></div>
+        </div>
+
+        <div class="terminal-grid">
+          <div>
+            <div class="terminal">
+              <div class="terminal-bar"><div class="terminal-dot r"></div><div class="terminal-dot y"></div><div class="terminal-dot g"></div><span class="terminal-title">upland</span></div>
+              <div class="terminal-body" style="background: #351019;">
+                <div><span class="prompt">~/Development/upland $</span> <span class="cmd">plain dev</span></div>
+                <div><span class="output">Starting development server...</span></div>
+                <div><span class="green">✓</span> <span class="output">Server running at https://upland.localhost:8443</span></div>
+                <div><span class="prompt">~/Development/upland $</span> <span class="dim">█</span></div>
+              </div>
+            </div>
+            <div class="color-label"><div class="color-swatch" style="background: #351019;"></div><span class="color-name">Upland Website</span><span class="color-hex">#351019</span><span class="color-hue">warm red</span></div>
+          </div>
+
+          <div>
+            <div class="terminal">
+              <div class="terminal-bar"><div class="terminal-dot r"></div><div class="terminal-dot y"></div><div class="terminal-dot g"></div><span class="terminal-title">upland-scheduler</span></div>
+              <div class="terminal-body" style="background: #0e2238;">
+                <div><span class="prompt">~/Development/upland-scheduler $</span> <span class="cmd">npm run dev</span></div>
+                <div><span class="output">Express server listening on port 3000</span></div>
+                <div><span class="blue">→</span> <span class="output">http://localhost:3000</span></div>
+                <div><span class="prompt">~/Development/upland-scheduler $</span> <span class="dim">█</span></div>
+              </div>
+            </div>
+            <div class="color-label"><div class="color-swatch" style="background: #0e2238;"></div><span class="color-name">Scheduler</span><span class="color-hex">#0e2238</span><span class="color-hue">blue</span></div>
+          </div>
+
+          <div>
+            <div class="terminal">
+              <div class="terminal-bar"><div class="terminal-dot r"></div><div class="terminal-dot y"></div><div class="terminal-dot g"></div><span class="terminal-title">upland-inquiries</span></div>
+              <div class="terminal-body" style="background: #382c12;">
+                <div><span class="prompt">~/Development/upland-inquiries $</span> <span class="cmd">npm run dev</span></div>
+                <div><span class="output">Express server listening on port 3001</span></div>
+                <div><span class="green">→</span> <span class="output">http://localhost:3001</span></div>
+                <div><span class="prompt">~/Development/upland-inquiries $</span> <span class="dim">█</span></div>
+              </div>
+            </div>
+            <div class="color-label"><div class="color-swatch" style="background: #382c12;"></div><span class="color-name">Inquiry Hub</span><span class="color-hex">#382c12</span><span class="color-hue">amber</span></div>
+          </div>
+
+          <div>
+            <div class="terminal">
+              <div class="terminal-bar"><div class="terminal-dot r"></div><div class="terminal-dot y"></div><div class="terminal-dot g"></div><span class="terminal-title">upland-odin</span></div>
+              <div class="terminal-body" style="background: #281238;">
+                <div><span class="prompt">~/Development/upland-odin $</span> <span class="cmd">npm run dev</span></div>
+                <div><span class="output">Express server listening on port 3002</span></div>
+                <div><span class="green">→</span> <span class="output">http://localhost:3002</span></div>
+                <div><span class="prompt">~/Development/upland-odin $</span> <span class="dim">█</span></div>
+              </div>
+            </div>
+            <div class="color-label"><div class="color-swatch" style="background: #281238;"></div><span class="color-name">ODIN</span><span class="color-hex">#281238</span><span class="color-hue">purple</span></div>
+          </div>
+
+          <div>
+            <div class="terminal">
+              <div class="terminal-bar"><div class="terminal-dot r"></div><div class="terminal-dot y"></div><div class="terminal-dot g"></div><span class="terminal-title">upland-luca-claire</span></div>
+              <div class="terminal-body" style="background: #0e3530;">
+                <div><span class="prompt">~/Development/upland-luca-claire $</span> <span class="cmd">npm run dev</span></div>
+                <div><span class="output">Express server listening on port 3003</span></div>
+                <div><span class="green">→</span> <span class="output">http://localhost:3003</span></div>
+                <div><span class="prompt">~/Development/upland-luca-claire $</span> <span class="dim">█</span></div>
+              </div>
+            </div>
+            <div class="color-label"><div class="color-swatch" style="background: #0e3530;"></div><span class="color-name">Luca & Claire</span><span class="color-hex">#0e3530</span><span class="color-hue">teal</span></div>
+          </div>
+
+          <div>
+            <div class="terminal">
+              <div class="terminal-bar"><div class="terminal-dot r"></div><div class="terminal-dot y"></div><div class="terminal-dot g"></div><span class="terminal-title">upland-workshop</span></div>
+              <div class="terminal-body" style="background: #1a3214;">
+                <div><span class="prompt">~/Development/upland-workshop $</span> <span class="cmd">git status</span></div>
+                <div><span class="output">On branch main</span></div>
+                <div><span class="output">nothing to commit, working tree clean</span></div>
+                <div><span class="prompt">~/Development/upland-workshop $</span> <span class="dim">█</span></div>
+              </div>
+            </div>
+            <div class="color-label"><div class="color-swatch" style="background: #1a3214;"></div><span class="color-name">Workshop</span><span class="color-hex">#1a3214</span><span class="color-hue">green</span></div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- The mapping summary -->
+      <div class="section">
+        <div class="section-label">Color Wheel Logic</div>
+        <div class="section-note" style="max-width: 600px;">
+          <strong style="color: #aaa;">Red</strong> = Website (the separate one, feels "hot"/different)<br>
+          <strong style="color: #aaa;">Blue</strong> = Scheduler (already its brand color)<br>
+          <strong style="color: #aaa;">Amber</strong> = Inquiry Hub (incoming, attention)<br>
+          <strong style="color: #aaa;">Purple</strong> = ODIN (intelligence, AI mystique)<br>
+          <strong style="color: #aaa;">Teal</strong> = Luca & Claire (creative, fresh, between blue and green)<br>
+          <strong style="color: #aaa;">Green</strong> = Workshop (the brand umbrella, #A5BC39 home)
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell" style="background: #c0392b;"><span class="label" style="color: #fff;">Red</span></div>
+          <div class="compare-cell" style="background: #2980b9;"><span class="label" style="color: #fff;">Blue</span></div>
+          <div class="compare-cell" style="background: #d4a017;"><span class="label" style="color: #fff;">Amber</span></div>
+          <div class="compare-cell" style="background: #8e44ad;"><span class="label" style="color: #fff;">Purple</span></div>
+          <div class="compare-cell" style="background: #16a085;"><span class="label" style="color: #fff;">Teal</span></div>
+          <div class="compare-cell" style="background: #7d9c2a;"><span class="label" style="color: #fff;">Green</span></div>
+        </div>
+        <div style="font-size: 0.5rem; color: #444; text-align: center; margin-top: 0.5rem;">Full-brightness reference — the terminal colors are very dark versions of these</div>
+      </div>
+
+    </div>
+  </body>
+</html>

@@ -1,13 +1,13 @@
-# Luca & Claire — App Specification
+# Claire — App Specification
 
 ## Identity
 
 | | |
 |---|---|
-| **App name** | Luca & Claire |
-| **Domain** | luca.uplandexhibits.com |
+| **App name** | Claire |
+| **Domain** | claire.uplandexhibits.com |
 | **Port** | 3003 (local dev) |
-| **Repo** | `flinthillsdesign/upland-luca-claire` |
+| **Repo** | `flinthillsdesign/upland-claire` |
 | **Stack** | TypeScript, Netlify Functions, Turso |
 | **Replaces** | Upland Previews (`flinthillsdesign/upland-previews`) |
 
@@ -19,13 +19,9 @@ Uses ODIN's refined dual-database pattern with separate `auth-storage.ts` and `s
 
 ## What It Does
 
-Luca & Claire is an AI-assisted exhibit panel design tool. It replaces the static Previews app with an interactive environment where curators and designers create exhibit panels, get AI help with content and visual design, and share previews with clients.
+Claire is an AI-assisted exhibit panel design tool. It replaces the static Previews app with an interactive environment where curators and designers create exhibit panels, get AI help with content and visual design, and share previews with clients.
 
-**Luca** (Layout Utility Curatorial Assistant) helps with content — what goes on the panel, narrative flow across the exhibit, copy drafting and editing, curatorial guidance.
-
-**Claire** (Creative Layout AI Rendering Engine) helps with design — typography, color palettes, layout composition, visual refinement, preparing panels for client review.
-
-They're two AI team members, each powered by Claude, with overlapping skills but distinct specialties. Like real colleagues — either can help with most things, but each brings their own perspective.
+**Claire** (Creative Layout AI Rendering Engine) is a single AI assistant powered by Claude with exhibit design expertise. She handles the full spectrum — content strategy, narrative flow, copy drafting, typography, color palettes, layout composition, visual refinement, and preparing panels for client review.
 
 ### Core Capabilities
 
@@ -35,7 +31,7 @@ They're two AI team members, each powered by Claude, with overlapping skills but
 
 3. **Content Editing** — Block in text, images, and captions on panels using an HTML/CSS-based editor. Panels render as styled HTML, just like the current Previews app. The content is structured (title, body, caption, etc.) but visually rendered.
 
-4. **AI Assistance** — Chat with Luca about content or Claire about design. They see the current panel state and project context. They can suggest copy, recommend layouts, critique compositions, draft alternative text, propose color palettes.
+4. **AI Assistance** — Chat with Claire about content or design. She sees the current panel state and project context. She can suggest copy, recommend layouts, critique compositions, draft alternative text, propose color palettes.
 
 5. **Gallery / Preview** — Client-facing gallery view inherited from Previews. Thumbnail grid, detail viewer with navigation, filter by panel type, CVZ zone guides overlay. Accessed via shareable token links.
 
@@ -43,11 +39,11 @@ They're two AI team members, each powered by Claude, with overlapping skills but
 
 ---
 
-## The Two Personas
+## The AI Assistant
 
-Luca and Claire are implemented as two system prompts that share the same Claude API integration. Each has domain expertise embedded from the exhibit-design skill specs.
+Claire is implemented as a single system prompt with the Claude API integration, combining content and design expertise from the exhibit-design skill specs.
 
-### Luca — Content & Curation
+### Claire — Content, Curation & Design
 
 System prompt emphasis:
 - Exhibit narrative flow — how panels tell a story through the gallery
@@ -56,10 +52,6 @@ System prompt emphasis:
 - Word count discipline — 150 words max for casual visitors, 250 absolute max
 - Curatorial voice — matching the client's tone (academic, playful, reverent, etc.)
 - Content zones — what content belongs in the CVZ vs. title zone vs. secondary zone
-
-### Claire — Design & Composition
-
-System prompt emphasis:
 - Typography system — role-based sizing, leading ratios, font pairing
 - Color palettes — accent colors, background treatments, contrast ratios
 - Layout composition — margins, columns, image/text balance, white space
@@ -67,14 +59,14 @@ System prompt emphasis:
 - Panel type conventions — what each panel type looks like and why
 - CVZ compliance — readable text within 36"–67" from floor
 
-### How They Work Together
+### How It Works
 
-In the UI, there's a chat/assistant panel. The user can address either persona:
-- "Luca, draft body text for this panel about sea turtle migration"
-- "Claire, this feels too text-heavy. What if we added an image?"
-- "What do you two think about the flow from panels 3 to 5?"
+In the UI, there's a chat/assistant panel. The user talks to Claire:
+- "Draft body text for this panel about sea turtle migration"
+- "This feels too text-heavy. What if we added an image?"
+- "What do you think about the flow from panels 3 to 5?"
 
-The AI routes to the appropriate system prompt based on who's addressed, or uses context to pick the right one. When both are asked, both perspectives are incorporated.
+Claire sees the current panel state and project context, and responds with both content and design perspective.
 
 ---
 
@@ -212,7 +204,7 @@ The `css` field allows freeform CSS for advanced styling — this is how the cur
 | id | TEXT PK | nanoid |
 | project_id | TEXT NOT NULL | FK to projects |
 | panel_id | TEXT | FK to panels (null = project-level conversation) |
-| persona | TEXT NOT NULL | luca, claire |
+| persona | TEXT NOT NULL | claire |
 | messages | TEXT NOT NULL | JSON array of {role, content, timestamp} |
 | created_at | TEXT | ISO timestamp |
 
@@ -248,9 +240,7 @@ The `css` field allows freeform CSS for advanced styling — this is how the cur
 - `PUT /api/panels/reorder` — reorder panels within project
 
 ### AI (authenticated)
-- `POST /api/panels/:id/ask-luca` — send message to Luca about this panel
 - `POST /api/panels/:id/ask-claire` — send message to Claire about this panel
-- `POST /api/projects/:id/ask-luca` — project-level Luca conversation
 - `POST /api/projects/:id/ask-claire` — project-level Claire conversation
 - `GET /api/conversations/:id` — get conversation history
 
@@ -286,7 +276,7 @@ The core of the app. Three regions:
 
 2. **Content Panel** (left or collapsible) — Structured list of content blocks (title, body, images, captions). Add/remove/reorder blocks. Edit text inline or in a focused editor. Set roles and styles.
 
-3. **AI Chat** (right or collapsible) — Conversation with Luca or Claire. Shows context (current panel, project). Responses can include suggested content that can be applied with one click.
+3. **AI Chat** (right or collapsible) — Conversation with Claire. Shows context (current panel, project). Responses can include suggested content that can be applied with one click.
 
 ### The Gallery (gallery.html)
 
@@ -307,10 +297,10 @@ Inherited from Previews:
 |--------|--------|---------|
 | Turso Auth DB | `TURSO_AUTH_URL` | Shared user authentication |
 | Turso App DB | `TURSO_URL` | App-specific data (projects, panels, conversations) |
-| Claude API | `CLAUDE_API_KEY` | Luca and Claire AI assistance |
+| Claude API | `CLAUDE_API_KEY` | Claire AI assistance |
 | Postmark | `POSTMARK_API_TOKEN` | Password reset emails, gallery share notifications |
 
-No ODIN/Scheduler/Inquiry Hub integration initially. ODIN may eventually read from Luca & Claire for project status context.
+No ODIN/Scheduler/Inquiry Hub integration initially. ODIN may eventually read from Claire for project status context.
 
 ---
 
@@ -342,14 +332,14 @@ PORT=3003
 ## Directory Structure
 
 ```
-upland-luca-claire/
+upland-claire/
 ├── netlify/functions/
 │   └── api.ts                 # Single function, hand-rolled router
 ├── lib/
 │   ├── auth.ts                # JWT + bcrypt utilities
 │   ├── auth-storage.ts        # Shared auth DB (TURSO_AUTH_URL)
 │   ├── storage.ts             # App DB (TURSO_URL) — projects, panels, conversations
-│   ├── ai.ts                  # Claude API — Luca and Claire system prompts
+│   ├── ai.ts                  # Claude API — Claire system prompt
 │   └── email.ts               # Postmark
 ├── public/
 │   ├── index.html             # Login
@@ -394,4 +384,4 @@ upland-luca-claire/
 - **Image upload/storage** — Initially, images can be referenced by URL. A proper upload system (probably Netlify Blobs or an S3-compatible store) comes later.
 - **Real-time collaboration** — Single-user editing for now.
 - **Version history** — Panel content versioning/undo is deferred.
-- **ODIN integration** — ODIN reading from Luca & Claire for project context comes after the app is stable.
+- **ODIN integration** — ODIN reading from Claire for project context comes after the app is stable.

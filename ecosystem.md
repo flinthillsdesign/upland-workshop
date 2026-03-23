@@ -85,23 +85,19 @@ Project scheduling and financial pipeline tracking. Monthly scheduling grids, de
 
 ---
 
-### Luca & Claire (luca.uplandexhibits.com)
-**Repo:** `flinthillsdesign/upland-luca-claire`
+### Claire (claire.uplandexhibits.com)
+**Repo:** `flinthillsdesign/upland-claire`
 **Stack:** TypeScript, Netlify Functions, Turso
 **Port:** 3003 (local)
 
 AI-assisted exhibit panel design tool. Replaces the static Previews app (`flinthillsdesign/upland-previews`) with an interactive environment where curators and designers create exhibit panels, get AI help with content and visual design, and share previews with clients.
 
-**Luca** — Layout Utility Curatorial Assistant. The content specialist. Helps with narrative flow across the exhibit, drafts body text and captions from source material, advises on content hierarchy and curatorial voice.
-
-**Claire** — Creative Layout AI Rendering Engine. The design specialist. Handles typography, color palettes, layout composition, visual refinement, and preparing panels for client review.
-
-Together they're two AI team members — each powered by Claude with exhibit design expertise — who overlap naturally but bring distinct specialties. Luca handles the what and where, Claire handles the how it looks.
+**Claire** — Creative Layout AI Rendering Engine. A single AI assistant powered by Claude with exhibit design expertise. Handles the full spectrum: content strategy, narrative flow, copy drafting, typography, color palettes, layout composition, visual refinement, and preparing panels for client review.
 
 **Key role in ecosystem:** Turns curatorial content into designed exhibit panels. Projects contain panels defined by physical dimensions and panel type. Content is structured (title, body, caption, images) and rendered as HTML/CSS. Clients view galleries via shareable token links.
 
 **Integrations:**
-- Claude API (Luca and Claire AI assistance)
+- Claude API (Claire AI assistance)
 - Postmark (password reset, gallery share notifications)
 
 **Auth:** Shared Turso auth DB + JWT
@@ -111,7 +107,7 @@ Together they're two AI team members — each powered by Claude with exhibit des
 ## Shared Infrastructure
 
 ### Auth Database (Turso)
-A single Turso database (`upland-auth`) shared by Scheduler, ODIN, and Inquiry Hub. Contains one `users` table:
+A single Turso database (`upland-auth`) shared by Scheduler, ODIN, Inquiry Hub, and Claire. Contains one `users` table:
 
 | Field | Purpose |
 |-------|---------|
@@ -124,7 +120,7 @@ A single Turso database (`upland-auth`) shared by Scheduler, ODIN, and Inquiry H
 | token_invalid_before | ISO timestamp — JWTs issued before this are rejected |
 | can_finance | Boolean — access to financial data |
 
-All three satellite apps share a `JWT_SECRET`. A token minted by the Scheduler is valid in ODIN and Inquiry Hub.
+All four satellite apps share a `JWT_SECRET`. A token minted by the Scheduler is valid in ODIN, Inquiry Hub, and Claire.
 
 The Upland Website has its own auth and is not part of this system.
 
@@ -193,7 +189,7 @@ Toggl ─────────────┤
          └─────────────────┘
 
          ┌─────────────────┐     ┌───────────────────┐
-         │  Luca & Claire  │────>│   Claude API       │
-         │ (exhibit design)│     │  (Luca + Claire)   │
+         │     Claire      │────>│   Claude API       │
+         │ (exhibit design)│     │    (Claire)        │
          └─────────────────┘     └───────────────────┘
 ```
