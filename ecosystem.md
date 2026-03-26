@@ -104,11 +104,29 @@ AI-assisted exhibit panel design tool. Replaces the static Previews app (`flinth
 
 ---
 
+### Quotes (quotes.uplandexhibits.com)
+**Repo:** `flinthillsdesign/upland-quotes`
+**Stack:** TypeScript, Netlify Functions, Turso
+**Port:** 3004 (local)
+
+AI-first quoting tool. Describe a project in plain English, and the AI generates a complete structured quote with sections, line items, pricing, and terms — drawing from a knowledge base of past quotes. Fully editable after generation. Shareable client links with view tracking. Print-ready via CSS.
+
+**Key role in ecosystem:** Turns project scopes into professional quotes. AI-first generation from prompts, informed by historical pricing data. Web-first delivery — the client link IS the quote. Print stylesheet for paper output.
+
+**Integrations:**
+- Claude API (quote generation and conversational AI)
+- Postmark (password reset, quote share notifications)
+
+**Auth:** Shared Turso auth DB + JWT
+
+---
+
 ## Shared Infrastructure
 
 ### Auth Database (Turso)
-A single Turso database (`upland-auth`) shared by Scheduler, ODIN, Inquiry Hub, and Claire. Contains one `users` table:
+A single Turso database (`upland-auth`) shared by all satellite apps.
 
+**`users` table:**
 | Field | Purpose |
 |-------|---------|
 | id | nanoid |
@@ -118,15 +136,30 @@ A single Turso database (`upland-auth`) shared by Scheduler, ODIN, Inquiry Hub, 
 | name | Display name |
 | email | For password reset |
 | token_invalid_before | ISO timestamp — JWTs issued before this are rejected |
-| can_finance | Boolean — access to financial data |
 
-All four satellite apps share a `JWT_SECRET`. A token minted by the Scheduler is valid in ODIN, Inquiry Hub, and Claire.
+**`user_app_access` table:**
+| Field | Purpose |
+|-------|---------|
+| user_id | FK to users.id |
+| app | App identifier (`odin`, `scheduler`, `inquiries`, `claire`, `quotes`, etc.) |
+| role | Per-app role: manager, editor, viewer |
+| permissions | JSON, nullable — app-specific flags (e.g., `{"can_finance": true}` for Scheduler) |
+| created_at | ISO timestamp |
+
+**How it works:**
+- **Superadmins** (users.role = `superadmin`) bypass app access checks — they can access every app with full permissions.
+- **Everyone else** needs a row in `user_app_access` for each app they can use. No row = no access.
+- **ODIN owns user management.** It's the only app with UI for creating users, granting app access, and setting per-app roles. All other apps read the auth DB but never write to it (except for password reset).
+- **Per-app roles** (manager/editor/viewer) are interpreted by each app. The shared table stores them; each app decides what they mean.
+- **App-specific permissions** go in the `permissions` JSON column. This replaces one-off columns like `can_finance` on the users table.
+
+All satellite apps share a `JWT_SECRET`. A token minted by any app is valid in all others.
 
 The Upland Website has its own auth and is not part of this system.
 
 ### Dual Database Pattern
 Each satellite app connects to TWO Turso databases:
-1. **Auth DB** (`TURSO_AUTH_URL`) — shared users table (read-only from most apps)
+1. **Auth DB** (`TURSO_AUTH_URL`) — shared users + user_app_access tables (read-only except ODIN)
 2. **App DB** (`TURSO_URL`) — app-specific tables (full CRUD)
 
 Connection code auto-switches between `@libsql/client` (local SQLite files) and `@libsql/client/http` (remote Turso) based on whether the URL starts with `file:`.
@@ -152,6 +185,52 @@ All apps use `ensureSchema()` — idempotent `CREATE TABLE IF NOT EXISTS` + `ALT
 | Background | #161A22 to #0A0D12 gradient |
 | API pattern | Single Netlify function, hand-rolled router |
 | Dev server | Express wrapping the function handler |
+
+### Client Share Links
+
+Several apps need to share resources with unauthenticated external users (clients reviewing quotes, viewing timelines, approving agreements, etc.). Each app implements this in its own app DB — the tokens are tightly coupled to app-specific resources — but follows the same pattern:
+
+**Table: `share_tokens`** (or similar, named per app)
+| Field | Purpose |
+|-------|---------|
+| id | nanoid |
+| resource_type | What's being shared (e.g., `quote`, `gallery`, `agreement`) |
+| resource_id | FK to the shared resource |
+| token | Unique URL-safe string (word-based like `cedar-river-42` or nanoid) |
+| created_by | User who created the link |
+| created_at | ISO timestamp |
+| expires_at | ISO timestamp, nullable (null = no expiry) |
+| viewed_at | ISO timestamp, nullable — set on first view |
+| revoked | Boolean, default false |
+
+**Public route:** `GET /share/:token` — renders a read-only (or limited-action) view of the resource. No login required.
+
+**Token format:** `adjective-noun-number` (e.g., `grumpy-moose-42`). One random adjective, one random noun, and a random number 10–99. Friendly, funny, and easy to read aloud. The canonical word lists:
+
+**Adjectives (50):**
+```
+tiny, lanky, lumpy, fuzzy, wobbly, stubby, burly, plump, scruffy, pointy,
+grumpy, sneaky, clever, bold, lazy, jolly, rowdy, shy, nosy, bossy,
+clumsy, peppy, witty, cranky, giddy, sassy, spunky, zany, feisty, mellow,
+rusty, dusty, mossy, crispy, smoky, frosty, muddy, misty, breezy, shady,
+swift, lost, wild, odd, brisk, snug, dapper, plucky, wily, stout
+```
+
+**Nouns (50):**
+```
+sun, moon, cloud, frost, ember, mist, lake, river, brook, cove,
+pine, oak, cedar, fern, moss, thistle, bramble, willow, briar, clover,
+hawk, bear, fox, deer, wolf, crane, wren, moose, otter, badger,
+raven, heron, bison, lynx, loon, newt, pika, yak,
+amber, jade, pearl, copper, flint, cobalt, slate,
+ridge, canyon, grove, meadow, bluff, hollow, fjord
+```
+
+**URL pattern:** `[app].uplandexhibits.com/share/[token]` — renders a stripped-down public view with no login required.
+
+**Rules:**
+- Check `revoked` and `expires_at` before rendering
+- Set `viewed_at` on first access (tracks whether the client has seen it)
 
 ### Service-to-Service Communication
 Apps call each other via HTTPS with either:
@@ -191,5 +270,10 @@ Toggl ─────────────┤
          ┌─────────────────┐     ┌───────────────────┐
          │     Claire      │────>│   Claude API       │
          │ (exhibit design)│     │    (Claire)        │
+         └─────────────────┘     └───────────────────┘
+
+         ┌─────────────────┐     ┌───────────────────┐
+         │     Quotes      │────>│   Claude API       │
+         │  (AI quoting)   │     │  (quote generation)│
          └─────────────────┘     └───────────────────┘
 ```
