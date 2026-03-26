@@ -121,6 +121,20 @@ AI-first quoting tool. Describe a project in plain English, and the AI generates
 
 ---
 
+## Standard App Order
+
+When listing apps in UI (permission grids, nav menus, icon rows), always use this order:
+
+1. **Storefront** (`storefront`) — Upland Website / e-commerce
+2. **Inquiries** (`inquiries`) — Inquiry Hub
+3. **Schedules** (`scheduler`) — Project Scheduler
+4. **Quotes** (`quotes`) — AI Quoting
+5. **Agreements** (`agreements`) — Contract Agreements
+6. **ODIN** (`odin`) — Operations Dashboard
+7. **Claire** (`claire`) — Exhibit Panel Design
+
+The parenthesized values are the `app` identifiers used in `user_app_access`.
+
 ## Shared Infrastructure
 
 ### Auth Database (Turso)
