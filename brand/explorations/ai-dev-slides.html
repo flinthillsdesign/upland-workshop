@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Development Principles — Slides</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    font-family: 'Instrument Sans', system-ui, sans-serif;
+    background: #0E1117;
+    color: #C8CDD5;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  /* Slide container */
+  .deck {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 56px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+  }
+
+  .slide.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Slide layouts */
+  .slide-center {
+    flex-direction: column;
+    text-align: center;
+    gap: 24px;
+  }
+
+  .slide-split {
+    gap: 32px;
+  }
+
+  .slide-split .split-left,
+  .slide-split .split-right {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .slide-split img {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+  }
+
+  /* Typography */
+  .slide-label {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #A5BC39;
+  }
+
+  .slide h1 {
+    font-size: 56px;
+    font-weight: 700;
+    color: #E8ECF1;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    max-width: none;
+  }
+
+  .slide h2 {
+    font-size: 36px;
+    font-weight: 600;
+    color: #E8ECF1;
+    line-height: 1.3;
+    max-width: 700px;
+  }
+
+  .slide p {
+    font-size: 32px;
+    color: #8B919A;
+    line-height: 1.5;
+    max-width: 840px;
+  }
+
+  .slide blockquote {
+    border-left: 4px solid #A5BC39;
+    padding: 24px 36px;
+    background: rgba(165, 188, 57, 0.04);
+    border-radius: 0 8px 8px 0;
+    max-width: 1100px;
+  }
+
+  .slide blockquote p {
+    font-size: 42px;
+    color: #D4D9E0;
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  .slide .attribution {
+    font-size: 20px;
+    color: #6B7280;
+  }
+
+  .slide .attribution span {
+    color: #8B919A;
+  }
+
+  /* Caption bar under split images */
+  .img-caption {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6B7280;
+    margin-top: 12px;
+  }
+
+  /* App icon */
+  .slide .app-icon {
+    width: 96px;
+    height: 96px;
+    border-radius: 20px;
+    filter: drop-shadow(0 0 30px rgba(165, 188, 57, 0.3))
+            drop-shadow(0 0 80px rgba(165, 188, 57, 0.15));
+  }
+
+  /* Big manifesto text */
+  .manifesto .thesis {
+    font-size: 60px;
+    font-weight: 700;
+    color: #E8ECF1;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 44px;
+    max-width: 960px;
+    text-align: left;
+  }
+
+  .manifesto .principle {
+    font-size: 38px;
+    font-weight: 600;
+    color: #C8CDD5;
+    line-height: 1.35;
+    margin-bottom: 28px;
+    max-width: 960px;
+    text-align: left;
+  }
+
+  .manifesto .accent {
+    color: #A5BC39;
+  }
+
+  .manifesto-bar {
+    position: absolute;
+    left: 60px;
+    top: 15%;
+    bottom: 15%;
+    width: 3px;
+    background: linear-gradient(to bottom, #A5BC39, rgba(165, 188, 57, 0));
+    border-radius: 2px;
+  }
+
+  /* ODIN insight columns */
+  .insight-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+    width: 100%;
+    max-width: 1100px;
+  }
+
+  .insight-col h4 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #D4D9E0;
+    margin-bottom: 12px;
+  }
+
+  .insight-col p {
+    font-size: 22px;
+    color: #8B919A;
+    line-height: 1.55;
+    max-width: none;
+  }
+
+  /* Goat button */
+  .goat-trigger {
+    font-size: 96px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.15s;
+    user-select: none;
+  }
+
+  .goat-trigger:hover { transform: scale(1.15); }
+  .goat-trigger:active { transform: scale(0.95); }
+
+  /* Slide counter */
+  .counter {
+    position: fixed;
+    bottom: 24px;
+    right: 32px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #4B5563;
+    letter-spacing: 0.05em;
+    z-index: 10;
+  }
+
+  /* Progress bar */
+  .progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background: #A5BC39;
+    transition: width 0.4s ease;
+    z-index: 10;
+  }
+
+  /* Title slide animations */
+  @keyframes title-fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes title-pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    50% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.7; }
+  }
+
+  @keyframes title-icon-glow {
+    0%, 100% { opacity: 0.4; filter: drop-shadow(0 0 0 transparent); }
+    50% { opacity: 0.8; filter: drop-shadow(0 0 12px rgba(165, 188, 57, 0.4)); }
+  }
+
+  @keyframes closing-glow {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+    50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+  }
+
+  @keyframes flow-pulse {
+    0% { left: -40px; }
+    100% { left: 100%; }
+  }
+
+  @keyframes goat-idle {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(-3deg) scale(1.02); }
+    75% { transform: rotate(3deg) scale(1.02); }
+  }
+
+  @keyframes goat-nudge {
+    0%, 100% { transform: translateY(0); opacity: 0.6; }
+    50% { transform: translateY(-6px); opacity: 1; }
+  }
+
+  @keyframes particle-drift {
+    0%, 100% { transform: translate(0, 0); opacity: 0.3; }
+    25% { transform: translate(30px, -20px); opacity: 0.6; }
+    50% { transform: translate(-10px, -40px); opacity: 0.2; }
+    75% { transform: translate(-30px, 10px); opacity: 0.5; }
+  }
+
+  /* Constellation slide */
+  .constellation {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .constellation .c-icon {
+    position: absolute;
+    border-radius: 17%;
+    filter: drop-shadow(0 0 30px rgba(165, 188, 57, 0.4))
+            drop-shadow(0 0 80px rgba(165, 188, 57, 0.2));
+  }
+
+  .constellation .c-icon img {
+    border: 1px solid rgba(165, 188, 57, 0.25);
+    box-shadow: 0 0 40px rgba(165, 188, 57, 0.15);
+    border-radius: inherit;
+  }
+
+  /* Only animate constellation when slide is active */
+  .slide.active .constellation .c-icon {
+    animation-play-state: running;
+  }
+  .slide:not(.active) .constellation .c-icon {
+    animation-play-state: paused;
+    opacity: 0 !important;
+  }
+
+  @keyframes c-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  @keyframes c-appear {
+    from { opacity: 0; transform: scale(0.4) translateY(40px); filter: blur(8px); }
+    to { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+  }
+
+  @keyframes c-line-draw {
+    to { stroke-dashoffset: 0; }
+  }
+
+  .constellation .c-line {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .constellation .c-icon {
+    z-index: 1;
+  }
+
+  /* Diff cards */
+  .diff-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+    max-width: 1100px;
+  }
+
+  .diff-card {
+    background: #fafaf8;
+    border-radius: 8px;
+    padding: 24px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #3a3a3a;
+  }
+
+  .diff-card .diff-week {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e8e8e4;
+  }
+
+  .diff-card .diff-section {
+    font-weight: 600;
+    color: #222;
+    margin-top: 12px;
+    margin-bottom: 4px;
+    font-size: 12px;
+  }
+
+  .diff-card del {
+    color: #c0392b;
+    text-decoration: line-through;
+    background: rgba(192,57,43,0.06);
+    padding: 0 2px;
+    border-radius: 2px;
+  }
+
+  .diff-card ins {
+    color: #27ae60;
+    text-decoration: none;
+    background: rgba(39,174,96,0.08);
+    padding: 0 2px;
+    border-radius: 2px;
+  }
+
+  .diff-card .flag {
+    border-left: 3px solid #e8c84a;
+    padding: 3px 0 3px 8px;
+    margin: 4px 0;
+    background: rgba(232,200,74,0.05);
+  }
+
+  .diff-card .flag.removed {
+    border-left-color: #c0392b;
+    opacity: 0.5;
+    text-decoration: line-through;
+  }
+
+  .diff-edits {
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: 1px solid #e8e8e4;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .diff-edits.heavy { color: #c0392b; }
+  .diff-edits.moderate { color: #e67e22; }
+  .diff-edits.light { color: #27ae60; }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<div class="counter" id="counter"></div>
+
+<div class="deck">
+
+  <!-- 1. Title -->
+  <div class="slide active" style="overflow:hidden;display:flex;align-items:center;justify-content:center;padding:0;">
+    <div id="titleParticles" style="position:absolute;inset:0;pointer-events:none;"></div>
+    <div style="position:absolute;width:1000px;height:1000px;border-radius:50%;background:radial-gradient(circle,rgba(165,188,57,0.08) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;animation:title-pulse 8s ease-in-out infinite;"></div>
+    <div style="display:flex;flex-direction:column;align-items:center;z-index:1;">
+      <img src="../logos/upland-exhibits-white.svg" alt="Upland Exhibits" style="width: 480px; opacity: 0.9; animation: title-fade-in 1.2s ease forwards;">
+      <h1 style="font-size: 72px; text-align: center; margin-top: 40px; animation: title-fade-in 1.2s ease 0.4s both;">Principles for Building AI Apps</h1>
+      <div style="display: flex; gap: 28px; margin-top: 52px; animation: title-fade-in 1.2s ease 0.8s both;">
+        <img src="../icons/odin.svg" style="width:104px;height:104px;border-radius:22px;opacity:0.5;animation:title-icon-glow 4s ease-in-out infinite 0s;">
+        <img src="../icons/scheduler.svg" style="width:104px;height:104px;border-radius:22px;opacity:0.5;animation:title-icon-glow 4s ease-in-out infinite 0.5s;">
+        <img src="../icons/claire.svg" style="width:104px;height:104px;border-radius:22px;opacity:0.5;animation:title-icon-glow 4s ease-in-out infinite 1s;">
+        <img src="../icons/quotes.svg" style="width:104px;height:104px;border-radius:22px;opacity:0.5;animation:title-icon-glow 4s ease-in-out infinite 1.5s;">
+        <img src="../icons/tony.svg" style="width:104px;height:104px;border-radius:22px;opacity:0.5;animation:title-icon-glow 4s ease-in-out infinite 2s;">
+        <img src="../icons/agreements.svg" style="width:104px;height:104px;border-radius:22px;opacity:0.5;animation:title-icon-glow 4s ease-in-out infinite 2.5s;">
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Constellation -->
+  <div class="slide" id="constellationSlide">
+    <div class="constellation" id="constellation"></div>
+  </div>
+
+  <!-- 3. Gall quote -->
+  <div class="slide" style="display:flex;align-items:center;justify-content:center;">
+    <div style="max-width: 1000px; text-align: left; border-left: 4px solid #A5BC39; padding-left: 40px;">
+      <p style="font-size: 48px; color: #E8ECF1; line-height: 1.3; font-weight: 600; margin-bottom: 36px;">A complex system that works is invariably found to have evolved from <span style="color:#A5BC39;">a simple system that worked.</span></p>
+      <p style="font-size: 42px; color: #8B919A; line-height: 1.35; margin-bottom: 32px;">A complex system designed from scratch <span style="color:#C8CDD5;font-weight:600;">never works</span> and cannot be patched up to make it work.</p>
+      <p style="font-size: 42px; color: #8B919A; line-height: 1.35;">You have to start over with a working simple system.</p>
+      <div style="font-size: 24px; color: #6B7280; margin-top: 40px;"><span style="color:#8B919A;">John Gall</span> &mdash; The Systems Bible</div>
+    </div>
+  </div>
+
+  <!-- 3. Scheduler before/after -->
+  <div class="slide slide-split">
+    <div class="split-left">
+      <img src="scheduler-before.png" alt="Microsoft Word schedule">
+      <div class="img-caption">Microsoft Word &mdash; Manual</div>
+    </div>
+    <div class="split-right">
+      <img src="scheduler-after.png" alt="Upland Scheduler">
+      <div class="img-caption">Upland Scheduler &mdash; Software-Driven</div>
+    </div>
+  </div>
+
+  <!-- 4. What changed -->
+  <div class="slide" style="display:flex;align-items:center;padding:40px 56px;gap:48px;">
+    <div style="flex: 4; min-width: 0;">
+      <img src="scheduler-after.png" alt="Upland Scheduler" style="width:100%;border-radius:10px;border:1px solid rgba(165,188,57,0.15);box-shadow:0 8px 40px rgba(0,0,0,0.4),0 0 60px rgba(165,188,57,0.04);">
+    </div>
+    <div style="flex: 2; display:flex; flex-direction:column; justify-content:center;">
+      <p style="font-size: 52px; color: #E8ECF1; line-height: 1.15; font-weight: 700; letter-spacing: -0.02em;">Easier, faster, visual.</p>
+      <p style="font-size: 28px; color: #8B919A; line-height: 1.45; margin-top: 32px;">Collisions obvious. Staffing is real math. Cash flow forecasts itself.</p>
+      <p style="font-size: 24px; color: #A5BC39; margin-top: 28px; font-weight: 500;">Then ODIN merges this with project data, financials, and client history.</p>
+    </div>
+  </div>
+
+  <!-- 5. ODIN coaching -->
+  <div class="slide slide-center" style="flex-direction: column; gap: 40px;">
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <img class="app-icon" src="../icons/odin.svg" alt="ODIN" style="width: 64px; height: 64px; border-radius: 14px;">
+      <div>
+        <div class="slide-label">ODIN AI Coaching</div>
+        <div style="font-size: 18px; color: #4B5563;">Generated from Scheduler + project data</div>
+      </div>
+    </div>
+    <div class="insight-columns">
+      <div class="insight-col">
+        <h4>2-Month Outlook</h4>
+        <p>Design and fabrication are both <span style="color:#E8ECF1;font-weight:600;">significantly overbooked</span> through May. Confirmed projects have locked in more work than the team can absorb. Options: negotiate timeline relief, push non-critical design into June, or <span style="color:#A5BC39;">bring in contract help now.</span></p>
+      </div>
+      <div class="insight-col">
+        <h4>6-Month Outlook</h4>
+        <p>The first three months are severely overloaded, then both teams <span style="color:#E8ECF1;font-weight:600;">drop sharply.</span> Fab recovers faster than design, creating a <span style="color:#E8ECF1;font-weight:600;">mid-year imbalance.</span> The fall gap for design persists even with potential projects factored in.</p>
+      </div>
+      <div class="insight-col">
+        <h4>12-Month Outlook</h4>
+        <p>Fab drops to near-idle by late 2026, then partially recovers. Design thins out through spring 2027. The cash flow impact compounds — <span style="color:#A5BC39;">sustained negative months from fall onward.</span> Specific potential projects would bridge the worst of it, but <span style="color:#E8ECF1;font-weight:600;">only if they close.</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Agenda screenshot -->
+  <div class="slide slide-center" style="gap: 32px;">
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <img class="app-icon" src="../icons/odin.svg" alt="ODIN" style="width: 56px; height: 56px; border-radius: 12px;">
+      <h2 style="font-size: 32px;">AI-Generated Meeting Agendas</h2>
+    </div>
+    <img src="odin-agenda.png" alt="ODIN agenda" style="max-height: 75vh; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 8px 40px rgba(0,0,0,0.3);">
+  </div>
+
+  <!-- 7. Goat -->
+  <div class="slide slide-center" style="gap: 20px;">
+    <button class="goat-trigger" onclick="goatCelebration()" style="animation: goat-idle 3s ease-in-out infinite;">&#x1F410;</button>
+    <h2>Goats</h2>
+    <p style="font-size: 32px; max-width: 600px; text-align: center;">Above-and-beyond work that wasn't on the list. When someone earns a goat, it gets celebrated.</p>
+    <p style="font-size: 20px; color: #A5BC39; animation: goat-nudge 2s ease-in-out infinite; margin-top: 32px;">&#8593; click the goat. do it. you know you want to.</p>
+  </div>
+
+  <!-- 8. Tony → ODIN -->
+  <div class="slide" style="flex-direction: column; padding: 36px 56px;">
+    <!-- Icons row with animated connection -->
+    <div style="display: flex; align-items: center; justify-content: center; gap: 32px; margin-bottom: 28px;">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+        <img class="app-icon" src="../icons/tony.svg" alt="Tony" style="width: 100px; height: 100px; border-radius: 20px;">
+        <div style="font-size: 28px; font-weight: 600; color: #E8ECF1;">A.I. Tony</div>
+        <div style="font-size: 20px; color: #6B7280;">Process Rules</div>
+      </div>
+      <!-- Animated arrow -->
+      <div style="width: 200px; height: 24px; position: relative; display: flex; align-items: center;">
+        <div style="flex: 1; height: 2px; background: rgba(165,188,57,0.3); position: relative; overflow: hidden; border-radius: 1px;">
+          <div style="position:absolute;top:-2px;left:0;width:40px;height:6px;border-radius:3px;background:linear-gradient(90deg,transparent,#A5BC39,transparent);animation:flow-pulse 2s ease-in-out infinite;"></div>
+        </div>
+        <div style="width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:14px solid rgba(165,188,57,0.4);margin-left:-1px;"></div>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+        <img class="app-icon" src="../icons/odin.svg" alt="ODIN" style="width: 100px; height: 100px; border-radius: 20px;">
+        <div style="font-size: 28px; font-weight: 600; color: #E8ECF1;">ODIN</div>
+        <div style="font-size: 20px; color: #6B7280;">Mapped to Projects</div>
+      </div>
+    </div>
+    <!-- Images -->
+    <div style="display: flex; gap: 24px; flex: 1; min-height: 0; width: 100%;">
+      <div style="flex: 1; min-width: 0;">
+        <img src="tony-shoulds.png" alt="Tony shoulds" style="width: 100%; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 8px 40px rgba(0,0,0,0.3);">
+      </div>
+      <div style="flex: 1; min-width: 0;">
+        <img src="odin-shoulds.png" alt="ODIN shoulds grid" style="width: 100%; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 8px 40px rgba(0,0,0,0.3);">
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. Briefing cards -->
+  <div class="slide" style="display:flex;flex-direction:column;padding:32px 40px;">
+    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+      <img class="app-icon" src="../icons/odin.svg" alt="ODIN" style="width: 56px; height: 56px; border-radius: 12px;">
+      <div class="slide-label" style="font-size: 24px;">Daily Briefing</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;flex:1;min-height:0;align-items:start;">
+      <div style="height:100%;display:flex;flex-direction:column;">
+        <img src="odin-priorities.png" alt="Priorities" style="width:100%;border-radius:10px;border:1px solid rgba(255,255,255,0.08);box-shadow:0 8px 40px rgba(0,0,0,0.3);">
+        <div class="img-caption">Priorities</div>
+      </div>
+      <div style="height:100%;display:flex;flex-direction:column;">
+        <img src="odin-nextsteps.png" alt="Next Steps" style="width:100%;border-radius:10px;border:1px solid rgba(255,255,255,0.08);box-shadow:0 8px 40px rgba(0,0,0,0.3);">
+        <div class="img-caption">Next Steps</div>
+      </div>
+      <div style="height:100%;display:flex;flex-direction:column;">
+        <img src="odin-processnotes.png" alt="Process Notes" style="width:100%;border-radius:10px;border:1px solid rgba(255,255,255,0.08);box-shadow:0 8px 40px rgba(0,0,0,0.3);">
+        <div class="img-caption">Process Notes</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. The lesson setup -->
+  <div class="slide slide-center" style="gap: 36px;">
+    <img class="app-icon" src="../icons/quotes.svg" alt="Quotes" style="width: 120px; height: 120px; border-radius: 24px;">
+    <p style="max-width: 780px; text-align: center; font-size: 40px; color: #8B919A; line-height: 1.35; font-weight: 500;">Quotes can generate a complete proposal from a sentence. The AI is accurate. But the team still reviews every line item.</p>
+    <p style="max-width: 780px; text-align: center; font-size: 44px; color: #E8ECF1; line-height: 1.3; font-weight: 600;">The technology leaped ahead — the trust didn't.</p>
+  </div>
+
+  <!-- 11. Manifesto -->
+  <div class="slide slide-center manifesto" style="align-items: center;">
+    <div style="position: relative; text-align: left;">
+    <div class="manifesto-bar" style="left: -28px; top: 0; bottom: 0;"></div>
+    <p class="thesis">You can't earn trust on the <span class="accent">hard thing</span> until you've earned it on the <span class="accent">easy thing.</span></p>
+    <p class="principle">Don't launch with the most impressive feature. Launch with the most <span class="accent">verifiable</span> one.</p>
+    <p class="principle">Let people confirm it's right about <span class="accent">easy things</span> before you ask them to trust it on <span class="accent">hard things.</span></p>
+    </div>
+  </div>
+
+  <!-- 12. Shrinking diff -->
+  <div class="slide slide-center" style="flex-direction: column; gap: 28px;">
+    <h2>How the AI Learns</h2>
+    <div class="diff-row">
+      <div class="diff-card">
+        <div class="diff-week">Week 1</div>
+        <div class="diff-section">Flags</div>
+        <div class="flag removed">Burlington Depot behind schedule</div>
+        <div class="flag"><del>Germans unclear deadline</del> <ins>Germans feedback due Friday — Joel following up</ins></div>
+        <div class="flag"><ins>Anthony overloaded — carrying 3 projects</ins></div>
+        <div class="diff-section">Notes</div>
+        <p><del>Review overall project status</del> <ins>Eisenhower scope change needs pricing before Thursday</ins></p>
+        <p><del>Discuss upcoming deadlines</del></p>
+        <p><ins>Nebraska State Fair: Anthony needs direction from Joel</ins></p>
+        <div class="diff-edits heavy">9 edits before meeting</div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-week">Week 8</div>
+        <div class="diff-section">Flags</div>
+        <div class="flag">Eisenhower fab tasks slipping — 2 weeks carried</div>
+        <div class="flag"><del>Norfolk Parks conflicts with Tower Heritage</del> <ins>Norfolk Parks pushed to avoid conflict</ins></div>
+        <div class="diff-section">Notes</div>
+        <p>Brenna's Eisenhower round 2 depends on client sign-off</p>
+        <p><del>Review WSU Geology timeline</del></p>
+        <div class="diff-edits moderate">3 edits before meeting</div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-week">Week 20</div>
+        <div class="diff-section">Flags</div>
+        <div class="flag">Heavy workload on Anthony — multiple carried tasks</div>
+        <div class="flag">Graham's Germans interactives carried 2 weeks</div>
+        <div class="diff-section">Notes</div>
+        <p>Anthony should draft Nebraska State Fair design for reactions</p>
+        <p><ins>Ask Graham about waymaker graphics delivery</ins></p>
+        <div class="diff-edits light">1 edit before meeting</div>
+      </div>
+    </div>
+    <p style="font-size: 24px; color: #6B7280;">Each edit teaches the AI what matters, what's noise, and how the team talks about work.</p>
+  </div>
+
+  <!-- 13. Closing -->
+  <div class="slide" style="display:flex;align-items:center;justify-content:center;overflow:hidden;padding:0;">
+    <div style="position:absolute;width:1400px;height:1400px;border-radius:50%;background:radial-gradient(circle,rgba(165,188,57,0.22) 0%,rgba(165,188,57,0.08) 35%,transparent 65%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;animation:closing-glow 6s ease-in-out infinite;"></div>
+    <div style="display:flex;flex-direction:column;align-items:center;z-index:1;text-align:center;">
+      <p style="font-size: 72px; color: #E8ECF1; font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; white-space: nowrap; max-width: none;">Build the simple system.</p>
+      <p style="font-size: 72px; font-weight: 700; line-height: 1.15; margin-top: 24px; letter-spacing: -0.02em; white-space: nowrap; max-width: none;"><span style="color: #E8ECF1;">Let it earn trust.</span> <span style="color: #A5BC39;">Then let it grow.</span></p>
+      <div style="width: 60px; height: 3px; background: linear-gradient(90deg, transparent, #A5BC39, transparent); margin: 48px 0; border-radius: 2px;"></div>
+      <img src="../logos/upland-exhibits-white.svg" alt="Upland Exhibits" style="width: 320px; opacity: 0.8; margin-bottom: 20px;">
+      <p style="font-size: 24px; color: #A5BC39; font-weight: 500; letter-spacing: 0.06em;">The workshop for a connected world.</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // Title particles
+  (function() {
+    const container = document.getElementById('titleParticles');
+    const COUNT = 30;
+    for (let i = 0; i < COUNT; i++) {
+      const dot = document.createElement('div');
+      const size = 2 + Math.random() * 3;
+      const x = Math.random() * 100;
+      const y = Math.random() * 100;
+      const dur = 15 + Math.random() * 25;
+      const delay = Math.random() * -30;
+      dot.style.cssText = `position:absolute;width:${size}px;height:${size}px;border-radius:50%;background:rgba(165,188,57,${0.1 + Math.random() * 0.2});left:${x}%;top:${y}%;animation:particle-drift ${dur}s ease-in-out ${delay}s infinite;`;
+      container.appendChild(dot);
+    }
+  })();
+
+  // Build constellation
+  (function() {
+    const container = document.getElementById('constellation');
+    const apps = [
+      { src: '../icons/odin.svg', name: 'ODIN', x: 44, y: 36, size: 300, delay: 0 },
+      { src: '../icons/scheduler.svg', name: 'Scheduler', x: 14, y: 18, size: 200, delay: 0.8 },
+      { src: '../icons/claire.svg', name: 'Claire', x: 78, y: 14, size: 180, delay: 1.6 },
+      { src: '../icons/website.svg', name: 'Storefront', x: 8, y: 58, size: 160, delay: 1.0 },
+      { src: '../icons/tony.svg', name: 'Tony', x: 56, y: 78, size: 150, delay: 2.0 },
+      { src: '../icons/quotes.svg', name: 'Quotes', x: 86, y: 56, size: 140, delay: 0.4 },
+      { src: '../icons/agreements.svg', name: 'Agreements', x: 74, y: 82, size: 120, delay: 1.2 },
+      { src: '../icons/inquiry-hub.svg', name: 'Inquiry Hub', x: 26, y: 74, size: 120, delay: 2.4 },
+    ];
+
+    // Connections (indices) — ODIN connects to everything, others connect to neighbors
+    const connections = [
+      [0, 1], [0, 2], [0, 3], [0, 4], [0, 5],
+      [1, 3], [2, 4], [3, 5], [4, 5],
+      [1, 6], [2, 7],
+    ];
+
+    // Draw SVG lines
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('class', 'c-line');
+    svg.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;';
+    container.appendChild(svg);
+
+    connections.forEach(([a, b]) => {
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      line.setAttribute('x1', apps[a].x + '%');
+      line.setAttribute('y1', apps[a].y + '%');
+      line.setAttribute('x2', apps[b].x + '%');
+      line.setAttribute('y2', apps[b].y + '%');
+      line.setAttribute('stroke', 'rgba(165, 188, 57, 0.25)');
+      line.setAttribute('stroke-width', '2');
+      // Animate line drawing
+      line.style.strokeDasharray = '2000';
+      line.style.strokeDashoffset = '2000';
+      line.style.animation = `c-line-draw 2s ease forwards ${Math.min(apps[a].delay, apps[b].delay) + 1}s`;
+      svg.appendChild(line);
+    });
+
+    // Place icons
+    apps.forEach((app) => {
+      const wrap = document.createElement('div');
+      wrap.className = 'c-icon';
+      wrap.style.width = app.size + 'px';
+      wrap.style.height = app.size + 'px';
+      wrap.style.left = `calc(${app.x}% - ${app.size / 2}px)`;
+      wrap.style.top = `calc(${app.y}% - ${app.size / 2}px)`;
+      wrap.style.animationDelay = app.delay + 's';
+      // Fade in
+      wrap.style.opacity = '0';
+      wrap.style.animation = `c-appear 1.2s cubic-bezier(0.16,1,0.3,1) forwards ${app.delay}s, c-float 6s ease-in-out infinite ${app.delay + 1.2}s`;
+
+      const img = document.createElement('img');
+      img.src = app.src;
+      img.alt = app.name;
+      wrap.appendChild(img);
+
+      // Label
+      const label = document.createElement('div');
+      label.textContent = app.name;
+      label.style.cssText = 'text-align:center;font-size:16px;font-weight:600;color:#8B919A;margin-top:10px;letter-spacing:0.04em;';
+      wrap.appendChild(label);
+
+      container.appendChild(wrap);
+    });
+  })();
+
+  const slides = document.querySelectorAll('.slide');
+  const counterEl = document.getElementById('counter');
+  const progressEl = document.getElementById('progress');
+  let current = 0;
+
+  function goTo(n) {
+    if (n < 0 || n >= slides.length) return;
+    slides[current].classList.remove('active');
+    current = n;
+    slides[current].classList.add('active');
+    counterEl.textContent = (current + 1) + ' / ' + slides.length;
+    progressEl.style.width = ((current + 1) / slides.length * 100) + '%';
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); goTo(current + 1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(current - 1); }
+  });
+
+  // Click left/right halves to navigate
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('button')) return;
+    if (e.clientX > window.innerWidth / 2) goTo(current + 1);
+    else goTo(current - 1);
+  });
+
+  goTo(0);
+
+  // Goat animations
+  function makeGoat(size = 32) {
+    const el = document.createElement('div');
+    el.textContent = '\uD83D\uDC10';
+    el.style.cssText = `position:fixed;pointer-events:none;z-index:99999;font-size:${size}px;line-height:1;`;
+    document.body.appendChild(el);
+    return el;
+  }
+
+  function arcadeCallout(phrase) {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;inset:0;z-index:100000;pointer-events:none;display:flex;align-items:center;justify-content:center;';
+    document.body.appendChild(overlay);
+    const row = document.createElement('div');
+    row.style.cssText = 'display:flex;align-items:center;gap:0.5em;opacity:0;transform:scale(3);transition:all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);';
+    overlay.appendChild(row);
+    const gs = 'font-size:3.2rem;line-height:1;transition:all 0.6s cubic-bezier(0.55,0.085,0.68,0.53);';
+    const lg = document.createElement('span'); lg.textContent = '\uD83D\uDC10'; lg.style.cssText = gs;
+    const t = document.createElement('span'); t.textContent = phrase;
+    t.style.cssText = "font-size:2.8rem;font-weight:900;color:#E8ECF1;text-shadow:0 0 30px rgba(165,188,57,0.5),0 0 80px rgba(165,188,57,0.2),0 2px 4px rgba(0,0,0,0.5);letter-spacing:0.06em;font-family:system-ui;text-align:center;text-transform:uppercase;transition:opacity 0.5s;";
+    const rg = document.createElement('span'); rg.textContent = '\uD83D\uDC10'; rg.style.cssText = gs;
+    row.append(lg, t, rg);
+    requestAnimationFrame(() => { row.style.opacity = '1'; row.style.transform = 'scale(1)'; });
+    setTimeout(() => {
+      t.style.opacity = '0';
+      lg.style.transform = 'translateX(-60vw) rotate(-40deg) scale(1.5)'; lg.style.opacity = '0';
+      rg.style.transform = 'translateX(60vw) rotate(40deg) scale(1.5)'; rg.style.opacity = '0';
+      setTimeout(() => overlay.remove(), 700);
+    }, 2000);
+  }
+
+  function goatStampede() {
+    const H = window.innerHeight, W = window.innerWidth, COUNT = 10 + Math.floor(Math.random() * 6), goats = [], flyaways = [];
+    const flyTriggers = [Math.floor(COUNT * 0.3), Math.floor(COUNT * 0.6)]; let launched = 0;
+    for (let i = 0; i < COUNT; i++) { const el = makeGoat(24 + Math.floor(Math.random() * 24)); goats.push({ el, x: -(60 + Math.random() * 400), y: H * 0.5 + Math.random() * H * 0.4, speed: 4 + Math.random() * 5, bob: 3 + Math.random() * 6, phase: Math.random() * Math.PI * 2 }); }
+    let t = 0;
+    function frame() { t++; let alive = false, onscreen = 0;
+      for (const g of goats) { if (g.done) continue; g.x += g.speed; if (g.x > W + 80) { g.el.remove(); g.done = true; continue; } alive = true; if (g.x > 0) onscreen++;
+        g.el.style.left = g.x + 'px'; g.el.style.top = (g.y + Math.sin(t * 0.15 + g.phase) * g.bob) + 'px'; g.el.style.transform = `scaleX(-1) rotate(${Math.sin(t * 0.2 + g.phase) * 10}deg)`;
+        if (launched < flyTriggers.length && onscreen >= flyTriggers[launched] && g.x > W * 0.2 && g.x < W * 0.7) { launched++; const fa = makeGoat(28 + Math.floor(Math.random() * 16)); flyaways.push({ el: fa, x: g.x, y: g.y, vx: (Math.random() - 0.3) * 6, vy: -(8 + Math.random() * 6), rot: 0, rs: (Math.random() - 0.5) * 20, life: 80 }); }
+      }
+      for (const f of flyaways) { if (f.life <= 0) continue; alive = true; f.life--; f.vy += 0.3; f.x += f.vx; f.y += f.vy; f.rot += f.rs; f.el.style.left = f.x + 'px'; f.el.style.top = f.y + 'px'; f.el.style.transform = `rotate(${f.rot}deg)`; f.el.style.opacity = String(f.life < 20 ? f.life / 20 : 1); if (f.life <= 0) f.el.remove(); }
+      if (alive) requestAnimationFrame(frame); }
+    requestAnimationFrame(frame);
+  }
+
+  function goatRain() { const W = window.innerWidth; for (let i = 0; i < 20; i++) { setTimeout(() => { const el = makeGoat(20 + Math.floor(Math.random() * 20)); const x = Math.random() * (W - 40), spin = Math.random() > 0.5 ? 1 : -1, speed = 4 + Math.random() * 4, wobble = 30 + Math.random() * 40, phase = Math.random() * Math.PI * 2; let y = -50, t = 0; function frame() { t++; y += speed; if (y > window.innerHeight + 60) { el.remove(); return; } el.style.left = (x + Math.sin(t * 0.04 + phase) * wobble) + 'px'; el.style.top = y + 'px'; el.style.transform = `rotate(${t * 3 * spin}deg)`; requestAnimationFrame(frame); } requestAnimationFrame(frame); }, i * 80); } }
+
+  function goatSpiral() { const W = window.innerWidth, H = window.innerHeight, cx = W / 2, cy = H / 2, goats = []; for (let i = 0; i < 12; i++) goats.push(makeGoat(28 + Math.floor(Math.random() * 20))); const start = performance.now();
+    function frame(now) { const p = Math.min((now - start) / 3500, 1), phase = p < 0.6 ? p / 0.6 : 1 - (p - 0.6) / 0.4;
+      for (let i = 0; i < goats.length; i++) { const angle = (i / 12) * Math.PI * 2 + p * Math.PI * 8, r = phase * Math.min(W, H) * 0.4 + 20; goats[i].style.left = (cx + Math.cos(angle) * r) + 'px'; goats[i].style.top = (cy + Math.sin(angle) * r) + 'px'; goats[i].style.transform = `rotate(${angle * 57.3 + p * 360}deg) scale(${0.5 + phase * 1.2})`; if (p > 0.85) goats[i].style.opacity = String(Math.max(0, (1 - p) / 0.15)); }
+      if (p < 1) requestAnimationFrame(frame); else { for (let i = 0; i < 16; i++) { const spark = makeGoat(14 + Math.floor(Math.random() * 14)), a = (i / 16) * Math.PI * 2 + Math.random() * 0.3, spd = 6 + Math.random() * 8; let sx = cx, sy = cy, svy = -Math.sin(a) * spd, svx = Math.cos(a) * spd, life = 40 + Math.floor(Math.random() * 20); function sf() { life--; svy += 0.3; sx += svx; sy += svy; spark.style.left = sx + 'px'; spark.style.top = sy + 'px'; spark.style.transform = `rotate(${life * 8}deg)`; spark.style.opacity = String(Math.max(0, life / 30)); if (life > 0) requestAnimationFrame(sf); else spark.remove(); } requestAnimationFrame(sf); } goats.forEach(g => g.remove()); } }
+    requestAnimationFrame(frame); }
+
+  function goatPinball() { const W = window.innerWidth, H = window.innerHeight, balls = [];
+    for (let i = 0; i < 5; i++) balls.push({ el: makeGoat(28 + Math.floor(Math.random() * 16)), x: W * 0.3 + Math.random() * W * 0.4, y: H + 20, vx: (Math.random() - 0.5) * 12, vy: -(12 + Math.random() * 8), rot: 0, rs: (Math.random() - 0.5) * 15, life: 180 + Math.floor(Math.random() * 60) });
+    function tick() { let alive = false; for (const b of balls) { if (b.life <= 0) continue; alive = true; b.life--; b.vy += 0.35; b.x += b.vx; b.y += b.vy; b.rot += b.rs;
+      if (b.x < 0) { b.x = 0; b.vx = Math.abs(b.vx) * 0.9; } if (b.x > W - 40) { b.x = W - 40; b.vx = -Math.abs(b.vx) * 0.9; } if (b.y > H - 40) { b.y = H - 40; b.vy = -Math.abs(b.vy) * 0.75; } if (b.y < 0) { b.y = 0; b.vy = Math.abs(b.vy) * 0.8; }
+      for (const o of balls) { if (o === b || o.life <= 0) continue; const dx = o.x - b.x, dy = o.y - b.y, dist = Math.sqrt(dx * dx + dy * dy); if (dist < 40 && dist > 0) { const nx = dx / dist, ny = dy / dist, dot = (b.vx - o.vx) * nx + (b.vy - o.vy) * ny; if (dot > 0) { b.vx -= dot * nx * 0.5; b.vy -= dot * ny * 0.5; o.vx += dot * nx * 0.5; o.vy += dot * ny * 0.5; } } }
+      b.el.style.left = b.x + 'px'; b.el.style.top = b.y + 'px'; b.el.style.transform = `rotate(${b.rot}deg)`; b.el.style.opacity = String(b.life < 30 ? b.life / 30 : 1); if (b.life <= 0) b.el.remove(); } if (alive) requestAnimationFrame(tick); }
+    requestAnimationFrame(tick); }
+
+  const goatNames = ['Graham', 'Brenna', 'Anthony', 'Jacob'];
+  const goatAnims = [
+    { fn: goatStampede, phrases: ['NAME unleashes the stampede', 'stampede for NAME', 'run! it\'s NAME'] },
+    { fn: goatRain, phrases: ['NAME summons the goat storm', 'it\'s raining goats for NAME', 'goat storm warning: NAME'] },
+    { fn: goatSpiral, phrases: ['NAME enters the goat vortex', 'the vortex chooses NAME', 'NAME has been goatnado\'d'] },
+    { fn: goatPinball, phrases: ['NAME wins goat pinball', 'goat pinball champion: NAME', 'tilt! NAME wins'] },
+  ];
+
+  function goatCelebration() {
+    const pick = goatAnims[Math.floor(Math.random() * goatAnims.length)];
+    const name = goatNames[Math.floor(Math.random() * goatNames.length)];
+    const phrase = pick.phrases[Math.floor(Math.random() * pick.phrases.length)].replace('NAME', name);
+    const scrim = document.createElement('div');
+    scrim.style.cssText = 'position:fixed;inset:0;z-index:99998;background:rgba(10,13,18,0);transition:background 0.5s;pointer-events:none;';
+    document.body.appendChild(scrim);
+    requestAnimationFrame(() => { scrim.style.background = 'rgba(10,13,18,0.8)'; });
+    arcadeCallout(phrase);
+    setTimeout(() => pick.fn(), 1200);
+    setTimeout(() => { scrim.style.background = 'rgba(10,13,18,0)'; setTimeout(() => scrim.remove(), 600); }, 4500);
+  }
+</script>
+</body>
+</html>
