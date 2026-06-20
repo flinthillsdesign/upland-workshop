@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Budgets Icon — Roll-up Color Variations</title>
+<style>
+  body {
+    margin: 0; padding: 48px;
+    background: #07090d;
+    color: #e8eaed;
+    font-family: 'Instrument Sans', -apple-system, system-ui, sans-serif;
+  }
+  h1 { font-weight: 600; font-size: 22px; margin: 0 0 6px; }
+  p.sub { color: #8b9099; margin: 0 0 40px; font-size: 14px; max-width: 760px; line-height: 1.5; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 32px;
+  }
+  .card {
+    background: #0e1116;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+  }
+  .card.keep { border-color: rgba(165,188,57,0.4); }
+  .card svg { width: 128px; height: 128px; }
+  .row { display: flex; gap: 16px; align-items: center; justify-content: center; margin-top: 16px; }
+  .row svg.dock { width: 52px; height: 52px; }
+  .row svg.micro { width: 32px; height: 32px; }
+  .row svg.tiny { width: 16px; height: 16px; }
+  .name { margin-top: 16px; font-weight: 600; font-size: 15px; }
+  .desc { color: #8b9099; font-size: 12.5px; margin-top: 4px; line-height: 1.4; }
+  .swatches { margin-top: 10px; font-size: 11px; color: #6b7178; }
+</style>
+</head>
+<body>
+  <h1>Budgets — Roll-up, color variations</h1>
+  <p class="sub">Original #5 kept as the control (highlighted). Variations add one or two pops drawn from the app's own palette — blue <code>INPUT</code> (#6BA0CC), purple <code>VAR</code> (#9B8AD4), warm template spine (#E3A24A) — over the green total. Shown at 128 / 52 / 32 / 16px.</p>
+  <div class="grid">
+
+    <div class="card keep">
+      <div id="orig"></div>
+      <div class="row"><span class="dock" data-clone="orig"></span><span class="micro" data-clone="orig"></span><span class="tiny" data-clone="orig"></span></div>
+      <div class="name">Original · #5</div>
+      <div class="desc">White rows, blue ƒ, green total. The control.</div>
+    </div>
+
+    <div class="card">
+      <div id="coded"></div>
+      <div class="row"><span class="dock" data-clone="coded"></span><span class="micro" data-clone="coded"></span><span class="tiny" data-clone="coded"></span></div>
+      <div class="name">A · Category-coded rows</div>
+      <div class="desc">Each line item a different cost category — white / blue / amber — rolling into the green total.</div>
+      <div class="swatches">green + blue + amber</div>
+    </div>
+
+    <div class="card">
+      <div id="ascent"></div>
+      <div class="row"><span class="dock" data-clone="ascent"></span><span class="micro" data-clone="ascent"></span><span class="tiny" data-clone="ascent"></span></div>
+      <div class="name">B · Cool ascent</div>
+      <div class="desc">Rows in graduated blue, resolving into the green total. Calm, two-color.</div>
+      <div class="swatches">green + blue</div>
+    </div>
+
+    <div class="card">
+      <div id="dots"></div>
+      <div class="row"><span class="dock" data-clone="dots"></span><span class="micro" data-clone="dots"></span><span class="tiny" data-clone="dots"></span></div>
+      <div class="name">C · Value markers</div>
+      <div class="desc">White rows tagged with a computed-value dot — blue (input) and purple (var) — green total.</div>
+      <div class="swatches">green + blue + purple</div>
+    </div>
+
+    <div class="card">
+      <div id="warmcool"></div>
+      <div class="row"><span class="dock" data-clone="warmcool"></span><span class="micro" data-clone="warmcool"></span><span class="tiny" data-clone="warmcool"></span></div>
+      <div class="name">D · Warm + cool</div>
+      <div class="desc">An amber and a blue item bracket a neutral one — green total. Most colorful.</div>
+      <div class="swatches">green + amber + blue</div>
+    </div>
+
+    <div class="card">
+      <div id="split"></div>
+      <div class="row"><span class="dock" data-clone="split"></span><span class="micro" data-clone="split"></span><span class="tiny" data-clone="split"></span></div>
+      <div class="name">E · Spent / remaining total</div>
+      <div class="desc">Rows stay white; the total bar splits green (spent) + blue (remaining). The pop carries real meaning.</div>
+      <div class="swatches">green + blue</div>
+    </div>
+
+  </div>
+
+<script>
+const defs = `<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>`;
+const tile = `<rect width="256" height="256" rx="44" fill="url(#bg)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>`;
+
+const GREEN = '#A5BC39', BLUE = '#6BA0CC', AMBER = '#E3A24A', PURPLE = '#9B8AD4';
+
+// Shared pieces
+const ruleAndTotal = `
+  <line x1="64" y1="168" x2="192" y2="168" stroke="#fff" stroke-width="3" opacity="0.25"/>
+  <rect x="64" y="182" width="128" height="20" rx="10" fill="${GREEN}"/>`;
+const fGlyph = (color, op) => `<text x="64" y="150" font-family="Instrument Sans, sans-serif" font-style="italic" font-weight="600" font-size="30" fill="${color}" opacity="${op}">ƒ</text>`;
+
+const icons = {
+  // Original #5
+  orig: `
+    <rect x="64" y="62"  width="112" height="16" rx="8" fill="#fff" opacity="0.5"/>
+    <rect x="84" y="98"  width="80"  height="16" rx="8" fill="#fff" opacity="0.4"/>
+    <rect x="84" y="134" width="96"  height="16" rx="8" fill="#fff" opacity="0.32"/>
+    ${fGlyph(BLUE, 0.75)}
+    ${ruleAndTotal}
+  `,
+  // A — category-coded rows
+  coded: `
+    <rect x="64" y="62"  width="112" height="16" rx="8" fill="#fff"  opacity="0.55"/>
+    <rect x="84" y="98"  width="80"  height="16" rx="8" fill="${BLUE}"  opacity="0.85"/>
+    <rect x="84" y="134" width="96"  height="16" rx="8" fill="${AMBER}" opacity="0.85"/>
+    ${fGlyph('#fff', 0.4)}
+    ${ruleAndTotal}
+  `,
+  // B — cool ascent
+  ascent: `
+    <rect x="64" y="62"  width="112" height="16" rx="8" fill="${BLUE}" opacity="0.35"/>
+    <rect x="84" y="98"  width="80"  height="16" rx="8" fill="${BLUE}" opacity="0.6"/>
+    <rect x="84" y="134" width="96"  height="16" rx="8" fill="${BLUE}" opacity="0.9"/>
+    ${fGlyph(BLUE, 0.7)}
+    ${ruleAndTotal}
+  `,
+  // C — value markers (dots at row ends)
+  dots: `
+    <rect x="64" y="62"  width="104" height="16" rx="8" fill="#fff" opacity="0.5"/>
+    <circle cx="180" cy="70" r="7" fill="${BLUE}"/>
+    <rect x="84" y="98"  width="72"  height="16" rx="8" fill="#fff" opacity="0.4"/>
+    <circle cx="168" cy="106" r="7" fill="${PURPLE}"/>
+    <rect x="84" y="134" width="88"  height="16" rx="8" fill="#fff" opacity="0.32"/>
+    <circle cx="184" cy="142" r="7" fill="${BLUE}"/>
+    ${fGlyph('#fff', 0.4)}
+    ${ruleAndTotal}
+  `,
+  // D — warm + cool
+  warmcool: `
+    <rect x="64" y="62"  width="112" height="16" rx="8" fill="${AMBER}" opacity="0.85"/>
+    <rect x="84" y="98"  width="80"  height="16" rx="8" fill="#fff"   opacity="0.4"/>
+    <rect x="84" y="134" width="96"  height="16" rx="8" fill="${BLUE}"  opacity="0.85"/>
+    ${fGlyph('#fff', 0.4)}
+    ${ruleAndTotal}
+  `,
+  // E — spent / remaining total
+  split: `
+    <rect x="64" y="62"  width="112" height="16" rx="8" fill="#fff" opacity="0.5"/>
+    <rect x="84" y="98"  width="80"  height="16" rx="8" fill="#fff" opacity="0.4"/>
+    <rect x="84" y="134" width="96"  height="16" rx="8" fill="#fff" opacity="0.32"/>
+    ${fGlyph(BLUE, 0.75)}
+    <line x1="64" y1="168" x2="192" y2="168" stroke="#fff" stroke-width="3" opacity="0.25"/>
+    <rect x="64"  y="182" width="92" height="20" rx="10" fill="${GREEN}"/>
+    <rect x="162" y="182" width="30" height="20" rx="10" fill="${BLUE}"/>
+  `,
+};
+
+function svg(inner) {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">${defs}${tile}${inner}</svg>`;
+}
+for (const [id, inner] of Object.entries(icons)) {
+  const host = document.getElementById(id);
+  if (host) host.innerHTML = svg(inner);
+}
+document.querySelectorAll('[data-clone]').forEach(el => {
+  el.innerHTML = svg(icons[el.dataset.clone]);
+});
+</script>
+</body>
+</html>

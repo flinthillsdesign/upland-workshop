@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Budgets Icon — Explorations</title>
+<style>
+  :root { --green: #A5BC39; --blue: #6BA0CC; }
+  body {
+    margin: 0; padding: 48px;
+    background: #07090d;
+    color: #e8eaed;
+    font-family: 'Instrument Sans', -apple-system, system-ui, sans-serif;
+  }
+  h1 { font-weight: 600; font-size: 22px; margin: 0 0 6px; }
+  p.sub { color: #8b9099; margin: 0 0 40px; font-size: 14px; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 32px;
+  }
+  .card {
+    background: #0e1116;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+  }
+  .card svg { width: 128px; height: 128px; }
+  .row { display: flex; gap: 16px; align-items: center; justify-content: center; margin-top: 16px; }
+  .row svg.dock { width: 52px; height: 52px; }
+  .row svg.micro { width: 32px; height: 32px; }
+  .row svg.tiny { width: 16px; height: 16px; }
+  .name { margin-top: 16px; font-weight: 600; font-size: 15px; }
+  .desc { color: #8b9099; font-size: 12.5px; margin-top: 4px; line-height: 1.4; }
+</style>
+</head>
+<body>
+  <h1>Budgets — Icon Explorations</h1>
+  <p class="sub">Parametric, formula-driven budgeting: a <em>tree</em> of line items priced by <em>formulas</em> over named <em>variables</em>, built from reusable <em>assembly</em> blocks. Family conventions: dark gradient tile (#161A22 → #0A0D12), #A5BC39 green accent, white shapes at varying opacity. Shown at 128 / 52 / 32 / 16px.</p>
+  <div class="grid">
+
+    <!-- ============ A: Parametric tree ============ -->
+    <div class="card">
+      <div id="A"></div>
+      <div class="row">
+        <span class="dock" data-clone="A"></span>
+        <span class="micro" data-clone="A"></span>
+        <span class="tiny" data-clone="A"></span>
+      </div>
+      <div class="name">A · Line-item tree</div>
+      <div class="desc">The core data model: a root budget branching into nested line items. Green leaf = the live/linked node.</div>
+    </div>
+
+    <!-- ============ B: Assembly blocks ============ -->
+    <div class="card">
+      <div id="B"></div>
+      <div class="row">
+        <span class="dock" data-clone="B"></span>
+        <span class="micro" data-clone="B"></span>
+        <span class="tiny" data-clone="B"></span>
+      </div>
+      <div class="name">B · Assembly blocks</div>
+      <div class="desc">Reusable parametric blocks composing a budget; green block is the linked/synced assembly.</div>
+    </div>
+
+    <!-- ============ C: Formula ƒ(x) ============ -->
+    <div class="card">
+      <div id="C"></div>
+      <div class="row">
+        <span class="dock" data-clone="C"></span>
+        <span class="micro" data-clone="C"></span>
+        <span class="tiny" data-clone="C"></span>
+      </div>
+      <div class="name">C · Formula tile</div>
+      <div class="desc">The thing that sets Budgets apart: prices are formulas. ƒ(x) → a value. Pure-glyph, may be weak when tiny.</div>
+    </div>
+
+    <!-- ============ D: Variable cascade ============ -->
+    <div class="card">
+      <div id="D"></div>
+      <div class="row">
+        <span class="dock" data-clone="D"></span>
+        <span class="micro" data-clone="D"></span>
+        <span class="tiny" data-clone="D"></span>
+      </div>
+      <div class="name">D · Cascade</div>
+      <div class="desc">A variable cascading through scope into line items that sum upward. Motion of the model.</div>
+    </div>
+
+    <!-- ============ E: Stacks ============ -->
+    <div class="card">
+      <div id="E"></div>
+      <div class="row">
+        <span class="dock" data-clone="E"></span>
+        <span class="micro" data-clone="E"></span>
+        <span class="tiny" data-clone="E"></span>
+      </div>
+      <div class="name">E · Stacks</div>
+      <div class="desc">Safe, money-grounded read: a budget building up from blocks. Less distinct from a generic finance app.</div>
+    </div>
+
+    <!-- ============ F: Allocation donut ============ -->
+    <div class="card">
+      <div id="F"></div>
+      <div class="row">
+        <span class="dock" data-clone="F"></span>
+        <span class="micro" data-clone="F"></span>
+        <span class="tiny" data-clone="F"></span>
+      </div>
+      <div class="name">F · Allocation donut</div>
+      <div class="desc">Budget split into funded categories. Instantly legible, but generic for finance.</div>
+    </div>
+
+  </div>
+
+<script>
+const defs = `<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>`;
+const tile = `<rect width="256" height="256" rx="44" fill="url(#bg)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>`;
+
+const icons = {
+  // A — Line-item tree. Root node branching to nested leaves; green = live node.
+  A: `
+    <g stroke="#fff" stroke-width="7" opacity="0.5" fill="none" stroke-linecap="round">
+      <path d="M 128 76 V 108 M 128 108 H 76 V 140 M 128 108 H 180 V 140"/>
+      <path d="M 76 140 V 172 M 76 172 H 56 M 76 172 H 96"/>
+    </g>
+    <circle cx="128" cy="62" r="18" fill="#fff" opacity="0.9"/>
+    <circle cx="76"  cy="140" r="14" fill="#fff" opacity="0.55"/>
+    <rect x="166" y="126" width="28" height="28" rx="7" fill="#A5BC39"/>
+    <circle cx="56"  cy="186" r="11" fill="#fff" opacity="0.35"/>
+    <circle cx="96"  cy="186" r="11" fill="#fff" opacity="0.35"/>
+  `,
+  // B — Assembly blocks. Rounded modular blocks; green = linked/synced assembly.
+  B: `
+    <g>
+      <rect x="58"  y="58"  width="64" height="64" rx="13" fill="#fff" opacity="0.85"/>
+      <rect x="134" y="58"  width="64" height="64" rx="13" fill="#fff" opacity="0.30"/>
+      <rect x="58"  y="134" width="64" height="64" rx="13" fill="#fff" opacity="0.30"/>
+      <rect x="134" y="134" width="64" height="64" rx="13" fill="#A5BC39"/>
+      <circle cx="166" cy="166" r="13" fill="#0A0D12" opacity="0.55"/>
+    </g>
+  `,
+  // C — Formula tile. ƒ over a parametric bracket producing a green value.
+  C: `
+    <text x="86" y="150" font-family="Instrument Sans, sans-serif" font-style="italic"
+      font-weight="600" font-size="120" fill="#fff" opacity="0.9" text-anchor="middle">ƒ</text>
+    <text x="150" y="150" font-family="Instrument Sans, sans-serif"
+      font-weight="600" font-size="70" fill="#fff" opacity="0.45" text-anchor="start">(x)</text>
+    <line x1="64" y1="178" x2="192" y2="178" stroke="#fff" stroke-width="6" opacity="0.2" stroke-linecap="round"/>
+    <line x1="64" y1="178" x2="128" y2="178" stroke="#A5BC39" stroke-width="6" stroke-linecap="round"/>
+  `,
+  // D — Variable cascade. A node cascading down into summing bars.
+  D: `
+    <circle cx="76" cy="64" r="16" fill="#A5BC39"/>
+    <path d="M 76 80 V 108 H 150 V 124 M 76 80 V 150 H 110" fill="none"
+      stroke="#fff" stroke-width="7" opacity="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <g stroke-linecap="round">
+      <line x1="150" y1="124" x2="200" y2="124" stroke="#fff" stroke-width="14" opacity="0.6"/>
+      <line x1="110" y1="166" x2="176" y2="166" stroke="#fff" stroke-width="14" opacity="0.4"/>
+      <line x1="76"  y1="204" x2="200" y2="204" stroke="#A5BC39" stroke-width="14"/>
+    </g>
+  `,
+  // E — Stacks stepping up.
+  E: `
+    <g>
+      <rect x="56"  y="150" width="34" height="58" rx="8" fill="#fff" opacity="0.35"/>
+      <rect x="111" y="116" width="34" height="92" rx="8" fill="#fff" opacity="0.55"/>
+      <rect x="166" y="78"  width="34" height="130" rx="8" fill="#A5BC39"/>
+    </g>
+    <line x1="48" y1="208" x2="208" y2="208" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.4"/>
+  `,
+  // F — Allocation donut. Track ring + funded arcs.
+  F: `
+    <circle cx="128" cy="128" r="64" fill="none" stroke="#fff" stroke-width="26" opacity="0.16"/>
+    <circle cx="128" cy="128" r="64" fill="none" stroke="#A5BC39" stroke-width="26"
+      stroke-linecap="round" stroke-dasharray="402" stroke-dashoffset="150"
+      transform="rotate(-90 128 128)"/>
+    <circle cx="128" cy="128" r="64" fill="none" stroke="#6BA0CC" stroke-width="26"
+      stroke-linecap="round" stroke-dasharray="402" stroke-dashoffset="352"
+      transform="rotate(135 128 128)" opacity="0.85"/>
+  `,
+};
+
+function svg(inner) {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">${defs}${tile}${inner}</svg>`;
+}
+
+// Render full-size into each #id
+for (const [id, inner] of Object.entries(icons)) {
+  const host = document.getElementById(id);
+  if (host) host.innerHTML = svg(inner);
+}
+// Clone into size chips
+document.querySelectorAll('[data-clone]').forEach(el => {
+  el.innerHTML = svg(icons[el.dataset.clone]);
+});
+</script>
+</body>
+</html>

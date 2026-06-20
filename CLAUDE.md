@@ -13,17 +13,36 @@ This repo doesn't have a backend or UI — it's a working space. Patterns get de
 | **Inquiry Hub** | inquiries.uplandexhibits.com | TypeScript, Netlify, Turso | `flinthillsdesign/upland-inquiries` |
 | **Scheduler** | schedules.uplandexhibits.com | TypeScript, Netlify, Turso | `flinthillsdesign/upland-scheduler` |
 | **Claire** | claire.uplandexhibits.com | TypeScript, Netlify, Turso | `flinthillsdesign/upland-claire` |
+| **Quotes** | quotes.uplandexhibits.com | TypeScript, Netlify, Turso | `flinthillsdesign/upland-quotes` |
+| **Agreements** | agreements.uplandexhibits.com | TypeScript, Netlify, Turso | `flinthillsdesign/upland-agreements` |
+| **Previews** | previews.uplandexhibits.com | Static HTML, Netlify | `flinthillsdesign/upland-previews` |
 
 ### Upland Website
 The primary marketing website, e-commerce storefront, and order management system. Python/Plain on Heroku with PostgreSQL. Has its own auth system. Standalone — not on the shared auth or Netlify stack, and that's intentional.
 
 ### Satellite Apps (Netlify + Turso)
-ODIN, Inquiry Hub, Scheduler, and Claire share a Turso auth database and JWT secret. They follow the same conventions: vanilla TypeScript, esbuild, single Netlify function with hand-rolled router, dual Turso databases (shared auth + app-specific), ensureSchema() migrations, Postmark email, Claude AI.
+ODIN, Inquiry Hub, Scheduler, Claire, Quotes, and Agreements share a Turso auth database and JWT secret. They follow the same conventions: vanilla TypeScript, esbuild, single Netlify function with hand-rolled router, dual Turso databases (shared auth + app-specific), ensureSchema() migrations, Postmark email, Claude AI.
 
 ### Claire
 The graphic designer of the family. Replaces the static Previews app with an AI-assisted exhibit panel design tool. Same satellite stack (Netlify + Turso + shared auth). Port 3003.
 - **Claire** (Creative Layout AI Rendering Engine) — AI design assistant handling content, layout, typography, color, and visual refinement
-- See `claire/spec.md` for the full app specification
+- Spec lives in the app repo: `flinthillsdesign/upland-claire/spec.md`
+
+### Quotes
+The sales tool. AI-first quoting — describe a project, get a complete structured quote with line items and pricing. Same satellite stack (Netlify + Turso + shared auth). Port 3004.
+- AI generates quotes from natural language prompts, informed by a knowledge base of past quotes
+- Web-first delivery — shareable client links with view tracking, print-ready via CSS
+- Spec lives in the app repo: `flinthillsdesign/upland-quotes/spec.md`
+
+### Agreements
+The contract tool. AI-assisted agreement drafting with digital signatures. Same satellite stack (Netlify + Turso + shared auth). Port 3005.
+- Three agreement types: MoU Concept, MoU Small Design, Agreement for Services
+- Client-facing shareable views with digital signature capture
+- DocRaptor PDF generation, auto-attached to countersignature emails
+- Spec lives in the app repo: `flinthillsdesign/upland-agreements/spec.md`
+
+### Previews
+Client-facing exhibition design preview galleries. Static HTML on Netlify — no auth, no database, no functions. Each project is a standalone HTML page with a shared gallery viewer. Being superseded by Claire for new work.
 
 ## Key Files
 
@@ -47,11 +66,14 @@ This repo is the source of truth for all app icons. Each app repo copies its fav
 | Inquiry Hub | `brand/icons/inquiry-hub.svg` | `public/favicon.svg` |
 | Scheduler | `brand/icons/scheduler.svg` | `public/favicon.svg` |
 | Claire | `brand/icons/claire.svg` | `public/favicon.svg` |
+| Quotes | `brand/icons/quotes.svg` | `public/favicon.svg` |
+| Agreements | `brand/icons/agreements.svg` | `public/favicon.svg` |
+| Budgets | `brand/icons/budgets.svg` | `client/public/favicon.svg` (Vite publicDir) |
 
 Light variants (`*-light.svg`) are available for each app for use on light backgrounds.
 
 **Deploying updates to app repos:**
-- **Satellite apps** (ODIN, Inquiry Hub, Scheduler, Claire): commit and push — Netlify auto-deploys
+- **Satellite apps** (ODIN, Inquiry Hub, Scheduler, Claire, Quotes, Agreements): commit and push — Netlify auto-deploys
 - **Upland Website**: commit, push, then deploy manually via `git push heroku master` (or Heroku dashboard)
 
 ## Conventions (Satellite Apps)

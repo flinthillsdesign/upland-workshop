@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Budgets Icon — Tree &amp; Cascade Riffs</title>
+<style>
+  :root { --green: #A5BC39; --blue: #6BA0CC; }
+  body {
+    margin: 0; padding: 48px;
+    background: #07090d;
+    color: #e8eaed;
+    font-family: 'Instrument Sans', -apple-system, system-ui, sans-serif;
+  }
+  h1 { font-weight: 600; font-size: 22px; margin: 0 0 6px; }
+  p.sub { color: #8b9099; margin: 0 0 40px; font-size: 14px; max-width: 760px; line-height: 1.5; }
+  .group-label { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: #6b7178; margin: 8px 0 18px; font-weight: 600; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 32px;
+    margin-bottom: 44px;
+  }
+  .card {
+    background: #0e1116;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+  }
+  .card svg { width: 128px; height: 128px; }
+  .row { display: flex; gap: 16px; align-items: center; justify-content: center; margin-top: 16px; }
+  .row svg.dock { width: 52px; height: 52px; }
+  .row svg.micro { width: 32px; height: 32px; }
+  .row svg.tiny { width: 16px; height: 16px; }
+  .name { margin-top: 16px; font-weight: 600; font-size: 15px; }
+  .desc { color: #8b9099; font-size: 12.5px; margin-top: 4px; line-height: 1.4; }
+</style>
+</head>
+<body>
+  <h1>Budgets — Tree &amp; Cascade Riffs</h1>
+  <p class="sub">Pulling in the app's real visual signature: the <strong>colored left-spine bars</strong> marking nesting depth, indented <strong>line-item rows</strong>, <strong>linked</strong> nodes, and <strong>formulas</strong>. Single green accent per icon. Shown at 128 / 52 / 32 / 16px.</p>
+
+  <div class="group-label">Tree</div>
+  <div class="grid">
+    <div class="card">
+      <div id="treeRows"></div>
+      <div class="row"><span class="dock" data-clone="treeRows"></span><span class="micro" data-clone="treeRows"></span><span class="tiny" data-clone="treeRows"></span></div>
+      <div class="name">1 · Spine + rows</div>
+      <div class="desc">The signature move: a green nesting spine with indented line-item rows branching off it. Most "this is literally the app."</div>
+    </div>
+    <div class="card">
+      <div id="treeNode"></div>
+      <div class="row"><span class="dock" data-clone="treeNode"></span><span class="micro" data-clone="treeNode"></span><span class="tiny" data-clone="treeNode"></span></div>
+      <div class="name">2 · Node tree</div>
+      <div class="desc">Cleaner abstract tree — root branching to nested nodes, green = the linked node. More logo-like, less literal.</div>
+    </div>
+    <div class="card">
+      <div id="treeNested"></div>
+      <div class="row"><span class="dock" data-clone="treeNested"></span><span class="micro" data-clone="treeNested"></span><span class="tiny" data-clone="treeNested"></span></div>
+      <div class="name">3 · Nested rows</div>
+      <div class="desc">Closest to the UI: stacked rows indenting inward, each with a colored edge bar; green = the linked assembly.</div>
+    </div>
+  </div>
+
+  <div class="group-label">Cascade</div>
+  <div class="grid">
+    <div class="card">
+      <div id="cascade"></div>
+      <div class="row"><span class="dock" data-clone="cascade"></span><span class="micro" data-clone="cascade"></span><span class="tiny" data-clone="cascade"></span></div>
+      <div class="name">4 · Variable cascade</div>
+      <div class="desc">A green variable fanning down through scope into line items. Captures values flowing through the tree.</div>
+    </div>
+    <div class="card">
+      <div id="cascadeSum"></div>
+      <div class="row"><span class="dock" data-clone="cascadeSum"></span><span class="micro" data-clone="cascadeSum"></span><span class="tiny" data-clone="cascadeSum"></span></div>
+      <div class="name">5 · Roll-up to total</div>
+      <div class="desc">Indented items summing down past a rule to a green total bar. The budget rolling up — with an ƒ nod to formulas.</div>
+    </div>
+    <div class="card">
+      <div id="hybrid"></div>
+      <div class="row"><span class="dock" data-clone="hybrid"></span><span class="micro" data-clone="hybrid"></span><span class="tiny" data-clone="hybrid"></span></div>
+      <div class="name">6 · Tree → total (hybrid)</div>
+      <div class="desc">Both ideas at once: a node tree whose branches cascade down and roll into one green total bar.</div>
+    </div>
+  </div>
+
+<script>
+const defs = `<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>`;
+const tile = `<rect width="256" height="256" rx="44" fill="url(#bg)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>`;
+
+const icons = {
+  // 1 — Green nesting spine + indented white line-item rows branching off it.
+  treeRows: `
+    <rect x="52" y="54" width="11" height="150" rx="5.5" fill="#A5BC39"/>
+    <g stroke="#fff" stroke-width="6" opacity="0.28" stroke-linecap="round">
+      <line x1="63" y1="74"  x2="86"  y2="74"/>
+      <line x1="63" y1="116" x2="106" y2="116"/>
+      <line x1="63" y1="158" x2="106" y2="158"/>
+      <line x1="63" y1="194" x2="126" y2="194"/>
+    </g>
+    <rect x="86"  y="62"  width="114" height="24" rx="7" fill="#fff" opacity="0.9"/>
+    <rect x="106" y="104" width="94"  height="24" rx="7" fill="#fff" opacity="0.55"/>
+    <rect x="106" y="146" width="94"  height="24" rx="7" fill="#fff" opacity="0.4"/>
+    <rect x="126" y="182" width="74"  height="24" rx="7" fill="#fff" opacity="0.28"/>
+  `,
+  // 2 — Abstract node tree, root → nested nodes, green linked node.
+  treeNode: `
+    <g stroke="#fff" stroke-width="7" opacity="0.45" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M 128 78 V 104 M 76 130 V 104 H 180 V 130"/>
+      <path d="M 76 148 V 168 M 76 168 H 56 M 76 168 H 96"/>
+    </g>
+    <circle cx="128" cy="62"  r="18" fill="#fff" opacity="0.9"/>
+    <circle cx="76"  cy="138" r="14" fill="#fff" opacity="0.5"/>
+    <rect   x="164" y="116" width="32" height="32" rx="8" fill="#A5BC39"/>
+    <circle cx="56"  cy="184" r="11" fill="#fff" opacity="0.32"/>
+    <circle cx="96"  cy="184" r="11" fill="#fff" opacity="0.32"/>
+  `,
+  // 3 — Nested rows indenting inward, each with a colored edge bar; green = linked.
+  treeNested: `
+    <g>
+      <rect x="44"  y="54"  width="168" height="40" rx="11" fill="#fff" opacity="0.10"/>
+      <rect x="44"  y="54"  width="9"   height="40" rx="4.5" fill="#fff" opacity="0.6"/>
+      <rect x="72"  y="106" width="140" height="40" rx="11" fill="#fff" opacity="0.10"/>
+      <rect x="72"  y="106" width="9"   height="40" rx="4.5" fill="#6BA0CC" opacity="0.85"/>
+      <rect x="100" y="158" width="112" height="40" rx="11" fill="#A5BC39" opacity="0.16"/>
+      <rect x="100" y="158" width="9"   height="40" rx="4.5" fill="#A5BC39"/>
+    </g>
+  `,
+  // 4 — Variable cascade: green var node fanning down into items.
+  cascade: `
+    <circle cx="128" cy="60" r="17" fill="#A5BC39"/>
+    <path d="M 128 77 V 100 M 80 124 V 100 H 176 V 124 M 128 100 V 124"
+      fill="none" stroke="#fff" stroke-width="7" opacity="0.45" stroke-linecap="round" stroke-linejoin="round"/>
+    <g stroke-linecap="round">
+      <rect x="58"  y="140" width="44" height="22" rx="6" fill="#fff" opacity="0.5"/>
+      <rect x="106" y="140" width="44" height="22" rx="6" fill="#fff" opacity="0.38"/>
+      <rect x="154" y="140" width="44" height="22" rx="6" fill="#fff" opacity="0.3"/>
+    </g>
+    <line x1="58" y1="186" x2="198" y2="186" stroke="#fff" stroke-width="2.5" opacity="0.22"/>
+    <rect x="58" y="196" width="140" height="14" rx="7" fill="#A5BC39"/>
+  `,
+  // 5 — Roll-up: indented items summing past a rule into a green total. ƒ nod.
+  cascadeSum: `
+    <g stroke-linecap="round">
+      <rect x="64"  y="62"  width="112" height="16" rx="8" fill="#fff" opacity="0.5"/>
+      <rect x="84"  y="98"  width="80"  height="16" rx="8" fill="#fff" opacity="0.4"/>
+      <rect x="84"  y="134" width="96"  height="16" rx="8" fill="#fff" opacity="0.32"/>
+    </g>
+    <text x="64" y="150" font-family="Instrument Sans, sans-serif" font-style="italic"
+      font-weight="600" font-size="30" fill="#6BA0CC" opacity="0.75">ƒ</text>
+    <line x1="64" y1="168" x2="192" y2="168" stroke="#fff" stroke-width="3" opacity="0.25"/>
+    <rect x="64" y="182" width="128" height="20" rx="10" fill="#A5BC39"/>
+  `,
+  // 6 — Hybrid: node tree whose branches roll down into one green total bar.
+  hybrid: `
+    <circle cx="128" cy="54" r="15" fill="#fff" opacity="0.9"/>
+    <path d="M 128 69 V 92 M 76 92 H 180 M 76 92 V 116 M 128 92 V 116 M 180 92 V 116"
+      fill="none" stroke="#fff" stroke-width="7" opacity="0.45" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="76"  cy="128" r="11" fill="#fff" opacity="0.5"/>
+    <circle cx="128" cy="128" r="11" fill="#fff" opacity="0.4"/>
+    <circle cx="180" cy="128" r="11" fill="#fff" opacity="0.4"/>
+    <path d="M 76 139 V 164 M 128 139 V 164 M 180 139 V 164"
+      fill="none" stroke="#fff" stroke-width="7" opacity="0.3" stroke-linecap="round"/>
+    <rect x="58" y="180" width="140" height="22" rx="11" fill="#A5BC39"/>
+  `,
+};
+
+function svg(inner) {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">${defs}${tile}${inner}</svg>`;
+}
+for (const [id, inner] of Object.entries(icons)) {
+  const host = document.getElementById(id);
+  if (host) host.innerHTML = svg(inner);
+}
+document.querySelectorAll('[data-clone]').forEach(el => {
+  el.innerHTML = svg(icons[el.dataset.clone]);
+});
+</script>
+</body>
+</html>

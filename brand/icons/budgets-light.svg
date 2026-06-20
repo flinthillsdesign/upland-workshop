@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+<rect width="256" height="256" rx="44" fill="#fff"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(0,0,0,0.06)" stroke-width="1.5"/>
+<rect x="64" y="62" width="112" height="16" rx="8" fill="#2a2a2a" opacity="0.42"/>
+<rect x="84" y="98" width="80" height="16" rx="8" fill="#2a2a2a" opacity="0.32"/>
+<rect x="84" y="134" width="96" height="16" rx="8" fill="#2a2a2a" opacity="0.26"/>
+<text x="64" y="150" font-family="Instrument Sans, 'Segoe UI', Helvetica, Arial, sans-serif" font-style="italic" font-weight="600" font-size="30" fill="#4A7FA8" opacity="0.8">&#402;</text>
+<line x1="64" y1="168" x2="192" y2="168" stroke="#2a2a2a" stroke-width="3" opacity="0.18"/>
+<rect x="64" y="182" width="128" height="20" rx="10" fill="#8BA32E"/>
+</svg>
