@@ -146,7 +146,7 @@ A single Turso database (`upland-auth`) shared by all satellite apps.
 | id | nanoid |
 | username | Login identifier |
 | password_hash | bcrypt |
-| role | superadmin, manager, editor |
+| role | `superadmin` or `staff` — admin-or-not, two values only (`manager`/`editor` retired in the 2026-05 cutover) |
 | name | Display name |
 | email | For password reset |
 | token_invalid_before | ISO timestamp — JWTs issued before this are rejected |
@@ -156,16 +156,23 @@ A single Turso database (`upland-auth`) shared by all satellite apps.
 |-------|---------|
 | user_id | FK to users.id |
 | app | App identifier (`odin`, `scheduler`, `inquiries`, `claire`, `quotes`, etc.) |
-| role | Per-app role: manager, editor, viewer |
-| permissions | JSON, nullable — app-specific flags (e.g., `{"can_finance": true}` for Scheduler) |
+| role | Per-app label (defaults to `viewer`); access is really "row exists = yes". Capability differences live in `permissions`, not here |
+| permissions | JSON, nullable — app-specific flags (e.g., `{"finance": true}` for Scheduler/Strategy) |
 | created_at | ISO timestamp |
 
 **How it works:**
 - **Superadmins** (users.role = `superadmin`) bypass app access checks — they can access every app with full permissions.
 - **Everyone else** needs a row in `user_app_access` for each app they can use. No row = no access.
-- **ODIN owns user management.** It's the only app with UI for creating users, granting app access, and setting per-app roles. All other apps read the auth DB but never write to it (except for password reset).
-- **Per-app roles** (manager/editor/viewer) are interpreted by each app. The shared table stores them; each app decides what they mean.
+- **ODIN owns user management.** It's the only app with UI for creating users, granting app access, and editing the people directory below. All other apps read the auth DB but never write to it (except for password reset).
+- **Three separate ideas, kept apart:** **role** = admin-or-not (`superadmin`/`staff`) · **access** = `user_app_access` rows (fail-closed) · **type** = a directory label (see below). A non-employee with one-app access (e.g. family on Strategy) is `staff` + one access row + `type = advisor` — no special role needed.
 - **App-specific permissions** go in the `permissions` JSON column. This replaces one-off columns like `can_finance` on the users table.
+
+**People directory (ODIN-owned, additive to the Auth DB):** three tables hang off `users.id` so the team is single-sourced instead of duplicated per app:
+- `people` — one row per person: `title`, `type` (`employee`/`contractor`/`subcontractor`/`advisor`), `active`, `start_date`/`end_date` (tenure), `birthday`, `comms_notes`.
+- `worker_allocations` — fractional team split, one row per (person, team): `team` (`design`/`fabrication`/`leadership`), `fraction` of a full-time week. Sums to FTE; this is what drives capacity planning.
+- `user_external_ids` — one row per (person, system): the person's id in `toggl`, `basecamp`, `dropbox`, … The canonical identity map; integrations resolve people through this instead of matching by name.
+
+This **replaces the Scheduler's standalone roster** as the source of truth for who's on the team and their design/fab FTE. ODIN edits it; the Scheduler reads it.
 
 All satellite apps share a `JWT_SECRET`. A token minted by any app is valid in all others.
 
@@ -173,7 +180,7 @@ The Upland Website has its own auth and is not part of this system.
 
 ### Dual Database Pattern
 Each satellite app connects to TWO Turso databases:
-1. **Auth DB** (`TURSO_AUTH_URL`) — shared users + user_app_access tables (read-only except ODIN)
+1. **Auth DB** (`TURSO_AUTH_URL`) — shared `users` + `user_app_access`, plus the ODIN-owned people directory (`people`, `worker_allocations`, `user_external_ids`). Read-only except ODIN.
 2. **App DB** (`TURSO_URL`) — app-specific tables (full CRUD)
 
 Connection code auto-switches between `@libsql/client` (local SQLite files) and `@libsql/client/http` (remote Turso) based on whether the URL starts with `file:`.
