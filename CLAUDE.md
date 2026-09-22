@@ -14,6 +14,8 @@ patterns and brand assets are designed here, then carried into the app repos.
 | Agreements | agreements.uplandexhibits.com | contracts + digital signatures |
 | Strategy | strategy.uplandexhibits.com | cookie-gated strategy site |
 | Budgets | budgets.uplandexhibits.com | Anthony's React app, joining incrementally |
+| Proposals | proposals.uplandexhibits.com | client proposal sharing — short link + access code |
+| Graphics | graphics.uplandexhibits.com | object labels: write, proof, order; fly.io, not Netlify |
 
 Shared libraries: `@upland/auth` (upland-auth) and `@upland/shared` (upland-shared),
 consumed as tag-pinned git deps. Retired and experimental apps (Claire, Quotes,
