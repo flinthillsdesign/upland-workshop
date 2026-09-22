@@ -1,0 +1,42 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Graphics icon v2 — bleed past the cut line</title>
+<style>
+body{margin:0;padding:32px;background:#f3f2ee;font:14px/1.4 -apple-system,Helvetica,sans-serif;color:#333}
+h1{font-size:16px;margin:0 0 20px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px 40px}
+.row{display:flex;gap:22px;align-items:flex-start}
+.cell{display:flex;flex-direction:column;align-items:center;gap:8px}
+.cell span{font-size:12px;color:#666;max-width:150px;text-align:center}
+.sizes{display:flex;gap:12px;align-items:flex-end}
+.dark{background:#1b1e26;padding:14px 16px;border-radius:10px}
+</style></head><body>
+<h1>Graphics — v2: the sheet bleeds past the magenta cut line</h1>
+<svg width="0" height="0" style="position:absolute"><defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient>
+<clipPath id="sheet1"><rect x="48" y="66" width="160" height="124" rx="4"/></clipPath>
+<clipPath id="sheet2"><rect x="44" y="62" width="168" height="132" rx="4"/></clipPath>
+</defs></svg>
+<div class="grid" id="g"></div>
+<script>
+const M='#D9407F', W='#fff', INK='#23221f', LIME='#A5BC39';
+const bg = `<rect width="256" height="256" rx="44" fill="url(#bg)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>`;
+const title = (x,y,w) => `<rect x="${x}" y="${y}" width="${w}" height="10" rx="5" fill="${INK}" opacity="0.85"/>`;
+const rule = (x,y,w) => `<rect x="${x}" y="${y}" width="${w}" height="6" rx="3" fill="${INK}" opacity="0.35"/>`;
+const cut = (x,y,w,h,dash='13 11',sw=5) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="none" stroke="${M}" stroke-width="${sw}" ${dash?`stroke-dasharray="${dash}"`:''} stroke-linecap="round" stroke-linejoin="round"/>`;
+const sheet = (x,y,w,h) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="4" fill="${W}"/>`;
+
+const C = {
+ 'A · sheet 160×124, dashed cut inset 12': bg + sheet(48,66,160,124) + title(78,98,62) + rule(78,124,100) + rule(78,140,76) + cut(60,78,136,100),
+ 'B · same, solid cut line (like the .ai files)': bg + sheet(48,66,160,124) + title(78,98,62) + rule(78,124,100) + rule(78,140,76) + cut(60,78,136,100,'',4.5),
+ 'C · a lime graphic bleeds off the top edge': bg + sheet(48,66,160,124) + `<rect x="48" y="66" width="160" height="46" fill="${LIME}" clip-path="url(#sheet1)"/>` + title(78,124,62) + rule(78,148,100) + rule(78,164,66) + cut(60,78,136,100),
+ 'D · lime band bleeds off the left, solid cut': bg + sheet(48,66,160,124) + `<rect x="48" y="66" width="40" height="124" fill="${LIME}" clip-path="url(#sheet1)"/>` + title(104,98,62) + rule(104,124,80) + rule(104,140,58) + cut(60,78,136,100,'',4.5),
+ 'E · bigger sheet, tighter bleed, dashed': bg + sheet(44,62,168,132) + title(72,96,66) + rule(72,124,108) + rule(72,140,82) + cut(52,70,152,116,'12 10',5),
+ 'F · no text, just bleed + cut': bg + sheet(48,66,160,124) + cut(60,78,136,100,'',4.5),
+ 'G · lime top bleed, no text (the piece is the picture)': bg + sheet(48,66,160,124) + `<rect x="48" y="66" width="160" height="56" fill="${LIME}" clip-path="url(#sheet1)"/>` + cut(60,78,136,100,'',4.5) + title(78,138,62) + rule(78,160,100),
+ 'H · crop marks outside + solid cut inset': bg + sheet(52,70,152,116) + title(80,100,62) + rule(80,124,96) + rule(80,140,72) + cut(64,82,128,92,'',4)
+   + [[64,82,-1,-1],[192,82,1,-1],[64,174,-1,1],[192,174,1,1]].map(([x,y,dx,dy])=>`<line x1="${x}" y1="${y+dy*16}" x2="${x}" y2="${y+dy*30}" stroke="${M}" stroke-width="4" stroke-linecap="round"/><line x1="${x+dx*16}" y1="${y}" x2="${x+dx*30}" y2="${y}" stroke="${M}" stroke-width="4" stroke-linecap="round"/>`).join(''),
+};
+const svg=(b,s)=>`<svg width="${s}" height="${s}" viewBox="0 0 256 256">${b}</svg>`;
+let h='';
+for (const [k,b] of Object.entries(C)) h+=`<div class="row"><div class="cell">${svg(b,150)}<span>${k}</span></div><div class="cell sizes">${svg(b,64)}${svg(b,32)}${svg(b,16)}</div><div class="cell dark sizes">${svg(b,64)}${svg(b,32)}${svg(b,16)}</div></div>`;
+document.getElementById('g').innerHTML=h;
+</script></body></html>
