@@ -10,7 +10,6 @@ patterns and brand assets are designed here, then carried into the app repos.
 | Website | uplandexhibits.com | Python/Heroku, own auth — intentionally standalone |
 | ODIN | odin.uplandexhibits.com | operational hub; owns users + admin |
 | Scheduler | schedules.uplandexhibits.com | reference satellite app |
-| Inquiry Hub | inquiries.uplandexhibits.com | dormant — being rethought |
 | Agreements | agreements.uplandexhibits.com | contracts + digital signatures |
 | Strategy | strategy.uplandexhibits.com | cookie-gated strategy site |
 | Budgets | budgets.uplandexhibits.com | Anthony's React app, joining incrementally |
@@ -19,7 +18,7 @@ patterns and brand assets are designed here, then carried into the app repos.
 
 Shared libraries: `@upland/auth` (upland-auth) and `@upland/shared` (upland-shared),
 consumed as tag-pinned git deps. Retired and experimental apps (Claire, Quotes,
-Tony, Previews, …) live in the `upland-apps-experimental` workspace folder; their
+Tony, Previews, Inquiry Hub — retired 2026-09-30, …) live in the `upland-apps-experimental` workspace folder; their
 icons remain archived in `brand/icons/`.
 
 ## Brand assets
