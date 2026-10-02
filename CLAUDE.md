@@ -17,9 +17,10 @@ patterns and brand assets are designed here, then carried into the app repos.
 | Graphics | graphics.uplandexhibits.com | object labels: write, proof, order; fly.io, not Netlify |
 
 Shared libraries: `@upland/auth` (upland-auth) and `@upland/shared` (upland-shared),
-consumed as tag-pinned git deps. Retired and experimental apps (Claire, Quotes,
-Tony, Previews, Inquiry Hub — retired 2026-09-30, …) live in the `upland-apps-experimental` workspace folder; their
-icons remain archived in `brand/icons/`.
+consumed as tag-pinned git deps. Retired and experimental apps live in the
+`upland-apps-experimental` workspace folder — the folder is the list, and each
+repo's `CLAUDE.md` opens with its status. Their icons remain archived in
+`brand/icons/`.
 
 ## Brand assets
 
