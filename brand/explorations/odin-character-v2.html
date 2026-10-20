@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ODIN — Character + Sparkles v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Instrument Sans",system-ui,sans-serif;background:#0c0b0e;color:#c8c5cc;min-height:100vh}
+.page{max-width:1200px;margin:0 auto;padding:4rem 2rem 6rem}
+.header{margin-bottom:4rem}
+.header::after{content:"";display:block;width:48px;height:2px;background:#a5bc39;margin-top:1.5rem}
+.tag{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#a5bc39;margin-bottom:.6rem}
+h1{font-size:1.8rem;font-weight:400;color:#eae8ed}
+.note{font-size:.85rem;color:#605c66;margin-top:.8rem;max-width:640px;line-height:1.5}
+.section{margin-bottom:5rem}
+.section-label{font-size:.65rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#605c66;margin-bottom:.5rem}
+.section-desc{font-size:.8rem;color:#807888;margin-bottom:2rem;max-width:700px;line-height:1.5}
+.row{display:flex;gap:2.5rem;flex-wrap:wrap;justify-content:center;margin-bottom:3rem}
+.cell{display:flex;flex-direction:column;align-items:center;gap:.7rem}
+.cell svg{filter:drop-shadow(0 4px 20px rgba(0,0,0,.6));transition:transform .25s cubic-bezier(.34,1.56,.64,1)}
+.cell:hover svg{transform:translateY(-3px) scale(1.05)}
+.cell .name{font-size:.78rem;font-weight:600;color:#d8d5dc}
+.cell .sub{font-size:.6rem;color:#555059;margin-top:-.3rem}
+.size-section{margin-top:6rem;padding-top:3rem;border-top:1px solid rgba(255,255,255,.06)}
+.size-row{display:flex;gap:2rem;flex-wrap:wrap;justify-content:center;align-items:end;margin-bottom:3rem}
+.size-cell{display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.size-cell .sub{font-size:.55rem;color:#444}
+.size-divider{width:1px;height:60px;background:rgba(255,255,255,.06);align-self:center}
+.size-group-label{font-size:.65rem;font-weight:600;color:#605c66;width:100%;text-align:center;margin-bottom:1rem;letter-spacing:.1em;text-transform:uppercase}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="header">
+<div class="tag">ODIN — Icon Explorations v2</div>
+<h1>Characters, Helmets & Sparkles</h1>
+<p class="note">Figurative Norse motifs combined with the sparkle language from the current icon. The sparkles represent wisdom, oversight, the all-seeing nature of the admin app.</p>
+</div>
+
+<!-- A: Spectacle Helms + Sparkles -->
+<div class="section">
+<div class="section-label">A — Spectacle Helm + Sparkles</div>
+<div class="section-desc">The Gjermundbu spectacle helm is the most distinctively Norse helmet shape. The eye-shaped cutouts are instantly readable. Sparkles add the magical/wisdom layer.</div>
+<div class="row">
+
+<!-- A1: Filled spectacle helm, sparkles above -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="a1bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#a1bg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Main sparkle above helm -->
+<path d="M128 44 L133 62 L151 67 L133 72 L128 90 L123 72 L105 67 L123 62 Z" fill="#fff" opacity="0.85"/>
+<!-- Small sparkle -->
+<path d="M176 52 L178 58 L184 60 L178 62 L176 68 L174 62 L168 60 L174 58 Z" fill="#fff" opacity="0.4"/>
+<!-- Helmet -->
+<path d="M80 160 Q80 108 128 92 Q176 108 176 160 Q176 184 156 184 Q142 184 128 168 Q114 184 100 184 Q80 184 80 160 Z" fill="#A5BC39"/>
+<!-- Eye cutouts -->
+<ellipse cx="106" cy="162" rx="14" ry="11" fill="#0E1118"/>
+<ellipse cx="150" cy="162" rx="14" ry="11" fill="#0E1118"/>
+<!-- Ridge -->
+<line x1="128" y1="94" x2="128" y2="156" stroke="rgba(255,255,255,0.12)" stroke-width="3"/>
+</svg>
+<span class="name">Helm + Crown Sparkle</span>
+<span class="sub">Wisdom above</span>
+</div>
+
+<!-- A2: Spectacle helm, sparkle as one eye -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="a2bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#a2bg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Helmet -->
+<path d="M76 152 Q76 88 128 68 Q180 88 180 152 Q180 180 156 180 Q140 180 128 160 Q116 180 100 180 Q76 180 76 152 Z" fill="#A5BC39"/>
+<!-- Eye cutouts -->
+<ellipse cx="104" cy="156" rx="15" ry="12" fill="#0E1118"/>
+<ellipse cx="152" cy="156" rx="15" ry="12" fill="#0E1118"/>
+<!-- Sparkle IN the right eye — the all-seeing eye -->
+<path d="M152 148 L155 156 L163 159 L155 162 L152 170 L149 162 L141 159 L149 156 Z" fill="#fff" opacity="0.9"/>
+<!-- Ridge -->
+<line x1="128" y1="70" x2="128" y2="148" stroke="rgba(255,255,255,0.1)" stroke-width="2.5"/>
+</svg>
+<span class="name">Sparkle Eye</span>
+<span class="sub">Seeing star</span>
+</div>
+
+<!-- A3: Outlined spectacle, scattered sparkles -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="a3bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#a3bg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Sparkles scattered -->
+<path d="M128 40 L132 54 L146 58 L132 62 L128 76 L124 62 L110 58 L124 54 Z" fill="#A5BC39" opacity="0.9"/>
+<path d="M68 72 L71 80 L79 83 L71 86 L68 94 L65 86 L57 83 L65 80 Z" fill="#fff" opacity="0.5"/>
+<path d="M192 84 L194 90 L200 92 L194 94 L192 100 L190 94 L184 92 L190 90 Z" fill="#fff" opacity="0.35"/>
+<!-- Helmet outline -->
+<path d="M80 156 Q80 92 128 76 Q176 92 176 156" fill="none" stroke="#A5BC39" stroke-width="5.5" stroke-linecap="round"/>
+<!-- Spectacle guard -->
+<path d="M80 156 Q80 180 104 180 Q118 180 128 164 Q138 180 152 180 Q176 180 176 156" fill="none" stroke="#A5BC39" stroke-width="5.5" stroke-linecap="round"/>
+<!-- Bridge -->
+<line x1="128" y1="156" x2="128" y2="164" stroke="#A5BC39" stroke-width="5"/>
+<!-- Ridge -->
+<line x1="128" y1="76" x2="128" y2="156" stroke="#A5BC39" stroke-width="2.5" stroke-linecap="round" opacity="0.25"/>
+</svg>
+<span class="name">Spectacle + Stars</span>
+<span class="sub">Outlined, sparkles above</span>
+</div>
+
+<!-- A4: Filled helm, sparkle halo -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="a4bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#a4bg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Sparkle halo / crown -->
+<path d="M88 72 L91 80 L99 83 L91 86 L88 94 L85 86 L77 83 L85 80 Z" fill="#fff" opacity="0.55"/>
+<path d="M128 48 L132 60 L144 64 L132 68 L128 80 L124 68 L112 64 L124 60 Z" fill="#fff" opacity="0.8"/>
+<path d="M168 72 L171 80 L179 83 L171 86 L168 94 L165 86 L157 83 L165 80 Z" fill="#fff" opacity="0.55"/>
+<!-- Helmet -->
+<path d="M80 160 Q80 108 128 92 Q176 108 176 160 Q176 184 156 184 Q142 184 128 168 Q114 184 100 184 Q80 184 80 160 Z" fill="#A5BC39"/>
+<!-- Eye cutouts -->
+<ellipse cx="106" cy="164" rx="14" ry="11" fill="#0E1118"/>
+<ellipse cx="150" cy="164" rx="14" ry="11" fill="#0E1118"/>
+<!-- Ridge -->
+<line x1="128" y1="94" x2="128" y2="156" stroke="rgba(255,255,255,0.1)" stroke-width="2.5"/>
+</svg>
+<span class="name">Three-Star Crown</span>
+<span class="sub">Sparkle halo</span>
+</div>
+
+</div>
+</div>
+
+<!-- B: Hooded Figure + Sparkles -->
+<div class="section">
+<div class="section-label">B — The Wanderer + Sparkles</div>
+<div class="section-desc">Odin the hooded traveler — but the sparkles give him away as something more than mortal. The eye glows, the stars follow him.</div>
+<div class="row">
+
+<!-- B1: Dark hood, sparkle eye, star above -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="b1bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#b1bg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Hood silhouette -->
+<path d="M76 204 L76 124 Q76 56 128 44 Q180 56 180 124 L180 204" fill="none" stroke="#A5BC39" stroke-width="5.5" stroke-linecap="round"/>
+<!-- Inner hood shadow -->
+<path d="M96 196 L96 132 Q96 80 128 70 Q160 80 160 132 L160 196" fill="none" stroke="#A5BC39" stroke-width="2" stroke-linecap="round" opacity="0.2"/>
+<!-- Sparkle as the one eye -->
+<path d="M144 128 L148 140 L160 144 L148 148 L144 160 L140 148 L128 144 L140 140 Z" fill="#A5BC39"/>
+<!-- Scar/missing eye hint -->
+<line x1="100" y1="138" x2="114" y2="146" stroke="rgba(255,255,255,0.15)" stroke-width="2.5" stroke-linecap="round"/>
+<!-- Small sparkle near top of hood -->
+<path d="M164 68 L166 74 L172 76 L166 78 L164 84 L162 78 L156 76 L162 74 Z" fill="#fff" opacity="0.4"/>
+</svg>
+<span class="name">Wanderer's Star</span>
+<span class="sub">Sparkle as seeing eye</span>
+</div>
+
+<!-- B2: Geometric hood, sparkle cluster -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="b2bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#b2bg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Angular hood -->
+<path d="M128 48 L72 172 L84 200 L172 200 L184 172 Z" fill="#A5BC39"/>
+<!-- Face void -->
+<path d="M128 96 L100 168 L156 168 Z" fill="#0E1118" opacity="0.7"/>
+<!-- Sparkle eye -->
+<path d="M140 136 L143 144 L151 147 L143 150 L140 158 L137 150 L129 147 L137 144 Z" fill="#A5BC39"/>
+<!-- Sparkles floating outside -->
+<path d="M196 76 L199 86 L209 89 L199 92 L196 102 L193 92 L183 89 L193 86 Z" fill="#fff" opacity="0.6"/>
+<path d="M56 100 L58 106 L64 108 L58 110 L56 116 L54 110 L48 108 L54 106 Z" fill="#fff" opacity="0.35"/>
+</svg>
+<span class="name">Geo Wanderer</span>
+<span class="sub">Angular hood + orbiting stars</span>
+</div>
+
+<!-- B3: Hat silhouette with sparkles -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="b3bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#b3bg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Wide hat brim + crown -->
+<path d="M48 128 L100 128 L108 64 L148 64 L156 128 L208 128" stroke="#A5BC39" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<path d="M100 128 L108 64 L148 64 L156 128 Z" fill="#A5BC39" opacity="0.25"/>
+<!-- Face below -->
+<path d="M108 132 Q108 160 112 172 Q120 192 128 196 Q136 192 144 172 Q148 160 148 132" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="3" stroke-linecap="round"/>
+<!-- Sparkle eye (right) -->
+<path d="M140 148 L143 156 L151 159 L143 162 L140 170 L137 162 L129 159 L137 156 Z" fill="#A5BC39"/>
+<!-- Closed left eye -->
+<line x1="108" y1="152" x2="120" y2="156" stroke="rgba(255,255,255,0.2)" stroke-width="2.5" stroke-linecap="round"/>
+<!-- Beard wisps -->
+<path d="M120 180 Q124 200 120 216" stroke="rgba(255,255,255,0.1)" stroke-width="2" stroke-linecap="round" fill="none"/>
+<path d="M132 184 Q132 204 130 216" stroke="rgba(255,255,255,0.08)" stroke-width="2" stroke-linecap="round" fill="none"/>
+<!-- Sparkle on hat tip -->
+<path d="M128 48 L131 56 L139 59 L131 62 L128 70 L125 62 L117 59 L125 56 Z" fill="#fff" opacity="0.7"/>
+</svg>
+<span class="name">Stargazer</span>
+<span class="sub">Hat + sparkle eye + star on tip</span>
+</div>
+
+<!-- B4: Simple hood, big sparkle eye -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="b4bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#b4bg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Hood shape - filled -->
+<path d="M72 204 Q72 204 72 120 Q72 52 128 40 Q184 52 184 120 L184 204 Z" fill="#A5BC39" opacity="0.9"/>
+<!-- Face void -->
+<path d="M92 196 Q92 196 92 132 Q92 76 128 66 Q164 76 164 132 L164 196 Z" fill="#0E1118" opacity="0.85"/>
+<!-- Big sparkle as the eye -->
+<path d="M140 120 L146 138 L164 144 L146 150 L140 168 L134 150 L116 144 L134 138 Z" fill="#A5BC39"/>
+<!-- Tiny sparkle companion -->
+<path d="M108 112 L110 118 L116 120 L110 122 L108 128 L106 122 L100 120 L106 118 Z" fill="#fff" opacity="0.3"/>
+</svg>
+<span class="name">All-Father</span>
+<span class="sub">Filled hood, big sparkle eye</span>
+</div>
+
+</div>
+</div>
+
+<!-- C: Nasal Helm + Sparkles -->
+<div class="section">
+<div class="section-label">C — Nasal Helm + Sparkles</div>
+<div class="section-desc">The simpler helmet form — dome, brow band, nose guard. Combined with sparkles for that "more than a warrior" feel.</div>
+<div class="row">
+
+<!-- C1: Outlined nasal, sparkle eye -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="c1bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#c1bg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Helm dome -->
+<path d="M76 148 Q76 72 128 56 Q180 72 180 148" fill="none" stroke="#A5BC39" stroke-width="5.5" stroke-linecap="round"/>
+<!-- Brow band -->
+<line x1="68" y1="148" x2="188" y2="148" stroke="#A5BC39" stroke-width="5.5" stroke-linecap="round"/>
+<!-- Nasal guard -->
+<line x1="128" y1="148" x2="128" y2="196" stroke="#A5BC39" stroke-width="5" stroke-linecap="round"/>
+<!-- Sparkle as right eye -->
+<path d="M156 168 L159 178 L169 181 L159 184 L156 194 L153 184 L143 181 L153 178 Z" fill="#fff" opacity="0.85"/>
+<!-- Closed left eye -->
+<line x1="88" y1="174" x2="108" y2="178" stroke="rgba(255,255,255,0.25)" stroke-width="3" stroke-linecap="round"/>
+<!-- Small sparkle on dome -->
+<path d="M148 80 L150 86 L156 88 L150 90 L148 96 L146 90 L140 88 L146 86 Z" fill="#fff" opacity="0.4"/>
+</svg>
+<span class="name">Nasal + Star Eye</span>
+<span class="sub">Stroke helm, sparkle sees</span>
+</div>
+
+<!-- C2: Filled nasal, sparkles flanking -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="c2bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#c2bg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Helm dome filled -->
+<path d="M80 152 Q80 76 128 60 Q176 76 176 152 L176 152 L80 152 Z" fill="#A5BC39"/>
+<!-- Brow -->
+<rect x="72" y="148" width="112" height="10" rx="3" fill="#A5BC39"/>
+<!-- Nasal -->
+<rect x="123" y="158" width="10" height="44" rx="3" fill="#A5BC39"/>
+<!-- Left sparkle -->
+<path d="M56 120 L60 132 L72 136 L60 140 L56 152 L52 140 L40 136 L52 132 Z" fill="#fff" opacity="0.55"/>
+<!-- Right sparkle -->
+<path d="M200 108 L203 118 L213 121 L203 124 L200 134 L197 124 L187 121 L197 118 Z" fill="#fff" opacity="0.4"/>
+<!-- Tiny sparkle -->
+<path d="M180 160 L182 164 L186 166 L182 168 L180 172 L178 168 L174 166 L178 164 Z" fill="#fff" opacity="0.25"/>
+</svg>
+<span class="name">Guarded + Flanked</span>
+<span class="sub">Stars orbiting</span>
+</div>
+
+<!-- C3: Nasal helm with cheek guards, sparkle between eyes -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="c3bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#c3bg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Helm dome -->
+<path d="M80 144 Q80 68 128 52 Q176 68 176 144" fill="#A5BC39"/>
+<!-- Brow band -->
+<rect x="72" y="140" width="112" height="10" rx="3" fill="#A5BC39"/>
+<!-- Nasal guard -->
+<rect x="123" y="150" width="10" height="44" rx="3" fill="#A5BC39"/>
+<!-- Cheek guards -->
+<path d="M72 150 L72 188 Q72 196 80 196 L96 192" fill="#A5BC39" stroke="none"/>
+<path d="M184 150 L184 188 Q184 196 176 196 L160 192" fill="#A5BC39" stroke="none"/>
+<!-- Eye sockets (dark) -->
+<rect x="84" y="154" width="36" height="20" rx="4" fill="#0E1118" opacity="0.5"/>
+<rect x="136" y="154" width="36" height="20" rx="4" fill="#0E1118" opacity="0.5"/>
+<!-- Sparkle as right eye -->
+<path d="M154 160 L156 166 L162 168 L156 170 L154 176 L152 170 L146 168 L152 166 Z" fill="#fff" opacity="0.85"/>
+<!-- Ridge -->
+<line x1="128" y1="54" x2="128" y2="140" stroke="rgba(255,255,255,0.1)" stroke-width="2.5"/>
+<!-- Tiny sparkle on top -->
+<path d="M128 40 L130 46 L136 48 L130 50 L128 56 L126 50 L120 48 L126 46 Z" fill="#fff" opacity="0.5"/>
+</svg>
+<span class="name">Full Guard</span>
+<span class="sub">Cheek plates + star eye</span>
+</div>
+
+</div>
+</div>
+
+<!-- D: Horned + Sparkles -->
+<div class="section">
+<div class="section-label">D — Horned Helm + Sparkles</div>
+<div class="section-desc">The horns give an unmistakable silhouette. Sparkles at the horn tips or as the eye turn it from "generic Viking" into "this is a god."</div>
+<div class="row">
+
+<!-- D1: Horns with sparkles at tips -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="d1bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#d1bg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Horns -->
+<path d="M84 148 Q66 112 64 64" stroke="#A5BC39" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+<path d="M172 148 Q190 112 192 64" stroke="#A5BC39" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+<!-- Sparkles at horn tips! -->
+<path d="M64 48 L67 58 L77 61 L67 64 L64 74 L61 64 L51 61 L61 58 Z" fill="#fff" opacity="0.8"/>
+<path d="M192 48 L195 58 L205 61 L195 64 L192 74 L189 64 L179 61 L189 58 Z" fill="#fff" opacity="0.8"/>
+<!-- Helm spectacle -->
+<path d="M84 152 Q84 92 128 76 Q172 92 172 152 Q172 176 152 176 Q140 176 128 160 Q116 176 104 176 Q84 176 84 152 Z" fill="#A5BC39"/>
+<!-- Eye cutouts -->
+<ellipse cx="106" cy="156" rx="13" ry="10" fill="#0E1118"/>
+<ellipse cx="150" cy="156" rx="13" ry="10" fill="#0E1118"/>
+</svg>
+<span class="name">Star Horns</span>
+<span class="sub">Sparkles at horn tips</span>
+</div>
+
+<!-- D2: Horned outline, sparkle eye -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="d2bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#d2bg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Horns -->
+<path d="M86 152 Q68 116 60 60" stroke="#A5BC39" stroke-width="5" stroke-linecap="round" fill="none"/>
+<path d="M170 152 Q188 116 196 60" stroke="#A5BC39" stroke-width="5" stroke-linecap="round" fill="none"/>
+<!-- Helm dome outline -->
+<path d="M86 156 Q86 92 128 76 Q170 92 170 156" fill="none" stroke="#A5BC39" stroke-width="5" stroke-linecap="round"/>
+<!-- Brow -->
+<line x1="78" y1="156" x2="178" y2="156" stroke="#A5BC39" stroke-width="5" stroke-linecap="round"/>
+<!-- Nasal -->
+<line x1="128" y1="156" x2="128" y2="196" stroke="#A5BC39" stroke-width="4.5" stroke-linecap="round"/>
+<!-- Sparkle eye right -->
+<path d="M152 176 L155 184 L163 187 L155 190 L152 198 L149 190 L141 187 L149 184 Z" fill="#fff" opacity="0.85"/>
+<!-- Tiny sparkle on horn -->
+<path d="M58 52 L60 56 L64 58 L60 60 L58 64 L56 60 L52 58 L56 56 Z" fill="#fff" opacity="0.5"/>
+</svg>
+<span class="name">Horned Outline</span>
+<span class="sub">Stroke + sparkle gaze</span>
+</div>
+
+<!-- D3: Compact horned, one sparkle eye, one dark -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="d3bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#d3bg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Short curved horns -->
+<path d="M84 144 Q72 116 76 72" stroke="#A5BC39" stroke-width="6" stroke-linecap="round" fill="none"/>
+<path d="M172 144 Q184 116 180 72" stroke="#A5BC39" stroke-width="6" stroke-linecap="round" fill="none"/>
+<!-- Small sparkle tips -->
+<path d="M76 60 L78 66 L84 68 L78 70 L76 76 L74 70 L68 68 L74 66 Z" fill="#fff" opacity="0.55"/>
+<path d="M180 60 L182 66 L188 68 L182 70 L180 76 L178 70 L172 68 L178 66 Z" fill="#fff" opacity="0.55"/>
+<!-- Filled spectacle helm -->
+<path d="M84 152 Q84 92 128 76 Q172 92 172 152 Q172 176 152 176 Q140 176 128 162 Q116 176 104 176 Q84 176 84 152 Z" fill="#A5BC39"/>
+<!-- Eyes -->
+<ellipse cx="108" cy="158" rx="13" ry="10" fill="#0E1118"/>
+<ellipse cx="148" cy="158" rx="13" ry="10" fill="#0E1118"/>
+<!-- Sparkle in right eye -->
+<path d="M148 152 L150 158 L156 160 L150 162 L148 168 L146 162 L140 160 L146 158 Z" fill="#fff" opacity="0.8"/>
+</svg>
+<span class="name">Horned + Seeing</span>
+<span class="sub">Sparkle tips + sparkle eye</span>
+</div>
+
+<!-- D4: Bold horned, big center sparkle -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="d4bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#d4bg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Long dramatic horns -->
+<path d="M88 148 Q60 108 48 52" stroke="rgba(255,255,255,0.5)" stroke-width="5" stroke-linecap="round" fill="none"/>
+<path d="M168 148 Q196 108 208 52" stroke="rgba(255,255,255,0.5)" stroke-width="5" stroke-linecap="round" fill="none"/>
+<!-- Spectacle helm -->
+<path d="M88 152 Q88 100 128 84 Q168 100 168 152 Q168 176 152 176 Q140 176 128 162 Q116 176 104 176 Q88 176 88 152 Z" fill="#A5BC39"/>
+<!-- Eye cutouts -->
+<ellipse cx="110" cy="158" rx="11" ry="9" fill="#0E1118"/>
+<ellipse cx="146" cy="158" rx="11" ry="9" fill="#0E1118"/>
+<!-- Big sparkle on forehead -->
+<path d="M128 100 L133 116 L149 121 L133 126 L128 142 L123 126 L107 121 L123 116 Z" fill="#fff" opacity="0.8"/>
+</svg>
+<span class="name">Forehead Star</span>
+<span class="sub">Wisdom mark on helm</span>
+</div>
+
+</div>
+</div>
+
+<!-- E: Winged + Sparkles -->
+<div class="section">
+<div class="section-label">E — Winged Helm + Sparkles</div>
+<div class="section-desc">Wings give a unique silhouette that no other app icon has. Sparkles make the wings feel magical rather than decorative.</div>
+<div class="row">
+
+<!-- E1: Simple wings + sparkle -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="e1bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#e1bg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Wings as bold strokes -->
+<path d="M84 148 Q56 116 44 64" stroke="rgba(255,255,255,0.5)" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+<path d="M84 140 Q52 120 36 80" stroke="rgba(255,255,255,0.3)" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+<path d="M172 148 Q200 116 212 64" stroke="rgba(255,255,255,0.5)" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+<path d="M172 140 Q204 120 220 80" stroke="rgba(255,255,255,0.3)" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+<!-- Sparkles at wing tips -->
+<path d="M44 52 L46 58 L52 60 L46 62 L44 68 L42 62 L36 60 L42 58 Z" fill="#fff" opacity="0.6"/>
+<path d="M212 52 L214 58 L220 60 L214 62 L212 68 L210 62 L204 60 L210 58 Z" fill="#fff" opacity="0.6"/>
+<!-- Helm spectacle -->
+<path d="M84 156 Q84 100 128 84 Q172 100 172 156 Q172 180 152 180 Q140 180 128 164 Q116 180 104 180 Q84 180 84 156 Z" fill="#A5BC39"/>
+<!-- Eye cutouts -->
+<ellipse cx="108" cy="162" rx="12" ry="10" fill="#0E1118"/>
+<ellipse cx="148" cy="162" rx="12" ry="10" fill="#0E1118"/>
+<!-- Ridge -->
+<line x1="128" y1="86" x2="128" y2="152" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+</svg>
+<span class="name">Winged + Tipped</span>
+<span class="sub">Stars at feather ends</span>
+</div>
+
+<!-- E2: Filled wings with sparkles -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="e2bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#e2bg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Left wing feathers -->
+<path d="M84 152 L60 116 L52 68 L72 100 L68 56 L84 104 Z" fill="rgba(255,255,255,0.3)"/>
+<!-- Right wing feathers -->
+<path d="M172 152 L196 116 L204 68 L184 100 L188 56 L172 104 Z" fill="rgba(255,255,255,0.3)"/>
+<!-- Sparkles at tips -->
+<path d="M52 56 L54 62 L60 64 L54 66 L52 72 L50 66 L44 64 L50 62 Z" fill="#fff" opacity="0.7"/>
+<path d="M68 44 L70 50 L76 52 L70 54 L68 60 L66 54 L60 52 L66 50 Z" fill="#fff" opacity="0.45"/>
+<path d="M204 56 L206 62 L212 64 L206 66 L204 72 L202 66 L196 64 L202 62 Z" fill="#fff" opacity="0.7"/>
+<path d="M188 44 L190 50 L196 52 L190 54 L188 60 L186 54 L180 52 L186 50 Z" fill="#fff" opacity="0.45"/>
+<!-- Helm spectacle -->
+<path d="M84 156 Q84 100 128 84 Q172 100 172 156 Q172 180 152 180 Q140 180 128 164 Q116 180 104 180 Q84 180 84 156 Z" fill="#A5BC39"/>
+<!-- Eye cutouts -->
+<ellipse cx="108" cy="160" rx="12" ry="10" fill="#0E1118"/>
+<ellipse cx="148" cy="160" rx="12" ry="10" fill="#0E1118"/>
+<!-- Sparkle eye -->
+<path d="M148 155 L150 160 L155 162 L150 164 L148 169 L146 164 L141 162 L146 160 Z" fill="#fff" opacity="0.75"/>
+</svg>
+<span class="name">Feathered + Stars</span>
+<span class="sub">Filled wings, sparkle eye</span>
+</div>
+
+<!-- E3: Minimal swept wings -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="e3bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#e3bg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Single-stroke wings, upswept -->
+<path d="M80 148 Q48 108 40 56" stroke="#A5BC39" stroke-width="5" stroke-linecap="round" fill="none"/>
+<path d="M176 148 Q208 108 216 56" stroke="#A5BC39" stroke-width="5" stroke-linecap="round" fill="none"/>
+<!-- Big sparkle at center top -->
+<path d="M128 44 L133 60 L149 65 L133 70 L128 86 L123 70 L107 65 L123 60 Z" fill="#A5BC39"/>
+<!-- Helm dome + spectacle outlined -->
+<path d="M80 152 Q80 100 128 84 Q176 100 176 152" fill="none" stroke="#A5BC39" stroke-width="5" stroke-linecap="round"/>
+<path d="M80 152 Q80 176 104 176 Q118 176 128 160 Q138 176 152 176 Q176 176 176 152" fill="none" stroke="#A5BC39" stroke-width="5" stroke-linecap="round"/>
+<line x1="128" y1="152" x2="128" y2="160" stroke="#A5BC39" stroke-width="4.5"/>
+</svg>
+<span class="name">Swept + Crown Star</span>
+<span class="sub">Wings frame a big sparkle</span>
+</div>
+
+</div>
+</div>
+
+<!-- Size check -->
+<div class="size-section">
+<div class="section-label">Size Check</div>
+<div class="section-desc">How favorites hold up across 96, 52, 32, and 16px.</div>
+
+<!-- Sparkle Eye (A2) -->
+<p class="size-group-label">Sparkle Eye (A2)</p>
+<div class="size-row">
+<div class="size-cell">
+<svg width="96" height="96" viewBox="0 0 256 256"><defs><linearGradient id="z1a" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#z1a)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M76 152 Q76 88 128 68 Q180 88 180 152 Q180 180 156 180 Q140 180 128 160 Q116 180 100 180 Q76 180 76 152 Z" fill="#A5BC39"/><ellipse cx="104" cy="156" rx="15" ry="12" fill="#0E1118"/><ellipse cx="152" cy="156" rx="15" ry="12" fill="#0E1118"/><path d="M152 148 L155 156 L163 159 L155 162 L152 170 L149 162 L141 159 L149 156 Z" fill="#fff" opacity="0.9"/><line x1="128" y1="70" x2="128" y2="148" stroke="rgba(255,255,255,0.1)" stroke-width="2.5"/></svg>
+<span class="sub">96px</span></div>
+<div class="size-cell">
+<svg width="52" height="52" viewBox="0 0 256 256"><defs><linearGradient id="z1b" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#z1b)"/><path d="M76 152 Q76 88 128 68 Q180 88 180 152 Q180 180 156 180 Q140 180 128 160 Q116 180 100 180 Q76 180 76 152 Z" fill="#A5BC39"/><ellipse cx="104" cy="156" rx="16" ry="13" fill="#0E1118"/><ellipse cx="152" cy="156" rx="16" ry="13" fill="#0E1118"/><path d="M152 148 L155 156 L163 159 L155 162 L152 170 L149 162 L141 159 L149 156 Z" fill="#fff" opacity="0.9"/></svg>
+<span class="sub">52px</span></div>
+<div class="size-cell">
+<svg width="32" height="32" viewBox="0 0 256 256"><defs><linearGradient id="z1c" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#z1c)"/><path d="M76 156 Q76 88 128 68 Q180 88 180 156 Q180 184 156 184 Q140 184 128 160 Q116 184 100 184 Q76 184 76 156 Z" fill="#A5BC39"/><ellipse cx="104" cy="160" rx="18" ry="14" fill="#0E1118"/><ellipse cx="152" cy="160" rx="18" ry="14" fill="#0E1118"/><path d="M152 150 L156 160 L166 163 L156 166 L152 176 L148 166 L138 163 L148 160 Z" fill="#fff"/></svg>
+<span class="sub">32px</span></div>
+<div class="size-cell">
+<svg width="16" height="16" viewBox="0 0 256 256"><defs><linearGradient id="z1d" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#z1d)"/><path d="M72 160 Q72 84 128 64 Q184 84 184 160 Q184 188 156 188 Q140 188 128 164 Q116 188 100 188 Q72 188 72 160 Z" fill="#A5BC39"/><ellipse cx="104" cy="164" rx="20" ry="16" fill="#0E1118"/><ellipse cx="152" cy="164" rx="20" ry="16" fill="#0E1118"/><circle cx="152" cy="164" r="12" fill="#fff"/></svg>
+<span class="sub">16px</span></div>
+</div>
+
+<!-- All-Father (B4) -->
+<p class="size-group-label">All-Father (B4)</p>
+<div class="size-row">
+<div class="size-cell">
+<svg width="96" height="96" viewBox="0 0 256 256"><defs><linearGradient id="z2a" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#z2a)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M72 204 Q72 204 72 120 Q72 52 128 40 Q184 52 184 120 L184 204 Z" fill="#A5BC39" opacity="0.9"/><path d="M92 196 Q92 196 92 132 Q92 76 128 66 Q164 76 164 132 L164 196 Z" fill="#0E1118" opacity="0.85"/><path d="M140 120 L146 138 L164 144 L146 150 L140 168 L134 150 L116 144 L134 138 Z" fill="#A5BC39"/><path d="M108 112 L110 118 L116 120 L110 122 L108 128 L106 122 L100 120 L106 118 Z" fill="#fff" opacity="0.3"/></svg>
+<span class="sub">96px</span></div>
+<div class="size-cell">
+<svg width="52" height="52" viewBox="0 0 256 256"><defs><linearGradient id="z2b" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#z2b)"/><path d="M72 204 Q72 204 72 120 Q72 52 128 40 Q184 52 184 120 L184 204 Z" fill="#A5BC39" opacity="0.9"/><path d="M92 196 Q92 196 92 132 Q92 76 128 66 Q164 76 164 132 L164 196 Z" fill="#0E1118" opacity="0.85"/><path d="M140 120 L146 138 L164 144 L146 150 L140 168 L134 150 L116 144 L134 138 Z" fill="#A5BC39"/></svg>
+<span class="sub">52px</span></div>
+<div class="size-cell">
+<svg width="32" height="32" viewBox="0 0 256 256"><defs><linearGradient id="z2c" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#z2c)"/><path d="M68 204 Q68 204 68 116 Q68 48 128 36 Q188 48 188 116 L188 204 Z" fill="#A5BC39" opacity="0.9"/><path d="M92 196 Q92 196 92 128 Q92 72 128 62 Q164 72 164 128 L164 196 Z" fill="#0E1118" opacity="0.85"/><path d="M140 116 L148 138 L170 145 L148 152 L140 174 L132 152 L110 145 L132 138 Z" fill="#A5BC39"/></svg>
+<span class="sub">32px</span></div>
+<div class="size-cell">
+<svg width="16" height="16" viewBox="0 0 256 256"><defs><linearGradient id="z2d" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#z2d)"/><path d="M64 208 Q64 208 64 112 Q64 40 128 28 Q192 40 192 112 L192 208 Z" fill="#A5BC39" opacity="0.9"/><path d="M92 200 Q92 200 92 128 Q92 68 128 56 Q164 68 164 128 L164 200 Z" fill="#0E1118" opacity="0.85"/><circle cx="140" cy="140" r="20" fill="#A5BC39"/></svg>
+<span class="sub">16px</span></div>
+</div>
+
+<!-- Three-Star Crown (A4) -->
+<p class="size-group-label">Three-Star Crown (A4)</p>
+<div class="size-row">
+<div class="size-cell">
+<svg width="96" height="96" viewBox="0 0 256 256"><defs><linearGradient id="z3a" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#z3a)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M88 72 L91 80 L99 83 L91 86 L88 94 L85 86 L77 83 L85 80 Z" fill="#fff" opacity="0.55"/><path d="M128 48 L132 60 L144 64 L132 68 L128 80 L124 68 L112 64 L124 60 Z" fill="#fff" opacity="0.8"/><path d="M168 72 L171 80 L179 83 L171 86 L168 94 L165 86 L157 83 L165 80 Z" fill="#fff" opacity="0.55"/><path d="M80 160 Q80 108 128 92 Q176 108 176 160 Q176 184 156 184 Q142 184 128 168 Q114 184 100 184 Q80 184 80 160 Z" fill="#A5BC39"/><ellipse cx="106" cy="164" rx="14" ry="11" fill="#0E1118"/><ellipse cx="150" cy="164" rx="14" ry="11" fill="#0E1118"/><line x1="128" y1="94" x2="128" y2="156" stroke="rgba(255,255,255,0.1)" stroke-width="2.5"/></svg>
+<span class="sub">96px</span></div>
+<div class="size-cell">
+<svg width="52" height="52" viewBox="0 0 256 256"><defs><linearGradient id="z3b" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#z3b)"/><path d="M88 68 L91 78 L101 81 L91 84 L88 94 L85 84 L75 81 L85 78 Z" fill="#fff" opacity="0.55"/><path d="M128 44 L133 58 L147 63 L133 68 L128 82 L123 68 L109 63 L123 58 Z" fill="#fff" opacity="0.8"/><path d="M168 68 L171 78 L181 81 L171 84 L168 94 L165 84 L155 81 L165 78 Z" fill="#fff" opacity="0.55"/><path d="M80 160 Q80 108 128 92 Q176 108 176 160 Q176 184 156 184 Q142 184 128 168 Q114 184 100 184 Q80 184 80 160 Z" fill="#A5BC39"/><ellipse cx="106" cy="164" rx="15" ry="12" fill="#0E1118"/><ellipse cx="150" cy="164" rx="15" ry="12" fill="#0E1118"/></svg>
+<span class="sub">52px</span></div>
+<div class="size-cell">
+<svg width="32" height="32" viewBox="0 0 256 256"><defs><linearGradient id="z3c" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#z3c)"/><path d="M128 40 L134 58 L152 64 L134 70 L128 88 L122 70 L104 64 L122 58 Z" fill="#fff" opacity="0.8"/><path d="M76 164 Q76 104 128 88 Q180 104 180 164 Q180 192 156 192 Q140 192 128 172 Q116 192 100 192 Q76 192 76 164 Z" fill="#A5BC39"/><ellipse cx="106" cy="168" rx="16" ry="14" fill="#0E1118"/><ellipse cx="150" cy="168" rx="16" ry="14" fill="#0E1118"/></svg>
+<span class="sub">32px</span></div>
+<div class="size-cell">
+<svg width="16" height="16" viewBox="0 0 256 256"><defs><linearGradient id="z3d" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#z3d)"/><path d="M128 36 L136 58 L158 65 L136 72 L128 94 L120 72 L98 65 L120 58 Z" fill="#fff" opacity="0.8"/><path d="M72 168 Q72 100 128 84 Q184 100 184 168 Q184 196 156 196 Q140 196 128 172 Q116 196 100 196 Q72 196 72 168 Z" fill="#A5BC39"/><ellipse cx="106" cy="172" rx="18" ry="16" fill="#0E1118"/><ellipse cx="150" cy="172" rx="18" ry="16" fill="#0E1118"/></svg>
+<span class="sub">16px</span></div>
+</div>
+
+<!-- Horned + Seeing (D3) -->
+<p class="size-group-label">Horned + Seeing (D3)</p>
+<div class="size-row">
+<div class="size-cell">
+<svg width="96" height="96" viewBox="0 0 256 256"><defs><linearGradient id="z4a" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#z4a)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M84 144 Q72 116 76 72" stroke="#A5BC39" stroke-width="6" stroke-linecap="round" fill="none"/><path d="M172 144 Q184 116 180 72" stroke="#A5BC39" stroke-width="6" stroke-linecap="round" fill="none"/><path d="M76 60 L78 66 L84 68 L78 70 L76 76 L74 70 L68 68 L74 66 Z" fill="#fff" opacity="0.55"/><path d="M180 60 L182 66 L188 68 L182 70 L180 76 L178 70 L172 68 L178 66 Z" fill="#fff" opacity="0.55"/><path d="M84 152 Q84 92 128 76 Q172 92 172 152 Q172 176 152 176 Q140 176 128 162 Q116 176 104 176 Q84 176 84 152 Z" fill="#A5BC39"/><ellipse cx="108" cy="158" rx="13" ry="10" fill="#0E1118"/><ellipse cx="148" cy="158" rx="13" ry="10" fill="#0E1118"/><path d="M148 152 L150 158 L156 160 L150 162 L148 168 L146 162 L140 160 L146 158 Z" fill="#fff" opacity="0.8"/></svg>
+<span class="sub">96px</span></div>
+<div class="size-cell">
+<svg width="52" height="52" viewBox="0 0 256 256"><defs><linearGradient id="z4b" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#z4b)"/><path d="M84 144 Q72 116 76 72" stroke="#A5BC39" stroke-width="7" stroke-linecap="round" fill="none"/><path d="M172 144 Q184 116 180 72" stroke="#A5BC39" stroke-width="7" stroke-linecap="round" fill="none"/><path d="M76 58 L79 66 L87 69 L79 72 L76 80 L73 72 L65 69 L73 66 Z" fill="#fff" opacity="0.6"/><path d="M180 58 L183 66 L191 69 L183 72 L180 80 L177 72 L169 69 L177 66 Z" fill="#fff" opacity="0.6"/><path d="M84 152 Q84 92 128 76 Q172 92 172 152 Q172 176 152 176 Q140 176 128 162 Q116 176 104 176 Q84 176 84 152 Z" fill="#A5BC39"/><ellipse cx="108" cy="158" rx="14" ry="11" fill="#0E1118"/><ellipse cx="148" cy="158" rx="14" ry="11" fill="#0E1118"/><path d="M148 152 L150 158 L156 160 L150 162 L148 168 L146 162 L140 160 L146 158 Z" fill="#fff" opacity="0.8"/></svg>
+<span class="sub">52px</span></div>
+<div class="size-cell">
+<svg width="32" height="32" viewBox="0 0 256 256"><defs><linearGradient id="z4c" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#z4c)"/><path d="M80 148 Q68 112 72 64" stroke="#A5BC39" stroke-width="9" stroke-linecap="round" fill="none"/><path d="M176 148 Q188 112 184 64" stroke="#A5BC39" stroke-width="9" stroke-linecap="round" fill="none"/><path d="M72 50 L75 60 L85 63 L75 66 L72 76 L69 66 L59 63 L69 60 Z" fill="#fff" opacity="0.65"/><path d="M184 50 L187 60 L197 63 L187 66 L184 76 L181 66 L171 63 L181 60 Z" fill="#fff" opacity="0.65"/><path d="M80 156 Q80 88 128 72 Q176 88 176 156 Q176 180 152 180 Q140 180 128 162 Q116 180 104 180 Q80 180 80 156 Z" fill="#A5BC39"/><ellipse cx="108" cy="162" rx="16" ry="12" fill="#0E1118"/><ellipse cx="148" cy="162" rx="16" ry="12" fill="#0E1118"/></svg>
+<span class="sub">32px</span></div>
+<div class="size-cell">
+<svg width="16" height="16" viewBox="0 0 256 256"><defs><linearGradient id="z4d" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#z4d)"/><path d="M76 148 Q60 108 68 56" stroke="#A5BC39" stroke-width="12" stroke-linecap="round" fill="none"/><path d="M180 148 Q196 108 188 56" stroke="#A5BC39" stroke-width="12" stroke-linecap="round" fill="none"/><path d="M76 160 Q76 84 128 68 Q180 84 180 160 Q180 188 156 188 Q140 188 128 164 Q116 188 100 188 Q76 188 76 160 Z" fill="#A5BC39"/><ellipse cx="106" cy="166" rx="20" ry="16" fill="#0E1118"/><ellipse cx="150" cy="166" rx="20" ry="16" fill="#0E1118"/></svg>
+<span class="sub">16px</span></div>
+</div>
+
+<!-- Geo Wanderer (B2) -->
+<p class="size-group-label">Geo Wanderer (B2)</p>
+<div class="size-row">
+<div class="size-cell">
+<svg width="96" height="96" viewBox="0 0 256 256"><defs><linearGradient id="z5a" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#z5a)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M128 48 L72 172 L84 200 L172 200 L184 172 Z" fill="#A5BC39"/><path d="M128 96 L100 168 L156 168 Z" fill="#0E1118" opacity="0.7"/><path d="M140 136 L143 144 L151 147 L143 150 L140 158 L137 150 L129 147 L137 144 Z" fill="#A5BC39"/><path d="M196 76 L199 86 L209 89 L199 92 L196 102 L193 92 L183 89 L193 86 Z" fill="#fff" opacity="0.6"/><path d="M56 100 L58 106 L64 108 L58 110 L56 116 L54 110 L48 108 L54 106 Z" fill="#fff" opacity="0.35"/></svg>
+<span class="sub">96px</span></div>
+<div class="size-cell">
+<svg width="52" height="52" viewBox="0 0 256 256"><defs><linearGradient id="z5b" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#z5b)"/><path d="M128 48 L72 172 L84 200 L172 200 L184 172 Z" fill="#A5BC39"/><path d="M128 96 L100 168 L156 168 Z" fill="#0E1118" opacity="0.7"/><path d="M140 134 L144 144 L154 148 L144 152 L140 162 L136 152 L126 148 L136 144 Z" fill="#A5BC39"/><path d="M196 76 L199 86 L209 89 L199 92 L196 102 L193 92 L183 89 L193 86 Z" fill="#fff" opacity="0.6"/></svg>
+<span class="sub">52px</span></div>
+<div class="size-cell">
+<svg width="32" height="32" viewBox="0 0 256 256"><defs><linearGradient id="z5c" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#z5c)"/><path d="M128 44 L68 176 L80 204 L176 204 L188 176 Z" fill="#A5BC39"/><path d="M128 96 L96 172 L160 172 Z" fill="#0E1118" opacity="0.7"/><circle cx="142" cy="144" r="12" fill="#A5BC39"/></svg>
+<span class="sub">32px</span></div>
+<div class="size-cell">
+<svg width="16" height="16" viewBox="0 0 256 256"><defs><linearGradient id="z5d" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#z5d)"/><path d="M128 40 L60 180 L76 212 L180 212 L196 180 Z" fill="#A5BC39"/><path d="M128 96 L92 176 L164 176 Z" fill="#0E1118" opacity="0.7"/><circle cx="142" cy="148" r="16" fill="#A5BC39"/></svg>
+<span class="sub">16px</span></div>
+</div>
+
+</div>
+
+</div>
+</body>
+</html>

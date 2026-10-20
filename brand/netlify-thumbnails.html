@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Upland Workshop — Netlify Thumbnails</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Instrument Sans",system-ui,sans-serif;background:#0c0b0e;color:#c8c5cc;min-height:100vh}
+.page{max-width:1060px;margin:0 auto;padding:4rem 2rem 6rem}
+.header{margin-bottom:3rem}
+.header::after{content:"";display:block;width:48px;height:2px;background:#a5bc39;margin-top:1.5rem}
+.label{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#a5bc39;margin-bottom:.6rem}
+h1{font-size:1.8rem;font-weight:400;color:#eae8ed}
+.note{font-size:.8rem;color:#605c66;margin-top:.8rem}
+.controls{display:flex;gap:.6rem;margin-bottom:2rem}
+.size-btn{padding:.45rem 1rem;font-family:inherit;font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#605c66;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:6px;cursor:pointer;transition:all .15s}
+.size-btn:hover{color:#c8c5cc;border-color:rgba(255,255,255,.15)}
+.size-btn.active{color:#161A22;background:#A5BC39;border-color:#A5BC39}
+.thumb-section{margin-bottom:3rem;transition:margin .2s}
+.thumb-label{font-size:.85rem;font-weight:600;color:#d8d5dc;margin-bottom:.8rem;display:flex;align-items:center;gap:.8rem}
+.thumb-label span{font-size:.65rem;font-weight:400;color:#555059}
+.thumb-wrap{position:relative;width:100%;aspect-ratio:960/600;border-radius:12px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.5);transition:all .2s}
+.thumb-wrap canvas{display:block;width:100%;height:100%}
+body.size-netlify .thumb-section{margin-bottom:1.5rem}
+body.size-netlify .thumb-wrap{width:192px;border-radius:6px;box-shadow:0 4px 16px rgba(0,0,0,.4)}
+body.size-netlify #thumbnails{display:flex;flex-wrap:wrap;gap:1.5rem}
+body.size-netlify .thumb-label{font-size:.7rem;margin-bottom:.5rem}
+body.size-netlify .save-btn{display:none}
+.save-btn{margin-top:.8rem;display:inline-block;padding:.5rem 1.2rem;font-family:inherit;font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#161A22;background:#A5BC39;border:none;border-radius:6px;cursor:pointer;transition:opacity .2s}
+.save-btn:hover{opacity:.85}
+body.size-netlify .save-btn{display:none}
+.save-all-btn{margin-left:auto;padding:.45rem 1.2rem;font-family:inherit;font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#161A22;background:#A5BC39;border:none;border-radius:6px;cursor:pointer;transition:opacity .2s}
+.save-all-btn:hover{opacity:.85}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="header">
+<div class="label">Upland Workshop</div>
+<h1>Netlify Thumbnails</h1>
+<p class="note">960 &times; 600px (1.6:1) — Click "Save PNG" to download each thumbnail.</p>
+</div>
+<div class="controls">
+<button class="size-btn active" data-size="full">Full Size</button>
+<button class="size-btn" data-size="netlify">Netlify (192 &times; 120)</button>
+<button class="save-all-btn" id="saveAll">Save All PNGs</button>
+</div>
+<div id="thumbnails"></div>
+</div>
+
+<script>
+// SVG icons embedded as data URIs to avoid tainted canvas on file://
+function svgDataUri(svg) {
+  return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+}
+
+const APPS = [
+  { name: 'ODIN', desc: 'Operations Dashboard', icon: svgDataUri(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient><clipPath id="c"><rect width="256" height="256" rx="44"/></clipPath></defs>
+<rect width="256" height="256" rx="44" fill="url(#bg)"/>
+<g clip-path="url(#c)"><g transform="scale(0.68257)">
+<ellipse fill="#282c1f" cx="187.53" cy="99.35" rx="64.19" ry="40.08"/>
+<ellipse fill="#282c1f" cx="187.53" cy="99.35" rx="51.35" ry="32.06"/>
+<ellipse fill="#3f4326" cx="187.53" cy="99.35" rx="41.51" ry="25.92"/>
+<ellipse fill="#5a5f30" cx="187.53" cy="99.35" rx="27.35" ry="17.08"/>
+<path fill="#dcd56e" d="M234.39,210.48c-7,1.28-13.76-1.83-19.83-5.12,10.12-7,20.82-10.8,33.4-11.15.39,7.7-4.46,14.61-13.58,16.28Z"/>
+<g>
+<path fill="#e1e0dc" d="M81.69,173.31c5.97,3.21,13.4,4.82,20.06,6.1,2.52.58,5.52,1.48,8.09,1.78,1.4.4,3.7,1.38,5.18.56,2.86,0,5.57,2.77,8.33.4.16,2.5,3.78,1.68,5.47,1.98,2.8.74,7.42,1.12,10.15,1.92,57.86,10.92,26.05,17.82,47.99,41.75,14.76-10.35-1.95-22.49,21.41-32.86,24.88-11.05,57.13-9.65,87.32-23.44,50.33-17.31,46.62-93.32-2.78-109.23,24.84,38.67,3.45,70.7-41.84,72.09-7.03,1.55-16.81,4.6-22.04,9.47-13.11,15.47-2.66,28.27-13.6,31.21-11.81,3.18-21.44,9.92-26.97,22.39-7.3-11.66-17.25-19.22-30.17-22.69-12.31-5.73,1.42-31.01-27.45-38.36,0,0-32.49-7.19-32.49-7.19-29.79-5.69-34.83-43.74-19.59-66.2-23.86,7.61-35.34,29.27-38.64,50.46-2.19,26.61,16.67,51.62,41.56,59.86ZM241.25,143.25s-.88,4.63-.88,4.63c0,.65.23,2.11-.63,2.38l-.21,15.03c29.36-7.6,15.66-23.14,35.09-29.95-3.78,7.69-5.89,15.15-7.31,24.26,33.62-4.43,61.12-32.49,48.94-67.95,34.48,65.56-38.41,79.46-86.9,82.91,10.36-6.18,4.55-24.13,11.9-31.31ZM54.95,92.63c.87-1.68,1.79-2.94,3.72-5.19-16.64,34.79,13.05,68.09,47.82,72.44.39-.46-8.51-24.4-5.81-23.68,15.06,7,8.42,23.89,33.63,28.24,1.56-.84-.65-9.77-.45-11.29-.04-1.66-.22-5.69-.25-7.4,6.22,8.06,1.19,21.32,10.86,28.68-34.96-3.81-96.79-8.24-96.44-53.97-2.49-9.16,2.48-20,6.92-27.83Z"/>
+<path fill="#e1e0dc" d="M279.6,220.79c-9.24,15.96-27.1,18.99-41.97,27.02-5.25-22.99,42.36-7.31,35.76-57.4-17.14.85-7.11,36.36-56.14,26.96-7.1,35.03,42.24,49.42,29.08,87.88,10.63-7.68,19.08-20.51,9.05-31.95,10.64,3.76,20.89,7.72,31.54,2.27-7.14-3.79-11.55-11.48-11.5-19.17,9.35,14.24,24,18.34,35.92,6.47-20.98-2.71-29.26-21.29-31.74-42.07Z"/>
+<path fill="#e1e0dc" d="M200.55,245.33c-4.44-.73-8.74,2.7-11.71,4.15-18.75-8.03-43.23,8-45.4,28.77,13.31-14.78,29.13-9.78,43.44-22.46,10.09,23.24,36.27,13.8,39.93,37.52-7.2-11.19-22.45-14.85-34.17-18.5-2.12-.66-5.95-4.2-5.95-4.2l-1.69,5.52c-.79,1.4-.52,3.49-.34,5.65-.3-.9-.76-1.85-1.36-2.82-17.43,12.29-28.83,40.47-2.43,47.41-8.31-13.18-9-28.41,1.98-37.57-9.89,22.53,14.59,33.14,5.11,55.06,15.22-8.75,28.47-28.78,16.62-43.25,11.76,1.54,16.32,11.91,12.87,22.23,32.64-21.1,22.4-72.97-16.91-77.51Z"/>
+<path fill="#e1e0dc" d="M155.45,220.74c-35.26,5.13-33.12-22.21-55.11-32.74-1.42,52.23,51.55,40.06,38.18,55.76-6.31,5.26-12.73,18.64-4.63,24.66-.34-2.66-.36-5.85.84-8.32,12.41-17.08,26.89-10.02,20.72-39.34Z"/>
+<path fill="#e1e0dc" d="M101.4,238.35c-3.77-.36-9.17,27.95-40.68,20.95,17.36-5.38,27.12-23.85,20.75-40.41,4.29.46,7.56.57,11.16-.73-9.17-3.49-16.2-6.73-23.96-12.68,4.16,14.55,3.82,35.15-12.81,41.46-15.1,4.33-6.12,7.06,1.06,13.98,2.5.66,5.82,2.86,8.15,3.98,1,.28,3.47,1.04,4.07,1.97,8.3,1.21,18.65,1.76,25.54-3.85,13.05-11.42,10.44-24.31,6.74-24.67Z"/>
+<path fill="#e1e0dc" d="M300.86,205.43c-31.08,10.6-2.72,67.3,23.81,45.34-20.24-6.48-25.85-25.62-23.81-45.34Z"/>
+<path fill="#e1e0dc" d="M120.03,257.58c-20.37,8.85-15.18,39.92,5.59,44.16-9.35-14.31-11.67-28.98-5.59-44.16Z"/>
+<path fill="#e1e0dc" d="M286.17,202.27c15.34-3.2,22.26-16.16,21.87-29.49-16.95,14.27-22.89,3.44-21.87,29.49Z"/>
+<path fill="#e1e0dc" d="M62.27,173.84c2.92,12.9,9.84,27.46,24.82,28.76-3.37-27.22-3.34-13.36-21.34-27.96l-3.48-.8Z"/>
+<path fill="#e1e0dc" d="M154.82,287.02c-18.27,5.88-14.6,28.64,1.68,34.82-5.89-12.15-9.58-22.73-1.68-34.82Z"/>
+</g>
+<path fill="#dcd56e" d="M259.25,111.04l-5.5,1.38,5.5,1.38c2.81.71,5,2.9,5.7,5.7l1.38,5.5,1.38-5.5c.71-2.81,2.9-5,5.7-5.7l5.5-1.38-5.5-1.38c-2.81-.71-5-2.9-5.7-5.7l-1.38-5.5-1.38,5.5c-.71,2.81-2.9,5-5.7,5.7Z"/>
+<path fill="#dcd56e" d="M251.93,57.88l-4.77,1.2,4.77,1.2c2.43.61,4.33,2.51,4.94,4.94l1.2,4.77,1.2-4.77c.61-2.43,2.51-4.33,4.94-4.94l4.77-1.2-4.77-1.2c-2.43-.61-4.33-2.51-4.94-4.94l-1.2-4.77-1.2,4.77c-.61,2.43-2.51,4.33-4.94,4.94Z"/>
+<path fill="#dcd56e" d="M89.19,105.16l-5.22,1.31,5.22,1.31c2.66.67,4.74,2.75,5.41,5.41l1.31,5.22,1.31-5.22c.67-2.66,2.75-4.74,5.41-5.41l5.22-1.31-5.22-1.31c-2.66-.67-4.74-2.75-5.41-5.41l-1.31-5.22-1.31,5.22c-.67,2.66-2.75,4.74-5.41,5.41Z"/>
+<path fill="#dcd56e" d="M138.75,57.37l-6.78,1.7,6.78,1.7c3.46.87,6.16,3.57,7.02,7.02l1.7,6.78,1.7-6.78c.87-3.46,3.57-6.16,7.02-7.02l6.78-1.7-6.78-1.7c-3.46-.87-6.16-3.57-7.02-7.02l-1.7-6.78-1.7,6.78c-.87,3.46-3.57,6.16-7.02,7.02Z"/>
+<path fill="#dcd56e" d="M107.62,33.92l-4.89,1.23,4.89,1.23c2.49.63,4.44,2.57,5.06,5.06l1.23,4.89,1.23-4.89c.63-2.49,2.57-4.44,5.06-5.06l4.89-1.23-4.89-1.23c-2.49-.63-4.44-2.57-5.06-5.06l-1.23-4.89-1.23,4.89c-.63,2.49-2.57,4.44-5.06,5.06Z"/>
+<g>
+<polygon fill="#eae48a" points="186.81 97.75 167.59 118.41 188.24 99.19 207.46 78.54 186.81 97.75"/>
+<polygon fill="#eae48a" points="188.24 97.75 167.59 78.54 186.81 99.19 207.46 118.41 188.24 97.75"/>
+</g>
+<path fill="#dcd56e" d="M222.01,79.18l-3.41.86,3.41.86c1.74.44,3.1,1.8,3.54,3.54l.86,3.41.86-3.41c.44-1.74,1.8-3.1,3.54-3.54l3.41-.86-3.41-.86c-1.74-.44-3.1-1.8-3.54-3.54l-.86-3.41-.86,3.41c-.44,1.74-1.8,3.1-3.54,3.54Z"/>
+<path fill="#dcd56e" d="M160.33,137.89l-3.41.86,3.41.86c1.74.44,3.1,1.8,3.54,3.54l.86,3.41.86-3.41c.44-1.74,1.8-3.1,3.54-3.54l3.41-.86-3.41-.86c-1.74-.44-3.1-1.8-3.54-3.54l-.86-3.41-.86,3.41c-.44,1.74-1.8,3.1-3.54,3.54Z"/>
+<path fill="#dcd56e" d="M167.89,94.73l-46.59,3.74,46.53,3.6c8.45.65,15.18,7.35,15.87,15.8l3.82,46.82,3.98-46.88c.71-8.43,7.43-15.1,15.86-15.75l46.38-3.59-46.44-3.73c-8.41-.68-15.1-7.34-15.82-15.74l-3.97-46.75-3.81,46.68c-.69,8.43-7.39,15.12-15.82,15.8Z"/>
+<path fill="#fff" opacity=".7" d="M176.79,96.43l-25.48,2.05,25.45,1.97c4.62.36,8.3,4.02,8.68,8.64l2.09,25.6,2.18-25.64c.39-4.61,4.06-8.26,8.68-8.61l25.36-1.96-25.4-2.04c-4.6-.37-8.26-4.01-8.65-8.61l-2.17-25.57-2.09,25.53c-.38,4.61-4.04,8.27-8.65,8.64Z"/>
+</g></g>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+</svg>`) },
+
+  { name: 'Inquiry Hub', desc: 'Lead Management', icon: svgDataUri(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<path d="M68 80 h120 a12 12 0 0 1 12 12 v64 a12 12 0 0 1-12 12 h-52 l-22 26 -22-26 H68 a12 12 0 0 1-12-12 V92 a12 12 0 0 1 12-12z" fill="rgba(255,255,255,0.15)" stroke="#fff" stroke-width="8" stroke-linejoin="round"/>
+<circle cx="100" cy="124" r="7" fill="#A5BC39"/>
+<circle cx="128" cy="124" r="7" fill="#fff"/>
+<circle cx="156" cy="124" r="7" fill="#fff"/>
+</svg>`) },
+
+  { name: 'Scheduler', desc: 'Production Scheduling', icon: svgDataUri(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<rect x="56" y="62" width="144" height="16" rx="3" fill="#6BA0CC" opacity="0.95"/>
+<rect x="56" y="84" width="108" height="16" rx="3" fill="#6BA0CC" opacity="0.75"/>
+<rect x="82" y="106" width="118" height="16" rx="3" fill="#6BA0CC" opacity="0.6"/>
+<rect x="56" y="128" width="72" height="16" rx="3" fill="#8BBAD6" opacity="0.55"/>
+<rect x="96" y="150" width="80" height="16" rx="3" fill="#8BBAD6" opacity="0.4"/>
+<rect x="56" y="178" width="26" height="14" rx="2" fill="#A5BC39"/>
+<rect x="86" y="178" width="26" height="14" rx="2" fill="#A5BC39" opacity="0.85"/>
+<rect x="116" y="178" width="26" height="14" rx="2" fill="#D4C23A" opacity="0.8"/>
+<rect x="146" y="178" width="26" height="14" rx="2" fill="#D9A634" opacity="0.7"/>
+<rect x="176" y="178" width="24" height="14" rx="2" fill="#C96832" opacity="0.6"/>
+<line x1="130" y1="50" x2="130" y2="172" stroke="#A5BC39" stroke-width="3" opacity="0.9"/>
+<circle cx="130" cy="48" r="4" fill="#A5BC39"/>
+</svg>`) },
+
+  { name: 'Claire', desc: 'AI Design Assistant', icon: svgDataUri(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient>
+<clipPath id="panelClip"><rect x="0" y="0" width="112" height="256"/></clipPath>
+</defs>
+<rect width="256" height="256" rx="44" fill="url(#bg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<g clip-path="url(#panelClip)">
+<rect x="20" y="40" width="110" height="150" rx="7" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="3.5"/>
+<rect x="32" y="54" width="44" height="5" rx="2" fill="rgba(165,188,57,0.35)"/>
+<rect x="32" y="64" width="30" height="3" rx="1.5" fill="rgba(165,188,57,0.18)"/>
+<rect x="32" y="73" width="86" height="3" rx="1.5" fill="rgba(255,255,255,0.1)"/>
+<rect x="32" y="79" width="86" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
+<rect x="32" y="85" width="60" height="3" rx="1.5" fill="rgba(255,255,255,0.06)"/>
+<rect x="32" y="94" width="86" height="44" rx="3" fill="rgba(107,160,204,0.1)"/>
+<rect x="32" y="144" width="86" height="3" rx="1.5" fill="rgba(255,255,255,0.07)"/>
+<rect x="32" y="150" width="86" height="3" rx="1.5" fill="rgba(255,255,255,0.05)"/>
+<rect x="32" y="156" width="50" height="3" rx="1.5" fill="rgba(255,255,255,0.04)"/>
+<rect x="32" y="166" width="12" height="8" rx="2" fill="rgba(165,188,57,0.2)"/>
+<rect x="47" y="166" width="12" height="8" rx="2" fill="rgba(107,160,204,0.2)"/>
+<rect x="62" y="166" width="12" height="8" rx="2" fill="rgba(200,170,80,0.2)"/>
+</g>
+<g transform="translate(52, 34) scale(0.185)">
+<path d="M530.2,131.8c3.4-8,11.2-12.8,20-12,8.6.8,15.6,6.8,17.6,15.2,1.2,4.6,50.2,113.4,135.2,114.4C694,97,602,0,463,0s-226.8,92.8-239,239.4c207,33.6,305.4-106.2,306.2-107.6h0Z" fill="#838589"/>
+<path d="M926,842.2v137.8c0,11-9,20-20,20H20c-11,0-20-9-20-20v-137.8c0-98.4,66.6-183.8,162-207.6l76.2-19.2c37.6,75.8,143.8,271.2,242.2,271.4,37.2,0,72.8-22.8,104.8-55.4,18.6-18.8,35.8-41,51.4-63.8,7.2,1,14.8,1.6,22.6,1.6,14.8,0,29.2-2.4,42.4-7,28.2-9.6,52.6-31.6,65.2-58.6,10.2-21.6,11.8-44.8,5.6-66.6,90.8,26.6,153.6,109.61,153.6,205.2h0Z" fill="#A5BC39"/>
+<path d="M688.2,588.2c-1.6-5.8,1.6-14.4,5-23.6,4.6-12.6,9.6-26.6,7.4-43.2-1.6-10.8-6.4-19.6-10.4-27.6-2.8-5.4-5.4-10.4-6.4-14.8-.2-.6,0-1.2,0-1.8-43.4,66.6-106.2,114.6-175.6,129.4,4,24.8,12.2,49,29.2,69,19.8,23,47,35,68.8,42.8,15.4,5.4,34.2,10.6,53.4,10.6,9.8,0,19.6-1.4,29.4-4.8,18.2-6.2,34-20.4,42-37.8,6.8-14.4,7.6-30,2.2-43.6-6-15.8-17.6-26-28-35-8.39-6.79-15.4-12.79-17-19.59h0Z" fill="#838589"/>
+<path d="M595,757c-41.4,57.2-82.6,89.8-114.6,89.8-58.2,0-155-145-203.2-241.4l59.8-31.6c38.2,24,81.2,38,126,38,1.6,0,3.2-.2,5-.4l.2,1.8c6,36.2,18.4,65.2,38.4,88.6,25.8,30.2,59.2,44.8,86.2,54.6.6.2,1.4.39,2.2.59h0Z" fill="#f0e6dc"/>
+<path d="M543.4,184.2c-32.2,41-100.6,102-223,102-20.2,0-65.6-2.6-97.6-6.8,2.4,156.4,113.8,292.4,240.2,292.4s233.2-130.2,240.2-282.4c-77.59-.6-140.39-63.6-159.8-105.2h0ZM372.2,362c-11,0-20-8.8-20-20s9-20,20-20h19.2c11.2,0,20,9,20,20s-8.8,20-20,20h-19.2ZM520.4,468.2c-20,17-40.8,25.6-61.6,25.6-2.2,0-4.4-.2-6.8-.4-32.4-2.8-51.8-25.2-53.8-27.8-7.2-8.4-6-21,2.6-28.2,8.4-7,21-5.8,28,2.6,6.4,7.2,29.6,28.4,65.6-2.4,8.4-7,21-6,28.2,2.4,7.2,8.39,6.2,21-2.2,28.2h0ZM548.6,362h-19.2c-11,0-20-8.8-20-20s9-20,20-20h19.2c11,0,20,9,20,20s-9,20-20,20Z" fill="#f0e6dc"/>
+</g>
+<g transform="translate(30, 38)"><path d="M0 -16 L4 -5 L16 0 L4 5 L0 16 L-4 5 L-16 0 L-4 -5 Z" fill="#A5BC39"/></g>
+<g transform="translate(18, 68)"><path d="M0 -8 L2 -3 L8 0 L2 3 L0 8 L-2 3 L-8 0 L-2 -3 Z" fill="#A5BC39" opacity="0.5"/></g>
+<g transform="translate(224, 36)"><path d="M0 -14 L3.5 -4.5 L14 0 L3.5 4.5 L0 14 L-3.5 4.5 L-14 0 L-3.5 -4.5 Z" fill="#A5BC39"/></g>
+<g transform="translate(236, 62)"><path d="M0 -8 L2 -2.5 L8 0 L2 2.5 L0 8 L-2 2.5 L-8 0 L-2 -2.5 Z" fill="#A5BC39" opacity="0.6"/></g>
+<g transform="translate(210, 56)"><path d="M0 -5 L1.2 -1.5 L5 0 L1.2 1.5 L0 5 L-1.2 1.5 L-5 0 L-1.2 -1.5 Z" fill="#A5BC39" opacity="0.35"/></g>
+</svg>`) },
+
+  { name: 'Quotes', desc: 'AI-Powered Quoting', icon: svgDataUri(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<rect x="60" y="40" width="136" height="176" rx="10" fill="none" stroke="#fff" stroke-width="7" opacity="0.85"/>
+<rect x="63.5" y="43.5" width="129" height="64" rx="7" fill="#A5BC39" opacity="0.15"/>
+<g transform="translate(108, 62) scale(0.18)">
+<path d="M25.5,18.3c3.2,8.3,4.7,30.9,4.7,68l-0.5,35.2l3.8,0.9c7.2,1.7,14.6,2.6,22.1,2.7c0.8,0,1.6,0,2.4,0 c-0.6-11.7-0.8-26.3-0.8-44c0-26.7,0.9-44.1,2.6-52.2c1.8-8.1,4.3-13.8,7.7-17c3.4-3.2,8.7-5.2,15.8-5.9c3.2-0.3,4.8-1.4,4.8-3.2 C88.1,0.9,86,0,81.7,0H6.3C2.1,0,0,1,0,3.1c0,1.7,1.7,2.5,5.1,2.5C15.5,5.8,22.3,10,25.5,18.3z" fill="#fff" opacity="0.95"/>
+<path d="M151.7,6.2c9.2,0,16.2,3.5,20.9,10.6c4.7,7.1,7.1,22,7.1,44.7c0,23.2-0.4,42.2-1.1,56.8c3,1.2,6,2.6,9,4 c1-13.6,1.4-29.1,1.5-46.6c0-18.8,0.6-33.1,1.7-42.9c1.1-9.7,3.4-16.4,7-20.2c3.6-3.7,9.1-6.1,16.8-7.2c2.2-0.3,3.3-1.2,3.3-2.6 c0-2-1.4-3-4.1-3h-60.2c-4.9,0-7.4,1-7.4,3C146.2,5.1,148,6.2,151.7,6.2z" fill="#fff" opacity="0.95"/>
+<path d="M135.8,126c-28.6,0-47.6,15.8-80.2,15.8c-8.7,0-17.3-1.1-25.7-3.1c0.7,13,2.8,23.1,6.3,30.3 c4.4,9.2,12.7,16.6,25,22.1c12.3,5.6,27.1,8.4,44.6,8.4c17,0,31.4-2.5,43.1-7.4c11.7-5,20.4-11.5,26.2-19.6 c5.3-7.3,8.9-18,10.8-32.2C165.3,129.6,149.5,126,135.8,126z" fill="#A5BC39"/>
+</g>
+<line x1="80" y1="122" x2="140" y2="122" stroke="#fff" stroke-width="5.5" stroke-linecap="round" opacity="0.5"/>
+<line x1="160" y1="122" x2="180" y2="122" stroke="#6BA0CC" stroke-width="5.5" stroke-linecap="round" opacity="0.85"/>
+<line x1="80" y1="139" x2="126" y2="139" stroke="#fff" stroke-width="5.5" stroke-linecap="round" opacity="0.4"/>
+<line x1="160" y1="139" x2="180" y2="139" stroke="#6BA0CC" stroke-width="5.5" stroke-linecap="round" opacity="0.7"/>
+<line x1="80" y1="156" x2="148" y2="156" stroke="#fff" stroke-width="5.5" stroke-linecap="round" opacity="0.35"/>
+<line x1="160" y1="156" x2="180" y2="156" stroke="#6BA0CC" stroke-width="5.5" stroke-linecap="round" opacity="0.55"/>
+<line x1="80" y1="173" x2="118" y2="173" stroke="#fff" stroke-width="5.5" stroke-linecap="round" opacity="0.25"/>
+<line x1="160" y1="173" x2="180" y2="173" stroke="#6BA0CC" stroke-width="5.5" stroke-linecap="round" opacity="0.4"/>
+<line x1="80" y1="187" x2="180" y2="187" stroke="#fff" stroke-width="2" opacity="0.2"/>
+<line x1="80" y1="199" x2="112" y2="199" stroke="#A5BC39" stroke-width="6" stroke-linecap="round"/>
+<line x1="152" y1="199" x2="180" y2="199" stroke="#A5BC39" stroke-width="6" stroke-linecap="round"/>
+</svg>`) },
+
+  { name: 'Agreements', desc: 'Digital Contracts', icon: svgDataUri(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<g transform="translate(20,30) scale(0.18)">
+<path fill="#A5BC39" d="m1175 856.1h-612.95c19.352-63.398 36.75-131.9 52.852-201.95 43-29.301 85.25-53.301 121.45-67.648 29.852-11.801 44.898-12.699 50.602-12.699 1.8008 0 2.6484 0.14844 2.75-0.050782 1.1016 2.8008 12.051 37.051-51 163.05-14.102 28.25-11.301 49 8.3516 61.75 30.648 19.852 44.949 2.5 98.148-62.398 36-43.898 96.199-117.45 126.05-137.65 31.75-21.398 50.051-22.199 53.949-19 7.25 5.6484 14.648 40.602-10.301 107.3-7.25 19.449 2.6484 41 22 48.301 19.551 7.3008 41-2.6992 48.25-22 33.352-89.301 28.398-159.5-13.551-192.55-20.551-16.148-66.25-35.648-142.35 15.801-17.949 12.148-39.301 32.898-63.199 59.199 2.1016-31.25-4.8984-54.898-20.801-72.199-40.801-44.551-112.9-16-136.5-6.6016-21.449 8.5-45.551 20.5-71.199 35.25 5.8516-27.102 11.551-54.102 17.25-80.852 2.25-10.648 4.4492-21.199 6.6992-31.699 62-32.551 114.7-69.398 140.75-104.2 107.65-143.5 95.25-221.9 78.301-255.8-15-30-44.352-47.898-78.5-47.898-52.25 0-104.2 38.949-135.55 101.65-24.551 49.102-46.699 142.75-70.801 255-88.199 41.645-191.1 74.293-245.7 74.293-20.699 0-37.5 16.801-37.5 37.5s16.801 37.5 37.5 37.5c55.398 0 142.3-23.648 226.35-58.352-8.8008 41.5-18.301 86-28.602 131.35-100.35 72.352-201.9 168.1-245.85 245.6h-276.9c-13.801 0-25 11.199-25 25 0 13.801 11.199 25 25 25h251.6c-30.102 66.102-71.551 180.85-29 239.25 11.648 16 32.949 33.102 70.5 33.102 8.1484 0 17.051-0.80078 26.75-2.6016 88.648-16.301 151.5-124.7 201.05-269.8h629.1c13.801 0 25-11.199 25-25s-11.199-24.949-25-24.949zm-441.45-689.35c20.648-41.301 50-60.148 68.449-60.148 7.5508 0 9.8008 3.1484 11.449 6.4492 9.1992 18.352 4.5 76.301-71.25 177.25-11.898 15.898-32.801 33.102-59.25 50.25 17.402-77 34.25-141.05 50.602-173.8zm-213.55 559.65c-11.449 44.75-23.648 88.551-36.699 129.7l-91.449 0.003906c31.199-40.703 77.148-86.703 128.15-129.7zm-188.7 375.75c-14.551 2.6992-21.75 0.85156-23.051-0.94922-13.75-18.898 6.1992-106.9 51.852-195.1l106.4 0.003906c-38.199 106.95-82.898 186.45-135.2 196.05z"/>
+<path fill="#fff" opacity="0.7" d="m7.3008 742.7c4.8984 4.8516 11.301 7.3008 17.699 7.3008s12.801-2.4492 17.699-7.3008l57.301-57.348 57.301 57.301c4.8984 4.8984 11.301 7.3477 17.699 7.3477s12.801-2.4492 17.699-7.3008c9.75-9.75 9.75-25.602 0-35.352l-57.348-57.348 57.301-57.301c9.75-9.75 9.75-25.602 0-35.352s-25.602-9.75-35.352 0l-57.301 57.301-57.301-57.301c-9.75-9.75-25.602-9.75-35.352 0s-9.75 25.602 0 35.352l57.301 57.301-57.301 57.301c-9.7969 9.8008-9.7969 25.598-0.046875 35.398z"/>
+</g>
+</svg>`) },
+
+  { name: 'Tony', desc: 'Process Rules Engine', icon: svgDataUri(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<g transform="translate(10, 10) scale(0.197)">
+<path fill="#fff" opacity="0.85" d="m1152 552h-28.922c-9.0586-44.594-30.793-87.121-65.375-121.7-93.719-93.719-245.69-93.719-339.41 0-15.168 15.168-27.625 31.98-37.871 49.703h-0.875c-22.801-15.145-50.125-24-79.535-24s-56.734 8.8555-79.535 24h-0.875c-10.262-17.723-22.703-34.535-37.871-49.703-93.719-93.719-245.69-93.719-339.41 0-34.586 34.586-56.316 77.113-65.375 121.7h-28.953c-13.262 0-24 10.738-24 24v48c0 13.262 10.738 24 24 24h28.922c9.0586 44.594 30.793 87.121 65.375 121.7 93.719 93.719 245.69 93.719 339.41 0 8.2422-8.2422 15.504-17.074 22.297-26.148 5.7969-7.7383 11.074-15.719 15.816-23.953 21.277-36.938 32.184-78.215 32.184-119.61 0-26.508 21.492-48 48-48s48 21.492 48 48c0 41.387 10.906 82.668 32.184 119.61 4.7383 8.2305 10.02 16.211 15.816 23.953 6.793 9.0703 14.051 17.902 22.297 26.148 93.719 93.719 245.69 93.719 339.41 0 34.586-34.586 56.316-77.113 65.375-121.7h28.922c13.262 0 24-10.738 24-24v-48c0-13.262-10.738-24-24-24zm-738.18 149.82c-56.23 56.23-147.41 56.23-203.65 0-56.23-56.23-56.23-147.41 0-203.65 56.23-56.23 147.41-56.23 203.65 0 28.117 28.117 42.18 64.969 42.18 101.82 0 36.863-14.062 73.715-42.18 101.83zm576 0c-56.23 56.23-147.41 56.23-203.65 0-28.117-28.117-42.18-64.969-42.18-101.82s14.062-73.703 42.18-101.82c56.23-56.23 147.41-56.23 203.65 0 56.242 56.23 56.242 147.41 0 203.64z"/>
+<path fill="#A5BC39" opacity="0.7" d="m216 612c-6.625 0-12-5.3633-12-12 0-59.555 48.457-108 108-108 6.625 0 12 5.3633 12 12s-5.375 12-12 12c-46.32 0-84 37.691-84 84 0 6.6367-5.375 12-12 12z"/>
+<path fill="#A5BC39" opacity="0.7" d="m792 612c-6.625 0-12-5.3633-12-12 0-59.555 48.457-108 108-108 6.625 0 12 5.3633 12 12s-5.375 12-12 12c-46.32 0-84 37.691-84 84 0 6.6367-5.375 12-12 12z"/>
+</g>
+</svg>`) },
+];
+
+function loadImage(src) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = src;
+  });
+}
+
+function renderThumbnail(ctx, img, app) {
+  const W = 960, H = 600;
+
+  // Background gradient
+  const grad = ctx.createLinearGradient(0, 0, W, H);
+  grad.addColorStop(0, '#161A22');
+  grad.addColorStop(1, '#0A0D12');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, W, H);
+
+  // Large green glow behind icon
+  const glow = ctx.createRadialGradient(W/2, H/2 - 50, 0, W/2, H/2 - 50, 400);
+  glow.addColorStop(0, 'rgba(165,188,57,0.25)');
+  glow.addColorStop(0.4, 'rgba(165,188,57,0.1)');
+  glow.addColorStop(1, 'rgba(165,188,57,0)');
+  ctx.fillStyle = glow;
+  ctx.fillRect(0, 0, W, H);
+
+  // Secondary cool glow for depth
+  const cool = ctx.createRadialGradient(W/2 + 180, H/2 - 80, 0, W/2 + 180, H/2 - 80, 350);
+  cool.addColorStop(0, 'rgba(107,160,204,0.12)');
+  cool.addColorStop(0.5, 'rgba(107,160,204,0.04)');
+  cool.addColorStop(1, 'rgba(107,160,204,0)');
+  ctx.fillStyle = cool;
+  ctx.fillRect(0, 0, W, H);
+
+  // Warm accent glow bottom-left
+  const warm = ctx.createRadialGradient(W/2 - 200, H/2 + 100, 0, W/2 - 200, H/2 + 100, 300);
+  warm.addColorStop(0, 'rgba(165,188,57,0.08)');
+  warm.addColorStop(1, 'rgba(165,188,57,0)');
+  ctx.fillStyle = warm;
+  ctx.fillRect(0, 0, W, H);
+
+  // Vignette — darken edges
+  const vig = ctx.createRadialGradient(W/2, H/2, 180, W/2, H/2, 540);
+  vig.addColorStop(0, 'rgba(0,0,0,0)');
+  vig.addColorStop(1, 'rgba(0,0,0,0.5)');
+  ctx.fillStyle = vig;
+  ctx.fillRect(0, 0, W, H);
+
+  // Layout: icon + title centered as a single group
+  const iconSize = 380;
+  const iconTextGap = 44;
+  const nameFontSize = 80;
+  const nameCapH = nameFontSize * 0.72;
+  const totalH = iconSize + iconTextGap + nameCapH;
+  const groupTop = (H - totalH) / 2;
+
+  // Draw icon from SVG
+  if (img) {
+    ctx.drawImage(img, W/2 - iconSize/2, groupTop, iconSize, iconSize);
+  }
+
+  // App name
+  ctx.fillStyle = '#eae8ed';
+  ctx.font = `600 ${nameFontSize}px "Instrument Sans", system-ui, sans-serif`;
+  ctx.textAlign = 'center';
+  ctx.fillText(app.name, W/2, groupTop + iconSize + iconTextGap + nameCapH);
+}
+
+function savePNG(canvas, name) {
+  const link = document.createElement('a');
+  link.download = `netlify-thumb-${name.toLowerCase().replace(/\s+/g, '-')}.png`;
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+
+// Render all thumbnails after fonts load
+document.fonts.ready.then(async () => {
+  const container = document.getElementById('thumbnails');
+
+  for (const app of APPS) {
+    const img = await loadImage(app.icon);
+
+    const section = document.createElement('div');
+    section.className = 'thumb-section';
+
+    const label = document.createElement('div');
+    label.className = 'thumb-label';
+    label.innerHTML = `${app.name}`;
+    section.appendChild(label);
+
+    const wrap = document.createElement('div');
+    wrap.className = 'thumb-wrap';
+    const canvas = document.createElement('canvas');
+    canvas.width = 960;
+    canvas.height = 600;
+    const ctx = canvas.getContext('2d');
+    renderThumbnail(ctx, img, app);
+    wrap.appendChild(canvas);
+    section.appendChild(wrap);
+
+    const btn = document.createElement('button');
+    btn.className = 'save-btn';
+    btn.textContent = 'Save PNG';
+    btn.onclick = () => savePNG(canvas, app.name);
+    section.appendChild(btn);
+
+    container.appendChild(section);
+  }
+});
+
+// Save all PNGs
+document.getElementById('saveAll').addEventListener('click', () => {
+  const canvases = document.querySelectorAll('.thumb-wrap canvas');
+  canvases.forEach((canvas, i) => {
+    setTimeout(() => savePNG(canvas, APPS[i].name), i * 200);
+  });
+});
+
+// Size toggle
+document.querySelectorAll('.size-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.body.className = btn.dataset.size === 'netlify' ? 'size-netlify' : '';
+  });
+});
+</script>
+</body>
+</html>

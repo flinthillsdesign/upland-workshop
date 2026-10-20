@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Upland Workshop — Architecture</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Instrument Sans",system-ui,sans-serif;background:#0c0b0e;color:#c8c5cc;min-height:100vh;font-size:16px}
+.page{max-width:1100px;margin:0 auto;padding:3rem 2.5rem 5rem}
+.hdr{margin-bottom:3rem}
+.hdr::after{content:"";display:block;width:48px;height:2px;background:#a5bc39;margin-top:1.2rem}
+.hdr .l{font-size:.75rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#a5bc39;margin-bottom:.4rem}
+.hdr h1{font-size:2rem;font-weight:400;color:#eae8ed}
+
+/* ASCII diagrams */
+.ascii{
+  font-family:"JetBrains Mono",monospace;font-size:14px;line-height:1.45;
+  color:#888;overflow-x:auto;padding:2rem;margin-bottom:2.5rem;
+  background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.04);
+  border-radius:10px;white-space:pre;
+}
+.ascii .g{color:#a5bc39}
+.ascii .b{color:#6ba0cc}
+.ascii .w{color:#e8e6ec}
+.ascii .d{color:#333}
+.ascii .h{color:#555}
+
+/* Sections */
+.sec{margin-bottom:3rem}
+.sec-label{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#4a4750;margin-bottom:1rem}
+
+/* External services */
+.ext-row{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:.75rem}
+.ext{
+  font-size:.9rem;font-weight:500;color:#6ba0cc;
+  padding:.4rem .85rem;border-radius:5px;
+  background:rgba(107,160,204,0.05);border:1px solid rgba(107,160,204,0.1);
+}
+
+/* Shared infra banner */
+.infra{
+  background:rgba(165,188,57,0.04);border:1px dashed rgba(165,188,57,0.12);
+  border-radius:12px;padding:2rem 1.75rem;margin-bottom:3rem;
+}
+.infra-label{
+  font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(165,188,57,0.45);margin-bottom:1.5rem;
+}
+.infra-tags{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.75rem}
+.infra-tag{font-size:.8rem;color:rgba(165,188,57,0.55);font-weight:500}
+.infra-sep{color:rgba(165,188,57,0.2);font-size:.8rem}
+
+/* App cards */
+.app-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+.app-grid.wide{grid-template-columns:1fr}
+.card{
+  background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);
+  border-radius:10px;padding:1.1rem 1.25rem;
+}
+.card.hub{background:rgba(165,188,57,0.03);border-color:rgba(165,188,57,0.1)}
+.card.solo{background:rgba(107,160,204,0.03);border-color:rgba(107,160,204,0.1)}
+.card-top{display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem}
+.card-top img{width:32px;height:32px;border-radius:6px}
+.card-top .name{font-weight:600;font-size:1.05rem;color:#e8e6ec}
+.card-top .port{font-size:.75rem;color:#333;margin-left:auto;font-weight:500}
+.card-desc{font-size:.9rem;color:#888;line-height:1.55;margin-bottom:.6rem}
+.card-conn{font-size:.8rem;color:#555;line-height:1.7}
+.card-conn .g{color:rgba(165,188,57,0.7)}
+.card-conn .b{color:rgba(107,160,204,0.7)}
+.card-conn strong{color:#666;font-weight:600}
+
+/* Connection matrix */
+.matrix-wrap{overflow-x:auto}
+table.matrix{
+  width:100%;border-collapse:collapse;font-size:.85rem;
+}
+table.matrix th{
+  font-weight:600;color:#666;text-align:left;padding:.5rem .6rem;
+  border-bottom:1px solid rgba(255,255,255,0.04);
+  white-space:nowrap;
+}
+table.matrix th.rotate{
+  text-align:center;writing-mode:vertical-lr;transform:rotate(180deg);
+  padding:.6rem .35rem;height:100px;font-size:.8rem;letter-spacing:.02em;
+}
+table.matrix td{
+  text-align:center;padding:.5rem .35rem;
+  border-bottom:1px solid rgba(255,255,255,0.02);
+}
+table.matrix tr:hover{background:rgba(255,255,255,0.015)}
+table.matrix td.name-cell{text-align:left;color:#aaa;font-weight:500;padding-left:.6rem;white-space:nowrap}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%}
+.dot.read{background:#a5bc39}
+.dot.write{background:#6ba0cc}
+.dot.plan{background:rgba(165,188,57,0.3);border:1.5px dashed rgba(165,188,57,0.5)}
+.dot.none{background:rgba(255,255,255,0.03)}
+.matrix-legend{display:flex;gap:1.5rem;margin-top:1rem;padding-left:.6rem}
+.matrix-legend span{font-size:.8rem;color:#555;display:flex;align-items:center;gap:.4rem}
+
+/* Divider */
+hr{border:none;border-top:1px solid rgba(255,255,255,0.04);margin:3rem 0}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="hdr">
+    <div class="l">Upland Workshop</div>
+    <h1>Architecture</h1>
+  </div>
+
+  <!-- ASCII System Diagram -->
+  <div class="sec">
+    <div class="sec-label">System Diagram</div>
+<pre class="ascii">
+                        <span class="d">┌─────────────────────────────────────────────────┐</span>
+                        <span class="d">│</span>            <span class="b">E X T E R N A L</span>                      <span class="d">│</span>
+                        <span class="d">│</span>   <span class="b">Basecamp</span>  ·  <span class="b">Toggl</span>  ·  <span class="b">Claude</span>  ·  <span class="b">Postmark</span>   <span class="d">│</span>
+                        <span class="d">└──────┬─────────┬──────────┬──────────┬──────────┘</span>
+                               <span class="d">│</span>         <span class="d">│</span>          <span class="d">│</span>          <span class="d">│</span>
+  <span class="g">╔════════════════════════════╪═════════╪══════════╪══════════╪══════════╗</span>
+  <span class="g">║</span>  <span class="g">SHARED AUTH  ·  JWT  ·</span>   <span class="d">│</span> <span class="g">TURSO</span>   <span class="d">│</span>  <span class="g">·  NETLIFY  ·  TYPESCRIPT</span>    <span class="g">║</span>
+  <span class="g">║</span>                            <span class="d">│</span>         <span class="d">│</span>          <span class="d">│</span>          <span class="d">│</span>          <span class="g">║</span>
+  <span class="g">║</span>    <span class="d">┌───────────────────────┴─────────┴──────────┘</span>          <span class="d">│</span>          <span class="g">║</span>
+  <span class="g">║</span>    <span class="d">│</span>                                                       <span class="d">│</span>          <span class="g">║</span>
+  <span class="g">║</span>    <span class="d">│</span>              <span class="h">┌──────────────────┐</span>                     <span class="d">│</span>          <span class="g">║</span>
+  <span class="g">║</span>    <span class="d">│</span>              <span class="h">│</span>      <span class="w">ODIN</span>        <span class="h">│</span> <span class="g">← reads everything</span>  <span class="d">│</span>          <span class="g">║</span>
+  <span class="g">║</span>    <span class="d">│</span>              <span class="h">│</span>   <span class="h">:3002  brain</span>   <span class="h">│</span>                     <span class="d">│</span>          <span class="g">║</span>
+  <span class="g">║</span>    <span class="d">│</span>              <span class="h">└──┬────┬────┬─────┘</span>                     <span class="d">│</span>          <span class="g">║</span>
+  <span class="g">║</span>    <span class="d">│</span>                 <span class="d">│</span>    <span class="d">│</span>    <span class="d">│</span>                            <span class="d">│</span>          <span class="g">║</span>
+  <span class="g">║</span>    <span class="d">│</span>    <span class="d">┌────────────┘</span>    <span class="d">│</span>    <span class="d">└──────────┐</span>                 <span class="d">│</span>          <span class="g">║</span>
+  <span class="g">║</span>    <span class="d">│</span>    <span class="d">↓</span>                 <span class="d">↓</span>               <span class="d">↓</span>                 <span class="d">│</span>          <span class="g">║</span>
+  <span class="g">║</span>  <span class="h">┌──────────┐</span>  <span class="h">┌──────────────┐</span>  <span class="h">┌──────────────┐</span>         <span class="d">│</span>          <span class="g">║</span>
+  <span class="g">║</span>  <span class="h">│</span> <span class="w">Inq. Hub</span> <span class="h">│</span><span class="d">←→</span><span class="h">│</span>  <span class="w">Scheduler</span>   <span class="h">│</span>  <span class="h">│</span>    <span class="w">Claire</span>     <span class="h">│</span>         <span class="d">│</span>          <span class="g">║</span>
+  <span class="g">║</span>  <span class="h">│</span>  <span class="h">:3001</span>   <span class="h">│</span>  <span class="h">│</span>    <span class="h">:3000</span>     <span class="h">│</span>  <span class="h">│</span>    <span class="h">:3003</span>      <span class="h">│</span>         <span class="d">│</span>          <span class="g">║</span>
+  <span class="g">║</span>  <span class="h">└──────────┘</span>  <span class="h">└──────────────┘</span>  <span class="h">└──────────────┘</span>         <span class="d">│</span>          <span class="g">║</span>
+  <span class="g">║</span>                                                            <span class="d">│</span>          <span class="g">║</span>
+  <span class="g">║</span>  <span class="h">┌──────────┐</span>  <span class="h">┌──────────────┐</span>  <span class="h">┌──────────────┐</span>         <span class="d">│</span>          <span class="g">║</span>
+  <span class="g">║</span>  <span class="h">│</span>  <span class="w">Quotes</span>  <span class="h">│</span>  <span class="h">│</span>  <span class="w">Agreements</span>  <span class="h">│</span>  <span class="h">│</span>     <span class="w">Tony</span>      <span class="h">│</span><span class="d">←────────┘</span>          <span class="g">║</span>
+  <span class="g">║</span>  <span class="h">│</span>  <span class="h">:3004</span>   <span class="h">│</span>  <span class="h">│</span>    <span class="h">:3005</span>     <span class="h">│</span>  <span class="h">│</span>    <span class="h">:3006</span>      <span class="h">│</span>  <span class="b">(Basecamp)</span>        <span class="g">║</span>
+  <span class="g">║</span>  <span class="h">└──────────┘</span>  <span class="h">└──────────────┘</span>  <span class="h">└──────────────┘</span>                    <span class="g">║</span>
+  <span class="g">╚═══════════════════════════════════════════════════════════════════════╝</span>
+                               <span class="d">↑</span>
+                          <span class="g">order JSON</span>
+                               <span class="d">↑</span>
+                 <span class="h">┌─────────────────────────────┐</span>
+                 <span class="h">│</span>      <span class="w">UPLAND WEBSITE</span>          <span class="h">│</span>
+                 <span class="h">│</span>  <span class="h">:8443</span>  <span class="b">Python · Heroku</span>      <span class="h">│</span>
+                 <span class="h">│</span>  <span class="b">Own auth · Own DB</span>            <span class="h">│</span>
+                 <span class="h">└─────────────────────────────┘</span>
+</pre>
+  </div>
+
+  <!-- ASCII Connection Matrix -->
+  <div class="sec">
+    <div class="sec-label">Connection Matrix</div>
+<pre class="ascii">
+                      <span class="h">Web  ODIN  InqH  Schd  Clar  Quot  Agre  Tony  BC  Toggl  Claude  PM</span>
+
+  <span class="w">ODIN</span> reads →       <span class="g">●</span>          <span class="g">●</span>     <span class="g">●</span>                        <span class="d">○</span>     <span class="g">●</span>    <span class="g">●</span>      <span class="g">●</span>
+  <span class="w">Inquiry Hub</span> →      <span class="g">●</span>    <span class="g">●</span>           <span class="g">●</span>                                          <span class="g">●</span>      <span class="g">●</span>
+  <span class="w">Scheduler</span> →        <span class="g">●</span>                                              <span class="b">◐</span>                  <span class="g">●</span>
+  <span class="w">Claire</span> →                                                                       <span class="g">●</span>      <span class="g">●</span>
+  <span class="w">Quotes</span> →                                                                       <span class="g">●</span>      <span class="g">●</span>
+  <span class="w">Agreements</span> →                                                                   <span class="g">●</span>      <span class="g">●</span>
+  <span class="w">Tony</span> →                                                             <span class="g">●</span>           <span class="g">●</span>      <span class="g">●</span>
+
+  <span class="g">●</span> <span class="h">reads from</span>     <span class="d">○</span> <span class="h">planned</span>     <span class="b">◐</span> <span class="h">writes/notifies</span>
+</pre>
+  </div>
+
+  <hr/>
+
+  <!-- External Services -->
+  <div class="sec">
+    <div class="sec-label">External Services</div>
+    <div class="ext-row">
+      <div class="ext">Basecamp</div>
+      <div class="ext">Toggl</div>
+      <div class="ext">Claude API</div>
+      <div class="ext">Postmark</div>
+      <div class="ext">DocRaptor</div>
+      <div class="ext">Stripe</div>
+    </div>
+  </div>
+
+  <!-- Satellite Apps -->
+  <div class="infra">
+    <div class="infra-label">Satellite Apps &mdash; Shared Auth &amp; Stack</div>
+    <div class="infra-tags">
+      <span class="infra-tag">Turso Auth DB</span><span class="infra-sep">&middot;</span>
+      <span class="infra-tag">JWT Secret</span><span class="infra-sep">&middot;</span>
+      <span class="infra-tag">Netlify</span><span class="infra-sep">&middot;</span>
+      <span class="infra-tag">TypeScript</span><span class="infra-sep">&middot;</span>
+      <span class="infra-tag">esbuild</span><span class="infra-sep">&middot;</span>
+      <span class="infra-tag">Postmark</span><span class="infra-sep">&middot;</span>
+      <span class="infra-tag">Claude API</span>
+    </div>
+
+    <!-- ODIN -->
+    <div class="app-grid wide" style="margin-bottom:.6rem">
+      <div class="card hub">
+        <div class="card-top">
+          <img src="../icons/odin.svg"/>
+          <span class="name">ODIN</span>
+          <span class="port">:3002</span>
+        </div>
+        <div class="card-desc">Operations Dashboard & Intelligence Network. The AI brain — synthesizes data from every other system. Generates meeting agendas, briefings, project summaries, and conversational Q&A. <strong style="color:#a5bc39">Reads from everything. Only app that manages users.</strong></div>
+        <div class="card-conn">
+          <span class="g">← reads</span> Scheduler API, Inquiry Hub API, Website order JSON, Basecamp, Toggl
+        </div>
+      </div>
+    </div>
+
+    <!-- Other satellites -->
+    <div class="app-grid">
+      <div class="card">
+        <div class="card-top">
+          <img src="../icons/inquiry-hub.svg"/>
+          <span class="name">Inquiry Hub</span>
+          <span class="port">:3001</span>
+        </div>
+        <div class="card-desc">AI-powered inquiry management. Catches leads via email & forms, classifies with AI, generates draft responses.</div>
+        <div class="card-conn">
+          <span class="g">← reads</span> ODIN, Scheduler, Website orders<br/>
+          <span class="b">← receives</span> Postmark inbound email
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <img src="../icons/scheduler.svg"/>
+          <span class="name">Scheduler</span>
+          <span class="port">:3000</span>
+        </div>
+        <div class="card-desc">Project scheduling, FTE capacity, 18-month cash flow forecasting. Client-facing views via share tokens.</div>
+        <div class="card-conn">
+          <span class="g">← reads</span> Website order JSON<br/>
+          <span class="b">→ notifies</span> Basecamp webhooks
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <img src="../icons/claire.svg"/>
+          <span class="name">Claire</span>
+          <span class="port">:3003</span>
+        </div>
+        <div class="card-desc">AI exhibit panel design. Content, layout, typography, color — Claude as creative partner. Client galleries via share links.</div>
+        <div class="card-conn">
+          <span class="b">→ uses</span> Claude API
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <img src="../icons/quotes.svg"/>
+          <span class="name">Quotes</span>
+          <span class="port">:3004</span>
+        </div>
+        <div class="card-desc">AI-first quoting. Describe a project, get structured quote with sections, line items, pricing from historical data.</div>
+        <div class="card-conn">
+          <span class="b">→ uses</span> Claude API
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <img src="../icons/agreements.svg"/>
+          <span class="name">Agreements</span>
+          <span class="port">:3005</span>
+        </div>
+        <div class="card-desc">AI-assisted contract drafting with digital signatures. Three agreement types, PDF generation, countersignature flow.</div>
+        <div class="card-conn">
+          <span class="b">→ uses</span> Claude API, DocRaptor
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <img src="../icons/tony.svg"/>
+          <span class="name">Tony</span>
+          <span class="port">:3006</span>
+        </div>
+        <div class="card-desc">Process rules engine. Watches Basecamp, enforces business rules via AI evaluation. Named after Anthony.</div>
+        <div class="card-conn">
+          <span class="b">→ uses</span> Basecamp API, Claude API
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Website (standalone) -->
+  <div class="sec">
+    <div class="sec-label">Standalone &mdash; Separate Stack, Separate Auth</div>
+    <div class="app-grid wide">
+      <div class="card solo">
+        <div class="card-top">
+          <img src="../icons/website.svg"/>
+          <span class="name">Upland Website</span>
+          <span class="port">:8443</span>
+        </div>
+        <div class="card-desc">Marketing site, e-commerce storefront, order management. Product configurators, Three.js exhibit builder, Stripe checkout, FedEx shipping. <strong style="color:#6ba0cc">Python · Heroku · PostgreSQL · Own auth.</strong></div>
+        <div class="card-conn">
+          <span class="g">→ exposes</span> <code style="font-size:.85rem;color:#888">/order/queue/?format=json</code> — consumed by ODIN, Inquiry Hub, Scheduler
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr/>
+
+  <!-- Connection Matrix -->
+  <div class="sec">
+    <div class="sec-label">Who Reads From Whom</div>
+    <div class="matrix-wrap">
+    <table class="matrix">
+      <thead>
+        <tr>
+          <th></th>
+          <th class="rotate">Website</th>
+          <th class="rotate">ODIN</th>
+          <th class="rotate">Inquiry Hub</th>
+          <th class="rotate">Scheduler</th>
+          <th class="rotate">Claire</th>
+          <th class="rotate">Quotes</th>
+          <th class="rotate">Agreements</th>
+          <th class="rotate">Tony</th>
+          <th class="rotate">Basecamp</th>
+          <th class="rotate">Toggl</th>
+          <th class="rotate">Claude API</th>
+          <th class="rotate">Postmark</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="name-cell">ODIN reads →</td>
+          <td><span class="dot read"></span></td><!-- Website -->
+          <td><span class="dot none"></span></td><!-- ODIN -->
+          <td><span class="dot read"></span></td><!-- InqHub -->
+          <td><span class="dot read"></span></td><!-- Scheduler -->
+          <td><span class="dot none"></span></td><!-- Claire -->
+          <td><span class="dot none"></span></td><!-- Quotes -->
+          <td><span class="dot none"></span></td><!-- Agreements -->
+          <td><span class="dot plan"></span></td><!-- Tony (planned) -->
+          <td><span class="dot read"></span></td><!-- Basecamp -->
+          <td><span class="dot read"></span></td><!-- Toggl -->
+          <td><span class="dot read"></span></td><!-- Claude -->
+          <td><span class="dot none"></span></td><!-- Postmark -->
+        </tr>
+        <tr>
+          <td class="name-cell">Inquiry Hub reads →</td>
+          <td><span class="dot read"></span></td>
+          <td><span class="dot read"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot read"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot read"></span></td>
+          <td><span class="dot read"></span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Scheduler reads →</td>
+          <td><span class="dot read"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot write"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot read"></span></td>
+          <td><span class="dot read"></span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Claire uses →</td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot read"></span></td>
+          <td><span class="dot read"></span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Quotes uses →</td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot read"></span></td>
+          <td><span class="dot read"></span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Agreements uses →</td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot read"></span></td>
+          <td><span class="dot read"></span></td>
+        </tr>
+        <tr>
+          <td class="name-cell">Tony uses →</td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot read"></span></td>
+          <td><span class="dot none"></span></td>
+          <td><span class="dot read"></span></td>
+          <td><span class="dot read"></span></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="matrix-legend">
+      <span><span class="dot read"></span> Active connection</span>
+      <span><span class="dot write"></span> Writes/notifies</span>
+      <span><span class="dot plan"></span> Planned</span>
+    </div>
+  </div>
+
+  <hr/>
+
+  <!-- Notes -->
+  <div class="sec">
+    <div class="sec-label">Key Patterns</div>
+    <div style="font-size:.95rem;color:#666;line-height:1.9">
+      <strong style="color:#999">Read-heavy integration</strong> — Apps mostly read from each other. Nobody writes to another app's database directly.<br/>
+      <strong style="color:#999">ODIN owns users</strong> — Only app with UI for creating users and granting per-app access. All others read the auth DB.<br/>
+      <strong style="color:#999">Dual databases</strong> — Each satellite connects to the shared auth DB (read-only) + its own app DB (full CRUD).<br/>
+      <strong style="color:#999">Service-to-service auth</strong> — JWT or INTERNAL_SERVICE_TOKEN. Website order JSON is unauthenticated.<br/>
+      <strong style="color:#999">Client share links</strong> — Scheduler, Claire, Quotes, Agreements expose <code style="font-size:.6rem;color:#666">/share/:token</code> for unauthenticated client views.<br/>
+      <strong style="color:#999">Convention over shared code</strong> — No shared component library. Apps copy the same patterns independently.
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ODIN — Mythical Icon Explorations</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Instrument Sans",system-ui,sans-serif;background:#0c0b0e;color:#c8c5cc;min-height:100vh}
+.page{max-width:1200px;margin:0 auto;padding:4rem 2rem 6rem}
+.header{margin-bottom:4rem}
+.header::after{content:"";display:block;width:48px;height:2px;background:#a5bc39;margin-top:1.5rem}
+.tag{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#a5bc39;margin-bottom:.6rem}
+h1{font-size:1.8rem;font-weight:400;color:#eae8ed}
+.note{font-size:.85rem;color:#605c66;margin-top:.8rem;max-width:600px;line-height:1.5}
+
+.section{margin-bottom:5rem}
+.section-label{font-size:.65rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#605c66;margin-bottom:.5rem}
+.section-desc{font-size:.8rem;color:#807888;margin-bottom:2rem;max-width:700px;line-height:1.5}
+
+.row{display:flex;gap:2.5rem;flex-wrap:wrap;justify-content:center;margin-bottom:3rem}
+.cell{display:flex;flex-direction:column;align-items:center;gap:.7rem}
+.cell svg{filter:drop-shadow(0 4px 20px rgba(0,0,0,.6));transition:transform .25s cubic-bezier(.34,1.56,.64,1)}
+.cell:hover svg{transform:translateY(-3px) scale(1.05)}
+.cell .name{font-size:.78rem;font-weight:600;color:#d8d5dc}
+.cell .sub{font-size:.6rem;color:#555059;margin-top:-.3rem}
+
+.compare{margin-top:6rem;padding-top:3rem;border-top:1px solid rgba(255,255,255,.06)}
+.compare .section-label{margin-bottom:2rem}
+
+.size-row{display:flex;gap:3rem;flex-wrap:wrap;justify-content:center;align-items:end;margin-bottom:2rem}
+.size-cell{display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.size-cell .sub{font-size:.55rem;color:#444}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="header">
+<div class="tag">ODIN — Icon Explorations</div>
+<h1>Mythical Concepts</h1>
+<p class="note">Playing with Norse mythology motifs — Odin's ravens, his single eye, runes, Yggdrasil, Gungnir (his spear), and the valknut. All using the brand palette.</p>
+</div>
+
+<!-- A: Odin's Eye -->
+<div class="section">
+<div class="section-label">A — The All-Seeing Eye</div>
+<div class="section-desc">Odin sacrificed an eye at Mimir's well for wisdom. A single open eye — knowledge, oversight, seeing everything. Fits ODIN's role as the admin/hub app.</div>
+<div class="row">
+
+<!-- A1: Geometric eye -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Eye shape -->
+<path d="M56 128 Q128 64 200 128 Q128 192 56 128 Z" fill="none" stroke="#A5BC39" stroke-width="6" stroke-linejoin="round"/>
+<!-- Iris -->
+<circle cx="128" cy="128" r="24" fill="none" stroke="#A5BC39" stroke-width="5"/>
+<!-- Pupil -->
+<circle cx="128" cy="128" r="10" fill="#A5BC39"/>
+</svg>
+<span class="name">Geometric Eye</span>
+<span class="sub">Clean almond shape</span>
+</div>
+
+<!-- A2: Eye with slash -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bg2)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Single open eye -->
+<path d="M60 128 Q128 72 196 128 Q128 184 60 128 Z" fill="none" stroke="#A5BC39" stroke-width="5" stroke-linejoin="round"/>
+<circle cx="128" cy="128" r="18" fill="#A5BC39"/>
+<!-- Diagonal scar/slash across the missing eye area (above) -->
+<line x1="88" y1="60" x2="118" y2="100" stroke="rgba(255,255,255,0.25)" stroke-width="3" stroke-linecap="round"/>
+<line x1="92" y1="56" x2="122" y2="96" stroke="rgba(255,255,255,0.12)" stroke-width="6" stroke-linecap="round"/>
+</svg>
+<span class="name">Scarred Eye</span>
+<span class="sub">Eye with sacrifice mark</span>
+</div>
+
+<!-- A3: Eye radiating -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bg3)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Radiance lines -->
+<line x1="128" y1="56" x2="128" y2="76" stroke="#A5BC39" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+<line x1="128" y1="180" x2="128" y2="200" stroke="#A5BC39" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+<line x1="56" y1="128" x2="72" y2="128" stroke="#A5BC39" stroke-width="2.5" stroke-linecap="round" opacity="0.3"/>
+<line x1="184" y1="128" x2="200" y2="128" stroke="#A5BC39" stroke-width="2.5" stroke-linecap="round" opacity="0.3"/>
+<line x1="78" y1="78" x2="89" y2="89" stroke="#A5BC39" stroke-width="2.5" stroke-linecap="round" opacity="0.25"/>
+<line x1="167" y1="167" x2="178" y2="178" stroke="#A5BC39" stroke-width="2.5" stroke-linecap="round" opacity="0.25"/>
+<line x1="178" y1="78" x2="167" y2="89" stroke="#A5BC39" stroke-width="2.5" stroke-linecap="round" opacity="0.25"/>
+<line x1="89" y1="167" x2="78" y2="178" stroke="#A5BC39" stroke-width="2.5" stroke-linecap="round" opacity="0.25"/>
+<!-- Eye -->
+<path d="M64 128 Q128 80 192 128 Q128 176 64 128 Z" fill="none" stroke="#A5BC39" stroke-width="5" stroke-linejoin="round"/>
+<circle cx="128" cy="128" r="16" fill="#A5BC39"/>
+</svg>
+<span class="name">All-Seeing</span>
+<span class="sub">Radiating wisdom</span>
+</div>
+
+</div>
+</div>
+
+<!-- B: Ravens -->
+<div class="section">
+<div class="section-label">B — Huginn & Muninn (The Ravens)</div>
+<div class="section-desc">Odin's two ravens fly across the world each day, bringing back information. Huginn (thought) and Muninn (memory). Perfect metaphor for a system that watches and reports.</div>
+<div class="row">
+
+<!-- B1: Single raven silhouette -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="bg4" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bg4)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Minimal raven in flight - geometric/angular -->
+<path d="M128 88 L84 120 L56 100 L80 132 L68 168 L108 144 L128 160 L148 144 L188 168 L176 132 L200 100 L172 120 Z" fill="#A5BC39"/>
+<!-- Eye dot -->
+<circle cx="128" cy="112" r="4" fill="#161A22"/>
+</svg>
+<span class="name">Raven Flight</span>
+<span class="sub">Angular bird in flight</span>
+</div>
+
+<!-- B2: Twin ravens facing -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="bg5" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bg5)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Left raven profile - simplified -->
+<path d="M48 108 L72 92 L88 92 L96 100 L88 104 L92 120 L84 140 L72 148 L60 144 L56 128 Z" fill="#A5BC39"/>
+<circle cx="78" cy="100" r="3" fill="#161A22"/>
+<!-- Right raven profile - mirrored -->
+<path d="M208 108 L184 92 L168 92 L160 100 L168 104 L164 120 L172 140 L184 148 L196 144 L200 128 Z" fill="#A5BC39"/>
+<circle cx="178" cy="100" r="3" fill="#161A22"/>
+<!-- Connecting element - runic circle -->
+<circle cx="128" cy="120" r="20" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+<circle cx="128" cy="120" r="3" fill="rgba(255,255,255,0.3)"/>
+</svg>
+<span class="name">Twin Ravens</span>
+<span class="sub">Huginn & Muninn facing</span>
+</div>
+
+<!-- B3: Abstract raven wing -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="bg6" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bg6)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Abstract wing shape made of feather strokes -->
+<path d="M128 72 L92 108" stroke="#A5BC39" stroke-width="5" stroke-linecap="round"/>
+<path d="M128 72 L80 124" stroke="#A5BC39" stroke-width="5" stroke-linecap="round"/>
+<path d="M128 72 L76 144" stroke="#A5BC39" stroke-width="5" stroke-linecap="round"/>
+<path d="M128 72 L80 162" stroke="#A5BC39" stroke-width="4" stroke-linecap="round"/>
+<path d="M128 72 L92 176" stroke="#A5BC39" stroke-width="3.5" stroke-linecap="round"/>
+<!-- Right wing -->
+<path d="M128 72 L164 108" stroke="rgba(255,255,255,0.5)" stroke-width="5" stroke-linecap="round"/>
+<path d="M128 72 L176 124" stroke="rgba(255,255,255,0.4)" stroke-width="5" stroke-linecap="round"/>
+<path d="M128 72 L180 144" stroke="rgba(255,255,255,0.3)" stroke-width="5" stroke-linecap="round"/>
+<path d="M128 72 L176 162" stroke="rgba(255,255,255,0.2)" stroke-width="4" stroke-linecap="round"/>
+<path d="M128 72 L164 176" stroke="rgba(255,255,255,0.15)" stroke-width="3.5" stroke-linecap="round"/>
+</svg>
+<span class="name">Wing Spread</span>
+<span class="sub">Abstract feather rays</span>
+</div>
+
+</div>
+</div>
+
+<!-- C: Runes -->
+<div class="section">
+<div class="section-label">C — Runes & Ansuz</div>
+<div class="section-desc">Odin discovered the runes by hanging from Yggdrasil for nine days. The Ansuz rune (ᚨ) is literally "Odin's rune" — meaning divine breath, communication, wisdom.</div>
+<div class="row">
+
+<!-- C1: Ansuz rune -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="bg7" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bg7)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Ansuz rune ᚨ - clean geometric -->
+<line x1="120" y1="56" x2="120" y2="200" stroke="#A5BC39" stroke-width="7" stroke-linecap="round"/>
+<line x1="120" y1="96" x2="168" y2="72" stroke="#A5BC39" stroke-width="7" stroke-linecap="round"/>
+<line x1="120" y1="136" x2="168" y2="112" stroke="#A5BC39" stroke-width="7" stroke-linecap="round"/>
+</svg>
+<span class="name">Ansuz</span>
+<span class="sub">Odin's own rune</span>
+</div>
+
+<!-- C2: Ansuz refined -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="bg8" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bg8)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Ansuz rune - tapered, modern -->
+<path d="M116 60 L116 196" stroke="#A5BC39" stroke-width="6" stroke-linecap="round"/>
+<path d="M116 100 L164 76" stroke="#A5BC39" stroke-width="5" stroke-linecap="round"/>
+<path d="M116 140 L164 116" stroke="#A5BC39" stroke-width="5" stroke-linecap="round"/>
+<!-- Subtle glow dot at top -->
+<circle cx="116" cy="60" r="6" fill="#A5BC39" opacity="0.3"/>
+</svg>
+<span class="name">Ansuz Refined</span>
+<span class="sub">With wisdom glow</span>
+</div>
+
+<!-- C3: Ansuz in circle -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="bg9" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bg9)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Circle border -->
+<circle cx="128" cy="128" r="68" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2.5"/>
+<!-- Ansuz rune centered -->
+<line x1="118" y1="72" x2="118" y2="184" stroke="#A5BC39" stroke-width="6" stroke-linecap="round"/>
+<line x1="118" y1="104" x2="160" y2="84" stroke="#A5BC39" stroke-width="5" stroke-linecap="round"/>
+<line x1="118" y1="140" x2="160" y2="120" stroke="#A5BC39" stroke-width="5" stroke-linecap="round"/>
+</svg>
+<span class="name">Runic Seal</span>
+<span class="sub">Ansuz in protective circle</span>
+</div>
+
+</div>
+</div>
+
+<!-- D: Gungnir (Spear) -->
+<div class="section">
+<div class="section-label">D — Gungnir (The Spear)</div>
+<div class="section-desc">Odin's spear that never misses its mark. Clean, decisive, authoritative. Speaks to ODIN being the central command app.</div>
+<div class="row">
+
+<!-- D1: Simple spear -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="bg10" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bg10)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Spear shaft -->
+<line x1="128" y1="196" x2="128" y2="80" stroke="rgba(255,255,255,0.5)" stroke-width="4" stroke-linecap="round"/>
+<!-- Spear head -->
+<path d="M128 52 L140 88 L128 80 L116 88 Z" fill="#A5BC39"/>
+<!-- Crossguard detail -->
+<line x1="112" y1="92" x2="144" y2="92" stroke="#A5BC39" stroke-width="3" stroke-linecap="round"/>
+</svg>
+<span class="name">Gungnir</span>
+<span class="sub">The never-miss spear</span>
+</div>
+
+<!-- D2: Abstract spearhead -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="bg11" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bg11)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Abstract spearhead - large, centered -->
+<path d="M128 56 L160 140 L144 128 L144 196 L112 196 L112 128 L96 140 Z" fill="#A5BC39"/>
+<!-- Inner line detail -->
+<line x1="128" y1="72" x2="128" y2="196" stroke="#161A22" stroke-width="3" opacity="0.3"/>
+</svg>
+<span class="name">Spearhead</span>
+<span class="sub">Bold upward thrust</span>
+</div>
+
+<!-- D3: Minimal point -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="bg12" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bg12)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Minimal spear tip pointing up -->
+<path d="M128 56 L152 120 L136 108 L136 200 L120 200 L120 108 L104 120 Z" fill="none" stroke="#A5BC39" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<span class="name">Gungnir Outline</span>
+<span class="sub">Minimal stroke</span>
+</div>
+
+</div>
+</div>
+
+<!-- E: Valknut -->
+<div class="section">
+<div class="section-label">E — Valknut</div>
+<div class="section-desc">Three interlocking triangles — one of Odin's most recognizable symbols. Represents interconnection, power over life and death. The interlocking nature fits ODIN connecting all the apps.</div>
+<div class="row">
+
+<!-- E1: Classic valknut -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="bg13" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bg13)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Three interlocking triangles -->
+<polygon points="128,60 168,128 88,128" fill="none" stroke="#A5BC39" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="98,72 138,140 58,140" fill="none" stroke="#A5BC39" stroke-width="5" stroke-linejoin="round" opacity="0.7"/>
+<polygon points="158,72 198,140 118,140" fill="none" stroke="#A5BC39" stroke-width="5" stroke-linejoin="round" opacity="0.7"/>
+<!-- Ground line -->
+<line x1="68" y1="184" x2="188" y2="184" stroke="rgba(255,255,255,0.12)" stroke-width="2" stroke-linecap="round"/>
+</svg>
+<span class="name">Valknut</span>
+<span class="sub">Three linked triangles</span>
+</div>
+
+<!-- E2: Valknut stacked -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="bg14" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bg14)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Borromean-style valknut - vertically centered -->
+<polygon points="128,56 176,132 80,132" fill="none" stroke="#A5BC39" stroke-width="5" stroke-linejoin="round"/>
+<polygon points="104,80 152,156 56,156" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="152,80 200,156 104,156" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="4" stroke-linejoin="round"/>
+</svg>
+<span class="name">Valknut Layered</span>
+<span class="sub">Depth + dimension</span>
+</div>
+
+</div>
+</div>
+
+<!-- F: Yggdrasil -->
+<div class="section">
+<div class="section-label">F — Yggdrasil (World Tree)</div>
+<div class="section-desc">The cosmic tree connecting all nine realms. Odin hung from it to gain wisdom. Could represent ODIN as the root connecting all satellite apps.</div>
+<div class="row">
+
+<!-- F1: Minimal tree -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="bg15" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bg15)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Trunk -->
+<line x1="128" y1="196" x2="128" y2="100" stroke="#A5BC39" stroke-width="5" stroke-linecap="round"/>
+<!-- Branches -->
+<path d="M128 100 Q128 80 108 64" stroke="#A5BC39" stroke-width="4" stroke-linecap="round" fill="none"/>
+<path d="M128 100 Q128 80 148 64" stroke="#A5BC39" stroke-width="4" stroke-linecap="round" fill="none"/>
+<path d="M128 120 Q120 108 96 96" stroke="#A5BC39" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+<path d="M128 120 Q136 108 160 96" stroke="#A5BC39" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+<path d="M128 140 Q116 128 84 124" stroke="#A5BC39" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.7"/>
+<path d="M128 140 Q140 128 172 124" stroke="#A5BC39" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.7"/>
+<!-- Roots -->
+<path d="M128 196 Q120 200 100 204" stroke="rgba(255,255,255,0.3)" stroke-width="3" stroke-linecap="round" fill="none"/>
+<path d="M128 196 Q136 200 156 204" stroke="rgba(255,255,255,0.3)" stroke-width="3" stroke-linecap="round" fill="none"/>
+<path d="M128 196 Q128 204 128 208" stroke="rgba(255,255,255,0.2)" stroke-width="3" stroke-linecap="round" fill="none"/>
+</svg>
+<span class="name">World Tree</span>
+<span class="sub">Minimal Yggdrasil</span>
+</div>
+
+<!-- F2: Abstract tree/network -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="bg16" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bg16)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Central trunk -->
+<line x1="128" y1="196" x2="128" y2="68" stroke="#A5BC39" stroke-width="5" stroke-linecap="round"/>
+<!-- Branch nodes as circles (realms) -->
+<circle cx="128" cy="68" r="8" fill="#A5BC39"/>
+<line x1="128" y1="100" x2="80" y2="80" stroke="#A5BC39" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+<circle cx="80" cy="80" r="6" fill="#A5BC39" opacity="0.7"/>
+<line x1="128" y1="100" x2="176" y2="80" stroke="#A5BC39" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+<circle cx="176" cy="80" r="6" fill="#A5BC39" opacity="0.7"/>
+<line x1="128" y1="132" x2="72" y2="124" stroke="rgba(255,255,255,0.4)" stroke-width="2.5" stroke-linecap="round"/>
+<circle cx="72" cy="124" r="5" fill="rgba(255,255,255,0.4)"/>
+<line x1="128" y1="132" x2="184" y2="124" stroke="rgba(255,255,255,0.4)" stroke-width="2.5" stroke-linecap="round"/>
+<circle cx="184" cy="124" r="5" fill="rgba(255,255,255,0.4)"/>
+<!-- Root nodes -->
+<line x1="128" y1="196" x2="92" y2="204" stroke="rgba(255,255,255,0.2)" stroke-width="2" stroke-linecap="round"/>
+<circle cx="92" cy="204" r="4" fill="rgba(255,255,255,0.2)"/>
+<line x1="128" y1="196" x2="164" y2="204" stroke="rgba(255,255,255,0.2)" stroke-width="2" stroke-linecap="round"/>
+<circle cx="164" cy="204" r="4" fill="rgba(255,255,255,0.2)"/>
+</svg>
+<span class="name">Network Tree</span>
+<span class="sub">Realms as nodes</span>
+</div>
+
+</div>
+</div>
+
+<!-- G: Hybrid / Best Of -->
+<div class="section">
+<div class="section-label">G — Hybrid Concepts</div>
+<div class="section-desc">Combining elements: eye + rune, raven + sparkle, spear + radiance.</div>
+<div class="row">
+
+<!-- G1: Eye with Ansuz inside -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="bg17" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bg17)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Eye shape -->
+<path d="M52 128 Q128 68 204 128 Q128 188 52 128 Z" fill="none" stroke="#A5BC39" stroke-width="5" stroke-linejoin="round"/>
+<!-- Ansuz rune as pupil -->
+<line x1="124" y1="100" x2="124" y2="156" stroke="#A5BC39" stroke-width="4.5" stroke-linecap="round"/>
+<line x1="124" y1="116" x2="148" y2="104" stroke="#A5BC39" stroke-width="4" stroke-linecap="round"/>
+<line x1="124" y1="136" x2="148" y2="124" stroke="#A5BC39" stroke-width="4" stroke-linecap="round"/>
+</svg>
+<span class="name">Eye of Ansuz</span>
+<span class="sub">Rune as pupil</span>
+</div>
+
+<!-- G2: Raven with sparkle -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="bg18" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bg18)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Simplified raven -->
+<path d="M128 96 L88 124 L64 108 L84 136 L76 168 L112 148 L128 160 L144 148 L180 168 L172 136 L192 108 L168 124 Z" fill="#A5BC39"/>
+<circle cx="128" cy="118" r="3.5" fill="#161A22"/>
+<!-- Sparkle above - the original ODIN motif -->
+<path d="M128 52 L132 66 L146 70 L132 74 L128 88 L124 74 L110 70 L124 66 Z" fill="#fff" opacity="0.7"/>
+<!-- Small sparkles -->
+<path d="M72 72 L74 78 L80 80 L74 82 L72 88 L70 82 L64 80 L70 78 Z" fill="#fff" opacity="0.35"/>
+<path d="M184 76 L186 80 L190 82 L186 84 L184 88 L182 84 L178 82 L182 80 Z" fill="#fff" opacity="0.25"/>
+</svg>
+<span class="name">Raven + Sparkle</span>
+<span class="sub">Bridging old + new</span>
+</div>
+
+<!-- G3: Eye with spear through it -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="bg19" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bg19)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Vertical spear shaft -->
+<line x1="128" y1="200" x2="128" y2="84" stroke="rgba(255,255,255,0.4)" stroke-width="3.5" stroke-linecap="round"/>
+<!-- Spear head -->
+<path d="M128 52 L138 82 L128 76 L118 82 Z" fill="#A5BC39"/>
+<!-- Eye crossing horizontally -->
+<path d="M60 136 Q128 96 196 136 Q128 176 60 136 Z" fill="none" stroke="#A5BC39" stroke-width="4.5" stroke-linejoin="round"/>
+<circle cx="128" cy="136" r="14" fill="#A5BC39"/>
+<circle cx="128" cy="136" r="6" fill="#161A22"/>
+</svg>
+<span class="name">Gungnir's Gaze</span>
+<span class="sub">Spear + all-seeing eye</span>
+</div>
+
+</div>
+</div>
+
+<!-- Size comparison -->
+<div class="compare">
+<div class="section-label">Size Check — Favorites at Multiple Sizes</div>
+<div class="section-desc">How they hold up at 96px, 52px (dock), 32px (micro), and 16px (tiny).</div>
+
+<div class="size-row">
+<div class="size-cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="sz1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#sz1)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<path d="M56 128 Q128 64 200 128 Q128 192 56 128 Z" fill="none" stroke="#A5BC39" stroke-width="6" stroke-linejoin="round"/>
+<circle cx="128" cy="128" r="24" fill="none" stroke="#A5BC39" stroke-width="5"/>
+<circle cx="128" cy="128" r="10" fill="#A5BC39"/>
+</svg>
+<span class="sub">96px</span>
+</div>
+<div class="size-cell">
+<svg width="52" height="52" viewBox="0 0 256 256">
+<defs><linearGradient id="sz2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#sz2)"/>
+<path d="M56 128 Q128 64 200 128 Q128 192 56 128 Z" fill="none" stroke="#A5BC39" stroke-width="8" stroke-linejoin="round"/>
+<circle cx="128" cy="128" r="24" fill="none" stroke="#A5BC39" stroke-width="7"/>
+<circle cx="128" cy="128" r="12" fill="#A5BC39"/>
+</svg>
+<span class="sub">52px</span>
+</div>
+<div class="size-cell">
+<svg width="32" height="32" viewBox="0 0 256 256">
+<defs><linearGradient id="sz3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#sz3)"/>
+<path d="M56 128 Q128 64 200 128 Q128 192 56 128 Z" fill="none" stroke="#A5BC39" stroke-width="12" stroke-linejoin="round"/>
+<circle cx="128" cy="128" r="28" fill="#A5BC39"/>
+</svg>
+<span class="sub">32px</span>
+</div>
+<div class="size-cell">
+<svg width="16" height="16" viewBox="0 0 256 256">
+<defs><linearGradient id="sz4" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#sz4)"/>
+<path d="M56 128 Q128 64 200 128 Q128 192 56 128 Z" fill="none" stroke="#A5BC39" stroke-width="18" stroke-linejoin="round"/>
+<circle cx="128" cy="128" r="32" fill="#A5BC39"/>
+</svg>
+<span class="sub">16px</span>
+</div>
+
+<div style="width:2rem"></div>
+
+<div class="size-cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="sz5" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#sz5)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<line x1="120" y1="56" x2="120" y2="200" stroke="#A5BC39" stroke-width="7" stroke-linecap="round"/>
+<line x1="120" y1="96" x2="168" y2="72" stroke="#A5BC39" stroke-width="7" stroke-linecap="round"/>
+<line x1="120" y1="136" x2="168" y2="112" stroke="#A5BC39" stroke-width="7" stroke-linecap="round"/>
+</svg>
+<span class="sub">96px</span>
+</div>
+<div class="size-cell">
+<svg width="52" height="52" viewBox="0 0 256 256">
+<defs><linearGradient id="sz6" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#sz6)"/>
+<line x1="120" y1="56" x2="120" y2="200" stroke="#A5BC39" stroke-width="9" stroke-linecap="round"/>
+<line x1="120" y1="96" x2="168" y2="72" stroke="#A5BC39" stroke-width="9" stroke-linecap="round"/>
+<line x1="120" y1="136" x2="168" y2="112" stroke="#A5BC39" stroke-width="9" stroke-linecap="round"/>
+</svg>
+<span class="sub">52px</span>
+</div>
+<div class="size-cell">
+<svg width="32" height="32" viewBox="0 0 256 256">
+<defs><linearGradient id="sz7" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#sz7)"/>
+<line x1="120" y1="56" x2="120" y2="200" stroke="#A5BC39" stroke-width="14" stroke-linecap="round"/>
+<line x1="120" y1="96" x2="168" y2="72" stroke="#A5BC39" stroke-width="14" stroke-linecap="round"/>
+<line x1="120" y1="136" x2="168" y2="112" stroke="#A5BC39" stroke-width="14" stroke-linecap="round"/>
+</svg>
+<span class="sub">32px</span>
+</div>
+<div class="size-cell">
+<svg width="16" height="16" viewBox="0 0 256 256">
+<defs><linearGradient id="sz8" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#sz8)"/>
+<line x1="120" y1="56" x2="120" y2="200" stroke="#A5BC39" stroke-width="20" stroke-linecap="round"/>
+<line x1="120" y1="96" x2="172" y2="68" stroke="#A5BC39" stroke-width="20" stroke-linecap="round"/>
+<line x1="120" y1="140" x2="172" y2="108" stroke="#A5BC39" stroke-width="20" stroke-linecap="round"/>
+</svg>
+<span class="sub">16px</span>
+</div>
+</div>
+
+<div style="margin-top:2rem" class="size-row">
+<div class="size-cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="sz9" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#sz9)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<path d="M128 96 L88 124 L64 108 L84 136 L76 168 L112 148 L128 160 L144 148 L180 168 L172 136 L192 108 L168 124 Z" fill="#A5BC39"/>
+<circle cx="128" cy="118" r="3.5" fill="#161A22"/>
+<path d="M128 52 L132 66 L146 70 L132 74 L128 88 L124 74 L110 70 L124 66 Z" fill="#fff" opacity="0.7"/>
+<path d="M72 72 L74 78 L80 80 L74 82 L72 88 L70 82 L64 80 L70 78 Z" fill="#fff" opacity="0.35"/>
+<path d="M184 76 L186 80 L190 82 L186 84 L184 88 L182 84 L178 82 L182 80 Z" fill="#fff" opacity="0.25"/>
+</svg>
+<span class="sub">96px</span>
+</div>
+<div class="size-cell">
+<svg width="52" height="52" viewBox="0 0 256 256">
+<defs><linearGradient id="sz10" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#sz10)"/>
+<path d="M128 96 L88 124 L64 108 L84 136 L76 168 L112 148 L128 160 L144 148 L180 168 L172 136 L192 108 L168 124 Z" fill="#A5BC39"/>
+<path d="M128 52 L132 66 L146 70 L132 74 L128 88 L124 74 L110 70 L124 66 Z" fill="#fff" opacity="0.7"/>
+</svg>
+<span class="sub">52px</span>
+</div>
+<div class="size-cell">
+<svg width="32" height="32" viewBox="0 0 256 256">
+<defs><linearGradient id="sz11" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#sz11)"/>
+<path d="M128 96 L88 124 L64 108 L84 136 L76 168 L112 148 L128 160 L144 148 L180 168 L172 136 L192 108 L168 124 Z" fill="#A5BC39"/>
+</svg>
+<span class="sub">32px</span>
+</div>
+<div class="size-cell">
+<svg width="16" height="16" viewBox="0 0 256 256">
+<defs><linearGradient id="sz12" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#sz12)"/>
+<path d="M128 96 L88 124 L64 108 L84 136 L76 168 L112 148 L128 160 L144 148 L180 168 L172 136 L192 108 L168 124 Z" fill="#A5BC39"/>
+</svg>
+<span class="sub">16px</span>
+</div>
+
+<div style="width:2rem"></div>
+
+<div class="size-cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="sz13" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#sz13)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<path d="M52 128 Q128 68 204 128 Q128 188 52 128 Z" fill="none" stroke="#A5BC39" stroke-width="5" stroke-linejoin="round"/>
+<line x1="124" y1="100" x2="124" y2="156" stroke="#A5BC39" stroke-width="4.5" stroke-linecap="round"/>
+<line x1="124" y1="116" x2="148" y2="104" stroke="#A5BC39" stroke-width="4" stroke-linecap="round"/>
+<line x1="124" y1="136" x2="148" y2="124" stroke="#A5BC39" stroke-width="4" stroke-linecap="round"/>
+</svg>
+<span class="sub">96px</span>
+</div>
+<div class="size-cell">
+<svg width="52" height="52" viewBox="0 0 256 256">
+<defs><linearGradient id="sz14" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#sz14)"/>
+<path d="M52 128 Q128 68 204 128 Q128 188 52 128 Z" fill="none" stroke="#A5BC39" stroke-width="7" stroke-linejoin="round"/>
+<line x1="124" y1="100" x2="124" y2="156" stroke="#A5BC39" stroke-width="6" stroke-linecap="round"/>
+<line x1="124" y1="116" x2="150" y2="102" stroke="#A5BC39" stroke-width="5.5" stroke-linecap="round"/>
+<line x1="124" y1="138" x2="150" y2="124" stroke="#A5BC39" stroke-width="5.5" stroke-linecap="round"/>
+</svg>
+<span class="sub">52px</span>
+</div>
+<div class="size-cell">
+<svg width="32" height="32" viewBox="0 0 256 256">
+<defs><linearGradient id="sz15" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#sz15)"/>
+<path d="M52 128 Q128 68 204 128 Q128 188 52 128 Z" fill="none" stroke="#A5BC39" stroke-width="10" stroke-linejoin="round"/>
+<line x1="122" y1="98" x2="122" y2="158" stroke="#A5BC39" stroke-width="8" stroke-linecap="round"/>
+<line x1="122" y1="114" x2="152" y2="98" stroke="#A5BC39" stroke-width="8" stroke-linecap="round"/>
+<line x1="122" y1="140" x2="152" y2="124" stroke="#A5BC39" stroke-width="8" stroke-linecap="round"/>
+</svg>
+<span class="sub">32px</span>
+</div>
+<div class="size-cell">
+<svg width="16" height="16" viewBox="0 0 256 256">
+<defs><linearGradient id="sz16" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#sz16)"/>
+<path d="M52 128 Q128 68 204 128 Q128 188 52 128 Z" fill="none" stroke="#A5BC39" stroke-width="16" stroke-linejoin="round"/>
+<circle cx="128" cy="128" r="24" fill="#A5BC39"/>
+</svg>
+<span class="sub">16px</span>
+</div>
+</div>
+
+</div>
+
+</div>
+</body>
+</html>

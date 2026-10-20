@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Agreements — Icon Exploration v4</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Instrument Sans",system-ui,sans-serif;background:#0c0b0e;color:#c8c5cc;min-height:100vh}
+.page{max-width:1100px;margin:0 auto;padding:4rem 2rem 6rem}
+.suite-header{margin-bottom:4.5rem}
+.suite-header::after{content:"";display:block;width:48px;height:2px;background:#a5bc39;margin-top:1.5rem}
+.suite-name{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#a5bc39;margin-bottom:.6rem}
+.suite-title{font-size:1.8rem;font-weight:400;color:#eae8ed}
+.section{margin-bottom:5rem}
+.section-label{font-size:.65rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#605c66;margin-bottom:2rem}
+.icon-row{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;align-items:flex-start}
+.icon-cell{display:flex;flex-direction:column;align-items:center;gap:.7rem}
+.icon-cell svg{filter:drop-shadow(0 4px 20px rgba(0,0,0,.6));transition:transform .25s cubic-bezier(.34,1.56,.64,1)}
+.icon-cell:hover svg{transform:translateY(-3px) scale(1.05)}
+.icon-cell .name{font-size:.78rem;font-weight:600;color:#d8d5dc}
+.icon-cell .sub{font-size:.6rem;color:#555059;margin-top:-.3rem}
+.icon-cell .num{font-size:.55rem;font-weight:700;color:#a5bc39;letter-spacing:.1em;margin-bottom:-.2rem}
+.dock-wrap{display:flex;justify-content:center}
+.dock-group{display:flex;flex-direction:column;align-items:center}
+.dock{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:22px;padding:14px 28px;display:inline-flex;gap:14px;align-items:center}
+.dock svg,.dock img{filter:drop-shadow(0 2px 10px rgba(0,0,0,.5));transition:transform .2s cubic-bezier(.34,1.56,.64,1);cursor:default}
+.dock svg:hover,.dock img:hover{transform:translateY(-6px) scale(1.15)}
+.dock-labels{display:flex;gap:14px;padding:0 28px;margin-top:.6rem}
+.dock-labels span{width:52px;text-align:center;font-size:.5rem;color:#3e3b42;letter-spacing:.02em}
+.dock-section{margin-bottom:3rem}
+.dock-section .dock-title{font-size:.6rem;font-weight:600;color:#444;letter-spacing:.08em;text-align:center;margin-bottom:1rem}
+.dock-section .dock-title em{color:#a5bc39;font-style:normal}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="suite-header">
+<div class="suite-name">Agreements App</div>
+<h1 class="suite-title">Icon Exploration — v4 (bolder)</h1>
+</div>
+
+<div class="section">
+<div class="section-label">Concepts — 96px</div>
+<div class="icon-row">
+
+<!-- 1. Bold Handshake — geometric, abstract -->
+<div class="icon-cell">
+<span class="num">01</span>
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="a1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#a1)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Left arm -->
+<path d="M40 160 L80 128 L118 124" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+<!-- Right arm -->
+<path d="M216 160 L176 128 L138 124" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+<!-- Clasp — the two hands gripping -->
+<path d="M118 124 C118 108, 138 108, 138 124" fill="none" stroke="#A5BC39" stroke-width="12" stroke-linecap="round"/>
+<path d="M108 136 L128 146 L148 136" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+</svg>
+<span class="name">Handshake</span>
+<span class="sub">bold geometric</span>
+</div>
+
+<!-- 2. Giant Pen Nib — the pen IS the icon -->
+<div class="icon-cell">
+<span class="num">02</span>
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="a2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#a2)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Pen body (angled) -->
+<g transform="translate(128,128) rotate(-40) translate(-128,-128)">
+<rect x="108" y="44" width="40" height="120" rx="6" fill="#fff" opacity="0.8"/>
+<rect x="108" y="44" width="40" height="20" rx="6" fill="#fff" opacity="0.5"/>
+<!-- Nib -->
+<polygon points="108,164 148,164 128,200" fill="#A5BC39"/>
+</g>
+<!-- Signature trail -->
+<path d="M88 190 C104 170, 120 196, 144 176 C160 160, 176 186, 196 168" fill="none" stroke="#A5BC39" stroke-width="6" stroke-linecap="round" opacity="0.7"/>
+</svg>
+<span class="name">Pen Nib</span>
+<span class="sub">the act of signing</span>
+</div>
+
+<!-- 3. Two Overlapping Circles (Venn) — agreement = overlap -->
+<div class="icon-cell">
+<span class="num">03</span>
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="a3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#a3)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Left circle -->
+<circle cx="104" cy="120" r="56" fill="none" stroke="#fff" stroke-width="8" opacity="0.7"/>
+<!-- Right circle -->
+<circle cx="152" cy="120" r="56" fill="none" stroke="#fff" stroke-width="8" opacity="0.7"/>
+<!-- Overlap fill -->
+<clipPath id="vl"><circle cx="104" cy="120" r="52"/></clipPath>
+<circle cx="152" cy="120" r="52" clip-path="url(#vl)" fill="#A5BC39" opacity="0.35"/>
+<!-- Check in the overlap -->
+<polyline points="118,120 126,130 140,112" fill="none" stroke="#A5BC39" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+<span class="name">Overlap</span>
+<span class="sub">mutual agreement</span>
+</div>
+
+<!-- 4. Doc with big signature — like Quotes but for agreements -->
+<div class="icon-cell">
+<span class="num">04</span>
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="a4" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#a4)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Document -->
+<rect x="56" y="36" width="144" height="184" rx="10" fill="none" stroke="#fff" stroke-width="8" opacity="0.85"/>
+<!-- Body lines — few and bold -->
+<line x1="80" y1="72" x2="176" y2="72" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.35"/>
+<line x1="80" y1="94" x2="156" y2="94" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.25"/>
+<line x1="80" y1="116" x2="168" y2="116" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.18"/>
+<!-- Divider -->
+<line x1="80" y1="146" x2="176" y2="146" stroke="#fff" stroke-width="2.5" opacity="0.15"/>
+<!-- Big signature -->
+<path d="M80 178 C100 152, 120 190, 148 162 C164 146, 178 174, 192 158" fill="none" stroke="#A5BC39" stroke-width="7" stroke-linecap="round"/>
+</svg>
+<span class="name">Signed Doc</span>
+<span class="sub">bold signature</span>
+</div>
+
+<!-- 5. Interlocking L-shapes — two parties fitting together -->
+<div class="icon-cell">
+<span class="num">05</span>
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="a5" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#a5)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Left L (top-left) -->
+<path d="M56 60 L56 148 L144 148" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+<!-- Right L (bottom-right) -->
+<path d="M200 196 L200 108 L112 108" fill="none" stroke="#A5BC39" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+<span class="name">Interlock</span>
+<span class="sub">two parties, one form</span>
+</div>
+
+<!-- 6. Doc + two signatures side by side — clean -->
+<div class="icon-cell">
+<span class="num">06</span>
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="a6" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#a6)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Document -->
+<rect x="56" y="36" width="144" height="184" rx="10" fill="none" stroke="#fff" stroke-width="8" opacity="0.85"/>
+<!-- Body lines -->
+<line x1="80" y1="72" x2="176" y2="72" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.35"/>
+<line x1="80" y1="94" x2="152" y2="94" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.25"/>
+<line x1="80" y1="116" x2="164" y2="116" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.18"/>
+<!-- Divider -->
+<line x1="80" y1="144" x2="176" y2="144" stroke="#fff" stroke-width="2.5" opacity="0.15"/>
+<!-- Sig 1 (left) -->
+<path d="M80 170 C94 154, 106 176, 120 160" fill="none" stroke="#A5BC39" stroke-width="6" stroke-linecap="round"/>
+<!-- Sig 2 (right) -->
+<path d="M140 170 C152 156, 162 176, 176 162" fill="none" stroke="#A5BC39" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+<!-- Two sig lines -->
+<line x1="80" y1="180" x2="120" y2="180" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity="0.25"/>
+<line x1="140" y1="180" x2="176" y2="180" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity="0.2"/>
+</svg>
+<span class="name">Two Sigs</span>
+<span class="sub">dual signature</span>
+</div>
+
+<!-- 7. Handshake v2 — more abstract, inspired by 6655944 hand shape -->
+<div class="icon-cell">
+<span class="num">07</span>
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="a7" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#a7)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Left arm comes in from bottom-left -->
+<path d="M44 180 L92 138" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" opacity="0.6"/>
+<!-- Right arm comes in from bottom-right -->
+<path d="M212 180 L164 138" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" opacity="0.6"/>
+<!-- Hands meeting — two curved grips -->
+<path d="M92 138 C92 112, 108 100, 128 112" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity="0.85"/>
+<path d="M164 138 C164 112, 148 100, 128 112" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity="0.85"/>
+<!-- Green accent where hands meet -->
+<circle cx="128" cy="112" r="8" fill="#A5BC39"/>
+<!-- Fingers pointing down -->
+<path d="M100 140 Q114 154, 128 148 Q142 154, 156 140" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity="0.4"/>
+</svg>
+<span class="name">Handshake v2</span>
+<span class="sub">abstract grip</span>
+</div>
+
+<!-- 8. Big check on document — simplest possible -->
+<div class="icon-cell">
+<span class="num">08</span>
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="a8" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#a8)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Document outline -->
+<rect x="56" y="36" width="144" height="184" rx="10" fill="none" stroke="#fff" stroke-width="8" opacity="0.5"/>
+<!-- Few text lines -->
+<line x1="80" y1="70" x2="176" y2="70" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.2"/>
+<line x1="80" y1="90" x2="152" y2="90" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.15"/>
+<line x1="80" y1="110" x2="164" y2="110" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.12"/>
+<!-- Big bold check dominates -->
+<polyline points="84,152 112,184 180,128" fill="none" stroke="#A5BC39" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+<span class="name">Approved</span>
+<span class="sub">document + big check</span>
+</div>
+
+</div>
+</div>
+
+<!-- ═══════ DOCK PREVIEWS ═══════ -->
+<div class="section">
+<div class="section-label">Dock Previews — 52px</div>
+
+<script>
+const dockApps = (p) => `
+<svg width="52" height="52" viewBox="0 0 256 256"><defs><linearGradient id="${p}w" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#${p}w)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><g transform="translate(45.5, 53) scale(0.75)"><path fill="#fff" d="M25.5,18.3c3.2,8.3,4.7,30.9,4.7,68l-0.5,35.2l3.8,0.9c7.2,1.7,14.6,2.6,22.1,2.7c0.8,0,1.6,0,2.4,0 c-0.6-11.7-0.8-26.3-0.8-44c0-26.7,0.9-44.1,2.6-52.2c1.8-8.1,4.3-13.8,7.7-17c3.4-3.2,8.7-5.2,15.8-5.9c3.2-0.3,4.8-1.4,4.8-3.2 C88.1,0.9,86,0,81.7,0H6.3C2.1,0,0,1,0,3.1c0,1.7,1.7,2.5,5.1,2.5C15.5,5.8,22.3,10,25.5,18.3z"/><path fill="#fff" d="M151.7,6.2c9.2,0,16.2,3.5,20.9,10.6c4.7,7.1,7.1,22,7.1,44.7c0,23.2-0.4,42.2-1.1,56.8c3,1.2,6,2.6,9,4 c1-13.6,1.4-29.1,1.5-46.6c0-18.8,0.6-33.1,1.7-42.9c1.1-9.7,3.4-16.4,7-20.2c3.6-3.7,9.1-6.1,16.8-7.2c2.2-0.3,3.3-1.2,3.3-2.6 c0-2-1.4-3-4.1-3h-60.2c-4.9,0-7.4,1-7.4,3C146.2,5.1,148,6.2,151.7,6.2z"/><path fill="#A5BC39" d="M135.8,126c-28.6,0-47.6,15.8-80.2,15.8c-8.7,0-17.3-1.1-25.7-3.1c0.7,13,2.8,23.1,6.3,30.3 c4.4,9.2,12.7,16.6,25,22.1c12.3,5.6,27.1,8.4,44.6,8.4c17,0,31.4-2.5,43.1-7.4c11.7-5,20.4-11.5,26.2-19.6 c5.3-7.3,8.9-18,10.8-32.2C165.3,129.6,149.5,126,135.8,126z"/></g></svg>
+<svg width="52" height="52" viewBox="0 0 256 256"><defs><linearGradient id="${p}o" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#${p}o)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M140 72 L150 114 L192 124 L150 134 L140 176 L130 134 L88 124 L130 114 Z" fill="#A5BC39"/><path d="M76 56 L82 78 L104 84 L82 90 L76 112 L70 90 L48 84 L70 78 Z" fill="#fff" opacity="0.85"/><path d="M88 152 L93 170 L111 175 L93 180 L88 198 L83 180 L65 175 L83 170 Z" fill="#fff" opacity="0.6"/><path d="M188 60 L191 70 L201 73 L191 76 L188 86 L185 76 L175 73 L185 70 Z" fill="#fff" opacity="0.45"/></svg>
+<svg width="52" height="52" viewBox="0 0 256 256"><defs><linearGradient id="${p}i" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#${p}i)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M68 80 h120 a12 12 0 0 1 12 12 v64 a12 12 0 0 1-12 12 h-52 l-22 26 -22-26 H68 a12 12 0 0 1-12-12 V92 a12 12 0 0 1 12-12z" fill="rgba(255,255,255,0.15)" stroke="#fff" stroke-width="10" stroke-linejoin="round"/><circle cx="100" cy="124" r="8" fill="#A5BC39"/><circle cx="128" cy="124" r="8" fill="#fff"/><circle cx="156" cy="124" r="8" fill="#fff"/></svg>
+<svg width="52" height="52" viewBox="0 0 256 256"><defs><linearGradient id="${p}s" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#${p}s)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><rect x="56" y="62" width="144" height="16" rx="3" fill="#6BA0CC" opacity="0.95"/><rect x="56" y="84" width="108" height="16" rx="3" fill="#6BA0CC" opacity="0.75"/><rect x="82" y="106" width="118" height="16" rx="3" fill="#6BA0CC" opacity="0.6"/><rect x="56" y="128" width="72" height="16" rx="3" fill="#8BBAD6" opacity="0.55"/><rect x="96" y="150" width="80" height="16" rx="3" fill="#8BBAD6" opacity="0.4"/><rect x="56" y="178" width="26" height="14" rx="2" fill="#A5BC39"/><rect x="86" y="178" width="26" height="14" rx="2" fill="#A5BC39" opacity="0.85"/><rect x="116" y="178" width="26" height="14" rx="2" fill="#D4C23A" opacity="0.8"/><rect x="146" y="178" width="26" height="14" rx="2" fill="#D9A634" opacity="0.7"/><rect x="176" y="178" width="24" height="14" rx="2" fill="#C96832" opacity="0.6"/><line x1="130" y1="50" x2="130" y2="172" stroke="#A5BC39" stroke-width="3.5" opacity="0.9"/><circle cx="130" cy="48" r="5" fill="#A5BC39"/></svg>
+<svg width="52" height="52" viewBox="0 0 256 256"><defs><linearGradient id="${p}d" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#${p}d)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><rect x="64" y="60" width="128" height="148" rx="12" fill="none" stroke="#fff" stroke-width="8" opacity="0.9"/><rect x="98" y="48" width="60" height="28" rx="8" fill="#fff"/><polyline points="88,118 100,130 124,104" fill="none" stroke="#A5BC39" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><line x1="140" y1="117" x2="178" y2="117" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity="0.5"/><polyline points="88,158 100,170 124,144" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/><line x1="140" y1="157" x2="178" y2="157" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity="0.35"/></svg>
+<img src="../icons/claire.svg" width="52" height="52"/>
+<img src="../icons/quotes.svg" width="52" height="52"/>`;
+
+const labels = `<div class="dock-labels"><span>Website</span><span>ODIN</span><span>Inquiries</span><span>Scheduler</span><span>Orders</span><span>Claire</span><span>Quotes</span><span>Agree.</span></div>`;
+
+const icons = [
+  // 01 Handshake
+  `<svg width="52" height="52" viewBox="0 0 256 256"><defs><linearGradient id="z1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#z1)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M40 160 L80 128 L118 124" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/><path d="M216 160 L176 128 L138 124" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/><path d="M118 124 C118 108, 138 108, 138 124" fill="none" stroke="#A5BC39" stroke-width="12" stroke-linecap="round"/><path d="M108 136 L128 146 L148 136" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/></svg>`,
+  // 02 Pen Nib
+  `<svg width="52" height="52" viewBox="0 0 256 256"><defs><linearGradient id="z2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#z2)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><g transform="translate(128,128) rotate(-40) translate(-128,-128)"><rect x="108" y="44" width="40" height="120" rx="6" fill="#fff" opacity="0.8"/><rect x="108" y="44" width="40" height="20" rx="6" fill="#fff" opacity="0.5"/><polygon points="108,164 148,164 128,200" fill="#A5BC39"/></g><path d="M88 190 C104 170, 120 196, 144 176 C160 160, 176 186, 196 168" fill="none" stroke="#A5BC39" stroke-width="6" stroke-linecap="round" opacity="0.7"/></svg>`,
+  // 03 Overlap
+  `<svg width="52" height="52" viewBox="0 0 256 256"><defs><linearGradient id="z3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#z3)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><circle cx="104" cy="120" r="56" fill="none" stroke="#fff" stroke-width="8" opacity="0.7"/><circle cx="152" cy="120" r="56" fill="none" stroke="#fff" stroke-width="8" opacity="0.7"/><clipPath id="vl2"><circle cx="104" cy="120" r="52"/></clipPath><circle cx="152" cy="120" r="52" clip-path="url(#vl2)" fill="#A5BC39" opacity="0.35"/><polyline points="118,120 126,130 140,112" fill="none" stroke="#A5BC39" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  // 04 Signed Doc
+  `<svg width="52" height="52" viewBox="0 0 256 256"><defs><linearGradient id="z4" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#z4)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><rect x="56" y="36" width="144" height="184" rx="10" fill="none" stroke="#fff" stroke-width="8" opacity="0.85"/><line x1="80" y1="72" x2="176" y2="72" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.35"/><line x1="80" y1="94" x2="156" y2="94" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.25"/><line x1="80" y1="116" x2="168" y2="116" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.18"/><line x1="80" y1="146" x2="176" y2="146" stroke="#fff" stroke-width="2.5" opacity="0.15"/><path d="M80 178 C100 152, 120 190, 148 162 C164 146, 178 174, 192 158" fill="none" stroke="#A5BC39" stroke-width="7" stroke-linecap="round"/></svg>`,
+  // 05 Interlock
+  `<svg width="52" height="52" viewBox="0 0 256 256"><defs><linearGradient id="z5" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#z5)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M56 60 L56 148 L144 148" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/><path d="M200 196 L200 108 L112 108" fill="none" stroke="#A5BC39" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  // 06 Two Sigs
+  `<svg width="52" height="52" viewBox="0 0 256 256"><defs><linearGradient id="z6" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#z6)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><rect x="56" y="36" width="144" height="184" rx="10" fill="none" stroke="#fff" stroke-width="8" opacity="0.85"/><line x1="80" y1="72" x2="176" y2="72" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.35"/><line x1="80" y1="94" x2="152" y2="94" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.25"/><line x1="80" y1="116" x2="164" y2="116" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.18"/><line x1="80" y1="144" x2="176" y2="144" stroke="#fff" stroke-width="2.5" opacity="0.15"/><path d="M80 170 C94 154, 106 176, 120 160" fill="none" stroke="#A5BC39" stroke-width="6" stroke-linecap="round"/><path d="M140 170 C152 156, 162 176, 176 162" fill="none" stroke="#A5BC39" stroke-width="6" stroke-linecap="round" opacity="0.6"/><line x1="80" y1="180" x2="120" y2="180" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity="0.25"/><line x1="140" y1="180" x2="176" y2="180" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity="0.2"/></svg>`,
+  // 07 Handshake v2
+  `<svg width="52" height="52" viewBox="0 0 256 256"><defs><linearGradient id="z7" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#z7)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M44 180 L92 138" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" opacity="0.6"/><path d="M212 180 L164 138" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" opacity="0.6"/><path d="M92 138 C92 112, 108 100, 128 112" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity="0.85"/><path d="M164 138 C164 112, 148 100, 128 112" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity="0.85"/><circle cx="128" cy="112" r="8" fill="#A5BC39"/><path d="M100 140 Q114 154, 128 148 Q142 154, 156 140" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity="0.4"/></svg>`,
+  // 08 Approved
+  `<svg width="52" height="52" viewBox="0 0 256 256"><defs><linearGradient id="z8" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#z8)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><rect x="56" y="36" width="144" height="184" rx="10" fill="none" stroke="#fff" stroke-width="8" opacity="0.5"/><line x1="80" y1="70" x2="176" y2="70" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.2"/><line x1="80" y1="90" x2="152" y2="90" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.15"/><line x1="80" y1="110" x2="164" y2="110" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.12"/><polyline points="84,152 112,184 180,128" fill="none" stroke="#A5BC39" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+];
+
+const names = ['Handshake','Pen Nib','Overlap','Signed Doc','Interlock','Two Sigs','Handshake v2','Approved'];
+
+document.addEventListener('DOMContentLoaded', () => {
+  const el = document.getElementById('docks');
+  icons.forEach((svg, i) => {
+    el.innerHTML += `<div class="dock-section"><div class="dock-title">with <em>${String(i+1).padStart(2,'0')} ${names[i]}</em></div><div class="dock-wrap"><div class="dock-group"><div class="dock">${dockApps('d'+i)}${svg}</div>${labels}</div></div></div>`;
+  });
+});
+</script>
+<div id="docks"></div>
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>A.I. Tony — Glasses Deep Dive</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Instrument Sans",system-ui,sans-serif;background:#0c0b0e;color:#c8c5cc;min-height:100vh}
+.page{max-width:1400px;margin:0 auto;padding:4rem 2rem 6rem}
+.header{margin-bottom:4.5rem}
+.header::after{content:"";display:block;width:48px;height:2px;background:#a5bc39;margin-top:1.5rem}
+.label{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#a5bc39;margin-bottom:.6rem}
+h1{font-size:1.8rem;font-weight:400;color:#eae8ed}
+.subtitle{font-size:.85rem;color:#605c66;margin-top:.5rem}
+.section{margin-bottom:5rem}
+.section-label{font-size:.65rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#605c66;margin-bottom:2rem}
+.row{display:flex;justify-content:center;gap:2.2rem;flex-wrap:wrap;margin-bottom:3rem;align-items:end}
+.cell{display:flex;flex-direction:column;align-items:center;gap:.6rem}
+.cell svg{filter:drop-shadow(0 4px 20px rgba(0,0,0,.6));transition:transform .25s cubic-bezier(.34,1.56,.64,1)}
+.cell:hover svg{transform:translateY(-3px) scale(1.05)}
+.cell .name{font-size:.66rem;font-weight:600;color:#d8d5dc;max-width:110px;text-align:center;line-height:1.3}
+.cell .sub{font-size:.5rem;color:#555059;margin-top:-.2rem;max-width:110px;text-align:center;line-height:1.3}
+hr{border:none;border-top:1px solid rgba(255,255,255,.06);margin:4rem 0}
+.lt{background:#f0eff2;border-radius:20px;padding:3rem;margin-bottom:3rem}
+.lt .section-label{color:#999}
+.lt .cell svg{filter:drop-shadow(0 2px 8px rgba(0,0,0,.1))}
+.lt .cell .name{color:#444}
+.lt .cell .sub{color:#999}
+.sizes{display:flex;align-items:end;gap:1.5rem;justify-content:center;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="header">
+<div class="label">A.I. Tony</div>
+<h1>Glasses — Deep Dive</h1>
+<p class="subtitle">Getting weird. Getting creative. All glasses.</p>
+</div>
+
+<div class="section">
+<div class="section-label">Dark — 96px</div>
+<div class="row">
+
+<!-- 1: Baseline -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#g1)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<circle cx="92" cy="104" r="34" fill="none" stroke="#fff" stroke-width="7" opacity="0.8"/>
+<circle cx="164" cy="104" r="34" fill="none" stroke="#fff" stroke-width="7" opacity="0.8"/>
+<line x1="126" y1="98" x2="130" y2="98" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+<line x1="58" y1="96" x2="38" y2="90" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.45"/>
+<line x1="198" y1="96" x2="218" y2="90" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.45"/>
+<circle cx="78" cy="92" r="4" fill="#A5BC39" opacity="0.5"/>
+<circle cx="150" cy="92" r="4" fill="#A5BC39" opacity="0.5"/>
+</svg>
+<span class="name">Baseline</span>
+<span class="sub">For reference</span>
+</div>
+
+<!-- 2: One green lens -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#g2)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<circle cx="92" cy="104" r="34" fill="#A5BC39" opacity="0.12"/>
+<circle cx="92" cy="104" r="34" fill="none" stroke="#fff" stroke-width="7" opacity="0.8"/>
+<circle cx="164" cy="104" r="34" fill="none" stroke="#fff" stroke-width="7" opacity="0.8"/>
+<line x1="126" y1="98" x2="130" y2="98" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+<line x1="58" y1="96" x2="38" y2="90" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.45"/>
+<line x1="198" y1="96" x2="218" y2="90" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.45"/>
+</svg>
+<span class="name">One Tinted Lens</span>
+<span class="sub">Monocle energy</span>
+</div>
+
+<!-- 3: Sparkle in lens (AI eye) -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#g3)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<circle cx="92" cy="104" r="34" fill="none" stroke="#fff" stroke-width="7" opacity="0.8"/>
+<circle cx="164" cy="104" r="34" fill="none" stroke="#fff" stroke-width="7" opacity="0.8"/>
+<line x1="126" y1="98" x2="130" y2="98" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+<line x1="58" y1="96" x2="38" y2="90" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.45"/>
+<line x1="198" y1="96" x2="218" y2="90" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.45"/>
+<!-- Sparkle in left lens -->
+<g transform="translate(92, 104)"><path d="M0 -12 L3 -4 L12 0 L3 4 L0 12 L-3 4 L-12 0 L-3 -4 Z" fill="#A5BC39" opacity="0.8"/></g>
+<!-- Smaller sparkle in right lens -->
+<g transform="translate(164, 100)"><path d="M0 -8 L2 -3 L8 0 L2 3 L0 8 L-2 3 L-8 0 L-2 -3 Z" fill="#A5BC39" opacity="0.5"/></g>
+</svg>
+<span class="name">AI Sparkle Eyes</span>
+<span class="sub">ODIN's sparkle in the lenses</span>
+</div>
+
+<!-- 4: Checkmark in one lens -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="g4" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#g4)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<circle cx="92" cy="104" r="34" fill="none" stroke="#fff" stroke-width="7" opacity="0.8"/>
+<circle cx="164" cy="104" r="34" fill="none" stroke="#fff" stroke-width="7" opacity="0.8"/>
+<line x1="126" y1="98" x2="130" y2="98" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+<line x1="58" y1="96" x2="38" y2="90" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.45"/>
+<line x1="198" y1="96" x2="218" y2="90" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.45"/>
+<!-- Checkmark in right lens -->
+<polyline points="150,106 160,116 180,92" fill="none" stroke="#A5BC39" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+<!-- Dot in left lens -->
+<circle cx="92" cy="104" r="5" fill="#A5BC39" opacity="0.5"/>
+</svg>
+<span class="name">Check Lens</span>
+<span class="sub">Process check visible in the eye</span>
+</div>
+
+<!-- 5: Hex lenses -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="g5" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#g5)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Hexagonal lenses -->
+<path d="M72,84 L112,84 L126,104 L112,124 L72,124 L58,104 Z" fill="none" stroke="#fff" stroke-width="6" opacity="0.8"/>
+<path d="M144,84 L184,84 L198,104 L184,124 L144,124 L130,104 Z" fill="none" stroke="#fff" stroke-width="6" opacity="0.8"/>
+<!-- Bridge -->
+<line x1="126" y1="100" x2="130" y2="100" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.6"/>
+<!-- Arms -->
+<line x1="58" y1="96" x2="38" y2="88" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+<line x1="198" y1="96" x2="218" y2="88" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+<!-- Glare -->
+<circle cx="78" cy="92" r="3.5" fill="#A5BC39" opacity="0.5"/>
+<circle cx="152" cy="92" r="3.5" fill="#A5BC39" opacity="0.5"/>
+</svg>
+<span class="name">Hex Lenses</span>
+<span class="sub">Hexagonal frames</span>
+</div>
+
+<!-- 6: Square frames -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="g6" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#g6)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Square frames with slight round -->
+<rect x="58" y="76" width="60" height="56" rx="8" fill="none" stroke="#fff" stroke-width="7" opacity="0.8"/>
+<rect x="138" y="76" width="60" height="56" rx="8" fill="none" stroke="#fff" stroke-width="7" opacity="0.8"/>
+<line x1="118" y1="98" x2="138" y2="98" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.55"/>
+<line x1="58" y1="94" x2="38" y2="86" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+<line x1="198" y1="94" x2="218" y2="86" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+<circle cx="74" cy="90" r="4" fill="#A5BC39" opacity="0.5"/>
+<circle cx="152" cy="90" r="4" fill="#A5BC39" opacity="0.5"/>
+</svg>
+<span class="name">Square Frames</span>
+<span class="sub">Chunky intellectual</span>
+</div>
+
+</div>
+
+<div class="row">
+
+<!-- 7: Sunglasses (connected lens) -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="g7" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#g7)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Aviator-style connected lens -->
+<path d="M42,88 C42,88 56,72 92,72 C112,72 122,82 128,92 C134,82 144,72 164,72 C200,72 214,88 214,88 L214,108 C214,128 196,140 164,140 C140,140 134,128 128,118 C122,128 116,140 92,140 C60,140 42,128 42,108 Z" fill="#A5BC39" opacity="0.12" stroke="#fff" stroke-width="5" opacity="0.75"/>
+<!-- Glare streak -->
+<path d="M60,90 C70,84 84,82 96,86" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity="0.3"/>
+<path d="M146,90 C156,84 170,82 182,86" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity="0.25"/>
+<!-- Arms -->
+<line x1="42" y1="90" x2="30" y2="84" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+<line x1="214" y1="90" x2="226" y2="84" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+</svg>
+<span class="name">Aviators</span>
+<span class="sub">Cool guy energy</span>
+</div>
+
+<!-- 8: Glasses + crown/hat -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="g8" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#g8)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Hard hat brim -->
+<path d="M48,82 L208,82 C212,82 214,84 214,86 L214,92 C214,94 212,96 208,96 L48,96 C44,96 42,94 42,92 L42,86 C42,84 44,82 48,82 Z" fill="#A5BC39" opacity="0.7"/>
+<!-- Hat dome -->
+<path d="M68,82 C68,58 96,40 128,40 C160,40 188,58 188,82" fill="none" stroke="#A5BC39" stroke-width="5" opacity="0.5"/>
+<!-- Glasses -->
+<circle cx="92" cy="120" r="30" fill="none" stroke="#fff" stroke-width="6" opacity="0.8"/>
+<circle cx="164" cy="120" r="30" fill="none" stroke="#fff" stroke-width="6" opacity="0.8"/>
+<line x1="122" y1="114" x2="134" y2="114" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.55"/>
+<line x1="62" y1="112" x2="44" y2="106" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+<line x1="194" y1="112" x2="212" y2="106" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+<circle cx="80" cy="110" r="3.5" fill="#A5BC39" opacity="0.4"/>
+</svg>
+<span class="name">Hard Hat</span>
+<span class="sub">Job site supervisor</span>
+</div>
+
+<!-- 9: Glasses + antenna -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="g9" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#g9)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Antenna -->
+<line x1="128" y1="64" x2="128" y2="42" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+<circle cx="128" cy="38" r="6" fill="#A5BC39" opacity="0.8"/>
+<!-- Headband -->
+<path d="M56,76 C56,56 88,40 128,40 C168,40 200,56 200,76" fill="none" stroke="#fff" stroke-width="4" opacity="0.25"/>
+<!-- Glasses -->
+<circle cx="92" cy="104" r="34" fill="none" stroke="#fff" stroke-width="7" opacity="0.8"/>
+<circle cx="164" cy="104" r="34" fill="none" stroke="#fff" stroke-width="7" opacity="0.8"/>
+<line x1="126" y1="98" x2="130" y2="98" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+<line x1="58" y1="96" x2="38" y2="90" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.45"/>
+<line x1="198" y1="96" x2="218" y2="90" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.45"/>
+<circle cx="78" cy="92" r="4" fill="#A5BC39" opacity="0.5"/>
+<circle cx="150" cy="92" r="4" fill="#A5BC39" opacity="0.5"/>
+</svg>
+<span class="name">Antenna</span>
+<span class="sub">AI brain receiver</span>
+</div>
+
+<!-- 10: Glasses with circuit pattern -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="g10" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#g10)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<circle cx="92" cy="104" r="34" fill="none" stroke="#fff" stroke-width="7" opacity="0.8"/>
+<circle cx="164" cy="104" r="34" fill="none" stroke="#fff" stroke-width="7" opacity="0.8"/>
+<line x1="126" y1="98" x2="130" y2="98" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+<line x1="58" y1="96" x2="38" y2="90" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.45"/>
+<line x1="198" y1="96" x2="218" y2="90" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.45"/>
+<!-- Circuit traces coming off frames -->
+<line x1="92" y1="70" x2="92" y2="56" stroke="#A5BC39" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+<line x1="92" y1="56" x2="112" y2="56" stroke="#A5BC39" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+<circle cx="112" cy="56" r="3" fill="#A5BC39" opacity="0.6"/>
+<line x1="164" y1="70" x2="164" y2="52" stroke="#A5BC39" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+<circle cx="164" cy="52" r="3" fill="#A5BC39" opacity="0.5"/>
+<line x1="58" y1="112" x2="44" y2="112" stroke="#A5BC39" stroke-width="2.5" stroke-linecap="round" opacity="0.35"/>
+<line x1="44" y1="112" x2="44" y2="128" stroke="#A5BC39" stroke-width="2.5" stroke-linecap="round" opacity="0.35"/>
+<circle cx="44" cy="128" r="3" fill="#A5BC39" opacity="0.4"/>
+<line x1="198" y1="114" x2="214" y2="114" stroke="#A5BC39" stroke-width="2.5" stroke-linecap="round" opacity="0.3"/>
+<circle cx="214" cy="114" r="3" fill="#A5BC39" opacity="0.35"/>
+</svg>
+<span class="name">Circuit Traces</span>
+<span class="sub">Wired brain</span>
+</div>
+
+<!-- 11: Wonky / mismatched -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="g11" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#g11)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Mismatched: circle + square -->
+<circle cx="88" cy="104" r="34" fill="none" stroke="#fff" stroke-width="7" opacity="0.8"/>
+<rect x="134" y="76" width="60" height="56" rx="6" fill="none" stroke="#fff" stroke-width="7" opacity="0.8"/>
+<line x1="122" y1="98" x2="134" y2="94" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.55"/>
+<line x1="54" y1="96" x2="36" y2="88" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+<line x1="194" y1="92" x2="214" y2="86" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+<circle cx="76" cy="92" r="4" fill="#A5BC39" opacity="0.5"/>
+<circle cx="148" cy="88" r="4" fill="#A5BC39" opacity="0.5"/>
+</svg>
+<span class="name">Mismatched</span>
+<span class="sub">Circle + square — a little unhinged</span>
+</div>
+
+<!-- 12: Thick horn-rimmed -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="g12" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#g12)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Thick top-heavy frames -->
+<path d="M58,88 L58,120 C58,132 72,140 92,140 C112,140 122,132 126,124" fill="none" stroke="#fff" stroke-width="5" opacity="0.6"/>
+<path d="M130,124 C134,132 144,140 164,140 C184,140 198,132 198,120 L198,88" fill="none" stroke="#fff" stroke-width="5" opacity="0.6"/>
+<!-- Thick top bar -->
+<path d="M38,86 L54,80 C60,78 68,76 92,76 C116,76 120,80 128,84 C136,80 140,76 164,76 C188,76 196,78 202,80 L218,86" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" opacity="0.85"/>
+<circle cx="80" cy="90" r="3.5" fill="#A5BC39" opacity="0.5"/>
+<circle cx="154" cy="90" r="3.5" fill="#A5BC39" opacity="0.5"/>
+</svg>
+<span class="name">Browline</span>
+<span class="sub">Mad Men energy</span>
+</div>
+
+</div>
+
+<div class="row">
+
+<!-- 13: Eyes visible through glasses -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="g13" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#g13)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<circle cx="92" cy="104" r="34" fill="none" stroke="#fff" stroke-width="7" opacity="0.8"/>
+<circle cx="164" cy="104" r="34" fill="none" stroke="#fff" stroke-width="7" opacity="0.8"/>
+<line x1="126" y1="98" x2="130" y2="98" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+<line x1="58" y1="96" x2="38" y2="90" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.45"/>
+<line x1="198" y1="96" x2="218" y2="90" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.45"/>
+<!-- Eyes looking sideways (suspicious) -->
+<circle cx="96" cy="104" r="10" fill="#fff" opacity="0.3"/>
+<circle cx="99" cy="104" r="5" fill="#A5BC39"/>
+<circle cx="168" cy="104" r="10" fill="#fff" opacity="0.3"/>
+<circle cx="171" cy="104" r="5" fill="#A5BC39"/>
+<!-- Eyebrow raise -->
+<path d="M64,72 C74,62 108,62 120,72" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity="0.35"/>
+<path d="M136,68 C148,60 182,60 192,68" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity="0.35"/>
+</svg>
+<span class="name">Side-Eye</span>
+<span class="sub">Suspicious Tony is watching</span>
+</div>
+
+<!-- 14: Glasses + clipboard subtle -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="g14" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#g14)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Subtle clipboard behind -->
+<rect x="160" y="136" width="56" height="76" rx="6" fill="none" stroke="#fff" stroke-width="3" opacity="0.15"/>
+<rect x="172" y="130" width="32" height="12" rx="4" fill="#fff" opacity="0.12"/>
+<line x1="172" y1="158" x2="204" y2="158" stroke="#A5BC39" stroke-width="2.5" stroke-linecap="round" opacity="0.3"/>
+<line x1="172" y1="170" x2="196" y2="170" stroke="#A5BC39" stroke-width="2.5" stroke-linecap="round" opacity="0.2"/>
+<line x1="172" y1="182" x2="200" y2="182" stroke="#A5BC39" stroke-width="2.5" stroke-linecap="round" opacity="0.15"/>
+<!-- Glasses -->
+<circle cx="92" cy="100" r="34" fill="none" stroke="#fff" stroke-width="7" opacity="0.8"/>
+<circle cx="164" cy="100" r="34" fill="none" stroke="#fff" stroke-width="7" opacity="0.8"/>
+<line x1="126" y1="94" x2="130" y2="94" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+<line x1="58" y1="92" x2="38" y2="86" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.45"/>
+<line x1="198" y1="92" x2="218" y2="86" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.45"/>
+<circle cx="78" cy="88" r="4" fill="#A5BC39" opacity="0.5"/>
+<circle cx="150" cy="88" r="4" fill="#A5BC39" opacity="0.5"/>
+</svg>
+<span class="name">Clipboard Peek</span>
+<span class="sub">Checklist hiding behind</span>
+</div>
+
+<!-- 15: Cat-eye / upswept frames -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="g15" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#g15)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Cat-eye frames -->
+<path d="M56,112 C56,90 70,78 92,78 C114,78 122,86 128,96 C134,86 142,78 164,78 C186,78 200,90 200,112 C200,128 186,140 164,140 C142,140 134,130 128,120 C122,130 114,140 92,140 C70,140 56,128 56,112 Z" fill="none" stroke="#fff" stroke-width="6" opacity="0.8"/>
+<!-- Cat-eye kicks -->
+<line x1="56" y1="92" x2="42" y2="80" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.7"/>
+<line x1="200" y1="92" x2="214" y2="80" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.7"/>
+<circle cx="78" cy="100" r="3.5" fill="#A5BC39" opacity="0.5"/>
+<circle cx="152" cy="100" r="3.5" fill="#A5BC39" opacity="0.5"/>
+</svg>
+<span class="name">Cat-Eye</span>
+<span class="sub">Sassy librarian</span>
+</div>
+
+<!-- 16: Double bridge / engineer -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="g16" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#g16)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<circle cx="92" cy="106" r="34" fill="none" stroke="#fff" stroke-width="6" opacity="0.8"/>
+<circle cx="164" cy="106" r="34" fill="none" stroke="#fff" stroke-width="6" opacity="0.8"/>
+<!-- Double bridge -->
+<line x1="122" y1="94" x2="134" y2="94" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<line x1="120" y1="104" x2="136" y2="104" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+<!-- Top bar connecting both -->
+<path d="M58,82 L92,72 L128,78 L164,72 L198,82" fill="none" stroke="#A5BC39" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<line x1="58" y1="98" x2="38" y2="90" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+<line x1="198" y1="98" x2="218" y2="90" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+<circle cx="78" cy="94" r="3.5" fill="#A5BC39" opacity="0.5"/>
+<circle cx="150" cy="94" r="3.5" fill="#A5BC39" opacity="0.5"/>
+</svg>
+<span class="name">Engineer</span>
+<span class="sub">Double bridge + brow bar</span>
+</div>
+
+<!-- 17: Spiral/crazy eyes -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="g17" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#g17)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<circle cx="92" cy="104" r="34" fill="none" stroke="#fff" stroke-width="7" opacity="0.8"/>
+<circle cx="164" cy="104" r="34" fill="none" stroke="#fff" stroke-width="7" opacity="0.8"/>
+<line x1="126" y1="98" x2="130" y2="98" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+<line x1="58" y1="96" x2="38" y2="90" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.45"/>
+<line x1="198" y1="96" x2="218" y2="90" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.45"/>
+<!-- Spiral in left lens -->
+<path d="M92,104 C92,98 98,94 104,96 C108,98 110,104 106,108 C102,112 94,110 92,106" fill="none" stroke="#A5BC39" stroke-width="2.5" opacity="0.7"/>
+<!-- Spiral in right lens -->
+<path d="M164,104 C164,98 170,94 176,96 C180,98 182,104 178,108 C174,112 166,110 164,106" fill="none" stroke="#A5BC39" stroke-width="2.5" opacity="0.6"/>
+</svg>
+<span class="name">Hypno</span>
+<span class="sub">Spirals — process-obsessed</span>
+</div>
+
+<!-- 18: Glowing lenses -->
+<div class="cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs>
+<linearGradient id="g18" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient>
+<radialGradient id="glow1" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#A5BC39" stop-opacity="0.3"/><stop offset="100%" stop-color="#A5BC39" stop-opacity="0"/></radialGradient>
+<radialGradient id="glow2" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#A5BC39" stop-opacity="0.25"/><stop offset="100%" stop-color="#A5BC39" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="256" height="256" rx="44" fill="url(#g18)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Glow behind lenses -->
+<circle cx="92" cy="104" r="46" fill="url(#glow1)"/>
+<circle cx="164" cy="104" r="46" fill="url(#glow2)"/>
+<!-- Frames -->
+<circle cx="92" cy="104" r="34" fill="none" stroke="#A5BC39" stroke-width="5" opacity="0.7"/>
+<circle cx="164" cy="104" r="34" fill="none" stroke="#A5BC39" stroke-width="5" opacity="0.7"/>
+<line x1="126" y1="98" x2="130" y2="98" stroke="#A5BC39" stroke-width="5" stroke-linecap="round" opacity="0.5"/>
+<line x1="58" y1="96" x2="38" y2="90" stroke="#A5BC39" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+<line x1="198" y1="96" x2="218" y2="90" stroke="#A5BC39" stroke-width="5" stroke-linecap="round" opacity="0.4"/>
+<!-- Bright center dots -->
+<circle cx="92" cy="104" r="4" fill="#A5BC39" opacity="0.8"/>
+<circle cx="164" cy="104" r="4" fill="#A5BC39" opacity="0.7"/>
+</svg>
+<span class="name">Glowing</span>
+<span class="sub">Night vision / active scanning</span>
+</div>
+
+</div>
+</div>
+
+<hr/>
+
+<!-- ---- SIZE LADDERS for favorites ---- -->
+<div class="section">
+<div class="section-label">Size Ladders — Favorites</div>
+
+<div style="display:flex;gap:4rem;flex-wrap:wrap;justify-content:center">
+
+<!-- Sparkle Eyes sizes -->
+<div>
+<div style="font-size:.55rem;color:#555;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1rem;text-align:center">AI Sparkle Eyes</div>
+<div class="sizes">
+<div class="cell"><svg width="96" height="96" viewBox="0 0 256 256"><defs><linearGradient id="ss1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#ss1)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><circle cx="92" cy="104" r="34" fill="none" stroke="#fff" stroke-width="7" opacity="0.8"/><circle cx="164" cy="104" r="34" fill="none" stroke="#fff" stroke-width="7" opacity="0.8"/><line x1="126" y1="98" x2="130" y2="98" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.6"/><line x1="58" y1="96" x2="38" y2="90" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.45"/><line x1="198" y1="96" x2="218" y2="90" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.45"/><g transform="translate(92,104)"><path d="M0 -12 L3 -4 L12 0 L3 4 L0 12 L-3 4 L-12 0 L-3 -4 Z" fill="#A5BC39" opacity="0.8"/></g><g transform="translate(164,100)"><path d="M0 -8 L2 -3 L8 0 L2 3 L0 8 L-2 3 L-8 0 L-2 -3 Z" fill="#A5BC39" opacity="0.5"/></g></svg><span class="sub">96</span></div>
+<div class="cell"><svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="#10131A"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><circle cx="92" cy="104" r="34" fill="none" stroke="#fff" stroke-width="7" opacity="0.8"/><circle cx="164" cy="104" r="34" fill="none" stroke="#fff" stroke-width="7" opacity="0.8"/><line x1="126" y1="98" x2="130" y2="98" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.6"/><line x1="58" y1="96" x2="38" y2="90" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.45"/><line x1="198" y1="96" x2="218" y2="90" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.45"/><g transform="translate(92,104)"><path d="M0 -12 L3 -4 L12 0 L3 4 L0 12 L-3 4 L-12 0 L-3 -4 Z" fill="#A5BC39" opacity="0.8"/></g><g transform="translate(164,100)"><path d="M0 -8 L2 -3 L8 0 L2 3 L0 8 L-2 3 L-8 0 L-2 -3 Z" fill="#A5BC39" opacity="0.5"/></g></svg><span class="sub">52</span></div>
+<div class="cell"><svg width="32" height="32" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="#10131A"/><circle cx="92" cy="104" r="34" fill="none" stroke="#fff" stroke-width="8" opacity="0.8"/><circle cx="164" cy="104" r="34" fill="none" stroke="#fff" stroke-width="8" opacity="0.8"/><g transform="translate(92,104)"><path d="M0 -12 L3 -4 L12 0 L3 4 L0 12 L-3 4 L-12 0 L-3 -4 Z" fill="#A5BC39" opacity="0.8"/></g><g transform="translate(164,100)"><path d="M0 -8 L2 -3 L8 0 L2 3 L0 8 L-2 3 L-8 0 L-2 -3 Z" fill="#A5BC39" opacity="0.5"/></g></svg><span class="sub">32</span></div>
+<div class="cell"><svg width="16" height="16" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="#10131A"/><circle cx="92" cy="104" r="36" fill="none" stroke="#fff" stroke-width="10" opacity="0.8"/><circle cx="164" cy="104" r="36" fill="none" stroke="#fff" stroke-width="10" opacity="0.8"/><g transform="translate(92,104)"><path d="M0 -14 L4 -5 L14 0 L4 5 L0 14 L-4 5 L-14 0 L-4 -5 Z" fill="#A5BC39"/></g></svg><span class="sub">16</span></div>
+</div>
+</div>
+
+<!-- Side-Eye sizes -->
+<div>
+<div style="font-size:.55rem;color:#555;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1rem;text-align:center">Side-Eye</div>
+<div class="sizes">
+<div class="cell"><svg width="96" height="96" viewBox="0 0 256 256"><defs><linearGradient id="ss2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs><rect width="256" height="256" rx="44" fill="url(#ss2)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><circle cx="92" cy="104" r="34" fill="none" stroke="#fff" stroke-width="7" opacity="0.8"/><circle cx="164" cy="104" r="34" fill="none" stroke="#fff" stroke-width="7" opacity="0.8"/><line x1="126" y1="98" x2="130" y2="98" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.6"/><line x1="58" y1="96" x2="38" y2="90" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.45"/><line x1="198" y1="96" x2="218" y2="90" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.45"/><circle cx="96" cy="104" r="10" fill="#fff" opacity="0.3"/><circle cx="99" cy="104" r="5" fill="#A5BC39"/><circle cx="168" cy="104" r="10" fill="#fff" opacity="0.3"/><circle cx="171" cy="104" r="5" fill="#A5BC39"/><path d="M64,72 C74,62 108,62 120,72" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity="0.35"/><path d="M136,68 C148,60 182,60 192,68" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity="0.35"/></svg><span class="sub">96</span></div>
+<div class="cell"><svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="#10131A"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><circle cx="92" cy="104" r="34" fill="none" stroke="#fff" stroke-width="7" opacity="0.8"/><circle cx="164" cy="104" r="34" fill="none" stroke="#fff" stroke-width="7" opacity="0.8"/><line x1="126" y1="98" x2="130" y2="98" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.6"/><line x1="58" y1="96" x2="38" y2="90" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.45"/><line x1="198" y1="96" x2="218" y2="90" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.45"/><circle cx="96" cy="104" r="10" fill="#fff" opacity="0.3"/><circle cx="99" cy="104" r="5" fill="#A5BC39"/><circle cx="168" cy="104" r="10" fill="#fff" opacity="0.3"/><circle cx="171" cy="104" r="5" fill="#A5BC39"/></svg><span class="sub">52</span></div>
+<div class="cell"><svg width="32" height="32" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="#10131A"/><circle cx="92" cy="104" r="34" fill="none" stroke="#fff" stroke-width="8" opacity="0.8"/><circle cx="164" cy="104" r="34" fill="none" stroke="#fff" stroke-width="8" opacity="0.8"/><circle cx="96" cy="104" r="10" fill="#fff" opacity="0.3"/><circle cx="99" cy="104" r="5" fill="#A5BC39"/><circle cx="168" cy="104" r="10" fill="#fff" opacity="0.3"/><circle cx="171" cy="104" r="5" fill="#A5BC39"/></svg><span class="sub">32</span></div>
+<div class="cell"><svg width="16" height="16" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="#10131A"/><circle cx="92" cy="104" r="36" fill="none" stroke="#fff" stroke-width="10" opacity="0.8"/><circle cx="164" cy="104" r="36" fill="none" stroke="#fff" stroke-width="10" opacity="0.8"/><circle cx="98" cy="104" r="8" fill="#A5BC39"/><circle cx="170" cy="104" r="8" fill="#A5BC39"/></svg><span class="sub">16</span></div>
+</div>
+</div>
+
+<!-- Glowing sizes -->
+<div>
+<div style="font-size:.55rem;color:#555;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1rem;text-align:center">Glowing</div>
+<div class="sizes">
+<div class="cell"><svg width="96" height="96" viewBox="0 0 256 256"><defs><linearGradient id="ss3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient><radialGradient id="gls1" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#A5BC39" stop-opacity="0.3"/><stop offset="100%" stop-color="#A5BC39" stop-opacity="0"/></radialGradient><radialGradient id="gls2" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#A5BC39" stop-opacity="0.25"/><stop offset="100%" stop-color="#A5BC39" stop-opacity="0"/></radialGradient></defs><rect width="256" height="256" rx="44" fill="url(#ss3)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><circle cx="92" cy="104" r="46" fill="url(#gls1)"/><circle cx="164" cy="104" r="46" fill="url(#gls2)"/><circle cx="92" cy="104" r="34" fill="none" stroke="#A5BC39" stroke-width="5" opacity="0.7"/><circle cx="164" cy="104" r="34" fill="none" stroke="#A5BC39" stroke-width="5" opacity="0.7"/><line x1="126" y1="98" x2="130" y2="98" stroke="#A5BC39" stroke-width="5" stroke-linecap="round" opacity="0.5"/><line x1="58" y1="96" x2="38" y2="90" stroke="#A5BC39" stroke-width="5" stroke-linecap="round" opacity="0.4"/><line x1="198" y1="96" x2="218" y2="90" stroke="#A5BC39" stroke-width="5" stroke-linecap="round" opacity="0.4"/><circle cx="92" cy="104" r="4" fill="#A5BC39" opacity="0.8"/><circle cx="164" cy="104" r="4" fill="#A5BC39" opacity="0.7"/></svg><span class="sub">96</span></div>
+<div class="cell"><svg width="52" height="52" viewBox="0 0 256 256"><defs><radialGradient id="gls3" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#A5BC39" stop-opacity="0.3"/><stop offset="100%" stop-color="#A5BC39" stop-opacity="0"/></radialGradient><radialGradient id="gls4" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#A5BC39" stop-opacity="0.25"/><stop offset="100%" stop-color="#A5BC39" stop-opacity="0"/></radialGradient></defs><rect width="256" height="256" rx="44" fill="#10131A"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><circle cx="92" cy="104" r="46" fill="url(#gls3)"/><circle cx="164" cy="104" r="46" fill="url(#gls4)"/><circle cx="92" cy="104" r="34" fill="none" stroke="#A5BC39" stroke-width="5" opacity="0.7"/><circle cx="164" cy="104" r="34" fill="none" stroke="#A5BC39" stroke-width="5" opacity="0.7"/><line x1="126" y1="98" x2="130" y2="98" stroke="#A5BC39" stroke-width="5" stroke-linecap="round" opacity="0.5"/><line x1="58" y1="96" x2="38" y2="90" stroke="#A5BC39" stroke-width="5" stroke-linecap="round" opacity="0.4"/><line x1="198" y1="96" x2="218" y2="90" stroke="#A5BC39" stroke-width="5" stroke-linecap="round" opacity="0.4"/><circle cx="92" cy="104" r="4" fill="#A5BC39" opacity="0.8"/><circle cx="164" cy="104" r="4" fill="#A5BC39" opacity="0.7"/></svg><span class="sub">52</span></div>
+<div class="cell"><svg width="32" height="32" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="#10131A"/><circle cx="92" cy="104" r="34" fill="none" stroke="#A5BC39" stroke-width="6" opacity="0.7"/><circle cx="164" cy="104" r="34" fill="none" stroke="#A5BC39" stroke-width="6" opacity="0.7"/><circle cx="92" cy="104" r="4" fill="#A5BC39" opacity="0.9"/><circle cx="164" cy="104" r="4" fill="#A5BC39" opacity="0.8"/></svg><span class="sub">32</span></div>
+<div class="cell"><svg width="16" height="16" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="#10131A"/><circle cx="92" cy="104" r="36" fill="none" stroke="#A5BC39" stroke-width="8" opacity="0.7"/><circle cx="164" cy="104" r="36" fill="none" stroke="#A5BC39" stroke-width="8" opacity="0.7"/><circle cx="92" cy="104" r="6" fill="#A5BC39"/><circle cx="164" cy="104" r="6" fill="#A5BC39" opacity="0.9"/><path d="M128,160 C112,160 96,168 80,158 C64,148 60,158 72,164 C84,170 100,164 114,160 L128,164 L142,160 C156,164 172,170 184,164 C196,158 192,148 176,158 C160,168 144,160 128,160 Z" fill="#fff" opacity="0.6"/></svg><span class="sub">16</span></div>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+</body>
+</html>

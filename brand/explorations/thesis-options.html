@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thesis Slide — Options</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+
+  :root {
+    --bg-deep: #080A0E;
+    --bg-card: #0E1117;
+    --green: #A5BC39;
+    --white: #E8ECF1;
+    --mid: #8B919A;
+    --dim: #555D6A;
+    --mute: #3A4150;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Instrument Sans', system-ui, sans-serif;
+    background: var(--bg-deep);
+    color: var(--white);
+    padding: 36px;
+    min-height: 100vh;
+  }
+
+  .page-title {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 28px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1600px;
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255,255,255,0.04);
+    border-radius: 8px;
+    aspect-ratio: 16 / 9;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .card-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10% 8%;
+  }
+
+  .card-inner.left {
+    justify-content: flex-start;
+  }
+
+  .tag {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--mute);
+    text-transform: uppercase;
+    z-index: 2;
+  }
+
+  /* Responsive text sizing using container-relative units */
+  .card { container-type: inline-size; }
+
+  .t-xl  { font-size: clamp(20px, 8.5cqi, 68px); }
+  .t-lg  { font-size: clamp(18px, 6.5cqi, 52px); }
+  .t-md  { font-size: clamp(14px, 4.5cqi, 36px); }
+  .t-sm  { font-size: clamp(10px, 3cqi, 24px); }
+  .t-xs  { font-size: clamp(8px, 2cqi, 16px); }
+</style>
+</head>
+<body>
+
+<div class="page-title">Thesis — 6 Treatments</div>
+
+<div class="grid">
+
+  <!-- A: Centered, uniform weight, green accents -->
+  <div class="card">
+    <span class="tag">A</span>
+    <div class="card-inner" style="flex-direction:column;text-align:center;gap:0;">
+      <div class="t-lg" style="font-weight:600;color:var(--white);line-height:1.3;">
+        Businesses that flourish<br>
+        in the <span style="color:var(--green);">AI era</span> will be<br>
+        <span style="color:var(--green);">software-first.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- B: Like C but left-aligned -->
+  <div class="card">
+    <span class="tag">B</span>
+    <div class="card-inner left" style="flex-direction:column;gap:0;">
+      <div class="t-lg" style="font-weight:600;color:var(--white);line-height:1.35;">
+        Businesses that flourish<br>
+        in the AI era will be<br>
+        <span style="color:var(--green);">software-first.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- C: Centered, all white, only software-first in green -->
+  <div class="card">
+    <span class="tag">C</span>
+    <div class="card-inner" style="flex-direction:column;text-align:center;gap:0;">
+      <div class="t-lg" style="font-weight:600;color:var(--white);line-height:1.35;">
+        Businesses that flourish<br>
+        in the AI era will be<br>
+        <span style="color:var(--green);">software-first.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- D: C but software-first breaks bigger -->
+  <div class="card">
+    <span class="tag">D</span>
+    <div class="card-inner" style="flex-direction:column;text-align:center;gap:0;">
+      <div class="t-md" style="font-weight:600;color:var(--white);line-height:1.35;">
+        Businesses that flourish<br>
+        in the AI era will be
+      </div>
+      <div class="t-xl" style="font-weight:700;color:var(--green);letter-spacing:-0.03em;line-height:1;margin-top:4%;">
+        software-first.
+      </div>
+    </div>
+  </div>
+
+  <!-- E: C but with AI era also green -->
+  <div class="card">
+    <span class="tag">E</span>
+    <div class="card-inner" style="flex-direction:column;text-align:center;gap:0;">
+      <div class="t-lg" style="font-weight:600;color:var(--white);line-height:1.35;">
+        Businesses that flourish<br>
+        in the <span style="color:var(--green);">AI era</span> will be<br>
+        <span style="color:var(--green);">software-first.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- F: Left-aligned with accent bar -->
+  <div class="card">
+    <span class="tag">F</span>
+    <div class="card-inner left" style="gap:5%;">
+      <div style="width:3px;align-self:stretch;background:linear-gradient(to bottom,var(--green),rgba(165,188,57,0.1));border-radius:2px;flex-shrink:0;"></div>
+      <div style="display:flex;flex-direction:column;justify-content:center;gap:3%;">
+        <div class="t-md" style="font-weight:400;color:var(--dim);line-height:1.4;">
+          Businesses that flourish<br>in the AI era will be
+        </div>
+        <div class="t-lg" style="font-weight:700;color:var(--white);letter-spacing:-0.02em;line-height:1.1;">
+          software-first.
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

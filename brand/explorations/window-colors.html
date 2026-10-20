@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Upland Workshop — Window Colors</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:"Instrument Sans",system-ui,sans-serif;
+  background:#08070a;color:#b8b5bc;
+  height:100vh;overflow:hidden;
+}
+.layout{display:grid;grid-template-columns:370px 1fr;height:100vh}
+
+/* ── Panel ── */
+.panel{
+  background:#0d0c10;
+  border-right:1px solid rgba(255,255,255,0.04);
+  display:flex;flex-direction:column;overflow:hidden;
+}
+.panel-head{padding:1.5rem 1.25rem 1rem;border-bottom:1px solid rgba(255,255,255,0.04)}
+.panel-label{font-size:.55rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#a5bc39;margin-bottom:.3rem}
+.panel-title{font-size:1.15rem;font-weight:500;color:#e8e6ec}
+.panel-body{flex:1;overflow-y:auto;padding:.5rem 0}
+.panel-foot{
+  padding:.75rem 1.25rem;
+  border-top:1px solid rgba(255,255,255,0.04);
+  display:flex;gap:.4rem;flex-wrap:wrap;
+}
+
+/* ── App Row ── */
+.app-row{padding:.6rem 1.25rem;transition:background .15s}
+.app-row:hover{background:rgba(255,255,255,0.02)}
+.app-row.hl{background:rgba(165,188,57,0.04)}
+.app-top{display:flex;align-items:center;gap:.5rem;margin-bottom:.35rem}
+.app-check{
+  appearance:none;-webkit-appearance:none;
+  width:15px;height:15px;border:1.5px solid rgba(255,255,255,0.15);
+  border-radius:3px;cursor:pointer;flex-shrink:0;position:relative;transition:all .15s;
+}
+.app-check:checked{background:#a5bc39;border-color:#a5bc39}
+.app-check:checked::after{content:"✓";position:absolute;top:-2px;left:1.5px;font-size:11px;font-weight:700;color:#0d0c10}
+.app-icon{width:22px;height:22px;border-radius:5px;flex-shrink:0}
+.app-letter{
+  width:22px;height:22px;border-radius:5px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,0.04);font-size:10px;font-weight:700;color:#555;
+}
+.app-name{font-weight:600;font-size:.8rem;color:#d8d5dc;flex:1;white-space:nowrap}
+.app-swatch{width:28px;height:16px;border-radius:3px;border:1px solid rgba(255,255,255,0.06);flex-shrink:0}
+.app-hex{
+  font-family:"JetBrains Mono",monospace;font-size:.6rem;color:#555;
+  width:56px;text-align:right;flex-shrink:0;cursor:pointer;transition:color .15s;
+  user-select:all;
+}
+.app-hex:hover{color:#999}
+.app-hex.copied{color:#a5bc39!important}
+.app-sliders{display:flex;gap:.4rem;padding-left:calc(15px + 22px + 1rem)}
+.slider-wrap{flex:1}
+.slider-lbl{font-size:.45rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#333;margin-bottom:2px}
+input[type="range"]{
+  -webkit-appearance:none;appearance:none;
+  width:100%;height:5px;border-radius:3px;outline:none;cursor:pointer;background:#1a1920;
+}
+input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:12px;height:12px;border-radius:50%;
+  background:#ddd;border:2px solid rgba(0,0,0,0.5);margin-top:-3.5px;
+  box-shadow:0 1px 4px rgba(0,0,0,0.5);
+}
+input[type="range"]::-moz-range-thumb{
+  width:12px;height:12px;border-radius:50%;
+  background:#ddd;border:2px solid rgba(0,0,0,0.5);
+  box-shadow:0 1px 4px rgba(0,0,0,0.5);
+}
+.hue-track{
+  background:linear-gradient(to right,
+    hsl(0,100%,50%),hsl(30,100%,50%),hsl(60,100%,50%),hsl(90,100%,50%),
+    hsl(120,100%,50%),hsl(150,100%,50%),hsl(180,100%,50%),hsl(210,100%,50%),
+    hsl(240,100%,50%),hsl(270,100%,50%),hsl(300,100%,50%),hsl(330,100%,50%),
+    hsl(360,100%,50%))!important;
+}
+
+/* ── Workspace ── */
+.workspace{display:flex;flex-direction:column;overflow:hidden}
+.ws-head{
+  padding:.85rem 1.5rem;display:flex;justify-content:space-between;align-items:center;
+  border-bottom:1px solid rgba(255,255,255,0.03);
+}
+.ws-label{font-size:.55rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#2a2830}
+.ws-count{font-size:.55rem;color:#222;margin-left:.5rem;font-weight:400;letter-spacing:0}
+.ws-actions{display:flex;gap:.4rem}
+.ws-body{
+  flex:1;overflow:auto;padding:1.25rem;
+  background:#050409;
+  background-image:
+    radial-gradient(circle at 20% 50%,rgba(165,188,57,0.012) 0%,transparent 50%),
+    radial-gradient(circle at 80% 30%,rgba(107,160,204,0.008) 0%,transparent 50%);
+}
+.ws-empty{display:flex;align-items:center;justify-content:center;height:100%;color:#1a1920;font-size:.85rem}
+.term-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:1rem;align-content:start}
+
+/* ── Terminal ── */
+.term{
+  border-radius:10px;overflow:hidden;
+  box-shadow:0 8px 32px rgba(0,0,0,0.4),0 0 0 1px rgba(255,255,255,0.035);
+  transition:box-shadow .2s,transform .2s;
+}
+.term:hover{box-shadow:0 12px 40px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.05);transform:translateY(-2px)}
+.term.hl{box-shadow:0 0 0 1.5px var(--accent,#a5bc39),0 12px 40px rgba(0,0,0,0.5)}
+.term-bar{height:32px;display:flex;align-items:center;padding:0 12px;gap:7px;position:relative}
+.dot{width:11px;height:11px;border-radius:50%}
+.dot-r{background:#ff5f57}.dot-y{background:#febc2e}.dot-g{background:#28c840}
+.term-title{
+  position:absolute;left:0;right:0;text-align:center;
+  font-family:"JetBrains Mono",monospace;font-size:10.5px;font-weight:500;
+  color:rgba(255,255,255,0.3);pointer-events:none;
+}
+.term-body{
+  padding:10px 14px 14px;font-family:"JetBrains Mono",monospace;
+  font-size:10.5px;line-height:1.55;min-height:270px;
+  white-space:pre-wrap;overflow:hidden;
+}
+.term-body .p{color:rgba(255,255,255,0.4)}
+.term-body .c{color:rgba(255,255,255,0.8)}
+.term-body .o{color:rgba(255,255,255,0.5)}
+.term-body .d{color:rgba(255,255,255,0.22)}
+.term-body .b{color:#a5bc39}
+.term-body .i{color:#6ba0cc}
+.term-body .w{color:#d9a634}
+.term-body .a{color:var(--accent,#a5bc39)}
+.cursor{display:inline-block;width:7px;height:14px;background:var(--accent,#a5bc39);opacity:.7;animation:blink 1.2s step-end infinite;vertical-align:text-bottom}
+@keyframes blink{0%,100%{opacity:.7}50%{opacity:0}}
+
+/* ── Buttons ── */
+.btn{
+  font-family:"Instrument Sans",system-ui,sans-serif;font-size:.6rem;font-weight:600;
+  letter-spacing:.04em;padding:.3rem .6rem;border-radius:4px;
+  border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.03);
+  color:#555;cursor:pointer;transition:all .15s;white-space:nowrap;
+}
+.btn:hover{background:rgba(255,255,255,0.06);color:#aaa}
+.btn.on{background:rgba(165,188,57,0.1);border-color:rgba(165,188,57,0.2);color:#a5bc39}
+
+/* ── Modal ── */
+.modal-bg{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);
+  backdrop-filter:blur(4px);z-index:100;align-items:center;justify-content:center;
+}
+.modal-bg.open{display:flex}
+.modal{
+  background:#12111a;border:1px solid rgba(255,255,255,0.06);border-radius:12px;
+  padding:1.75rem;max-width:700px;width:92%;max-height:80vh;overflow-y:auto;
+}
+.modal h2{font-size:.95rem;font-weight:500;color:#eee;margin-bottom:.2rem}
+.modal p{font-size:.7rem;color:#555;margin-bottom:1rem}
+.modal pre{
+  font-family:"JetBrains Mono",monospace;font-size:.7rem;line-height:1.7;
+  background:#0a090e;padding:1rem;border-radius:6px;
+  border:1px solid rgba(255,255,255,0.04);color:#b0adb5;overflow-x:auto;white-space:pre;
+}
+.modal .btn-row{display:flex;gap:.5rem;justify-content:flex-end;margin-top:1rem}
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside class="panel">
+    <div class="panel-head">
+      <div class="panel-label">Upland Workshop</div>
+      <div class="panel-title">Window Colors</div>
+    </div>
+    <div class="panel-body" id="appList"></div>
+    <div class="panel-foot" id="presets"></div>
+  </aside>
+  <main class="workspace">
+    <div class="ws-head">
+      <span class="ws-label">Workspace Preview<span class="ws-count" id="wsCount"></span></span>
+      <div class="ws-actions">
+        <button class="btn" onclick="toggleAll(true)">Show All</button>
+        <button class="btn" onclick="toggleAll(false)">Clear</button>
+        <button class="btn" onclick="showExport()">Export Bash</button>
+      </div>
+    </div>
+    <div class="ws-body" id="workspace"></div>
+  </main>
+</div>
+<div class="modal-bg" id="modalBg" onclick="if(event.target===this)closeExport()">
+  <div class="modal">
+    <h2>Export Window Colors</h2>
+    <p>Bash function using OSC 11 escape sequences. Add to your shell profile and hook into <code>cd</code> or <code>PROMPT_COMMAND</code>.</p>
+    <pre id="exportCode"></pre>
+    <div class="btn-row">
+      <button class="btn" id="copyBtn" onclick="copyExport()">Copy to Clipboard</button>
+      <button class="btn" onclick="closeExport()">Close</button>
+    </div>
+  </div>
+</div>
+<script>
+// ── App State ──
+const apps = [
+  {id:'website',    name:'Website',     path:'~/upland',             icon:'../icons/website.svg',     hue:80,  sat:22, lgt:7,  visible:false},
+  {id:'odin',       name:'ODIN',        path:'~/upland-odin',        icon:'../icons/odin.svg',        hue:270, sat:35, lgt:8,  visible:true},
+  {id:'inquiries',  name:'Inquiry Hub', path:'~/upland-inquiries',   icon:'../icons/inquiry-hub.svg', hue:175, sat:25, lgt:7,  visible:false},
+  {id:'scheduler',  name:'Scheduler',   path:'~/upland-scheduler',   icon:'../icons/scheduler.svg',   hue:210, sat:28, lgt:7,  visible:true},
+  {id:'claire',     name:'Claire',      path:'~/upland-claire',      icon:'../icons/claire.svg',      hue:30,  sat:32, lgt:8,  visible:true},
+  {id:'quotes',     name:'Quotes',      path:'~/upland-quotes',      icon:'../icons/quotes.svg',      hue:48,  sat:28, lgt:7,  visible:true},
+  {id:'agreements', name:'Agreements',  path:'~/upland-agreements',  icon:'../icons/agreements.svg',  hue:155, sat:25, lgt:7,  visible:false},
+  {id:'tony',       name:'Tony',        path:'~/upland-tony',        icon:'../icons/tony.svg',        hue:8,   sat:32, lgt:8,  visible:true},
+  {id:'workshop',   name:'Workshop',    path:'~/upland-workshop',    icon:null,                       hue:80,  sat:10, lgt:6,  visible:false},
+];
+
+// ── Terminal Content ──
+const content = {
+website: `<span class="a">~/upland</span> <span class="b">(main)</span> <span class="p">$</span> <span class="c">python manage.py shell</span>
+<span class="d">Python 3.12.2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c">from orders.models import Order</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c">Order.objects.filter(status='active').count()</span>
+<span class="o">47</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c">Order.objects.latest('created_at').project_name</span>
+<span class="b">'Kansas City Zoo \u2014 Penguin Exhibit'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c">exit()</span>
+
+<span class="a">~/upland</span> <span class="b">(main)</span> <span class="p">$</span> <span class="c">git log --oneline -3</span>
+<span class="d">a3f9e21</span> <span class="o">Update shipping calculation logic</span>
+<span class="d">bc7d102</span> <span class="o">Fix order status email template</span>
+<span class="d">9e1f483</span> <span class="o">Add bulk export for invoices</span>
+
+<span class="a">~/upland</span> <span class="b">(main)</span> <span class="p">$</span> <span class="cursor"></span>`,
+
+odin: `<span class="a">~/upland-odin</span> <span class="b">(main)</span> <span class="p">$</span> <span class="c">claude</span>
+<span class="d">\u256d\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256e</span>
+<span class="d">\u2502</span> <span class="a">\u25cf</span> Claude Code   <span class="d">v1.0.28 (opus)</span>                                  <span class="d">\u2502</span>
+<span class="d">\u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f</span>
+
+<span class="o">&gt;</span> show me the auth middleware
+
+<span class="a">\u23fa</span> Reading <span class="i">src/functions/middleware/auth.ts</span>
+
+  <span class="o">The auth middleware validates JWT tokens from</span>
+  <span class="o">the shared Turso auth database.</span>
+
+<span class="a">\u23fa</span> <span class="d">3 files read</span>
+
+<span class="o">&gt;</span> <span class="cursor"></span>`,
+
+inquiries: `<span class="a">~/upland-inquiries</span> <span class="b">(main)</span> <span class="p">$</span> <span class="c">netlify dev</span>
+<span class="d">\u25c8 Netlify Dev \u25c8</span>
+<span class="d">\u25c8</span> Functions: <span class="d">/.netlify/functions/api</span>
+<span class="d">\u25c8</span> Ready on <span class="i">http://localhost:3001</span>
+
+  <span class="b">GET</span>  <span class="o">/api/inquiries?status=new</span>       <span class="b">200</span>  <span class="d">6ms</span>
+  <span class="b">POST</span> <span class="o">/api/inquiries</span>                 <span class="b">201</span>  <span class="d">23ms</span>
+  <span class="b">GET</span>  <span class="o">/api/inquiries/INQ-0891</span>        <span class="b">200</span>  <span class="d">4ms</span>
+  <span class="b">POST</span> <span class="o">/api/inquiries/INQ-0891/reply</span>  <span class="b">201</span>  <span class="w">1.2s</span>
+  <span class="b">GET</span>  <span class="o">/api/inquiries?status=new</span>       <span class="b">200</span>  <span class="d">5ms</span>
+  <span class="b">GET</span>  <span class="o">/api/inquiries/INQ-0892</span>        <span class="b">200</span>  <span class="d">3ms</span>
+
+
+`,
+
+scheduler: `<span class="a">~/upland-scheduler</span> <span class="b">(main)</span> <span class="p">$</span> <span class="c">claude</span>
+<span class="d">\u256d\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256e</span>
+<span class="d">\u2502</span> <span class="a">\u25cf</span> Claude Code   <span class="d">v1.0.28 (opus)</span>                                  <span class="d">\u2502</span>
+<span class="d">\u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f</span>
+
+<span class="o">&gt;</span> update the gantt chart date range
+
+<span class="a">\u23fa</span> Reading <span class="i">src/client/components/gantt.ts</span>
+
+  <span class="o">I'll modify the date range calculation to</span>
+  <span class="o">support multi-year projects.</span>
+
+<span class="a">\u23fa</span> Editing <span class="i">src/client/components/gantt.ts</span>
+
+  <span class="b">\u2713</span> <span class="o">Updated dateRange() with optional bounds</span>
+
+<span class="o">&gt;</span> <span class="cursor"></span>`,
+
+claire: `<span class="a">~/upland-claire</span> <span class="b">(main)</span> <span class="p">$</span> <span class="c">npm run dev</span>
+
+  <span class="a">\u279c</span> Local:   <span class="i">http://localhost:3003/</span>
+  <span class="d">\u279c</span> Fn:      <span class="d">/.netlify/functions/api</span>
+
+  <span class="a">\u26a1</span> esbuild: <span class="o">src/client/app.ts \u2192 148.2kb</span>
+
+  <span class="b">GET</span>  <span class="o">/api/panels/PNL-0023</span>          <span class="b">200</span>  <span class="d">8ms</span>
+  <span class="b">POST</span> <span class="o">/api/panels/PNL-0023/render</span>   <span class="b">201</span>  <span class="w">2.3s</span>
+  <span class="b">GET</span>  <span class="o">/api/panels/PNL-0023/preview</span>  <span class="b">200</span>  <span class="d">12ms</span>
+  <span class="b">POST</span> <span class="o">/api/panels/PNL-0024/render</span>   <span class="b">201</span>  <span class="w">1.8s</span>
+  <span class="b">GET</span>  <span class="o">/api/panels/PNL-0024/preview</span>  <span class="b">200</span>  <span class="d">9ms</span>
+
+`,
+
+quotes: `<span class="a">~/upland-quotes</span> <span class="b">(main)</span> <span class="p">$</span> <span class="c">claude</span>
+<span class="d">\u256d\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256e</span>
+<span class="d">\u2502</span> <span class="a">\u25cf</span> Claude Code   <span class="d">v1.0.28 (opus)</span>                                  <span class="d">\u2502</span>
+<span class="d">\u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f</span>
+
+<span class="o">&gt;</span> generate a quote for the KC Zoo project
+
+<span class="a">\u23fa</span> <span class="d">Searching knowledge base...</span>
+<span class="a">\u23fa</span> <span class="d">Found 3 similar past quotes</span>
+
+  <span class="o">Generating line items for:</span>
+  <span class="o">Kansas City Zoo \u2014 Penguin Exhibit</span>
+
+  <span class="b">\u2713</span> <span class="o">Quote</span> <span class="i">QUO-2026-0147</span> <span class="o">created</span>
+  <span class="b">\u2713</span> <span class="o">12 line items, total</span> <span class="b">$47,850.00</span>
+
+<span class="o">&gt;</span> <span class="cursor"></span>`,
+
+agreements: `<span class="a">~/upland-agreements</span> <span class="b">(main)</span> <span class="p">$</span> <span class="c">netlify dev</span>
+<span class="d">\u25c8 Netlify Dev \u25c8</span>
+<span class="d">\u25c8</span> Ready on <span class="i">http://localhost:3005</span>
+
+  <span class="b">GET</span>  <span class="o">/api/agreements</span>           <span class="b">200</span>  <span class="d">5ms</span>
+  <span class="b">GET</span>  <span class="o">/api/agreements/AGR-0082</span>  <span class="b">200</span>  <span class="d">8ms</span>
+  <span class="b">POST</span> <span class="o">/api/sign/AGR-0082</span>        <span class="b">201</span>  <span class="w">847ms</span>
+  <span class="b">POST</span> <span class="o">/api/pdf/AGR-0082</span>         <span class="b">201</span>  <span class="w">3.2s</span>
+
+  <span class="b">\u2713</span> <span class="o">PDF generated:</span> <span class="i">AGR-0082.pdf</span>
+
+  <span class="b">GET</span>  <span class="o">/api/agreements/AGR-0083</span>  <span class="b">200</span>  <span class="d">7ms</span>
+  <span class="b">POST</span> <span class="o">/api/sign/AGR-0083</span>        <span class="b">201</span>  <span class="w">912ms</span>
+
+`,
+
+tony: `<span class="a">~/upland-tony</span> <span class="b">(main)</span> <span class="p">$</span> <span class="c">claude</span>
+<span class="d">\u256d\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256e</span>
+<span class="d">\u2502</span> <span class="a">\u25cf</span> Claude Code   <span class="d">v1.0.28 (opus)</span>                                  <span class="d">\u2502</span>
+<span class="d">\u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f</span>
+
+<span class="o">&gt;</span> check the basecamp sync status
+
+<span class="a">\u23fa</span> Reading <span class="i">src/functions/routes/sync.ts</span>
+
+  <span class="o">Last sync:</span>       <span class="b">2 minutes ago</span>
+  <span class="o">Pending rules:</span>   <span class="w">3</span>
+  <span class="o">Active watchers:</span> <span class="o">12</span>
+  <span class="o">BC projects:</span>     <span class="o">8</span>
+
+  <span class="b">\u2713</span> <span class="o">All watchers healthy</span>
+
+<span class="o">&gt;</span> <span class="cursor"></span>`,
+
+workshop: `<span class="a">~/upland-workshop</span> <span class="b">(main)</span> <span class="p">$</span> <span class="c">git status</span>
+<span class="o">On branch main</span>
+<span class="o">Changes not staged for commit:</span>
+  <span class="w">modified:   ecosystem.md</span>
+  <span class="w">modified:   brand/icon-preview.html</span>
+
+<span class="o">Untracked files:</span>
+  <span class="i">brand/explorations/window-colors.html</span>
+
+<span class="a">~/upland-workshop</span> <span class="b">(main)</span> <span class="p">$</span> <span class="c">git diff --stat</span>
+ <span class="o">ecosystem.md            |</span> <span class="b">12</span> <span class="b">+++++++</span><span class="w">-----</span>
+ <span class="o">brand/icon-preview.html |</span>  <span class="b">8</span> <span class="b">+++++</span><span class="w">---</span>
+ <span class="o">2 files changed, 12 insertions(+), 8 deletions(-)</span>
+
+<span class="a">~/upland-workshop</span> <span class="b">(main)</span> <span class="p">$</span> <span class="cursor"></span>`,
+};
+
+// ── Color Utilities ──
+function hslToHex(h, s, l) {
+  s /= 100; l /= 100;
+  const a = s * Math.min(l, 1 - l);
+  const f = n => {
+    const k = (n + h / 30) % 12;
+    const c = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+    return Math.round(255 * c).toString(16).padStart(2, '0');
+  };
+  return `#${f(0)}${f(8)}${f(4)}`;
+}
+function bgColor(a) { return `hsl(${a.hue}, ${a.sat}%, ${a.lgt}%)`; }
+function barColor(a) { return `hsl(${a.hue}, ${Math.min(a.sat + 5, 60)}%, ${a.lgt + 3}%)`; }
+function accentColor(a) { return `hsl(${a.hue}, ${Math.max(a.sat * 1.8, 50)}%, ${Math.max(a.lgt * 4, 42)}%)`; }
+
+// ── Render Controls ──
+function renderAppList() {
+  document.getElementById('appList').innerHTML = apps.map(a => `
+    <div class="app-row" data-app="${a.id}">
+      <div class="app-top">
+        <input type="checkbox" class="app-check" ${a.visible ? 'checked' : ''}
+               onchange="toggleApp('${a.id}',this.checked)"/>
+        ${a.icon
+          ? `<img class="app-icon" src="${a.icon}"/>`
+          : `<div class="app-letter">${a.name[0]}</div>`}
+        <span class="app-name">${a.name}</span>
+        <div class="app-swatch" data-swatch="${a.id}"></div>
+        <span class="app-hex" data-hex="${a.id}" onclick="copyHex('${a.id}')" title="Click to copy"></span>
+      </div>
+      <div class="app-sliders">
+        <div class="slider-wrap">
+          <div class="slider-lbl">Hue</div>
+          <input type="range" class="hue-track" min="0" max="360" value="${a.hue}"
+                 data-hue="${a.id}" oninput="setVal('${a.id}','hue',+this.value)"/>
+        </div>
+        <div class="slider-wrap">
+          <div class="slider-lbl">Sat</div>
+          <input type="range" min="0" max="60" value="${a.sat}"
+                 data-sat="${a.id}" oninput="setVal('${a.id}','sat',+this.value)"/>
+        </div>
+        <div class="slider-wrap">
+          <div class="slider-lbl">Light</div>
+          <input type="range" min="3" max="16" step="0.5" value="${a.lgt}"
+                 data-lgt="${a.id}" oninput="setVal('${a.id}','lgt',+this.value)"/>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  // Wire up hover cross-highlighting
+  document.querySelectorAll('.app-row').forEach(row => {
+    const id = row.dataset.app;
+    row.addEventListener('mouseenter', () => {
+      const t = document.querySelector(`[data-term="${id}"]`);
+      if (t) t.classList.add('hl');
+    });
+    row.addEventListener('mouseleave', () => {
+      const t = document.querySelector(`[data-term="${id}"]`);
+      if (t) t.classList.remove('hl');
+    });
+  });
+
+  apps.forEach(a => updateColors(a.id));
+  renderPresets();
+}
+
+// ── Render Workspace ──
+function renderWorkspace() {
+  const ws = document.getElementById('workspace');
+  const vis = apps.filter(a => a.visible);
+  document.getElementById('wsCount').textContent = ` \u2014 ${vis.length} of ${apps.length}`;
+
+  if (!vis.length) {
+    ws.innerHTML = '<div class="ws-empty">Toggle apps in the panel to preview window colors</div>';
+    return;
+  }
+
+  ws.innerHTML = `<div class="term-grid">${vis.map(a => `
+    <div class="term" data-term="${a.id}"
+         onmouseenter="document.querySelector('[data-app=${a.id}]').classList.add('hl')"
+         onmouseleave="document.querySelector('[data-app=${a.id}]').classList.remove('hl')">
+      <div class="term-bar">
+        <div class="dot dot-r"></div>
+        <div class="dot dot-y"></div>
+        <div class="dot dot-g"></div>
+        <span class="term-title">${a.name} \u2014 ${a.path}</span>
+      </div>
+      <div class="term-body">${content[a.id]}</div>
+    </div>
+  `).join('')}</div>`;
+
+  vis.forEach(a => applyTermColors(a));
+}
+
+// ── Update Colors ──
+function updateColors(id) {
+  const a = apps.find(x => x.id === id);
+  const bg = bgColor(a);
+  const hex = hslToHex(a.hue, a.sat, a.lgt);
+
+  const sw = document.querySelector(`[data-swatch="${id}"]`);
+  if (sw) sw.style.background = bg;
+
+  const hx = document.querySelector(`[data-hex="${id}"]`);
+  if (hx) hx.textContent = hex;
+
+  // Update sat/lgt slider track gradients
+  const satEl = document.querySelector(`[data-sat="${id}"]`);
+  if (satEl) satEl.style.background = `linear-gradient(to right, hsl(${a.hue},0%,${a.lgt}%), hsl(${a.hue},60%,${Math.min(a.lgt+5,16)}%))`;
+
+  const lgtEl = document.querySelector(`[data-lgt="${id}"]`);
+  if (lgtEl) lgtEl.style.background = `linear-gradient(to right, hsl(${a.hue},${a.sat}%,3%), hsl(${a.hue},${a.sat}%,16%))`;
+
+  applyTermColors(a);
+  saveState();
+}
+
+function applyTermColors(a) {
+  const t = document.querySelector(`[data-term="${a.id}"]`);
+  if (!t) return;
+  t.querySelector('.term-bar').style.background = barColor(a);
+  const body = t.querySelector('.term-body');
+  body.style.background = bgColor(a);
+  const accent = accentColor(a);
+  t.style.setProperty('--accent', accent);
+}
+
+// ── Event Handlers ──
+function setVal(id, prop, val) {
+  const a = apps.find(x => x.id === id);
+  a[prop] = val;
+  updateColors(id);
+}
+
+function toggleApp(id, on) {
+  apps.find(x => x.id === id).visible = on;
+  renderWorkspace();
+  saveState();
+}
+
+function toggleAll(on) {
+  apps.forEach(a => a.visible = on);
+  document.querySelectorAll('.app-check').forEach(el => el.checked = on);
+  renderWorkspace();
+  saveState();
+}
+
+function copyHex(id) {
+  const hex = document.querySelector(`[data-hex="${id}"]`).textContent;
+  navigator.clipboard.writeText(hex);
+  const el = document.querySelector(`[data-hex="${id}"]`);
+  el.classList.add('copied');
+  setTimeout(() => el.classList.remove('copied'), 600);
+}
+
+// ── Presets ──
+const presets = {
+  spread: {website:{hue:80,sat:22,lgt:7},odin:{hue:270,sat:35,lgt:8},inquiries:{hue:175,sat:25,lgt:7},scheduler:{hue:210,sat:28,lgt:7},claire:{hue:30,sat:32,lgt:8},quotes:{hue:48,sat:28,lgt:7},agreements:{hue:155,sat:25,lgt:7},tony:{hue:8,sat:32,lgt:8},workshop:{hue:80,sat:10,lgt:6}},
+  warm:   {website:{hue:55,sat:22,lgt:7},odin:{hue:300,sat:30,lgt:8},inquiries:{hue:20,sat:25,lgt:7},scheduler:{hue:40,sat:28,lgt:7},claire:{hue:25,sat:35,lgt:8},quotes:{hue:50,sat:30,lgt:7},agreements:{hue:35,sat:22,lgt:7},tony:{hue:5,sat:35,lgt:8},workshop:{hue:45,sat:12,lgt:6}},
+  cool:   {website:{hue:150,sat:22,lgt:7},odin:{hue:270,sat:35,lgt:8},inquiries:{hue:190,sat:28,lgt:7},scheduler:{hue:220,sat:30,lgt:7},claire:{hue:200,sat:28,lgt:8},quotes:{hue:245,sat:25,lgt:7},agreements:{hue:175,sat:25,lgt:7},tony:{hue:260,sat:30,lgt:8},workshop:{hue:210,sat:12,lgt:6}},
+};
+let activePreset = 'spread';
+
+function renderPresets() {
+  document.getElementById('presets').innerHTML =
+    Object.keys(presets).map(k =>
+      `<button class="btn ${k === activePreset ? 'on' : ''}" onclick="applyPreset('${k}')">${k[0].toUpperCase() + k.slice(1)}</button>`
+    ).join('') +
+    `<button class="btn" style="margin-left:auto" onclick="showExport()">Export Bash</button>`;
+}
+
+function applyPreset(name) {
+  activePreset = name;
+  const p = presets[name];
+  apps.forEach(a => {
+    if (!p[a.id]) return;
+    Object.assign(a, p[a.id]);
+    const h = document.querySelector(`[data-hue="${a.id}"]`);
+    const s = document.querySelector(`[data-sat="${a.id}"]`);
+    const l = document.querySelector(`[data-lgt="${a.id}"]`);
+    if (h) h.value = a.hue;
+    if (s) s.value = a.sat;
+    if (l) l.value = a.lgt;
+    updateColors(a.id);
+  });
+  renderPresets();
+}
+
+// ── Export ──
+function showExport() {
+  const lines = ['#!/bin/bash', '# Terminal background colors for Upland Workshop apps', '# Uses OSC 11 to set terminal background color', '', 'set_window_color() {', '  case "$PWD" in'];
+
+  // Specific patterns first (upland-*)
+  apps.filter(a => a.id !== 'website').forEach(a => {
+    const hex = hslToHex(a.hue, a.sat, a.lgt);
+    const [r, g, b] = [hex.slice(1,3), hex.slice(3,5), hex.slice(5,7)];
+    const dir = a.id === 'inquiries' ? 'upland-inquiries' : `upland-${a.id}`;
+    lines.push(`    */${dir}*)`);
+    lines.push(`      printf '\\033]11;rgb:${r}/${g}/${b}\\033\\\\' ;; # ${a.name} ${hex}`);
+  });
+
+  // Website (least specific)
+  const ws = apps.find(a => a.id === 'website');
+  const whex = hslToHex(ws.hue, ws.sat, ws.lgt);
+  const [wr, wg, wb] = [whex.slice(1,3), whex.slice(3,5), whex.slice(5,7)];
+  lines.push(`    */upland|*/upland/*)`);
+  lines.push(`      printf '\\033]11;rgb:${wr}/${wg}/${wb}\\033\\\\' ;; # Website ${whex}`);
+
+  lines.push('    *)');
+  lines.push("      printf '\\033]11;rgb:0a/0d/12\\033\\\\' ;; # Default");
+  lines.push('  esac');
+  lines.push('}');
+  lines.push('');
+  lines.push('# Hook into directory changes:');
+  lines.push('# PROMPT_COMMAND=set_window_color           # bash');
+  lines.push('# chpwd() { set_window_color; }             # zsh');
+
+  document.getElementById('exportCode').textContent = lines.join('\n');
+  document.getElementById('modalBg').classList.add('open');
+}
+
+function closeExport() {
+  document.getElementById('modalBg').classList.remove('open');
+}
+
+function copyExport() {
+  navigator.clipboard.writeText(document.getElementById('exportCode').textContent);
+  const btn = document.getElementById('copyBtn');
+  btn.textContent = 'Copied!';
+  btn.classList.add('on');
+  setTimeout(() => { btn.textContent = 'Copy to Clipboard'; btn.classList.remove('on'); }, 1200);
+}
+
+// ── Persistence ──
+const STORAGE_KEY = 'upland-window-colors';
+
+function saveState() {
+  try {
+    const data = apps.map(a => ({id:a.id, hue:a.hue, sat:a.sat, lgt:a.lgt, visible:a.visible}));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  } catch(e) {}
+}
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    const data = JSON.parse(raw);
+    data.forEach(d => {
+      const a = apps.find(x => x.id === d.id);
+      if (a) { a.hue = d.hue; a.sat = d.sat; a.lgt = d.lgt; a.visible = d.visible; }
+    });
+  } catch(e) {}
+}
+
+// ── Init ──
+loadState();
+renderAppList();
+renderWorkspace();
+</script>
+</body>
+</html>

@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Claire — Panel + Person Variations</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Instrument Sans",system-ui,sans-serif;background:#0c0b0e;color:#c8c5cc;min-height:100vh}
+.page{max-width:1100px;margin:0 auto;padding:4rem 2rem 6rem}
+.suite-header{margin-bottom:4.5rem}
+.suite-header::after{content:"";display:block;width:48px;height:2px;background:#a5bc39;margin-top:1.5rem}
+.suite-name{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#a5bc39;margin-bottom:.6rem}
+.suite-title{font-size:1.8rem;font-weight:400;color:#eae8ed}
+.suite-subtitle{font-size:.85rem;color:#605c66;margin-top:.6rem;max-width:620px;line-height:1.6}
+.section{margin-bottom:5rem}
+.section-label{font-size:.65rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#605c66;margin-bottom:.5rem}
+.section-desc{font-size:.75rem;color:#444049;margin-bottom:2rem;max-width:520px}
+.icon-row{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.icon-cell{display:flex;flex-direction:column;align-items:center;gap:.7rem}
+.icon-cell svg{filter:drop-shadow(0 4px 20px rgba(0,0,0,.6));transition:transform .25s cubic-bezier(.34,1.56,.64,1)}
+.icon-cell:hover svg{transform:translateY(-3px) scale(1.05)}
+.icon-cell .name{font-size:.78rem;font-weight:600;color:#d8d5dc}
+.icon-cell .sub{font-size:.6rem;color:#555059;margin-top:-.3rem}
+.dock-wrap{display:flex;justify-content:center;margin-top:2rem}
+.dock-group{display:flex;flex-direction:column;align-items:center}
+.dock{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:22px;padding:14px 28px;display:inline-flex;gap:14px;align-items:center}
+.dock svg{filter:drop-shadow(0 2px 10px rgba(0,0,0,.5));transition:transform .2s cubic-bezier(.34,1.56,.64,1);cursor:default}
+.dock svg:hover{transform:translateY(-6px) scale(1.15)}
+.dock-labels{display:flex;gap:14px;padding:0 28px;margin-top:.6rem}
+.dock-labels span{width:52px;text-align:center;font-size:.5rem;color:#3e3b42;letter-spacing:.02em}
+.divider{border:none;border-top:1px solid rgba(255,255,255,.04);margin:1rem 0 4rem}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="suite-header">
+<div class="suite-name">Upland Workshop</div>
+<h1 class="suite-title">Claire — Panel + Person</h1>
+<p class="suite-subtitle">Starting from V3's panel+sparkle composition, finding ways to keep Claire's personality. The person should feel like part of the design language, not a sticker on top.</p>
+</div>
+
+<svg width="0" height="0" style="position:absolute"><defs>
+<linearGradient id="dkg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient>
+</defs></svg>
+
+<!-- Dock template macro: Website, Inquiries, Scheduler, ODIN icons -->
+<!-- I'll inline the full dock for each variation -->
+
+<!-- ═══ V1 — Cameo Profile ═══ -->
+<div class="section">
+<div class="section-label">V1 — Cameo Profile</div>
+<div class="section-desc">A side-profile silhouette in the image zone — like a classic cameo. Elegant and human without being cartoonish. The profile is the "content" being designed on the panel.</div>
+<div class="icon-row">
+<div class="icon-cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<rect width="256" height="256" rx="44" fill="url(#dkg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Panel -->
+<rect x="44" y="48" width="124" height="164" rx="8" fill="none" stroke="#fff" stroke-width="5.5"/>
+<!-- Image zone -->
+<rect x="58" y="66" width="96" height="72" rx="4" fill="rgba(107,160,204,0.1)"/>
+<!-- Side profile silhouette - facing right, elegant contour -->
+<path d="M88 130 L88 108 C88 94 92 82 102 78 C106 76 108 72 108 68 C108 64 112 60 118 60 C124 60 128 64 128 70 C128 74 126 78 122 80 C130 82 136 90 136 100 L136 106 C140 108 142 112 142 116 C140 118 138 118 136 116 L136 120 C136 126 130 130 124 130 Z" fill="rgba(255,255,255,0.22)"/>
+<!-- Title -->
+<rect x="58" y="150" width="60" height="6" rx="2.5" fill="#A5BC39"/>
+<!-- Text -->
+<rect x="58" y="164" width="96" height="4" rx="1.5" fill="rgba(255,255,255,0.22)"/>
+<rect x="58" y="174" width="96" height="4" rx="1.5" fill="rgba(255,255,255,0.16)"/>
+<rect x="58" y="184" width="68" height="4" rx="1.5" fill="rgba(255,255,255,0.1)"/>
+<!-- Bold sparkle -->
+<g transform="translate(198, 60)">
+<path d="M0 -28 L7 -8 L28 0 L7 8 L0 28 L-7 8 L-28 0 L-7 -8 Z" fill="#A5BC39"/>
+</g>
+<g transform="translate(190, 116)">
+<path d="M0 -12 L3 -4 L12 0 L3 4 L0 12 L-3 4 L-12 0 L-3 -4 Z" fill="#A5BC39" opacity="0.5"/>
+</g>
+<g transform="translate(218, 88)">
+<path d="M0 -7 L2 -2 L7 0 L2 2 L0 7 L-2 2 L-7 0 L-2 -2 Z" fill="#fff" opacity="0.3"/>
+</g>
+</svg>
+<span class="name">96px</span>
+</div>
+<div class="icon-cell">
+<svg width="52" height="52" viewBox="0 0 256 256">
+<rect width="256" height="256" rx="44" fill="url(#dkg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<rect x="44" y="48" width="124" height="164" rx="8" fill="none" stroke="#fff" stroke-width="5.5"/>
+<rect x="58" y="66" width="96" height="72" rx="4" fill="rgba(107,160,204,0.1)"/>
+<path d="M88 130 L88 108 C88 94 92 82 102 78 C106 76 108 72 108 68 C108 64 112 60 118 60 C124 60 128 64 128 70 C128 74 126 78 122 80 C130 82 136 90 136 100 L136 106 C140 108 142 112 142 116 C140 118 138 118 136 116 L136 120 C136 126 130 130 124 130 Z" fill="rgba(255,255,255,0.22)"/>
+<rect x="58" y="150" width="60" height="6" rx="2.5" fill="#A5BC39"/>
+<rect x="58" y="164" width="96" height="4" rx="1.5" fill="rgba(255,255,255,0.22)"/>
+<rect x="58" y="174" width="96" height="4" rx="1.5" fill="rgba(255,255,255,0.16)"/>
+<rect x="58" y="184" width="68" height="4" rx="1.5" fill="rgba(255,255,255,0.1)"/>
+<g transform="translate(198, 60)"><path d="M0 -28 L7 -8 L28 0 L7 8 L0 28 L-7 8 L-28 0 L-7 -8 Z" fill="#A5BC39"/></g>
+<g transform="translate(190, 116)"><path d="M0 -12 L3 -4 L12 0 L3 4 L0 12 L-3 4 L-12 0 L-3 -4 Z" fill="#A5BC39" opacity="0.5"/></g>
+<g transform="translate(218, 88)"><path d="M0 -7 L2 -2 L7 0 L2 2 L0 7 L-2 2 L-7 0 L-2 -2 Z" fill="#fff" opacity="0.3"/></g>
+</svg>
+<span class="name">52px dock</span>
+</div>
+<div class="icon-cell">
+<svg width="32" height="32" viewBox="0 0 256 256">
+<rect width="256" height="256" rx="44" fill="url(#dkg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<rect x="44" y="48" width="124" height="164" rx="8" fill="none" stroke="#fff" stroke-width="5.5"/>
+<rect x="58" y="66" width="96" height="72" rx="4" fill="rgba(107,160,204,0.1)"/>
+<path d="M88 130 L88 108 C88 94 92 82 102 78 C106 76 108 72 108 68 C108 64 112 60 118 60 C124 60 128 64 128 70 C128 74 126 78 122 80 C130 82 136 90 136 100 L136 106 C140 108 142 112 142 116 C140 118 138 118 136 116 L136 120 C136 126 130 130 124 130 Z" fill="rgba(255,255,255,0.22)"/>
+<rect x="58" y="150" width="60" height="6" rx="2.5" fill="#A5BC39"/>
+<rect x="58" y="164" width="96" height="4" rx="1.5" fill="rgba(255,255,255,0.22)"/>
+<g transform="translate(198, 60)"><path d="M0 -28 L7 -8 L28 0 L7 8 L0 28 L-7 8 L-28 0 L-7 -8 Z" fill="#A5BC39"/></g>
+<g transform="translate(190, 116)"><path d="M0 -12 L3 -4 L12 0 L3 4 L0 12 L-3 4 L-12 0 L-3 -4 Z" fill="#A5BC39" opacity="0.5"/></g>
+</svg>
+<span class="name">32px</span>
+</div>
+</div>
+<div class="dock-wrap"><div class="dock-group">
+<div class="dock">
+<svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dkg)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><g transform="translate(45.5, 53) scale(0.75)"><path fill="#fff" d="M25.5,18.3c3.2,8.3,4.7,30.9,4.7,68l-0.5,35.2l3.8,0.9c7.2,1.7,14.6,2.6,22.1,2.7c0.8,0,1.6,0,2.4,0c-0.6-11.7-0.8-26.3-0.8-44c0-26.7,0.9-44.1,2.6-52.2c1.8-8.1,4.3-13.8,7.7-17c3.4-3.2,8.7-5.2,15.8-5.9c3.2-0.3,4.8-1.4,4.8-3.2C88.1,0.9,86,0,81.7,0H6.3C2.1,0,0,1,0,3.1c0,1.7,1.7,2.5,5.1,2.5C15.5,5.8,22.3,10,25.5,18.3z"/><path fill="#fff" d="M151.7,6.2c9.2,0,16.2,3.5,20.9,10.6c4.7,7.1,7.1,22,7.1,44.7c0,23.2-0.4,42.2-1.1,56.8c3,1.2,6,2.6,9,4c1-13.6,1.4-29.1,1.5-46.6c0-18.8,0.6-33.1,1.7-42.9c1.1-9.7,3.4-16.4,7-20.2c3.6-3.7,9.1-6.1,16.8-7.2c2.2-0.3,3.3-1.2,3.3-2.6c0-2-1.4-3-4.1-3h-60.2c-4.9,0-7.4,1-7.4,3C146.2,5.1,148,6.2,151.7,6.2z"/><path fill="#A5BC39" d="M135.8,126c-28.6,0-47.6,15.8-80.2,15.8c-8.7,0-17.3-1.1-25.7-3.1c0.7,13,2.8,23.1,6.3,30.3c4.4,9.2,12.7,16.6,25,22.1c12.3,5.6,27.1,8.4,44.6,8.4c17,0,31.4-2.5,43.1-7.4c11.7-5,20.4-11.5,26.2-19.6c5.3-7.3,8.9-18,10.8-32.2C165.3,129.6,149.5,126,135.8,126z"/></g></svg>
+<svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dkg)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M68 80 h120 a12 12 0 0 1 12 12 v64 a12 12 0 0 1-12 12 h-52 l-22 26 -22-26 H68 a12 12 0 0 1-12-12 V92 a12 12 0 0 1 12-12z" fill="rgba(255,255,255,0.15)" stroke="#fff" stroke-width="8" stroke-linejoin="round"/><circle cx="100" cy="124" r="7" fill="#A5BC39"/><circle cx="128" cy="124" r="7" fill="#fff"/><circle cx="156" cy="124" r="7" fill="#fff"/></svg>
+<svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dkg)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><rect x="56" y="62" width="144" height="16" rx="3" fill="#6BA0CC" opacity="0.95"/><rect x="56" y="84" width="108" height="16" rx="3" fill="#6BA0CC" opacity="0.75"/><rect x="82" y="106" width="118" height="16" rx="3" fill="#6BA0CC" opacity="0.6"/><rect x="56" y="128" width="72" height="16" rx="3" fill="#8BBAD6" opacity="0.55"/><rect x="96" y="150" width="80" height="16" rx="3" fill="#8BBAD6" opacity="0.4"/><rect x="56" y="178" width="26" height="14" rx="2" fill="#A5BC39"/><rect x="86" y="178" width="26" height="14" rx="2" fill="#A5BC39" opacity="0.85"/><rect x="116" y="178" width="26" height="14" rx="2" fill="#D4C23A" opacity="0.8"/><rect x="146" y="178" width="26" height="14" rx="2" fill="#D9A634" opacity="0.7"/><rect x="176" y="178" width="24" height="14" rx="2" fill="#C96832" opacity="0.6"/><line x1="130" y1="50" x2="130" y2="172" stroke="#A5BC39" stroke-width="3" opacity="0.9"/><circle cx="130" cy="48" r="4" fill="#A5BC39"/></svg>
+<svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dkg)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M140 72 L150 114 L192 124 L150 134 L140 176 L130 134 L88 124 L130 114 Z" fill="#A5BC39"/><path d="M76 56 L82 78 L104 84 L82 90 L76 112 L70 90 L48 84 L70 78 Z" fill="#fff" opacity="0.85"/><path d="M88 152 L93 170 L111 175 L93 180 L88 198 L83 180 L65 175 L83 170 Z" fill="#fff" opacity="0.6"/><path d="M188 60 L191 70 L201 73 L191 76 L188 86 L185 76 L175 73 L185 70 Z" fill="#fff" opacity="0.45"/></svg>
+<svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dkg)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><rect x="44" y="48" width="124" height="164" rx="8" fill="none" stroke="#fff" stroke-width="5.5"/><rect x="58" y="66" width="96" height="72" rx="4" fill="rgba(107,160,204,0.1)"/><path d="M88 130 L88 108 C88 94 92 82 102 78 C106 76 108 72 108 68 C108 64 112 60 118 60 C124 60 128 64 128 70 C128 74 126 78 122 80 C130 82 136 90 136 100 L136 106 C140 108 142 112 142 116 C140 118 138 118 136 116 L136 120 C136 126 130 130 124 130 Z" fill="rgba(255,255,255,0.22)"/><rect x="58" y="150" width="60" height="6" rx="2.5" fill="#A5BC39"/><rect x="58" y="164" width="96" height="4" rx="1.5" fill="rgba(255,255,255,0.22)"/><rect x="58" y="174" width="96" height="4" rx="1.5" fill="rgba(255,255,255,0.16)"/><rect x="58" y="184" width="68" height="4" rx="1.5" fill="rgba(255,255,255,0.1)"/><g transform="translate(198, 60)"><path d="M0 -28 L7 -8 L28 0 L7 8 L0 28 L-7 8 L-28 0 L-7 -8 Z" fill="#A5BC39"/></g><g transform="translate(190, 116)"><path d="M0 -12 L3 -4 L12 0 L3 4 L0 12 L-3 4 L-12 0 L-3 -4 Z" fill="#A5BC39" opacity="0.5"/></g><g transform="translate(218, 88)"><path d="M0 -7 L2 -2 L7 0 L2 2 L0 7 L-2 2 L-7 0 L-2 -2 Z" fill="#fff" opacity="0.3"/></g></svg>
+</div>
+<div class="dock-labels"><span>Website</span><span>Inquiries</span><span>Scheduler</span><span>ODIN</span><span>Claire</span></div>
+</div></div>
+</div>
+
+<hr class="divider"/>
+
+<!-- ═══ V2 — Geometric Bust ═══ -->
+<div class="section">
+<div class="section-label">V2 — Geometric Bust</div>
+<div class="section-desc">Head circle + shoulder arc — the simplest possible "person" shape, like a contact icon. Treated as a design element on the panel, not a character illustration.</div>
+<div class="icon-row">
+<div class="icon-cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<rect width="256" height="256" rx="44" fill="url(#dkg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Panel -->
+<rect x="44" y="48" width="124" height="164" rx="8" fill="none" stroke="#fff" stroke-width="5.5"/>
+<!-- Image zone -->
+<rect x="58" y="66" width="96" height="72" rx="4" fill="rgba(107,160,204,0.1)"/>
+<!-- Geometric bust - circle head + shoulder arc -->
+<circle cx="106" cy="92" r="14" fill="rgba(255,255,255,0.25)"/>
+<path d="M78 138 C78 118 90 110 106 110 C122 110 134 118 134 138" fill="rgba(255,255,255,0.15)"/>
+<!-- Title -->
+<rect x="58" y="150" width="60" height="6" rx="2.5" fill="#A5BC39"/>
+<!-- Text -->
+<rect x="58" y="164" width="96" height="4" rx="1.5" fill="rgba(255,255,255,0.22)"/>
+<rect x="58" y="174" width="96" height="4" rx="1.5" fill="rgba(255,255,255,0.16)"/>
+<rect x="58" y="184" width="68" height="4" rx="1.5" fill="rgba(255,255,255,0.1)"/>
+<!-- Sparkles -->
+<g transform="translate(198, 60)">
+<path d="M0 -28 L7 -8 L28 0 L7 8 L0 28 L-7 8 L-28 0 L-7 -8 Z" fill="#A5BC39"/>
+</g>
+<g transform="translate(190, 116)">
+<path d="M0 -12 L3 -4 L12 0 L3 4 L0 12 L-3 4 L-12 0 L-3 -4 Z" fill="#A5BC39" opacity="0.5"/>
+</g>
+<g transform="translate(218, 88)">
+<path d="M0 -7 L2 -2 L7 0 L2 2 L0 7 L-2 2 L-7 0 L-2 -2 Z" fill="#fff" opacity="0.3"/>
+</g>
+</svg>
+<span class="name">96px</span>
+</div>
+<div class="icon-cell">
+<svg width="52" height="52" viewBox="0 0 256 256">
+<rect width="256" height="256" rx="44" fill="url(#dkg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<rect x="44" y="48" width="124" height="164" rx="8" fill="none" stroke="#fff" stroke-width="5.5"/>
+<rect x="58" y="66" width="96" height="72" rx="4" fill="rgba(107,160,204,0.1)"/>
+<circle cx="106" cy="92" r="14" fill="rgba(255,255,255,0.25)"/>
+<path d="M78 138 C78 118 90 110 106 110 C122 110 134 118 134 138" fill="rgba(255,255,255,0.15)"/>
+<rect x="58" y="150" width="60" height="6" rx="2.5" fill="#A5BC39"/>
+<rect x="58" y="164" width="96" height="4" rx="1.5" fill="rgba(255,255,255,0.22)"/>
+<rect x="58" y="174" width="96" height="4" rx="1.5" fill="rgba(255,255,255,0.16)"/>
+<rect x="58" y="184" width="68" height="4" rx="1.5" fill="rgba(255,255,255,0.1)"/>
+<g transform="translate(198, 60)"><path d="M0 -28 L7 -8 L28 0 L7 8 L0 28 L-7 8 L-28 0 L-7 -8 Z" fill="#A5BC39"/></g>
+<g transform="translate(190, 116)"><path d="M0 -12 L3 -4 L12 0 L3 4 L0 12 L-3 4 L-12 0 L-3 -4 Z" fill="#A5BC39" opacity="0.5"/></g>
+<g transform="translate(218, 88)"><path d="M0 -7 L2 -2 L7 0 L2 2 L0 7 L-2 2 L-7 0 L-2 -2 Z" fill="#fff" opacity="0.3"/></g>
+</svg>
+<span class="name">52px dock</span>
+</div>
+<div class="icon-cell">
+<svg width="32" height="32" viewBox="0 0 256 256">
+<rect width="256" height="256" rx="44" fill="url(#dkg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<rect x="44" y="48" width="124" height="164" rx="8" fill="none" stroke="#fff" stroke-width="5.5"/>
+<rect x="58" y="66" width="96" height="72" rx="4" fill="rgba(107,160,204,0.1)"/>
+<circle cx="106" cy="92" r="14" fill="rgba(255,255,255,0.25)"/>
+<path d="M78 138 C78 118 90 110 106 110 C122 110 134 118 134 138" fill="rgba(255,255,255,0.15)"/>
+<rect x="58" y="150" width="60" height="6" rx="2.5" fill="#A5BC39"/>
+<rect x="58" y="164" width="96" height="4" rx="1.5" fill="rgba(255,255,255,0.22)"/>
+<g transform="translate(198, 60)"><path d="M0 -28 L7 -8 L28 0 L7 8 L0 28 L-7 8 L-28 0 L-7 -8 Z" fill="#A5BC39"/></g>
+<g transform="translate(190, 116)"><path d="M0 -12 L3 -4 L12 0 L3 4 L0 12 L-3 4 L-12 0 L-3 -4 Z" fill="#A5BC39" opacity="0.5"/></g>
+</svg>
+<span class="name">32px</span>
+</div>
+</div>
+<div class="dock-wrap"><div class="dock-group">
+<div class="dock">
+<svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dkg)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><g transform="translate(45.5, 53) scale(0.75)"><path fill="#fff" d="M25.5,18.3c3.2,8.3,4.7,30.9,4.7,68l-0.5,35.2l3.8,0.9c7.2,1.7,14.6,2.6,22.1,2.7c0.8,0,1.6,0,2.4,0c-0.6-11.7-0.8-26.3-0.8-44c0-26.7,0.9-44.1,2.6-52.2c1.8-8.1,4.3-13.8,7.7-17c3.4-3.2,8.7-5.2,15.8-5.9c3.2-0.3,4.8-1.4,4.8-3.2C88.1,0.9,86,0,81.7,0H6.3C2.1,0,0,1,0,3.1c0,1.7,1.7,2.5,5.1,2.5C15.5,5.8,22.3,10,25.5,18.3z"/><path fill="#fff" d="M151.7,6.2c9.2,0,16.2,3.5,20.9,10.6c4.7,7.1,7.1,22,7.1,44.7c0,23.2-0.4,42.2-1.1,56.8c3,1.2,6,2.6,9,4c1-13.6,1.4-29.1,1.5-46.6c0-18.8,0.6-33.1,1.7-42.9c1.1-9.7,3.4-16.4,7-20.2c3.6-3.7,9.1-6.1,16.8-7.2c2.2-0.3,3.3-1.2,3.3-2.6c0-2-1.4-3-4.1-3h-60.2c-4.9,0-7.4,1-7.4,3C146.2,5.1,148,6.2,151.7,6.2z"/><path fill="#A5BC39" d="M135.8,126c-28.6,0-47.6,15.8-80.2,15.8c-8.7,0-17.3-1.1-25.7-3.1c0.7,13,2.8,23.1,6.3,30.3c4.4,9.2,12.7,16.6,25,22.1c12.3,5.6,27.1,8.4,44.6,8.4c17,0,31.4-2.5,43.1-7.4c11.7-5,20.4-11.5,26.2-19.6c5.3-7.3,8.9-18,10.8-32.2C165.3,129.6,149.5,126,135.8,126z"/></g></svg>
+<svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dkg)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M68 80 h120 a12 12 0 0 1 12 12 v64 a12 12 0 0 1-12 12 h-52 l-22 26 -22-26 H68 a12 12 0 0 1-12-12 V92 a12 12 0 0 1 12-12z" fill="rgba(255,255,255,0.15)" stroke="#fff" stroke-width="8" stroke-linejoin="round"/><circle cx="100" cy="124" r="7" fill="#A5BC39"/><circle cx="128" cy="124" r="7" fill="#fff"/><circle cx="156" cy="124" r="7" fill="#fff"/></svg>
+<svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dkg)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><rect x="56" y="62" width="144" height="16" rx="3" fill="#6BA0CC" opacity="0.95"/><rect x="56" y="84" width="108" height="16" rx="3" fill="#6BA0CC" opacity="0.75"/><rect x="82" y="106" width="118" height="16" rx="3" fill="#6BA0CC" opacity="0.6"/><rect x="56" y="128" width="72" height="16" rx="3" fill="#8BBAD6" opacity="0.55"/><rect x="96" y="150" width="80" height="16" rx="3" fill="#8BBAD6" opacity="0.4"/><rect x="56" y="178" width="26" height="14" rx="2" fill="#A5BC39"/><rect x="86" y="178" width="26" height="14" rx="2" fill="#A5BC39" opacity="0.85"/><rect x="116" y="178" width="26" height="14" rx="2" fill="#D4C23A" opacity="0.8"/><rect x="146" y="178" width="26" height="14" rx="2" fill="#D9A634" opacity="0.7"/><rect x="176" y="178" width="24" height="14" rx="2" fill="#C96832" opacity="0.6"/><line x1="130" y1="50" x2="130" y2="172" stroke="#A5BC39" stroke-width="3" opacity="0.9"/><circle cx="130" cy="48" r="4" fill="#A5BC39"/></svg>
+<svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dkg)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M140 72 L150 114 L192 124 L150 134 L140 176 L130 134 L88 124 L130 114 Z" fill="#A5BC39"/><path d="M76 56 L82 78 L104 84 L82 90 L76 112 L70 90 L48 84 L70 78 Z" fill="#fff" opacity="0.85"/><path d="M88 152 L93 170 L111 175 L93 180 L88 198 L83 180 L65 175 L83 170 Z" fill="#fff" opacity="0.6"/><path d="M188 60 L191 70 L201 73 L191 76 L188 86 L185 76 L175 73 L185 70 Z" fill="#fff" opacity="0.45"/></svg>
+<svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dkg)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><rect x="44" y="48" width="124" height="164" rx="8" fill="none" stroke="#fff" stroke-width="5.5"/><rect x="58" y="66" width="96" height="72" rx="4" fill="rgba(107,160,204,0.1)"/><circle cx="106" cy="92" r="14" fill="rgba(255,255,255,0.25)"/><path d="M78 138 C78 118 90 110 106 110 C122 110 134 118 134 138" fill="rgba(255,255,255,0.15)"/><rect x="58" y="150" width="60" height="6" rx="2.5" fill="#A5BC39"/><rect x="58" y="164" width="96" height="4" rx="1.5" fill="rgba(255,255,255,0.22)"/><rect x="58" y="174" width="96" height="4" rx="1.5" fill="rgba(255,255,255,0.16)"/><rect x="58" y="184" width="68" height="4" rx="1.5" fill="rgba(255,255,255,0.1)"/><g transform="translate(198, 60)"><path d="M0 -28 L7 -8 L28 0 L7 8 L0 28 L-7 8 L-28 0 L-7 -8 Z" fill="#A5BC39"/></g><g transform="translate(190, 116)"><path d="M0 -12 L3 -4 L12 0 L3 4 L0 12 L-3 4 L-12 0 L-3 -4 Z" fill="#A5BC39" opacity="0.5"/></g><g transform="translate(218, 88)"><path d="M0 -7 L2 -2 L7 0 L2 2 L0 7 L-2 2 L-7 0 L-2 -2 Z" fill="#fff" opacity="0.3"/></g></svg>
+</div>
+<div class="dock-labels"><span>Website</span><span>Inquiries</span><span>Scheduler</span><span>ODIN</span><span>Claire</span></div>
+</div></div>
+</div>
+
+<hr class="divider"/>
+
+<!-- ═══ V3 — Person Behind Panel ═══ -->
+<div class="section">
+<div class="section-label">V3 — Person Behind the Panel</div>
+<div class="section-desc">Claire peeks out from behind the artboard — a geometric head+shoulders visible above and beside the panel. She's the designer, not the content. Sparkles suggest her AI magic.</div>
+<div class="icon-row">
+<div class="icon-cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<rect width="256" height="256" rx="44" fill="url(#dkg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Claire behind - head peeking over top-right -->
+<circle cx="178" cy="58" r="20" fill="rgba(255,255,255,0.2)"/>
+<path d="M158 78 C158 70 166 64 178 64 C190 64 198 70 198 78 L198 100 L158 100 Z" fill="rgba(255,255,255,0.12)"/>
+<!-- Panel (in front of Claire's body) -->
+<rect x="38" y="60" width="124" height="156" rx="8" fill="#0E1118"/>
+<rect x="38" y="60" width="124" height="156" rx="8" fill="none" stroke="#fff" stroke-width="5"/>
+<!-- Image zone with blue mountains -->
+<rect x="52" y="76" width="96" height="64" rx="4" fill="rgba(107,160,204,0.1)"/>
+<path d="M52 140 L76 96 L92 112 L112 84 L148 140 Z" fill="rgba(107,160,204,0.25)"/>
+<path d="M52 140 L70 112 L90 132 L108 104 L148 140 Z" fill="rgba(107,160,204,0.15)"/>
+<circle cx="132" cy="92" r="6" fill="#6BA0CC" opacity="0.5"/>
+<!-- Title -->
+<rect x="52" y="152" width="56" height="6" rx="2.5" fill="#A5BC39"/>
+<!-- Text -->
+<rect x="52" y="166" width="96" height="3.5" rx="1.5" fill="rgba(255,255,255,0.22)"/>
+<rect x="52" y="175" width="96" height="3.5" rx="1.5" fill="rgba(255,255,255,0.16)"/>
+<rect x="52" y="184" width="68" height="3.5" rx="1.5" fill="rgba(255,255,255,0.1)"/>
+<rect x="52" y="196" width="34" height="8" rx="2.5" fill="rgba(107,160,204,0.2)" stroke="#6BA0CC" stroke-width="1.2"/>
+<!-- Sparkles coming from Claire -->
+<g transform="translate(206, 68)">
+<path d="M0 -20 L5 -6 L20 0 L5 6 L0 20 L-5 6 L-20 0 L-5 -6 Z" fill="#A5BC39"/>
+</g>
+<g transform="translate(218, 108)">
+<path d="M0 -10 L3 -3 L10 0 L3 3 L0 10 L-3 3 L-10 0 L-3 -3 Z" fill="#A5BC39" opacity="0.5"/>
+</g>
+<g transform="translate(196, 108)">
+<path d="M0 -6 L2 -2 L6 0 L2 2 L0 6 L-2 2 L-6 0 L-2 -2 Z" fill="#fff" opacity="0.3"/>
+</g>
+</svg>
+<span class="name">96px</span>
+</div>
+<div class="icon-cell">
+<svg width="52" height="52" viewBox="0 0 256 256">
+<rect width="256" height="256" rx="44" fill="url(#dkg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<circle cx="178" cy="58" r="20" fill="rgba(255,255,255,0.2)"/>
+<path d="M158 78 C158 70 166 64 178 64 C190 64 198 70 198 78 L198 100 L158 100 Z" fill="rgba(255,255,255,0.12)"/>
+<rect x="38" y="60" width="124" height="156" rx="8" fill="#0E1118"/>
+<rect x="38" y="60" width="124" height="156" rx="8" fill="none" stroke="#fff" stroke-width="5"/>
+<rect x="52" y="76" width="96" height="64" rx="4" fill="rgba(107,160,204,0.1)"/>
+<path d="M52 140 L76 96 L92 112 L112 84 L148 140 Z" fill="rgba(107,160,204,0.25)"/>
+<path d="M52 140 L70 112 L90 132 L108 104 L148 140 Z" fill="rgba(107,160,204,0.15)"/>
+<circle cx="132" cy="92" r="6" fill="#6BA0CC" opacity="0.5"/>
+<rect x="52" y="152" width="56" height="6" rx="2.5" fill="#A5BC39"/>
+<rect x="52" y="166" width="96" height="3.5" rx="1.5" fill="rgba(255,255,255,0.22)"/>
+<rect x="52" y="175" width="96" height="3.5" rx="1.5" fill="rgba(255,255,255,0.16)"/>
+<rect x="52" y="184" width="68" height="3.5" rx="1.5" fill="rgba(255,255,255,0.1)"/>
+<g transform="translate(206, 68)"><path d="M0 -20 L5 -6 L20 0 L5 6 L0 20 L-5 6 L-20 0 L-5 -6 Z" fill="#A5BC39"/></g>
+<g transform="translate(218, 108)"><path d="M0 -10 L3 -3 L10 0 L3 3 L0 10 L-3 3 L-10 0 L-3 -3 Z" fill="#A5BC39" opacity="0.5"/></g>
+<g transform="translate(196, 108)"><path d="M0 -6 L2 -2 L6 0 L2 2 L0 6 L-2 2 L-6 0 L-2 -2 Z" fill="#fff" opacity="0.3"/></g>
+</svg>
+<span class="name">52px dock</span>
+</div>
+<div class="icon-cell">
+<svg width="32" height="32" viewBox="0 0 256 256">
+<rect width="256" height="256" rx="44" fill="url(#dkg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<circle cx="178" cy="58" r="20" fill="rgba(255,255,255,0.2)"/>
+<path d="M158 78 C158 70 166 64 178 64 C190 64 198 70 198 78 L198 100 L158 100 Z" fill="rgba(255,255,255,0.12)"/>
+<rect x="38" y="60" width="124" height="156" rx="8" fill="#0E1118"/>
+<rect x="38" y="60" width="124" height="156" rx="8" fill="none" stroke="#fff" stroke-width="5"/>
+<rect x="52" y="76" width="96" height="64" rx="4" fill="rgba(107,160,204,0.1)"/>
+<path d="M52 140 L76 96 L92 112 L112 84 L148 140 Z" fill="rgba(107,160,204,0.25)"/>
+<circle cx="132" cy="92" r="6" fill="#6BA0CC" opacity="0.5"/>
+<rect x="52" y="152" width="56" height="6" rx="2.5" fill="#A5BC39"/>
+<g transform="translate(206, 68)"><path d="M0 -20 L5 -6 L20 0 L5 6 L0 20 L-5 6 L-20 0 L-5 -6 Z" fill="#A5BC39"/></g>
+<g transform="translate(218, 108)"><path d="M0 -10 L3 -3 L10 0 L3 3 L0 10 L-3 3 L-10 0 L-3 -3 Z" fill="#A5BC39" opacity="0.5"/></g>
+</svg>
+<span class="name">32px</span>
+</div>
+</div>
+<div class="dock-wrap"><div class="dock-group">
+<div class="dock">
+<svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dkg)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><g transform="translate(45.5, 53) scale(0.75)"><path fill="#fff" d="M25.5,18.3c3.2,8.3,4.7,30.9,4.7,68l-0.5,35.2l3.8,0.9c7.2,1.7,14.6,2.6,22.1,2.7c0.8,0,1.6,0,2.4,0c-0.6-11.7-0.8-26.3-0.8-44c0-26.7,0.9-44.1,2.6-52.2c1.8-8.1,4.3-13.8,7.7-17c3.4-3.2,8.7-5.2,15.8-5.9c3.2-0.3,4.8-1.4,4.8-3.2C88.1,0.9,86,0,81.7,0H6.3C2.1,0,0,1,0,3.1c0,1.7,1.7,2.5,5.1,2.5C15.5,5.8,22.3,10,25.5,18.3z"/><path fill="#fff" d="M151.7,6.2c9.2,0,16.2,3.5,20.9,10.6c4.7,7.1,7.1,22,7.1,44.7c0,23.2-0.4,42.2-1.1,56.8c3,1.2,6,2.6,9,4c1-13.6,1.4-29.1,1.5-46.6c0-18.8,0.6-33.1,1.7-42.9c1.1-9.7,3.4-16.4,7-20.2c3.6-3.7,9.1-6.1,16.8-7.2c2.2-0.3,3.3-1.2,3.3-2.6c0-2-1.4-3-4.1-3h-60.2c-4.9,0-7.4,1-7.4,3C146.2,5.1,148,6.2,151.7,6.2z"/><path fill="#A5BC39" d="M135.8,126c-28.6,0-47.6,15.8-80.2,15.8c-8.7,0-17.3-1.1-25.7-3.1c0.7,13,2.8,23.1,6.3,30.3c4.4,9.2,12.7,16.6,25,22.1c12.3,5.6,27.1,8.4,44.6,8.4c17,0,31.4-2.5,43.1-7.4c11.7-5,20.4-11.5,26.2-19.6c5.3-7.3,8.9-18,10.8-32.2C165.3,129.6,149.5,126,135.8,126z"/></g></svg>
+<svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dkg)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M68 80 h120 a12 12 0 0 1 12 12 v64 a12 12 0 0 1-12 12 h-52 l-22 26 -22-26 H68 a12 12 0 0 1-12-12 V92 a12 12 0 0 1 12-12z" fill="rgba(255,255,255,0.15)" stroke="#fff" stroke-width="8" stroke-linejoin="round"/><circle cx="100" cy="124" r="7" fill="#A5BC39"/><circle cx="128" cy="124" r="7" fill="#fff"/><circle cx="156" cy="124" r="7" fill="#fff"/></svg>
+<svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dkg)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><rect x="56" y="62" width="144" height="16" rx="3" fill="#6BA0CC" opacity="0.95"/><rect x="56" y="84" width="108" height="16" rx="3" fill="#6BA0CC" opacity="0.75"/><rect x="82" y="106" width="118" height="16" rx="3" fill="#6BA0CC" opacity="0.6"/><rect x="56" y="128" width="72" height="16" rx="3" fill="#8BBAD6" opacity="0.55"/><rect x="96" y="150" width="80" height="16" rx="3" fill="#8BBAD6" opacity="0.4"/><rect x="56" y="178" width="26" height="14" rx="2" fill="#A5BC39"/><rect x="86" y="178" width="26" height="14" rx="2" fill="#A5BC39" opacity="0.85"/><rect x="116" y="178" width="26" height="14" rx="2" fill="#D4C23A" opacity="0.8"/><rect x="146" y="178" width="26" height="14" rx="2" fill="#D9A634" opacity="0.7"/><rect x="176" y="178" width="24" height="14" rx="2" fill="#C96832" opacity="0.6"/><line x1="130" y1="50" x2="130" y2="172" stroke="#A5BC39" stroke-width="3" opacity="0.9"/><circle cx="130" cy="48" r="4" fill="#A5BC39"/></svg>
+<svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dkg)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M140 72 L150 114 L192 124 L150 134 L140 176 L130 134 L88 124 L130 114 Z" fill="#A5BC39"/><path d="M76 56 L82 78 L104 84 L82 90 L76 112 L70 90 L48 84 L70 78 Z" fill="#fff" opacity="0.85"/><path d="M88 152 L93 170 L111 175 L93 180 L88 198 L83 180 L65 175 L83 170 Z" fill="#fff" opacity="0.6"/><path d="M188 60 L191 70 L201 73 L191 76 L188 86 L185 76 L175 73 L185 70 Z" fill="#fff" opacity="0.45"/></svg>
+<svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dkg)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><circle cx="178" cy="58" r="20" fill="rgba(255,255,255,0.2)"/><path d="M158 78 C158 70 166 64 178 64 C190 64 198 70 198 78 L198 100 L158 100 Z" fill="rgba(255,255,255,0.12)"/><rect x="38" y="60" width="124" height="156" rx="8" fill="#0E1118"/><rect x="38" y="60" width="124" height="156" rx="8" fill="none" stroke="#fff" stroke-width="5"/><rect x="52" y="76" width="96" height="64" rx="4" fill="rgba(107,160,204,0.1)"/><path d="M52 140 L76 96 L92 112 L112 84 L148 140 Z" fill="rgba(107,160,204,0.25)"/><path d="M52 140 L70 112 L90 132 L108 104 L148 140 Z" fill="rgba(107,160,204,0.15)"/><circle cx="132" cy="92" r="6" fill="#6BA0CC" opacity="0.5"/><rect x="52" y="152" width="56" height="6" rx="2.5" fill="#A5BC39"/><rect x="52" y="166" width="96" height="3.5" rx="1.5" fill="rgba(255,255,255,0.22)"/><rect x="52" y="175" width="96" height="3.5" rx="1.5" fill="rgba(255,255,255,0.16)"/><rect x="52" y="184" width="68" height="3.5" rx="1.5" fill="rgba(255,255,255,0.1)"/><g transform="translate(206, 68)"><path d="M0 -20 L5 -6 L20 0 L5 6 L0 20 L-5 6 L-20 0 L-5 -6 Z" fill="#A5BC39"/></g><g transform="translate(218, 108)"><path d="M0 -10 L3 -3 L10 0 L3 3 L0 10 L-3 3 L-10 0 L-3 -3 Z" fill="#A5BC39" opacity="0.5"/></g><g transform="translate(196, 108)"><path d="M0 -6 L2 -2 L6 0 L2 2 L0 6 L-2 2 L-6 0 L-2 -2 Z" fill="#fff" opacity="0.3"/></g></svg>
+</div>
+<div class="dock-labels"><span>Website</span><span>Inquiries</span><span>Scheduler</span><span>ODIN</span><span>Claire</span></div>
+</div></div>
+</div>
+
+<hr class="divider"/>
+
+<!-- ═══ V4 — Bust Outline (Stroke Only) ═══ -->
+<div class="section">
+<div class="section-label">V4 — Bust Outline</div>
+<div class="section-desc">Same head+shoulders but as a stroke outline instead of a fill — matches the panel's line weight. Feels more like a wireframe/design element and less like a filled character.</div>
+<div class="icon-row">
+<div class="icon-cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<rect width="256" height="256" rx="44" fill="url(#dkg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Panel -->
+<rect x="44" y="48" width="124" height="164" rx="8" fill="none" stroke="#fff" stroke-width="5.5"/>
+<!-- Image zone -->
+<rect x="58" y="66" width="96" height="72" rx="4" fill="rgba(107,160,204,0.08)"/>
+<!-- Bust as outline only -->
+<circle cx="106" cy="90" r="15" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="3"/>
+<path d="M76 138 C76 116 88 108 106 108 C124 108 136 116 136 138" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="3"/>
+<!-- Title -->
+<rect x="58" y="150" width="60" height="6" rx="2.5" fill="#A5BC39"/>
+<!-- Text -->
+<rect x="58" y="164" width="96" height="4" rx="1.5" fill="rgba(255,255,255,0.22)"/>
+<rect x="58" y="174" width="96" height="4" rx="1.5" fill="rgba(255,255,255,0.16)"/>
+<rect x="58" y="184" width="68" height="4" rx="1.5" fill="rgba(255,255,255,0.1)"/>
+<!-- Sparkles -->
+<g transform="translate(198, 60)">
+<path d="M0 -28 L7 -8 L28 0 L7 8 L0 28 L-7 8 L-28 0 L-7 -8 Z" fill="#A5BC39"/>
+</g>
+<g transform="translate(190, 116)">
+<path d="M0 -12 L3 -4 L12 0 L3 4 L0 12 L-3 4 L-12 0 L-3 -4 Z" fill="#A5BC39" opacity="0.5"/>
+</g>
+<g transform="translate(218, 88)">
+<path d="M0 -7 L2 -2 L7 0 L2 2 L0 7 L-2 2 L-7 0 L-2 -2 Z" fill="#fff" opacity="0.3"/>
+</g>
+</svg>
+<span class="name">96px</span>
+</div>
+<div class="icon-cell">
+<svg width="52" height="52" viewBox="0 0 256 256">
+<rect width="256" height="256" rx="44" fill="url(#dkg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<rect x="44" y="48" width="124" height="164" rx="8" fill="none" stroke="#fff" stroke-width="5.5"/>
+<rect x="58" y="66" width="96" height="72" rx="4" fill="rgba(107,160,204,0.08)"/>
+<circle cx="106" cy="90" r="15" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="3"/>
+<path d="M76 138 C76 116 88 108 106 108 C124 108 136 116 136 138" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="3"/>
+<rect x="58" y="150" width="60" height="6" rx="2.5" fill="#A5BC39"/>
+<rect x="58" y="164" width="96" height="4" rx="1.5" fill="rgba(255,255,255,0.22)"/>
+<rect x="58" y="174" width="96" height="4" rx="1.5" fill="rgba(255,255,255,0.16)"/>
+<rect x="58" y="184" width="68" height="4" rx="1.5" fill="rgba(255,255,255,0.1)"/>
+<g transform="translate(198, 60)"><path d="M0 -28 L7 -8 L28 0 L7 8 L0 28 L-7 8 L-28 0 L-7 -8 Z" fill="#A5BC39"/></g>
+<g transform="translate(190, 116)"><path d="M0 -12 L3 -4 L12 0 L3 4 L0 12 L-3 4 L-12 0 L-3 -4 Z" fill="#A5BC39" opacity="0.5"/></g>
+<g transform="translate(218, 88)"><path d="M0 -7 L2 -2 L7 0 L2 2 L0 7 L-2 2 L-7 0 L-2 -2 Z" fill="#fff" opacity="0.3"/></g>
+</svg>
+<span class="name">52px dock</span>
+</div>
+<div class="icon-cell">
+<svg width="32" height="32" viewBox="0 0 256 256">
+<rect width="256" height="256" rx="44" fill="url(#dkg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<rect x="44" y="48" width="124" height="164" rx="8" fill="none" stroke="#fff" stroke-width="5.5"/>
+<rect x="58" y="66" width="96" height="72" rx="4" fill="rgba(107,160,204,0.08)"/>
+<circle cx="106" cy="90" r="15" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="3"/>
+<path d="M76 138 C76 116 88 108 106 108 C124 108 136 116 136 138" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="3"/>
+<rect x="58" y="150" width="60" height="6" rx="2.5" fill="#A5BC39"/>
+<rect x="58" y="164" width="96" height="4" rx="1.5" fill="rgba(255,255,255,0.22)"/>
+<g transform="translate(198, 60)"><path d="M0 -28 L7 -8 L28 0 L7 8 L0 28 L-7 8 L-28 0 L-7 -8 Z" fill="#A5BC39"/></g>
+<g transform="translate(190, 116)"><path d="M0 -12 L3 -4 L12 0 L3 4 L0 12 L-3 4 L-12 0 L-3 -4 Z" fill="#A5BC39" opacity="0.5"/></g>
+</svg>
+<span class="name">32px</span>
+</div>
+</div>
+<div class="dock-wrap"><div class="dock-group">
+<div class="dock">
+<svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dkg)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><g transform="translate(45.5, 53) scale(0.75)"><path fill="#fff" d="M25.5,18.3c3.2,8.3,4.7,30.9,4.7,68l-0.5,35.2l3.8,0.9c7.2,1.7,14.6,2.6,22.1,2.7c0.8,0,1.6,0,2.4,0c-0.6-11.7-0.8-26.3-0.8-44c0-26.7,0.9-44.1,2.6-52.2c1.8-8.1,4.3-13.8,7.7-17c3.4-3.2,8.7-5.2,15.8-5.9c3.2-0.3,4.8-1.4,4.8-3.2C88.1,0.9,86,0,81.7,0H6.3C2.1,0,0,1,0,3.1c0,1.7,1.7,2.5,5.1,2.5C15.5,5.8,22.3,10,25.5,18.3z"/><path fill="#fff" d="M151.7,6.2c9.2,0,16.2,3.5,20.9,10.6c4.7,7.1,7.1,22,7.1,44.7c0,23.2-0.4,42.2-1.1,56.8c3,1.2,6,2.6,9,4c1-13.6,1.4-29.1,1.5-46.6c0-18.8,0.6-33.1,1.7-42.9c1.1-9.7,3.4-16.4,7-20.2c3.6-3.7,9.1-6.1,16.8-7.2c2.2-0.3,3.3-1.2,3.3-2.6c0-2-1.4-3-4.1-3h-60.2c-4.9,0-7.4,1-7.4,3C146.2,5.1,148,6.2,151.7,6.2z"/><path fill="#A5BC39" d="M135.8,126c-28.6,0-47.6,15.8-80.2,15.8c-8.7,0-17.3-1.1-25.7-3.1c0.7,13,2.8,23.1,6.3,30.3c4.4,9.2,12.7,16.6,25,22.1c12.3,5.6,27.1,8.4,44.6,8.4c17,0,31.4-2.5,43.1-7.4c11.7-5,20.4-11.5,26.2-19.6c5.3-7.3,8.9-18,10.8-32.2C165.3,129.6,149.5,126,135.8,126z"/></g></svg>
+<svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dkg)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M68 80 h120 a12 12 0 0 1 12 12 v64 a12 12 0 0 1-12 12 h-52 l-22 26 -22-26 H68 a12 12 0 0 1-12-12 V92 a12 12 0 0 1 12-12z" fill="rgba(255,255,255,0.15)" stroke="#fff" stroke-width="8" stroke-linejoin="round"/><circle cx="100" cy="124" r="7" fill="#A5BC39"/><circle cx="128" cy="124" r="7" fill="#fff"/><circle cx="156" cy="124" r="7" fill="#fff"/></svg>
+<svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dkg)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><rect x="56" y="62" width="144" height="16" rx="3" fill="#6BA0CC" opacity="0.95"/><rect x="56" y="84" width="108" height="16" rx="3" fill="#6BA0CC" opacity="0.75"/><rect x="82" y="106" width="118" height="16" rx="3" fill="#6BA0CC" opacity="0.6"/><rect x="56" y="128" width="72" height="16" rx="3" fill="#8BBAD6" opacity="0.55"/><rect x="96" y="150" width="80" height="16" rx="3" fill="#8BBAD6" opacity="0.4"/><rect x="56" y="178" width="26" height="14" rx="2" fill="#A5BC39"/><rect x="86" y="178" width="26" height="14" rx="2" fill="#A5BC39" opacity="0.85"/><rect x="116" y="178" width="26" height="14" rx="2" fill="#D4C23A" opacity="0.8"/><rect x="146" y="178" width="26" height="14" rx="2" fill="#D9A634" opacity="0.7"/><rect x="176" y="178" width="24" height="14" rx="2" fill="#C96832" opacity="0.6"/><line x1="130" y1="50" x2="130" y2="172" stroke="#A5BC39" stroke-width="3" opacity="0.9"/><circle cx="130" cy="48" r="4" fill="#A5BC39"/></svg>
+<svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dkg)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M140 72 L150 114 L192 124 L150 134 L140 176 L130 134 L88 124 L130 114 Z" fill="#A5BC39"/><path d="M76 56 L82 78 L104 84 L82 90 L76 112 L70 90 L48 84 L70 78 Z" fill="#fff" opacity="0.85"/><path d="M88 152 L93 170 L111 175 L93 180 L88 198 L83 180 L65 175 L83 170 Z" fill="#fff" opacity="0.6"/><path d="M188 60 L191 70 L201 73 L191 76 L188 86 L185 76 L175 73 L185 70 Z" fill="#fff" opacity="0.45"/></svg>
+<svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dkg)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><rect x="44" y="48" width="124" height="164" rx="8" fill="none" stroke="#fff" stroke-width="5.5"/><rect x="58" y="66" width="96" height="72" rx="4" fill="rgba(107,160,204,0.08)"/><circle cx="106" cy="90" r="15" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="3"/><path d="M76 138 C76 116 88 108 106 108 C124 108 136 116 136 138" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="3"/><rect x="58" y="150" width="60" height="6" rx="2.5" fill="#A5BC39"/><rect x="58" y="164" width="96" height="4" rx="1.5" fill="rgba(255,255,255,0.22)"/><rect x="58" y="174" width="96" height="4" rx="1.5" fill="rgba(255,255,255,0.16)"/><rect x="58" y="184" width="68" height="4" rx="1.5" fill="rgba(255,255,255,0.1)"/><g transform="translate(198, 60)"><path d="M0 -28 L7 -8 L28 0 L7 8 L0 28 L-7 8 L-28 0 L-7 -8 Z" fill="#A5BC39"/></g><g transform="translate(190, 116)"><path d="M0 -12 L3 -4 L12 0 L3 4 L0 12 L-3 4 L-12 0 L-3 -4 Z" fill="#A5BC39" opacity="0.5"/></g><g transform="translate(218, 88)"><path d="M0 -7 L2 -2 L7 0 L2 2 L0 7 L-2 2 L-7 0 L-2 -2 Z" fill="#fff" opacity="0.3"/></g></svg>
+</div>
+<div class="dock-labels"><span>Website</span><span>Inquiries</span><span>Scheduler</span><span>ODIN</span><span>Claire</span></div>
+</div></div>
+</div>
+
+<hr class="divider"/>
+
+<!-- ═══ V5 — Full-Width Portrait with Hair ═══ -->
+<div class="section">
+<div class="section-label">V5 — Exhibit Portrait with Hair Detail</div>
+<div class="section-desc">The image zone IS the portrait — Claire fills it like an exhibit photo. Just enough detail (a swoosh of hair) to give her personality without going full cartoon. She's the exhibit.</div>
+<div class="icon-row">
+<div class="icon-cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<rect width="256" height="256" rx="44" fill="url(#dkg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Panel -->
+<rect x="44" y="48" width="124" height="164" rx="8" fill="none" stroke="#fff" stroke-width="5.5"/>
+<!-- Image zone / portrait -->
+<rect x="58" y="66" width="96" height="72" rx="4" fill="rgba(107,160,204,0.1)"/>
+<!-- Head - bigger, fills more of the image zone -->
+<circle cx="106" cy="100" r="22" fill="rgba(255,255,255,0.2)"/>
+<!-- Hair swoosh - one elegant curve that gives personality -->
+<path d="M84 94 C84 76 94 68 108 68 C120 68 128 74 130 82" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="4" stroke-linecap="round"/>
+<path d="M82 96 C80 80 90 66 108 66 C118 66 126 70 130 78" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="3" stroke-linecap="round"/>
+<!-- Shoulders cropped by image zone bottom -->
+<path d="M76 138 C76 124 88 118 106 118 C124 118 136 124 136 138" fill="rgba(255,255,255,0.12)"/>
+<!-- Title -->
+<rect x="58" y="150" width="60" height="6" rx="2.5" fill="#A5BC39"/>
+<!-- Text -->
+<rect x="58" y="164" width="96" height="4" rx="1.5" fill="rgba(255,255,255,0.22)"/>
+<rect x="58" y="174" width="96" height="4" rx="1.5" fill="rgba(255,255,255,0.16)"/>
+<rect x="58" y="184" width="68" height="4" rx="1.5" fill="rgba(255,255,255,0.1)"/>
+<!-- Sparkles -->
+<g transform="translate(198, 60)">
+<path d="M0 -28 L7 -8 L28 0 L7 8 L0 28 L-7 8 L-28 0 L-7 -8 Z" fill="#A5BC39"/>
+</g>
+<g transform="translate(190, 116)">
+<path d="M0 -12 L3 -4 L12 0 L3 4 L0 12 L-3 4 L-12 0 L-3 -4 Z" fill="#A5BC39" opacity="0.5"/>
+</g>
+<g transform="translate(218, 88)">
+<path d="M0 -7 L2 -2 L7 0 L2 2 L0 7 L-2 2 L-7 0 L-2 -2 Z" fill="#fff" opacity="0.3"/>
+</g>
+</svg>
+<span class="name">96px</span>
+</div>
+<div class="icon-cell">
+<svg width="52" height="52" viewBox="0 0 256 256">
+<rect width="256" height="256" rx="44" fill="url(#dkg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<rect x="44" y="48" width="124" height="164" rx="8" fill="none" stroke="#fff" stroke-width="5.5"/>
+<rect x="58" y="66" width="96" height="72" rx="4" fill="rgba(107,160,204,0.1)"/>
+<circle cx="106" cy="100" r="22" fill="rgba(255,255,255,0.2)"/>
+<path d="M84 94 C84 76 94 68 108 68 C120 68 128 74 130 82" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="4" stroke-linecap="round"/>
+<path d="M82 96 C80 80 90 66 108 66 C118 66 126 70 130 78" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="3" stroke-linecap="round"/>
+<path d="M76 138 C76 124 88 118 106 118 C124 118 136 124 136 138" fill="rgba(255,255,255,0.12)"/>
+<rect x="58" y="150" width="60" height="6" rx="2.5" fill="#A5BC39"/>
+<rect x="58" y="164" width="96" height="4" rx="1.5" fill="rgba(255,255,255,0.22)"/>
+<rect x="58" y="174" width="96" height="4" rx="1.5" fill="rgba(255,255,255,0.16)"/>
+<rect x="58" y="184" width="68" height="4" rx="1.5" fill="rgba(255,255,255,0.1)"/>
+<g transform="translate(198, 60)"><path d="M0 -28 L7 -8 L28 0 L7 8 L0 28 L-7 8 L-28 0 L-7 -8 Z" fill="#A5BC39"/></g>
+<g transform="translate(190, 116)"><path d="M0 -12 L3 -4 L12 0 L3 4 L0 12 L-3 4 L-12 0 L-3 -4 Z" fill="#A5BC39" opacity="0.5"/></g>
+<g transform="translate(218, 88)"><path d="M0 -7 L2 -2 L7 0 L2 2 L0 7 L-2 2 L-7 0 L-2 -2 Z" fill="#fff" opacity="0.3"/></g>
+</svg>
+<span class="name">52px dock</span>
+</div>
+<div class="icon-cell">
+<svg width="32" height="32" viewBox="0 0 256 256">
+<rect width="256" height="256" rx="44" fill="url(#dkg)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<rect x="44" y="48" width="124" height="164" rx="8" fill="none" stroke="#fff" stroke-width="5.5"/>
+<rect x="58" y="66" width="96" height="72" rx="4" fill="rgba(107,160,204,0.1)"/>
+<circle cx="106" cy="100" r="22" fill="rgba(255,255,255,0.2)"/>
+<path d="M84 94 C84 76 94 68 108 68 C120 68 128 74 130 82" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="4" stroke-linecap="round"/>
+<path d="M76 138 C76 124 88 118 106 118 C124 118 136 124 136 138" fill="rgba(255,255,255,0.12)"/>
+<rect x="58" y="150" width="60" height="6" rx="2.5" fill="#A5BC39"/>
+<g transform="translate(198, 60)"><path d="M0 -28 L7 -8 L28 0 L7 8 L0 28 L-7 8 L-28 0 L-7 -8 Z" fill="#A5BC39"/></g>
+<g transform="translate(190, 116)"><path d="M0 -12 L3 -4 L12 0 L3 4 L0 12 L-3 4 L-12 0 L-3 -4 Z" fill="#A5BC39" opacity="0.5"/></g>
+</svg>
+<span class="name">32px</span>
+</div>
+</div>
+<div class="dock-wrap"><div class="dock-group">
+<div class="dock">
+<svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dkg)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><g transform="translate(45.5, 53) scale(0.75)"><path fill="#fff" d="M25.5,18.3c3.2,8.3,4.7,30.9,4.7,68l-0.5,35.2l3.8,0.9c7.2,1.7,14.6,2.6,22.1,2.7c0.8,0,1.6,0,2.4,0c-0.6-11.7-0.8-26.3-0.8-44c0-26.7,0.9-44.1,2.6-52.2c1.8-8.1,4.3-13.8,7.7-17c3.4-3.2,8.7-5.2,15.8-5.9c3.2-0.3,4.8-1.4,4.8-3.2C88.1,0.9,86,0,81.7,0H6.3C2.1,0,0,1,0,3.1c0,1.7,1.7,2.5,5.1,2.5C15.5,5.8,22.3,10,25.5,18.3z"/><path fill="#fff" d="M151.7,6.2c9.2,0,16.2,3.5,20.9,10.6c4.7,7.1,7.1,22,7.1,44.7c0,23.2-0.4,42.2-1.1,56.8c3,1.2,6,2.6,9,4c1-13.6,1.4-29.1,1.5-46.6c0-18.8,0.6-33.1,1.7-42.9c1.1-9.7,3.4-16.4,7-20.2c3.6-3.7,9.1-6.1,16.8-7.2c2.2-0.3,3.3-1.2,3.3-2.6c0-2-1.4-3-4.1-3h-60.2c-4.9,0-7.4,1-7.4,3C146.2,5.1,148,6.2,151.7,6.2z"/><path fill="#A5BC39" d="M135.8,126c-28.6,0-47.6,15.8-80.2,15.8c-8.7,0-17.3-1.1-25.7-3.1c0.7,13,2.8,23.1,6.3,30.3c4.4,9.2,12.7,16.6,25,22.1c12.3,5.6,27.1,8.4,44.6,8.4c17,0,31.4-2.5,43.1-7.4c11.7-5,20.4-11.5,26.2-19.6c5.3-7.3,8.9-18,10.8-32.2C165.3,129.6,149.5,126,135.8,126z"/></g></svg>
+<svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dkg)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M68 80 h120 a12 12 0 0 1 12 12 v64 a12 12 0 0 1-12 12 h-52 l-22 26 -22-26 H68 a12 12 0 0 1-12-12 V92 a12 12 0 0 1 12-12z" fill="rgba(255,255,255,0.15)" stroke="#fff" stroke-width="8" stroke-linejoin="round"/><circle cx="100" cy="124" r="7" fill="#A5BC39"/><circle cx="128" cy="124" r="7" fill="#fff"/><circle cx="156" cy="124" r="7" fill="#fff"/></svg>
+<svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dkg)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><rect x="56" y="62" width="144" height="16" rx="3" fill="#6BA0CC" opacity="0.95"/><rect x="56" y="84" width="108" height="16" rx="3" fill="#6BA0CC" opacity="0.75"/><rect x="82" y="106" width="118" height="16" rx="3" fill="#6BA0CC" opacity="0.6"/><rect x="56" y="128" width="72" height="16" rx="3" fill="#8BBAD6" opacity="0.55"/><rect x="96" y="150" width="80" height="16" rx="3" fill="#8BBAD6" opacity="0.4"/><rect x="56" y="178" width="26" height="14" rx="2" fill="#A5BC39"/><rect x="86" y="178" width="26" height="14" rx="2" fill="#A5BC39" opacity="0.85"/><rect x="116" y="178" width="26" height="14" rx="2" fill="#D4C23A" opacity="0.8"/><rect x="146" y="178" width="26" height="14" rx="2" fill="#D9A634" opacity="0.7"/><rect x="176" y="178" width="24" height="14" rx="2" fill="#C96832" opacity="0.6"/><line x1="130" y1="50" x2="130" y2="172" stroke="#A5BC39" stroke-width="3" opacity="0.9"/><circle cx="130" cy="48" r="4" fill="#A5BC39"/></svg>
+<svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dkg)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><path d="M140 72 L150 114 L192 124 L150 134 L140 176 L130 134 L88 124 L130 114 Z" fill="#A5BC39"/><path d="M76 56 L82 78 L104 84 L82 90 L76 112 L70 90 L48 84 L70 78 Z" fill="#fff" opacity="0.85"/><path d="M88 152 L93 170 L111 175 L93 180 L88 198 L83 180 L65 175 L83 170 Z" fill="#fff" opacity="0.6"/><path d="M188 60 L191 70 L201 73 L191 76 L188 86 L185 76 L175 73 L185 70 Z" fill="#fff" opacity="0.45"/></svg>
+<svg width="52" height="52" viewBox="0 0 256 256"><rect width="256" height="256" rx="44" fill="url(#dkg)"/><rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/><rect x="44" y="48" width="124" height="164" rx="8" fill="none" stroke="#fff" stroke-width="5.5"/><rect x="58" y="66" width="96" height="72" rx="4" fill="rgba(107,160,204,0.1)"/><circle cx="106" cy="100" r="22" fill="rgba(255,255,255,0.2)"/><path d="M84 94 C84 76 94 68 108 68 C120 68 128 74 130 82" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="4" stroke-linecap="round"/><path d="M82 96 C80 80 90 66 108 66 C118 66 126 70 130 78" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="3" stroke-linecap="round"/><path d="M76 138 C76 124 88 118 106 118 C124 118 136 124 136 138" fill="rgba(255,255,255,0.12)"/><rect x="58" y="150" width="60" height="6" rx="2.5" fill="#A5BC39"/><rect x="58" y="164" width="96" height="4" rx="1.5" fill="rgba(255,255,255,0.22)"/><rect x="58" y="174" width="96" height="4" rx="1.5" fill="rgba(255,255,255,0.16)"/><rect x="58" y="184" width="68" height="4" rx="1.5" fill="rgba(255,255,255,0.1)"/><g transform="translate(198, 60)"><path d="M0 -28 L7 -8 L28 0 L7 8 L0 28 L-7 8 L-28 0 L-7 -8 Z" fill="#A5BC39"/></g><g transform="translate(190, 116)"><path d="M0 -12 L3 -4 L12 0 L3 4 L0 12 L-3 4 L-12 0 L-3 -4 Z" fill="#A5BC39" opacity="0.5"/></g><g transform="translate(218, 88)"><path d="M0 -7 L2 -2 L7 0 L2 2 L0 7 L-2 2 L-7 0 L-2 -2 Z" fill="#fff" opacity="0.3"/></g></svg>
+</div>
+<div class="dock-labels"><span>Website</span><span>Inquiries</span><span>Scheduler</span><span>ODIN</span><span>Claire</span></div>
+</div></div>
+</div>
+
+</div>
+</body>
+</html>

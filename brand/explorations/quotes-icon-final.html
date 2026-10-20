@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Quotes Icon — Final Check</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Instrument Sans",system-ui,sans-serif;background:#0c0b0e;color:#c8c5cc;min-height:100vh}
+.page{max-width:1200px;margin:0 auto;padding:4rem 2rem 6rem}
+.header{margin-bottom:4.5rem}
+.header::after{content:"";display:block;width:48px;height:2px;background:#a5bc39;margin-top:1.5rem}
+.tag{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#a5bc39;margin-bottom:.6rem}
+h1{font-size:1.8rem;font-weight:400;color:#eae8ed}
+.section{margin-bottom:5rem}
+.section-label{font-size:.65rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#605c66;margin-bottom:2rem}
+.icon-row{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;align-items:end}
+.icon-cell{display:flex;flex-direction:column;align-items:center;gap:.7rem}
+.icon-cell img{filter:drop-shadow(0 4px 20px rgba(0,0,0,.6))}
+.icon-cell .name{font-size:.78rem;font-weight:600;color:#d8d5dc}
+.icon-cell .sub{font-size:.6rem;color:#555059;margin-top:-.3rem}
+.sizes{display:flex;justify-content:center;gap:3rem;align-items:end;flex-wrap:wrap}
+.sizes .sz{display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.sizes .sz span{font-size:.55rem;color:#444}
+.dock-wrap{display:flex;justify-content:center}
+.dock{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:22px;padding:14px 28px;display:inline-flex;gap:14px;align-items:center}
+.dock img{filter:drop-shadow(0 2px 10px rgba(0,0,0,.5))}
+.sep{width:1px;height:36px;background:rgba(255,255,255,0.08);margin:0 4px}
+.lt-section{background:#f0eff2;border-radius:20px;padding:3rem;margin-bottom:5rem}
+.lt-section .section-label{color:#999}
+.lt-section .icon-cell img{filter:drop-shadow(0 2px 8px rgba(0,0,0,.1))}
+.lt-section .icon-cell .name{color:#444}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="header">
+<div class="tag">Final Check</div>
+<h1>Quotes Icon</h1>
+</div>
+
+<div class="section">
+<div class="section-label">Primary Lineup — 96px</div>
+<div class="icon-row">
+<div class="icon-cell"><img src="../icons/website.svg" width="96" height="96"/><span class="name">Storefront</span></div>
+<div class="icon-cell"><img src="../icons/quotes.svg" width="96" height="96"/><span class="name">Quotes</span></div>
+<div class="icon-cell"><img src="../icons/odin.svg" width="96" height="96"/><span class="name">ODIN</span></div>
+<div class="icon-cell"><img src="../icons/scheduler.svg" width="96" height="96"/><span class="name">Scheduler</span></div>
+<div class="icon-cell"><img src="../icons/claire.svg" width="96" height="96"/><span class="name">Claire</span></div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">Dock — Primary + Secondary at 52px</div>
+<div class="dock-wrap">
+<div class="dock">
+<img src="../icons/website.svg" width="52" height="52"/>
+<img src="../icons/quotes.svg" width="52" height="52"/>
+<img src="../icons/odin.svg" width="52" height="52"/>
+<img src="../icons/scheduler.svg" width="52" height="52"/>
+<img src="../icons/claire.svg" width="52" height="52"/>
+<div class="sep"></div>
+<img src="../icons/inquiry-hub.svg" width="52" height="52"/>
+<img src="../icons/orders.svg" width="52" height="52"/>
+</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">Size Ladder — 96 · 52 · 32 · 16</div>
+<div class="sizes">
+<div class="sz"><img src="../icons/quotes.svg" width="96" height="96"/><span>96</span></div>
+<div class="sz"><img src="../icons/quotes.svg" width="52" height="52"/><span>52</span></div>
+<div class="sz"><img src="../icons/quotes.svg" width="32" height="32"/><span>32</span></div>
+<div class="sz"><img src="../icons/quotes.svg" width="16" height="16"/><span>16</span></div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">Compare — Document Icons</div>
+<div class="icon-row">
+<div class="icon-cell"><img src="../icons/quotes.svg" width="96" height="96"/><span class="name">Quotes</span><span class="sub">U mark + line items</span></div>
+<div class="icon-cell"><img src="../icons/orders.svg" width="96" height="96"/><span class="name">Orders</span><span class="sub">Clipboard + checkboxes</span></div>
+</div>
+</div>
+
+<div class="lt-section">
+<div class="section-label">Light Variant — 96 · 52 · 32</div>
+<div class="sizes">
+<div class="sz"><img src="../icons/quotes-light.svg" width="96" height="96"/><span>96</span></div>
+<div class="sz"><img src="../icons/quotes-light.svg" width="52" height="52"/><span>52</span></div>
+<div class="sz"><img src="../icons/quotes-light.svg" width="32" height="32"/><span>32</span></div>
+</div>
+</div>
+
+</div>
+</body>
+</html>

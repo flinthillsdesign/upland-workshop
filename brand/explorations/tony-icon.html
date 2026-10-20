@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>A.I. Tony — Icon Explorations</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Instrument Sans",system-ui,sans-serif;background:#0c0b0e;color:#c8c5cc;min-height:100vh}
+.page{max-width:1100px;margin:0 auto;padding:4rem 2rem 6rem}
+.header{margin-bottom:4.5rem}
+.header::after{content:"";display:block;width:48px;height:2px;background:#a5bc39;margin-top:1.5rem}
+.label{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#a5bc39;margin-bottom:.6rem}
+h1{font-size:1.8rem;font-weight:400;color:#eae8ed}
+.subtitle{font-size:.85rem;color:#605c66;margin-top:.5rem}
+.section{margin-bottom:5rem}
+.section-label{font-size:.65rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#605c66;margin-bottom:2rem}
+.icon-row{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap}
+.icon-cell{display:flex;flex-direction:column;align-items:center;gap:.7rem}
+.icon-cell svg{filter:drop-shadow(0 4px 20px rgba(0,0,0,.6));transition:transform .25s cubic-bezier(.34,1.56,.64,1)}
+.icon-cell:hover svg{transform:translateY(-3px) scale(1.05)}
+.icon-cell .name{font-size:.78rem;font-weight:600;color:#d8d5dc}
+.icon-cell .desc{font-size:.6rem;color:#555059;margin-top:-.3rem;max-width:120px;text-align:center;line-height:1.4}
+.sizes{display:flex;align-items:end;gap:2rem;justify-content:center;flex-wrap:wrap}
+.size-cell{display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.size-cell .dim{font-size:.55rem;color:#444}
+.lt-section{background:#f0eff2;border-radius:20px;padding:3rem;margin-bottom:5rem}
+.lt-section .section-label{color:#999}
+.lt-section .icon-cell .name{color:#444}
+.lt-section .icon-cell .desc{color:#999}
+.lt-section .icon-cell svg{filter:drop-shadow(0 2px 8px rgba(0,0,0,.1))}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="header">
+<div class="label">A.I. Tony</div>
+<h1>Icon Explorations</h1>
+<p class="subtitle">Process rules engine — the digital Anthony</p>
+</div>
+
+<!-- ============ CONCEPT A: Clipboard + Checks ============ -->
+<div class="section">
+<div class="section-label">A — Clipboard with Checks</div>
+<div class="icon-row">
+<div class="icon-cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="bgA" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bgA)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Clipboard body -->
+<rect x="68" y="52" width="120" height="160" rx="10" fill="none" stroke="#fff" stroke-width="6" opacity="0.7"/>
+<!-- Clip at top -->
+<rect x="100" y="40" width="56" height="24" rx="6" fill="#fff" opacity="0.5"/>
+<rect x="108" y="36" width="40" height="14" rx="7" fill="#161A22" stroke="#fff" stroke-width="4" opacity="0.6"/>
+<!-- Check lines -->
+<line x1="92" y1="100" x2="164" y2="100" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.3"/>
+<polyline points="82,100 86,104 94,94" fill="none" stroke="#A5BC39" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="92" y1="126" x2="152" y2="126" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.25"/>
+<polyline points="82,126 86,130 94,120" fill="none" stroke="#A5BC39" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="92" y1="152" x2="158" y2="152" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.2"/>
+<circle cx="87" cy="152" r="5" fill="none" stroke="#D9A634" stroke-width="3.5" opacity="0.8"/>
+<line x1="92" y1="178" x2="140" y2="178" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.15"/>
+<circle cx="87" cy="178" r="5" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="3.5"/>
+</svg>
+<span class="name">Clipboard</span>
+<span class="desc">Classic checklist — checks and flags</span>
+</div>
+</div>
+</div>
+
+<!-- ============ CONCEPT B: Shield + Check ============ -->
+<div class="section">
+<div class="section-label">B — Shield Badge</div>
+<div class="icon-row">
+<div class="icon-cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="bgB" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bgB)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Shield outline -->
+<path d="M128 42 L188 70 L188 138 C188 178 158 208 128 220 C98 208 68 178 68 138 L68 70 Z" fill="none" stroke="#A5BC39" stroke-width="6" opacity="0.9"/>
+<path d="M128 52 L180 76 L180 136 C180 170 154 196 128 206 C102 196 76 170 76 136 L76 76 Z" fill="#A5BC39" opacity="0.08"/>
+<!-- Checkmark -->
+<polyline points="104,132 120,150 156,108" fill="none" stroke="#A5BC39" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<!-- Small sparkle -->
+<path d="M196 56 L199 66 L209 69 L199 72 L196 82 L193 72 L183 69 L193 66 Z" fill="#fff" opacity="0.3"/>
+</svg>
+<span class="name">Shield</span>
+<span class="desc">Enforcement badge — process guardian</span>
+</div>
+</div>
+</div>
+
+<!-- ============ CONCEPT C: Magnifying Glass + List ============ -->
+<div class="section">
+<div class="section-label">C — Inspection</div>
+<div class="icon-row">
+<div class="icon-cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="bgC" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bgC)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Document behind -->
+<rect x="48" y="40" width="112" height="148" rx="8" fill="none" stroke="#fff" stroke-width="5" opacity="0.35"/>
+<line x1="68" y1="68" x2="140" y2="68" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity="0.2"/>
+<line x1="68" y1="88" x2="130" y2="88" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity="0.15"/>
+<line x1="68" y1="108" x2="120" y2="108" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity="0.15"/>
+<line x1="68" y1="128" x2="110" y2="128" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity="0.1"/>
+<line x1="68" y1="148" x2="126" y2="148" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity="0.1"/>
+<!-- Magnifying glass -->
+<circle cx="168" cy="148" r="42" fill="rgba(165,188,57,0.06)" stroke="#A5BC39" stroke-width="6"/>
+<line x1="198" y1="178" x2="220" y2="204" stroke="#A5BC39" stroke-width="8" stroke-linecap="round"/>
+<!-- Check inside glass -->
+<polyline points="152,148 162,160 184,136" fill="none" stroke="#A5BC39" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+</svg>
+<span class="name">Inspection</span>
+<span class="desc">Magnifying glass over process docs</span>
+</div>
+</div>
+</div>
+
+<!-- ============ CONCEPT D: Eye / Watchful ============ -->
+<div class="section">
+<div class="section-label">D — Watchful Eye</div>
+<div class="icon-row">
+<div class="icon-cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="bgD" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bgD)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Eye shape -->
+<path d="M40 128 C40 128 84 72 128 72 C172 72 216 128 216 128 C216 128 172 184 128 184 C84 184 40 128 40 128 Z" fill="none" stroke="#fff" stroke-width="5.5" opacity="0.7"/>
+<!-- Iris -->
+<circle cx="128" cy="128" r="32" fill="#A5BC39" opacity="0.15" stroke="#A5BC39" stroke-width="4"/>
+<!-- Pupil -->
+<circle cx="128" cy="128" r="14" fill="#A5BC39"/>
+<!-- Light reflection -->
+<circle cx="120" cy="120" r="5" fill="#fff" opacity="0.6"/>
+<!-- Small checklist below eye -->
+<line x1="100" y1="210" x2="156" y2="210" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity="0.2"/>
+<polyline points="92,210 95,213 100,207" fill="none" stroke="#A5BC39" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+</svg>
+<span class="name">Watchful</span>
+<span class="desc">Always watching — with a checklist</span>
+</div>
+</div>
+</div>
+
+<!-- ============ CONCEPT E: Ruler / Straightedge ============ -->
+<div class="section">
+<div class="section-label">E — Ruler & Check</div>
+<div class="icon-row">
+<div class="icon-cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="bgE" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bgE)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Diagonal ruler -->
+<g transform="rotate(-45, 128, 128)">
+<rect x="48" y="108" width="160" height="40" rx="4" fill="none" stroke="#fff" stroke-width="5" opacity="0.6"/>
+<!-- Tick marks -->
+<line x1="72" y1="108" x2="72" y2="120" stroke="#fff" stroke-width="2.5" opacity="0.4"/>
+<line x1="92" y1="108" x2="92" y2="116" stroke="#fff" stroke-width="2" opacity="0.3"/>
+<line x1="112" y1="108" x2="112" y2="120" stroke="#fff" stroke-width="2.5" opacity="0.4"/>
+<line x1="132" y1="108" x2="132" y2="116" stroke="#fff" stroke-width="2" opacity="0.3"/>
+<line x1="152" y1="108" x2="152" y2="120" stroke="#fff" stroke-width="2.5" opacity="0.4"/>
+<line x1="172" y1="108" x2="172" y2="116" stroke="#fff" stroke-width="2" opacity="0.3"/>
+<line x1="192" y1="108" x2="192" y2="120" stroke="#fff" stroke-width="2.5" opacity="0.4"/>
+</g>
+<!-- Check overlay -->
+<polyline points="148,136 164,154 196,116" fill="none" stroke="#A5BC39" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+<span class="name">Ruler</span>
+<span class="desc">Measuring against the standard</span>
+</div>
+</div>
+</div>
+
+<!-- ============ CONCEPT F: Megaphone / Nudge ============ -->
+<div class="section">
+<div class="section-label">F — Megaphone</div>
+<div class="icon-row">
+<div class="icon-cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="bgF" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bgF)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Megaphone body -->
+<path d="M60 108 L60 148 L80 148 L148 188 L148 68 L80 108 Z" fill="none" stroke="#fff" stroke-width="5.5" opacity="0.7"/>
+<path d="M62 110 L62 146 L80 146 L146 184 L146 72 L80 110 Z" fill="#A5BC39" opacity="0.08"/>
+<!-- Sound waves -->
+<path d="M168 104 C180 114 180 142 168 152" fill="none" stroke="#A5BC39" stroke-width="5" stroke-linecap="round" opacity="0.7"/>
+<path d="M184 88 C202 104 202 152 184 168" fill="none" stroke="#A5BC39" stroke-width="5" stroke-linecap="round" opacity="0.45"/>
+<path d="M200 72 C224 96 224 160 200 184" fill="none" stroke="#A5BC39" stroke-width="5" stroke-linecap="round" opacity="0.25"/>
+</svg>
+<span class="name">Megaphone</span>
+<span class="desc">Nudging you — loud and clear</span>
+</div>
+</div>
+</div>
+
+<!-- ============ CONCEPT G: Pointing Finger ============ -->
+<div class="section">
+<div class="section-label">G — The Point</div>
+<div class="icon-row">
+<div class="icon-cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="bgG" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bgG)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Pointing hand (simplified, pointing right) -->
+<g transform="translate(128,128) scale(0.9) translate(-128,-128)">
+<!-- Index finger pointing up -->
+<rect x="116" y="48" width="24" height="80" rx="12" fill="none" stroke="#fff" stroke-width="5" opacity="0.8"/>
+<!-- Palm/fist -->
+<rect x="80" y="128" width="96" height="56" rx="16" fill="none" stroke="#fff" stroke-width="5" opacity="0.6"/>
+<!-- Knuckle lines -->
+<line x1="108" y1="132" x2="108" y2="180" stroke="#fff" stroke-width="3" opacity="0.2"/>
+<line x1="136" y1="132" x2="136" y2="180" stroke="#fff" stroke-width="3" opacity="0.2"/>
+<!-- Wrist -->
+<rect x="96" y="184" width="64" height="28" rx="6" fill="none" stroke="#fff" stroke-width="4" opacity="0.35"/>
+</g>
+<!-- Emphasis lines around fingertip -->
+<line x1="98" y1="56" x2="88" y2="46" stroke="#A5BC39" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+<line x1="128" y1="42" x2="128" y2="30" stroke="#A5BC39" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+<line x1="158" y1="56" x2="168" y2="46" stroke="#A5BC39" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+</svg>
+<span class="name">The Point</span>
+<span class="desc">Index finger — "Hey, you should..."</span>
+</div>
+</div>
+</div>
+
+<!-- ============ CONCEPT H: Whistle ============ -->
+<div class="section">
+<div class="section-label">H — Whistle</div>
+<div class="icon-row">
+<div class="icon-cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="bgH" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bgH)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Whistle body -->
+<circle cx="118" cy="142" r="52" fill="#A5BC39" opacity="0.1" stroke="#A5BC39" stroke-width="5"/>
+<!-- Mouthpiece -->
+<rect x="158" y="126" width="52" height="24" rx="12" fill="none" stroke="#A5BC39" stroke-width="5"/>
+<line x1="160" y1="138" x2="170" y2="138" stroke="#A5BC39" stroke-width="5" stroke-linecap="round"/>
+<!-- Ring/lanyard hole -->
+<circle cx="78" cy="106" r="10" fill="none" stroke="#fff" stroke-width="4" opacity="0.5"/>
+<!-- Sound lines -->
+<line x1="138" y1="78" x2="148" y2="58" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+<line x1="156" y1="86" x2="172" y2="70" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity="0.4"/>
+<line x1="170" y1="100" x2="190" y2="88" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity="0.3"/>
+</svg>
+<span class="name">Whistle</span>
+<span class="desc">Blowing the whistle on bad process</span>
+</div>
+</div>
+</div>
+
+<!-- ============ CONCEPT I: Gate / Barrier ============ -->
+<div class="section">
+<div class="section-label">I — Process Gate</div>
+<div class="icon-row">
+<div class="icon-cell">
+<svg width="96" height="96" viewBox="0 0 256 256">
+<defs><linearGradient id="bgI" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161A22"/><stop offset="100%" stop-color="#0A0D12"/></linearGradient></defs>
+<rect width="256" height="256" rx="44" fill="url(#bgI)"/>
+<rect width="256" height="256" rx="44" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+<!-- Gate posts -->
+<rect x="60" y="60" width="14" height="140" rx="4" fill="#fff" opacity="0.6"/>
+<rect x="182" y="60" width="14" height="140" rx="4" fill="#fff" opacity="0.6"/>
+<!-- Barrier bar (raised = passing) -->
+<rect x="74" y="92" width="108" height="12" rx="4" fill="#A5BC39" opacity="0.8"/>
+<!-- Stripes on bar -->
+<line x1="94" y1="92" x2="88" y2="104" stroke="#161A22" stroke-width="3" opacity="0.3"/>
+<line x1="114" y1="92" x2="108" y2="104" stroke="#161A22" stroke-width="3" opacity="0.3"/>
+<line x1="134" y1="92" x2="128" y2="104" stroke="#161A22" stroke-width="3" opacity="0.3"/>
+<line x1="154" y1="92" x2="148" y2="104" stroke="#161A22" stroke-width="3" opacity="0.3"/>
+<line x1="174" y1="92" x2="168" y2="104" stroke="#161A22" stroke-width="3" opacity="0.3"/>
+<!-- Arrow passing through -->
+<line x1="128" y1="170" x2="128" y2="126" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity="0.35"/>
+<polyline points="116,138 128,126 140,138" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/>
+<!-- Light on post -->
+<circle cx="67" cy="70" r="6" fill="#A5BC39" opacity="0.9"/>
+</svg>
+<span class="name">Gate</span>
+<span class="desc">Process gates — pass or stop</span>
+</div>
+</div>
+</div>
+
+</div>
+</body>
+</html>
